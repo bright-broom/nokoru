@@ -31,6 +31,7 @@ export const navItems: readonly NavItem[] = [
   { label: 'Services', href: '#services', ariaLabel: 'サービス紹介へ移動' },
   { label: 'Plans', href: '#plans', ariaLabel: '料金プランへ移動' },
   { label: 'About', href: '#about', ariaLabel: 'スタッフ紹介へ移動' },
+  { label: 'Booking', href: '#booking', ariaLabel: '無料相談予約へ移動' },
   { label: 'Contact', href: '#contact', ariaLabel: 'お問い合わせへ移動' },
 ] as const;
 

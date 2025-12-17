@@ -5,6 +5,8 @@ export { Section } from './Section';
 export { SectionHeader } from './SectionHeader';
 
 export { YouTubeEmbed } from './YouTubeEmbed';
+export { CalEmbed } from './CalEmbed';
+export { CalButton } from './CalButton';
 
 // shadcn/ui components
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card';

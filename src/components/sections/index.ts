@@ -5,3 +5,4 @@ export { PlansSection } from './PlansSection';
 export { OptionsSection } from './OptionsSection';
 export { AboutSection } from './AboutSection';
 export { ContactSection } from './ContactSection';
+export { BookingSection } from './BookingSection';

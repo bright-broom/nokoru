@@ -6,6 +6,7 @@ import {
   PlansSection,
   OptionsSection,
   AboutSection,
+  BookingSection,
   ContactSection,
 } from '@/components/sections';
 
@@ -21,6 +22,7 @@ export default function HomePage() {
         <PlansSection />
         <OptionsSection />
         <AboutSection />
+        <BookingSection calLink="toshiki-sakuta-ohgi5i" />
         <ContactSection />
       </main>
 
