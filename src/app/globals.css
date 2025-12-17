@@ -11,7 +11,9 @@
   --color-text: #3d3d3d;
   --color-text-light: #6b6b6b;
 
-  --font-display: "Playfair Display", serif;
+  /* フォント設定は src/lib/fonts.ts で集中管理 */
+  /* --font-display: 見出し用 (Playfair Display) */
+  /* --font-sans: 本文用 (Noto Sans JP) */
 }
 
 html {
@@ -21,6 +23,7 @@ html {
 body {
   color: var(--color-text);
   background-color: var(--color-cream);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 @theme inline {
