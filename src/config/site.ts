@@ -5,6 +5,7 @@ import type {
   Plan,
   Option,
   Staff,
+  WorkImage,
   ContactLink,
 } from '@/types';
 
@@ -14,8 +15,8 @@ import type {
 export const siteConfig: SiteConfig = {
   name: 'Silver Lace Weddings',
   description:
-    '大阪・関西発、ロケーション前撮りに特化したウェディングムービー。静かで美しい1分のムービーに。2026年撮影受付中。',
-  tagline: 'ロケーション前撮りを、\n静かで美しい1分のムービーに。',
+    '大阪・関西発、ロケーション前撮りに特化したウェディングムービー。美しい映像に。2026年撮影受付中。',
+  tagline: 'ロケーション前撮りを、\n美しい映像に。',
   subTagline: 'Location Wedding Film',
   areas: '大阪・兵庫・京都・奈良・滋賀を中心に、全国出張対応。',
   year: '2026年撮影受付中。',
@@ -26,6 +27,7 @@ export const siteConfig: SiteConfig = {
  * ナビゲーション項目
  */
 export const navItems: readonly NavItem[] = [
+  { label: 'Works', href: '#works', ariaLabel: '作品ギャラリーへ移動' },
   { label: 'Services', href: '#services', ariaLabel: 'サービス紹介へ移動' },
   { label: 'Plans', href: '#plans', ariaLabel: '料金プランへ移動' },
   { label: 'About', href: '#about', ariaLabel: 'スタッフ紹介へ移動' },
@@ -107,11 +109,50 @@ export const staffMembers: readonly Staff[] = [
     id: 'aki',
     name: 'Aki',
     role: 'ビデオグラファー / カラリスト',
+    imageUrl: '/images/staff/aki.jpg',
   },
   {
     id: 'hiyori',
     name: 'Hiyori',
     role: 'フォト / サポート',
+    imageUrl: '/images/staff/hiyori.jpg',
+  },
+] as const;
+
+/**
+ * 作品ギャラリー（差し替え前提）
+ * 画像は public/ 配下に配置してください（README参照）
+ */
+export const workImages: readonly WorkImage[] = [
+  {
+    id: 'works-bride-portrait',
+    src: '/images/works/bride-portrait.jpg',
+    alt: '自然光の中で撮影した花嫁の横顔',
+    locationTag: 'Location',
+  },
+  {
+    id: 'works-couple-playground',
+    src: '/images/works/couple-playground.jpg',
+    alt: '自然体のふたりを切り取ったカップルフォト',
+    locationTag: 'Couple',
+  },
+  {
+    id: 'works-couple-sea',
+    src: '/images/works/couple-sea.jpg',
+    alt: '海辺の風景の中で佇む新郎新婦のシルエット',
+    locationTag: 'Seaside',
+  },
+  {
+    id: 'works-couple-sunflower',
+    src: '/images/works/couple-sunflower.jpg',
+    alt: 'ひまわり畑で撮影した抱き合うふたりの後ろ姿',
+    locationTag: 'Sunflower',
+  },
+  {
+    id: 'works-bouquet',
+    src: '/images/works/bouquet.jpg',
+    alt: 'ドライフラワーのブーケのクローズアップ',
+    locationTag: 'Detail',
   },
 ] as const;
 

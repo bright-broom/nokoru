@@ -1,7 +1,7 @@
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { VideoIcon, PlayIcon } from '@/components/icons';
 import { services } from '@/config/site';
-import { renderMultilineText } from '@/lib/utils';
+import { renderMultilineText } from '@/lib/helpers';
 import type { Service } from '@/types';
 
 const iconMap = {
@@ -18,7 +18,7 @@ function ServiceCard({ service }: { service: Service }) {
         className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cream"
         aria-hidden="true"
       >
-        <Icon className="h-8 w-8 text-accent" />
+        <Icon className="h-8 w-8 text-site-accent" />
       </div>
       <h3 className="font-display text-xl">{service.title}</h3>
       <p className="mt-3 text-text-light">

@@ -1,13 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import './globals.css';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -57,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={playfair.variable}>
+    <html lang="ja">
       <body className="antialiased">{children}</body>
     </html>
   );

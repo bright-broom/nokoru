@@ -16,6 +16,7 @@ pnpm-debug.log*
 
 # env files
 .env
+.env.local
 .env.*.local
 
 # OS / editor
@@ -26,4 +27,6 @@ pnpm-debug.log*
 # local AI tooling
 .claude/settings.local.json
 
+# local data
+data/reservations.jsonl
 

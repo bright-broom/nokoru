@@ -24,7 +24,7 @@ export function Header() {
       {/* Skip link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-site-accent focus:px-4 focus:py-2 focus:text-white"
       >
         メインコンテンツへスキップ
       </a>
@@ -36,7 +36,7 @@ export function Header() {
       >
         <Link
           href="/"
-          className="font-display text-xl tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="font-display text-xl tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
           aria-label={`${siteConfig.name} - ホームへ戻る`}
         >
           {siteConfig.name}
@@ -48,7 +48,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              className="transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
               role="menuitem"
               aria-label={item.ariaLabel}
             >
@@ -60,7 +60,7 @@ export function Header() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-md md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          className="flex h-10 w-10 items-center justify-center rounded-md md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
           onClick={toggleMobileMenu}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
@@ -112,7 +112,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="py-2 text-lg transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="py-2 text-lg transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
               role="menuitem"
               aria-label={item.ariaLabel}
               onClick={closeMobileMenu}

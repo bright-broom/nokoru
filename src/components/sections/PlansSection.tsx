@@ -1,7 +1,8 @@
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { CheckIcon } from '@/components/icons';
 import { plans } from '@/config/site';
-import { cn, renderMultilineText } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { renderMultilineText } from '@/lib/helpers';
 import type { Plan } from '@/types';
 
 function PlanCard({ plan }: { plan: Plan }) {
@@ -13,12 +14,12 @@ function PlanCard({ plan }: { plan: Plan }) {
       className={cn(
         'rounded-lg p-8',
         isComingSoon && 'border border-beige bg-beige/50',
-        isRecommended && 'border-2 border-accent bg-white',
+        isRecommended && 'border-2 border-site-accent bg-white',
         !isComingSoon && !isRecommended && 'border border-beige bg-white'
       )}
     >
       {isRecommended && (
-        <div className="mb-4 inline-block rounded bg-accent px-3 py-1 text-xs text-white">
+        <div className="mb-4 inline-block rounded bg-site-accent px-3 py-1 text-xs text-white">
           おすすめ
         </div>
       )}
@@ -46,7 +47,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         <ul className="mt-8 space-y-3 text-sm text-text-light" role="list">
           {plan.features.map((feature, index) => (
             <li key={index} className="flex items-start gap-2">
-              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-site-accent" />
               <span>{feature.text}</span>
             </li>
           ))}

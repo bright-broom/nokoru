@@ -15,7 +15,7 @@ interface ButtonProps extends PropsWithClassName {
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center text-sm tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center text-sm tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const variantClasses = {
   primary: 'bg-text text-cream hover:bg-text/90',

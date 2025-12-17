@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { staffMembers } from '@/config/site';
 import type { Staff } from '@/types';
@@ -5,11 +6,25 @@ import type { Staff } from '@/types';
 function StaffCard({ staff }: { staff: Staff }) {
   return (
     <article className="text-center">
-      <div
-        className="mx-auto mb-6 h-32 w-32 rounded-full bg-beige"
-        role="img"
-        aria-label={`${staff.name}のプロフィール画像`}
-      />
+      <div className="mx-auto mb-6 h-32 w-32 overflow-hidden rounded-full bg-beige">
+        {staff.imageUrl ? (
+          <Image
+            src={staff.imageUrl}
+            alt={`${staff.name}のプロフィール画像`}
+            width={128}
+            height={128}
+            className="h-full w-full object-cover"
+            sizes="128px"
+            priority={staff.id === 'aki'}
+          />
+        ) : (
+          <div
+            className="h-full w-full"
+            role="img"
+            aria-label={`${staff.name}のプロフィール画像（未設定）`}
+          />
+        )}
+      </div>
       <h3 className="font-display text-xl">{staff.name}</h3>
       <p className="mt-2 text-sm text-text-light">{staff.role}</p>
     </article>

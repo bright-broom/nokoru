@@ -49,6 +49,14 @@ export interface Staff {
   readonly imageUrl?: string;
 }
 
+// 作品（ギャラリー）
+export interface WorkImage {
+  readonly id: string;
+  readonly src: string;
+  readonly alt: string;
+  readonly locationTag?: string;
+}
+
 // 連絡先リンク
 export interface ContactLink {
   readonly id: string;
@@ -85,4 +93,29 @@ export interface IconProps {
   readonly className?: string;
   readonly size?: number;
   readonly 'aria-hidden'?: boolean;
+}
+
+// 予約（リクエスト）
+export const reservationInquiryTypes = [
+  'location',
+  'opening',
+  'both',
+  'other',
+] as const;
+
+export type ReservationInquiryType = (typeof reservationInquiryTypes)[number];
+
+export interface ReservationRequestInput {
+  readonly name: string;
+  readonly email: string;
+  readonly phone?: string;
+  readonly inquiryType?: ReservationInquiryType | '';
+  readonly preferredDate?: string;
+  readonly message: string;
+}
+
+export interface ReservationRequest extends ReservationRequestInput {
+  readonly id: string;
+  readonly createdAt: string;
+  readonly status: 'pending';
 }
