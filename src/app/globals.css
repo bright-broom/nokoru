@@ -4,16 +4,30 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Custom site colors */
+  /**
+   * サイトカラー定義
+   * 色の値は src/lib/colors.ts と同期してください
+   */
+
+  /* 背景色 */
   --color-cream: #fbf9f6;
   --color-beige: #f5f2ec;
+
+  /* アクセントカラー */
   --color-site-accent: #7a8ec5;
+
+  /* テキストカラー */
   --color-text: #3d3d3d;
   --color-text-light: #6b6b6b;
 
+  /* ステータスカラー */
+  --color-error: #ef4444;
+  --color-error-light: #fef2f2;
+  --color-error-dark: #dc2626;
+  --color-success: #dcfce7;
+  --color-success-dark: #22c55e;
+
   /* フォント設定は src/lib/fonts.ts で集中管理 */
-  /* --font-display: 見出し用 (Playfair Display) */
-  /* --font-sans: 本文用 (Noto Sans JP) */
 }
 
 html {

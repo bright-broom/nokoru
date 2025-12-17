@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { getCalApi } from '@calcom/embed-react';
 import { Button } from './Button';
+import { siteColors } from '@/lib/colors';
 
 export interface CalButtonProps {
   /**
@@ -35,7 +36,7 @@ export interface CalButtonProps {
 export function CalButton({
   calLink,
   children,
-  brandColor = '#7a8ec5',
+  brandColor = siteColors.accent,
   size = 'default',
   className,
 }: CalButtonProps) {

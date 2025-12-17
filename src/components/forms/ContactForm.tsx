@@ -119,9 +119,9 @@ export function ContactForm() {
   if (status === 'success') {
     return (
       <div className="rounded-lg bg-white p-8 text-center" role="alert" aria-live="polite">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success">
           <svg
-            className="h-6 w-6 text-green-600"
+            className="h-6 w-6 text-success-dark"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -173,7 +173,7 @@ export function ContactForm() {
         {/* Name */}
         <div className="space-y-2">
           <Label htmlFor="name" className="text-text">
-            お名前 <span className="text-red-500">*</span>
+            お名前 <span className="text-error">*</span>
           </Label>
           <Input
             id="name"
@@ -188,10 +188,10 @@ export function ContactForm() {
             aria-required="true"
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'name-error' : undefined}
-            className={cn(errors.name && 'border-red-500 focus-visible:ring-red-500')}
+            className={cn(errors.name && 'border-error focus-visible:ring-error')}
           />
           {errors.name && (
-            <p id="name-error" className="text-sm text-red-500" role="alert">
+            <p id="name-error" className="text-sm text-error" role="alert">
               {errors.name}
             </p>
           )}
@@ -200,7 +200,7 @@ export function ContactForm() {
         {/* Email */}
         <div className="space-y-2">
           <Label htmlFor="email" className="text-text">
-            メールアドレス <span className="text-red-500">*</span>
+            メールアドレス <span className="text-error">*</span>
           </Label>
           <Input
             id="email"
@@ -215,10 +215,10 @@ export function ContactForm() {
             aria-required="true"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'email-error' : undefined}
-            className={cn(errors.email && 'border-red-500 focus-visible:ring-red-500')}
+            className={cn(errors.email && 'border-error focus-visible:ring-error')}
           />
           {errors.email && (
-            <p id="email-error" className="text-sm text-red-500" role="alert">
+            <p id="email-error" className="text-sm text-error" role="alert">
               {errors.email}
             </p>
           )}
@@ -282,11 +282,11 @@ export function ContactForm() {
             aria-invalid={!!errors.preferredDate}
             aria-describedby={errors.preferredDate ? 'preferredDate-error' : undefined}
             className={cn(
-              errors.preferredDate && 'border-red-500 focus-visible:ring-red-500'
+              errors.preferredDate && 'border-error focus-visible:ring-error'
             )}
           />
           {errors.preferredDate && (
-            <p id="preferredDate-error" className="text-sm text-red-500" role="alert">
+            <p id="preferredDate-error" className="text-sm text-error" role="alert">
               {errors.preferredDate}
             </p>
           )}
@@ -295,7 +295,7 @@ export function ContactForm() {
         {/* Message */}
         <div className="space-y-2">
           <Label htmlFor="message" className="text-text">
-            お問い合わせ内容 <span className="text-red-500">*</span>
+            お問い合わせ内容 <span className="text-error">*</span>
           </Label>
           <Textarea
             id="message"
@@ -310,10 +310,10 @@ export function ContactForm() {
             aria-required="true"
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? 'message-error' : undefined}
-            className={cn(errors.message && 'border-red-500 focus-visible:ring-red-500')}
+            className={cn(errors.message && 'border-error focus-visible:ring-error')}
           />
           {errors.message && (
-            <p id="message-error" className="text-sm text-red-500" role="alert">
+            <p id="message-error" className="text-sm text-error" role="alert">
               {errors.message}
             </p>
           )}
@@ -321,8 +321,8 @@ export function ContactForm() {
 
         {/* Error Message */}
         {status === 'error' && (
-          <div className="rounded-md bg-red-50 p-4" role="alert">
-            <p className="text-sm text-red-600">
+          <div className="rounded-md bg-error-light p-4" role="alert">
+            <p className="text-sm text-error-dark">
               {errors.form ?? '送信中にエラーが発生しました。時間をおいて再度お試しください。'}
             </p>
           </div>

@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Cal, { getCalApi } from '@calcom/embed-react';
+import { siteColors } from '@/lib/colors';
 
 export interface CalEmbedProps {
   /**
@@ -32,7 +33,7 @@ export interface CalEmbedProps {
 export function CalEmbed({
   calLink,
   layout = 'month_view',
-  brandColor = '#7a8ec5',
+  brandColor = siteColors.accent,
   className,
 }: CalEmbedProps) {
   useEffect(() => {
