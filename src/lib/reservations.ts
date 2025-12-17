@@ -1,6 +1,35 @@
 import { createServerSupabaseClient } from './supabase';
+import { handleSupabaseError, logError } from './errors';
+import { sanitizeInput } from './validation';
 import type { ReservationRequest, ReservationRequestInput } from '@/types';
 import type { ReservationInsert } from '@/types/database';
+
+/**
+ * DBの行データをアプリケーション型に変換
+ */
+function toReservationRequest(row: {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  inquiry_type: string | null;
+  preferred_date: string | null;
+  message: string;
+  status: string | null;
+}): ReservationRequest {
+  return {
+    id: row.id,
+    createdAt: row.created_at,
+    name: row.name,
+    email: row.email,
+    phone: row.phone ?? undefined,
+    inquiryType: (row.inquiry_type as ReservationRequest['inquiryType']) ?? undefined,
+    preferredDate: row.preferred_date ?? undefined,
+    message: row.message,
+    status: (row.status as ReservationRequest['status']) ?? 'pending',
+  };
+}
 
 /**
  * 予約をSupabaseに保存
@@ -10,13 +39,14 @@ export async function appendReservation(
 ): Promise<ReservationRequest> {
   const supabase = createServerSupabaseClient();
 
+  // 入力値のサニタイズ
   const insertData: ReservationInsert = {
-    name: input.name,
-    email: input.email,
-    phone: input.phone || null,
+    name: sanitizeInput(input.name),
+    email: input.email.trim().toLowerCase(),
+    phone: input.phone ? sanitizeInput(input.phone) : null,
     inquiry_type: input.inquiryType || null,
     preferred_date: input.preferredDate || null,
-    message: input.message,
+    message: sanitizeInput(input.message),
     status: 'pending',
   };
 
@@ -27,22 +57,11 @@ export async function appendReservation(
     .single();
 
   if (error) {
-    console.error('Supabase insert error:', error);
-    throw new Error('予約の保存に失敗しました');
+    logError(error, 'appendReservation');
+    throw handleSupabaseError(error, 'insert');
   }
 
-  // DBのカラム名をアプリの型に変換
-  return {
-    id: data.id,
-    createdAt: data.created_at,
-    name: data.name,
-    email: data.email,
-    phone: data.phone ?? undefined,
-    inquiryType: (data.inquiry_type as ReservationRequest['inquiryType']) ?? undefined,
-    preferredDate: data.preferred_date ?? undefined,
-    message: data.message,
-    status: 'pending',
-  };
+  return toReservationRequest(data);
 }
 
 /**
@@ -57,21 +76,11 @@ export async function listReservations(): Promise<ReservationRequest[]> {
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error('Supabase select error:', error);
-    throw new Error('予約一覧の取得に失敗しました');
+    logError(error, 'listReservations');
+    throw handleSupabaseError(error, 'select');
   }
 
-  return data.map((row) => ({
-    id: row.id,
-    createdAt: row.created_at,
-    name: row.name,
-    email: row.email,
-    phone: row.phone ?? undefined,
-    inquiryType: (row.inquiry_type as ReservationRequest['inquiryType']) ?? undefined,
-    preferredDate: row.preferred_date ?? undefined,
-    message: row.message,
-    status: 'pending',
-  }));
+  return data.map(toReservationRequest);
 }
 
 /**
@@ -89,7 +98,7 @@ export async function updateReservationStatus(
     .eq('id', id);
 
   if (error) {
-    console.error('Supabase update error:', error);
-    throw new Error('ステータスの更新に失敗しました');
+    logError(error, 'updateReservationStatus');
+    throw handleSupabaseError(error, 'update');
   }
 }

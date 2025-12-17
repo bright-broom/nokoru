@@ -3,16 +3,18 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { Input, Label, Textarea, Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
-import type { ReservationRequestInput } from '@/types';
+import {
+  validateContactForm,
+  toErrorMap,
+  type ContactFormData,
+} from '@/lib/validation';
 
-type FormData = Required<
-  Pick<ReservationRequestInput, 'name' | 'email' | 'message'>
-> &
-  Pick<ReservationRequestInput, 'phone' | 'inquiryType' | 'preferredDate'>;
+type FormData = ContactFormData;
 
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   preferredDate?: string;
   message?: string;
   form?: string;
@@ -50,24 +52,10 @@ export function ContactForm() {
   }, []);
 
   const validateForm = useCallback((): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'お名前を入力してください';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'メールアドレスを入力してください';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = '正しいメールアドレスを入力してください';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'お問い合わせ内容を入力してください';
-    }
-
+    const result = validateContactForm(formData);
+    const newErrors = toErrorMap(result) as FormErrors;
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return result.isValid;
   }, [formData]);
 
   const handleChange = useCallback(

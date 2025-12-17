@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display } from 'next/font/google';
 import { siteConfig } from '@/config/site';
+import { getSupabaseUrl } from '@/lib/env';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -63,7 +64,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i.ytimg.com" />
         <link rel="preconnect" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://tnbug1sowg1pgqktccvf.supabase.co" />
+        <link rel="preconnect" href={getSupabaseUrl()} />
       </head>
       <body className="antialiased">{children}</body>
     </html>
