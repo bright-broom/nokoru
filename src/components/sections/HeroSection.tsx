@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Button } from '@/components/ui';
 import { siteConfig } from '@/config/site';
 import { renderMultilineText } from '@/lib/helpers';
@@ -6,23 +5,9 @@ import { renderMultilineText } from '@/lib/helpers';
 export function HeroSection() {
   return (
     <section
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20 text-center"
+      className="flex min-h-screen flex-col items-center justify-center px-6 pt-20 text-center"
       aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/works/couple-sea.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-25"
-        />
-        {/* 読みやすさ優先のやわらかい被せ */}
-        <div className="absolute inset-0 bg-cream/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/40 via-transparent to-cream/90" />
-      </div>
-
       <p className="mb-4 text-sm uppercase tracking-widest text-text-light">
         {siteConfig.subTagline}
       </p>
@@ -32,15 +17,29 @@ export function HeroSection() {
       >
         {renderMultilineText(siteConfig.tagline)}
       </h1>
-      <p className="mt-8 max-w-xl text-text-light">
+      <p className="mt-6 max-w-xl text-text-light">
         {siteConfig.areas}
         <br />
         {siteConfig.year}
       </p>
+
+      {/* YouTube Video */}
+      <div className="mt-10 w-full max-w-3xl">
+        <div className="relative aspect-video overflow-hidden rounded-lg shadow-lg">
+          <iframe
+            src="https://www.youtube.com/embed/g7AeR7aV698?rel=0&modestbranding=1"
+            title="Silver Lace Weddings - ロケーション前撮り映像"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+          />
+        </div>
+      </div>
+
       <Button
         href="#contact"
         size="large"
-        className="mt-12"
+        className="mt-10"
         aria-label="予約相談・お問い合わせセクションへ移動"
       >
         予約相談する
