@@ -175,9 +175,9 @@ export function ContactForm() {
           <input name="bot-field" suppressHydrationWarning />
         </label>
       </p>
-      <div className="space-y-6">
+      <div className="space-y-6" suppressHydrationWarning>
         {/* Name */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="name" className="text-text">
             お名前 <span className="text-error">*</span>
           </Label>
@@ -204,7 +204,7 @@ export function ContactForm() {
         </div>
 
         {/* Email */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="email" className="text-text">
             メールアドレス <span className="text-error">*</span>
           </Label>
@@ -231,7 +231,7 @@ export function ContactForm() {
         </div>
 
         {/* Phone */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="phone" className="text-text">
             電話番号
           </Label>
@@ -249,7 +249,7 @@ export function ContactForm() {
         </div>
 
         {/* Inquiry Type */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="inquiryType" className="text-text">
             お問い合わせ種別
           </Label>
@@ -271,7 +271,7 @@ export function ContactForm() {
         </div>
 
         {/* Preferred Date */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="preferredDate" className="text-text">
             撮影希望日
           </Label>
@@ -299,7 +299,7 @@ export function ContactForm() {
         </div>
 
         {/* Message */}
-        <div className="space-y-2">
+        <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="message" className="text-text">
             お問い合わせ内容 <span className="text-error">*</span>
           </Label>

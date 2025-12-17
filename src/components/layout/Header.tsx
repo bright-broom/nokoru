@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-beige/40 shadow-sm"
       role="banner"
     >
       {/* Skip link for accessibility */}
@@ -36,7 +36,7 @@ export function Header() {
       >
         <Link
           href="/"
-          className="font-display text-xl tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
+          className="font-display text-xl tracking-wider transition-colors hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
           aria-label={`${siteConfig.name} - ホームへ戻る`}
         >
           {siteConfig.name}

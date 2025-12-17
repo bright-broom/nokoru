@@ -15,16 +15,18 @@ interface ButtonProps extends PropsWithClassName {
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center text-sm tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center text-sm font-medium tracking-wide rounded-md shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const variantClasses = {
-  primary: 'bg-text text-cream hover:bg-text/90',
-  outline: 'border border-text bg-transparent hover:bg-text hover:text-cream',
+  primary:
+    'bg-site-accent text-white hover:bg-site-accent/90 hover:shadow-md active:scale-[0.98]',
+  outline:
+    'border-2 border-text bg-transparent hover:bg-text hover:text-cream hover:shadow-md active:scale-[0.98]',
 } as const;
 
 const sizeClasses = {
-  default: 'px-6 py-2.5',
-  large: 'px-8 py-3',
+  default: 'px-7 py-2.5',
+  large: 'px-9 py-3.5 text-base',
 } as const;
 
 export function Button({
