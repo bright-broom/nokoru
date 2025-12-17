@@ -1,6 +1,6 @@
 import type { IconProps } from '@/types';
 
-export function CheckIcon({ className, size = 16, 'aria-hidden': ariaHidden = true }: IconProps) {
+export function CheckIcon({ className, size = 16 }: Omit<IconProps, 'aria-hidden'>) {
   return (
     <svg
       className={className}
@@ -12,7 +12,7 @@ export function CheckIcon({ className, size = 16, 'aria-hidden': ariaHidden = tr
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      aria-hidden={ariaHidden ? 'true' : 'false'}
+      aria-hidden="true"
     >
       <polyline points="20 6 9 17 4 12" />
     </svg>

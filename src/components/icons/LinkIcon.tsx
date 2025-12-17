@@ -1,6 +1,6 @@
 import type { IconProps } from '@/types';
 
-export function LinkIcon({ className, size = 24, 'aria-hidden': ariaHidden = true }: IconProps) {
+export function LinkIcon({ className, size = 24 }: Omit<IconProps, 'aria-hidden'>) {
   return (
     <svg
       className={className}
@@ -12,7 +12,7 @@ export function LinkIcon({ className, size = 24, 'aria-hidden': ariaHidden = tru
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      aria-hidden={ariaHidden ? 'true' : 'false'}
+      aria-hidden="true"
     >
       <path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
     </svg>
