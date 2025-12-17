@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Input, Label, Textarea, Button } from '@/components/ui';
+import { Input, Label, Textarea, Button, Spinner } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import {
   validateContactForm,
@@ -118,8 +118,12 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-lg bg-white p-8 text-center" role="alert" aria-live="polite">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success">
+      <div
+        className="animate-in fade-in slide-in-from-bottom-4 rounded-lg bg-white p-8 text-center duration-500"
+        role="alert"
+        aria-live="polite"
+      >
+        <div className="animate-in zoom-in mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success delay-200 duration-300">
           <svg
             className="h-6 w-6 text-success-dark"
             fill="none"
@@ -130,8 +134,10 @@ export function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-lg font-medium text-text">送信完了</h3>
-        <p className="mt-2 text-text-light">
+        <h3 className="animate-in fade-in text-lg font-medium text-text delay-300 duration-500">
+          送信完了
+        </h3>
+        <p className="animate-in fade-in mt-2 text-text-light delay-400 duration-500">
           予約のご相談ありがとうございます。
           <br />
           内容を確認の上、2〜3営業日以内にご連絡いたします。
@@ -139,7 +145,7 @@ export function ContactForm() {
         <Button
           type="button"
           variant="outline"
-          className="mt-6"
+          className="animate-in fade-in mt-6 delay-500 duration-500"
           onClick={() => setStatus('idle')}
         >
           新しいお問い合わせ
@@ -321,7 +327,10 @@ export function ContactForm() {
 
         {/* Error Message */}
         {status === 'error' && (
-          <div className="rounded-md bg-error-light p-4" role="alert">
+          <div
+            className="animate-in fade-in slide-in-from-top-2 rounded-md bg-error-light p-4 duration-300"
+            role="alert"
+          >
             <p className="text-sm text-error-dark">
               {errors.form ?? '送信中にエラーが発生しました。時間をおいて再度お試しください。'}
             </p>
@@ -336,7 +345,14 @@ export function ContactForm() {
           disabled={status === 'submitting'}
           aria-busy={status === 'submitting'}
         >
-          {status === 'submitting' ? '送信中...' : '送信する'}
+          {status === 'submitting' ? (
+            <span className="flex items-center justify-center gap-2">
+              <Spinner className="text-cream" />
+              送信中...
+            </span>
+          ) : (
+            '送信する'
+          )}
         </Button>
       </div>
     </form>

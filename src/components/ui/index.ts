@@ -3,6 +3,8 @@ export { Button } from './Button';
 export { Container } from './Container';
 export { Section } from './Section';
 export { SectionHeader } from './SectionHeader';
+export { FadeIn, FadeInStagger } from './FadeIn';
+export { Spinner } from './Spinner';
 
 export { YouTubeEmbed } from './YouTubeEmbed';
 export { CalEmbed } from './CalEmbed';
