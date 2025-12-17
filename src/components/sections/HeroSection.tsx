@@ -8,18 +8,25 @@ export function HeroSection() {
       className="flex min-h-screen flex-col items-center justify-center px-6 pt-20 text-center"
       aria-labelledby="hero-heading"
     >
+      {/* SEO用の隠しテキスト - 検索エンジン向けの詳細説明 */}
+      <h1 className="sr-only">
+        Silver Lace Weddings - 大阪・関西のロケーション前撮り・ウェディングムービー制作
+      </h1>
+
       <FadeIn direction="none" duration={800}>
         <p className="mb-4 text-sm uppercase tracking-widest text-text-light">
           {siteConfig.subTagline}
         </p>
       </FadeIn>
       <FadeIn direction="up" delay={200} duration={800}>
-        <h1
+        <p
           id="hero-heading"
           className="font-display text-4xl leading-tight md:text-6xl lg:text-7xl"
+          role="heading"
+          aria-level={2}
         >
           {renderMultilineText(siteConfig.tagline)}
-        </h1>
+        </p>
       </FadeIn>
       <FadeIn direction="up" delay={400} duration={800}>
         <p className="mt-6 max-w-xl text-text-light">

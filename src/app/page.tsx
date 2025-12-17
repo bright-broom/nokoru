@@ -9,10 +9,12 @@ import {
   BookingSection,
   ContactSection,
 } from '@/components/sections';
+import { JsonLd } from '@/components/seo';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-cream">
+      <JsonLd />
       <Header />
 
       <main id="main-content" role="main">
