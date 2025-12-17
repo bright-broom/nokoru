@@ -52,7 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={fontVariables}>
+    // suppressHydrationWarning: ブラウザ拡張機能（VSCode等）による属性追加を許容
+    <html lang="ja" className={fontVariables} suppressHydrationWarning>
       <head>
         {/* 外部リソースへのプリコネクト（パフォーマンス最適化） */}
         <link rel="preconnect" href="https://i.ytimg.com" />
@@ -60,7 +61,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="preconnect" href={getSupabaseUrl()} />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
