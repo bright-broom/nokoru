@@ -58,6 +58,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={playfair.variable}>
+      <head>
+        {/* 外部リソースへのプリコネクト（パフォーマンス最適化） */}
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://tnbug1sowg1pgqktccvf.supabase.co" />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

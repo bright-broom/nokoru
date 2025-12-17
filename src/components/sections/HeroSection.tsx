@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui';
+import { Button, YouTubeEmbed } from '@/components/ui';
 import { siteConfig } from '@/config/site';
 import { renderMultilineText } from '@/lib/helpers';
 
@@ -23,17 +23,13 @@ export function HeroSection() {
         {siteConfig.year}
       </p>
 
-      {/* YouTube Video */}
+      {/* YouTube Video - 遅延読み込み最適化 */}
       <div className="mt-10 w-full max-w-3xl">
-        <div className="relative aspect-video overflow-hidden rounded-lg shadow-lg">
-          <iframe
-            src="https://www.youtube.com/embed/g7AeR7aV698?rel=0&modestbranding=1"
-            title="Silver Lace Weddings - ロケーション前撮り映像"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 h-full w-full"
-          />
-        </div>
+        <YouTubeEmbed
+          videoId="g7AeR7aV698"
+          title="Silver Lace Weddings - ロケーション前撮り映像"
+          className="shadow-lg"
+        />
       </div>
 
       <Button

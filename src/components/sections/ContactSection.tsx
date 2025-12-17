@@ -1,9 +1,29 @@
+import dynamic from 'next/dynamic';
 import { Section, Container, SectionHeader } from '@/components/ui';
-import { ContactForm } from '@/components/forms';
 import { InstagramIcon, LinkIcon } from '@/components/icons';
 import { contactLinks } from '@/config/site';
 import { getExternalLinkProps } from '@/lib/utils';
 import type { ContactLink } from '@/types';
+
+// フォームを遅延読み込み（フォールドより下のため初期ロードを軽量化）
+const ContactForm = dynamic(
+  () => import('@/components/forms/ContactForm').then((mod) => mod.ContactForm),
+  {
+    loading: () => (
+      <div className="animate-pulse rounded-lg bg-white p-6 md:p-8">
+        <div className="space-y-6">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="space-y-2">
+              <div className="h-4 w-20 rounded bg-beige" />
+              <div className="h-10 w-full rounded bg-beige" />
+            </div>
+          ))}
+          <div className="h-12 w-full rounded bg-beige" />
+        </div>
+      </div>
+    ),
+  }
+);
 
 const iconMap = {
   instagram: InstagramIcon,
