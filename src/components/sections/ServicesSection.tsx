@@ -1,0 +1,54 @@
+import { Section, Container, SectionHeader } from '@/components/ui';
+import { VideoIcon, PlayIcon } from '@/components/icons';
+import { services } from '@/config/site';
+import { renderMultilineText } from '@/lib/utils';
+import type { Service } from '@/types';
+
+const iconMap = {
+  video: VideoIcon,
+  play: PlayIcon,
+} as const;
+
+function ServiceCard({ service }: { service: Service }) {
+  const Icon = iconMap[service.icon];
+
+  return (
+    <article className="text-center">
+      <div
+        className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cream"
+        aria-hidden="true"
+      >
+        <Icon className="h-8 w-8 text-accent" />
+      </div>
+      <h3 className="font-display text-xl">{service.title}</h3>
+      <p className="mt-3 text-text-light">
+        {renderMultilineText(service.description)}
+      </p>
+    </article>
+  );
+}
+
+export function ServicesSection() {
+  return (
+    <Section id="services" variant="alternate" aria-labelledby="services-heading">
+      <Container>
+        <SectionHeader
+          id="services-heading"
+          title="Services"
+          subtitle="ロケーション前撮り映像制作"
+        />
+        <div
+          className="mt-16 grid gap-12 md:grid-cols-2"
+          role="list"
+          aria-label="サービス一覧"
+        >
+          {services.map((service) => (
+            <div key={service.id} role="listitem">
+              <ServiceCard service={service} />
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
