@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 interface SpinnerProps {
   className?: string;

@@ -1,9 +1,8 @@
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { VideoIcon, PlayIcon } from '@/components/icons';
-import { services } from '@/config/site';
+import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
 import type { Service } from '@/types';
-import { text } from '@/config/text';
 
 const iconMap = {
   video: VideoIcon,

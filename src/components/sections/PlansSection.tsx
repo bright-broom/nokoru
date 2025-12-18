@@ -1,10 +1,9 @@
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { CheckIcon, StarIcon } from '@/components/icons';
-import { plans } from '@/config/site';
+import { plans, text } from '@/config';
 import { cn } from '@/lib/utils';
 import { renderMultilineText } from '@/lib/helpers';
 import type { Plan } from '@/types';
-import { text } from '@/config/text';
 
 function PlanCard({ plan, delay }: { plan: Plan; delay: number }) {
   const isComingSoon = plan.isComingSoon;

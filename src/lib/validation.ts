@@ -5,7 +5,7 @@
  * 一貫性を保ち、重複コードを排除
  */
 
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 // バリデーションエラーの型
 export interface ValidationError {

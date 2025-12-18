@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { appendReservation, listReservations } from '@/lib/reservations';
 import { reservationInquiryTypes } from '@/types';
 import type { ReservationRequestInput } from '@/types';
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 export const runtime = 'nodejs';
 

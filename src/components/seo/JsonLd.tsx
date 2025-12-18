@@ -1,5 +1,4 @@
-import { siteConfig } from '@/config/site';
-import { text } from '@/config/text';
+import { siteConfig, text } from '@/config';
 
 const BASE_URL = text.seo.baseUrl;
 

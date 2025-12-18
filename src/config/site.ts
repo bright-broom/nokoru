@@ -8,7 +8,7 @@ import type {
   WorkImage,
   ContactLink,
 } from '@/types';
-import { text } from '@/config/text';
+import { text } from './text';
 
 /**
  * サイト基本設定

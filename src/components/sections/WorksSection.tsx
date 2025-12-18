@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Section, Container, SectionHeader, Button, FadeIn } from '@/components/ui';
-import { workImages } from '@/config/site';
-import { text } from '@/config/text';
+import { workImages, text } from '@/config';
 import type { WorkImage } from '@/types';
 
 function WorkCard({

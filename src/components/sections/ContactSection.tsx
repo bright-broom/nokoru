@@ -1,10 +1,9 @@
 import dynamic from 'next/dynamic';
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { InstagramIcon, LinkIcon } from '@/components/icons';
-import { contactLinks } from '@/config/site';
+import { contactLinks, text } from '@/config';
 import { getExternalLinkProps } from '@/lib/utils';
 import type { ContactLink } from '@/types';
-import { text } from '@/config/text';
 
 // フォームを遅延読み込み（フォールドより下のため初期ロードを軽量化）
 const ContactForm = dynamic(

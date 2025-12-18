@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { siteConfig } from '@/config/site';
+import { siteConfig, text } from '@/config';
 import { getSupabaseUrl } from '@/lib/env';
 import { fontVariables } from '@/lib/fonts';
-import { text } from '@/config/text';
 import './globals.css';
 
 const BASE_URL = text.seo.baseUrl;

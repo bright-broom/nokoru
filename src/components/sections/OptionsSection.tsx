@@ -1,7 +1,6 @@
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
-import { options } from '@/config/site';
+import { options, text } from '@/config';
 import type { Option } from '@/types';
-import { text } from '@/config/text';
 
 function OptionCard({ option, delay }: { option: Option; delay: number }) {
   return (

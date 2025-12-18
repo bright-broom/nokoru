@@ -2,7 +2,7 @@
  * 環境変数の型安全なアクセスと起動時バリデーション
  */
 
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 interface ServerEnv {
   SUPABASE_SERVICE_ROLE_KEY: string;

@@ -4,7 +4,7 @@
  * アプリケーション全体で一貫したエラー処理を提供
  */
 
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 // エラーコード定義
 export const ErrorCode = {

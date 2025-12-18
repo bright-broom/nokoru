@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import { Section, Container, SectionHeader } from '@/components/ui';
-import { staffMembers } from '@/config/site';
+import { staffMembers, text } from '@/config';
 import type { Staff } from '@/types';
-import { text } from '@/config/text';
 
 function StaffCard({ staff, isPriority }: { staff: Staff; isPriority: boolean }) {
   return (

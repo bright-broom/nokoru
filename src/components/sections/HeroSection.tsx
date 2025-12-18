@@ -1,7 +1,6 @@
 import { Button, YouTubeEmbed, FadeIn } from '@/components/ui';
-import { siteConfig } from '@/config/site';
+import { siteConfig, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
-import { text } from '@/config/text';
 
 export function HeroSection() {
   return (

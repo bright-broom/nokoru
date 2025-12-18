@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { listReservations } from '@/lib/reservations';
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

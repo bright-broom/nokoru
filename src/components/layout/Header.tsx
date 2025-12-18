@@ -3,8 +3,7 @@
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { siteConfig, navItems } from '@/config/site';
-import { text } from '@/config/text';
+import { siteConfig, navItems, text } from '@/config';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

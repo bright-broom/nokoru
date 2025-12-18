@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { siteConfig } from '@/config/site';
+import { siteConfig, text } from '@/config';
 import { InstagramIcon } from '@/components/icons';
-import { text } from '@/config/text';
 
 export function Footer() {
   return (

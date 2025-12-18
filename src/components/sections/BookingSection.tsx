@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Section, Container, SectionHeader } from '@/components/ui';
-import { text } from '@/config/text';
+import { text } from '@/config';
 
 // Cal.comを遅延読み込み
 const CalEmbed = dynamic(
