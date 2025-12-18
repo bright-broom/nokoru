@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Section, Container, SectionHeader, Button, FadeIn } from '@/components/ui';
 import { workImages } from '@/config/site';
+import { text } from '@/config/text';
 
 function WorkCard({
   src,
@@ -56,8 +57,8 @@ export function WorksSection() {
       <Container>
         <SectionHeader
           id="works-heading"
-          title="Works"
-          subtitle="作品ギャラリー"
+          title={text.sections.works.title}
+          subtitle={text.sections.works.subtitle}
         />
 
         <div className="mt-16 grid gap-6">
@@ -80,7 +81,6 @@ export function WorksSection() {
                 locationTag={img.locationTag}
                 delay={(idx + 1) * 100}
                 className={[
-                  // ほどよく"編集された感"が出るモザイク配置
                   idx === 0 ? 'md:col-span-7 aspect-4/3' : '',
                   idx === 1 ? 'md:col-span-5 aspect-4/3' : '',
                   idx === 2 ? 'md:col-span-5 aspect-4/3' : '',
@@ -92,8 +92,8 @@ export function WorksSection() {
         </div>
 
         <FadeIn direction="up" className="mt-14 flex justify-center">
-          <Button href="#contact" aria-label="お問い合わせへ移動">
-            撮影の相談をする
+          <Button href="#contact" aria-label={text.sections.works.ctaAria}>
+            {text.sections.works.cta}
           </Button>
         </FadeIn>
       </Container>

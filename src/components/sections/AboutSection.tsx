@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { staffMembers } from '@/config/site';
 import type { Staff } from '@/types';
+import { text } from '@/config/text';
 
 function StaffCard({ staff }: { staff: Staff }) {
   return (
@@ -10,7 +11,7 @@ function StaffCard({ staff }: { staff: Staff }) {
         {staff.imageUrl ? (
           <Image
             src={staff.imageUrl}
-            alt={`${staff.name}のプロフィール画像`}
+            alt={`${staff.name}${text.sections.about.profileAltSuffix}`}
             width={128}
             height={128}
             className="h-full w-full object-cover"
@@ -21,7 +22,7 @@ function StaffCard({ staff }: { staff: Staff }) {
           <div
             className="h-full w-full"
             role="img"
-            aria-label={`${staff.name}のプロフィール画像（未設定）`}
+            aria-label={`${staff.name}${text.sections.about.profileAltMissingSuffix}`}
           />
         )}
       </div>
@@ -37,13 +38,13 @@ export function AboutSection() {
       <Container>
         <SectionHeader
           id="about-heading"
-          title="About"
-          subtitle="スタッフ紹介"
+          title={text.sections.about.title}
+          subtitle={text.sections.about.subtitle}
         />
         <div
           className="mt-16 grid gap-12 md:grid-cols-2"
           role="list"
-          aria-label="スタッフ一覧"
+          aria-label={text.sections.about.listAria}
         >
           {staffMembers.map((staff) => (
             <div key={staff.id} role="listitem">

@@ -5,6 +5,8 @@
  * 一貫性を保ち、重複コードを排除
  */
 
+import { text } from '@/config/text';
+
 // バリデーションエラーの型
 export interface ValidationError {
   field: string;
@@ -106,33 +108,36 @@ export function validateContactForm(data: ContactFormData): ValidationResult {
 
   // 名前（必須）
   if (!isRequired(data.name)) {
-    errors.push({ field: 'name', message: 'お名前を入力してください' });
+    errors.push({ field: 'name', message: text.form.validationErrors.nameRequired });
   } else if (!isWithinLength(data.name, 1, 100)) {
-    errors.push({ field: 'name', message: 'お名前は100文字以内で入力してください' });
+    errors.push({ field: 'name', message: text.form.validationErrors.nameTooLong });
   }
 
   // メールアドレス（必須）
   if (!isRequired(data.email)) {
-    errors.push({ field: 'email', message: 'メールアドレスを入力してください' });
+    errors.push({ field: 'email', message: text.form.validationErrors.emailRequired });
   } else if (!isValidEmail(data.email)) {
-    errors.push({ field: 'email', message: '正しいメールアドレスを入力してください' });
+    errors.push({ field: 'email', message: text.form.validationErrors.emailInvalid });
   }
 
   // 電話番号（任意）
   if (data.phone && !isValidPhone(data.phone)) {
-    errors.push({ field: 'phone', message: '正しい電話番号を入力してください' });
+    errors.push({ field: 'phone', message: text.form.validationErrors.phoneInvalid });
   }
 
   // 希望日（任意、ただし入力時は将来日付）
   if (data.preferredDate && !isFutureDate(data.preferredDate)) {
-    errors.push({ field: 'preferredDate', message: '撮影希望日は本日以降の日付を選択してください' });
+    errors.push({
+      field: 'preferredDate',
+      message: text.form.validationErrors.preferredDateNotFuture,
+    });
   }
 
   // メッセージ（必須）
   if (!isRequired(data.message)) {
-    errors.push({ field: 'message', message: 'お問い合わせ内容を入力してください' });
+    errors.push({ field: 'message', message: text.form.validationErrors.messageRequired });
   } else if (!isWithinLength(data.message, 1, 2000)) {
-    errors.push({ field: 'message', message: 'お問い合わせ内容は2000文字以内で入力してください' });
+    errors.push({ field: 'message', message: text.form.validationErrors.messageTooLong });
   }
 
   return {

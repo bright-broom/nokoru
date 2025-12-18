@@ -3,6 +3,7 @@ import { VideoIcon, PlayIcon } from '@/components/icons';
 import { services } from '@/config/site';
 import { renderMultilineText } from '@/lib/helpers';
 import type { Service } from '@/types';
+import { text } from '@/config/text';
 
 const iconMap = {
   video: VideoIcon,
@@ -36,13 +37,13 @@ export function ServicesSection() {
       <Container>
         <SectionHeader
           id="services-heading"
-          title="Services"
-          subtitle="ロケーション前撮り映像制作"
+          title={text.sections.services.title}
+          subtitle={text.sections.services.subtitle}
         />
         <div
           className="mt-16 grid gap-12 md:grid-cols-2"
           role="list"
-          aria-label="サービス一覧"
+          aria-label={text.sections.services.listAria}
         >
           {services.map((service, index) => (
             <div key={service.id} role="listitem">

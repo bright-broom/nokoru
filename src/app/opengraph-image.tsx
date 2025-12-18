@@ -1,8 +1,9 @@
 import { ImageResponse } from 'next/og';
+import { text } from '@/config/text';
 
 export const runtime = 'edge';
 
-export const alt = 'Silver Lace Weddings - 大阪・関西のロケーション前撮り・ウェディングムービー制作';
+export const alt = text.seo.socialImageAlt;
 export const size = {
   width: 1200,
   height: 630,

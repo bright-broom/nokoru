@@ -36,8 +36,10 @@ export function useInView<T extends HTMLElement = HTMLDivElement>({
     ).matches;
 
     if (prefersReducedMotion) {
-      setIsInView(true);
-      return;
+      // eslint (react-hooks/set-state-in-effect) 対策:
+      // effect本体で同期的にsetStateせず、次フレームに回す
+      const raf = requestAnimationFrame(() => setIsInView(true));
+      return () => cancelAnimationFrame(raf);
     }
 
     const observer = new IntersectionObserver(

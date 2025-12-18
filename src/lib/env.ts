@@ -7,6 +7,8 @@
  * - ハードコードされたURLを排除
  */
 
+import { text } from '@/config/text';
+
 // サーバーサイド専用環境変数
 interface ServerEnv {
   SUPABASE_SERVICE_ROLE_KEY: string;
@@ -61,7 +63,7 @@ export function getPublicEnv(): PublicEnv {
  */
 export function getServerEnv(): ServerEnv {
   if (typeof window !== 'undefined') {
-    throw new Error('getServerEnv はサーバーサイドでのみ使用可能です');
+    throw new Error(text.errors.serverEnvOnly);
   }
 
   if (serverEnvCache) return serverEnvCache;

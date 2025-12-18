@@ -4,6 +4,8 @@
  * アプリケーション全体で一貫したエラー処理を提供
  */
 
+import { text } from '@/config/text';
+
 // エラーコード定義
 export const ErrorCode = {
   // バリデーション
@@ -26,15 +28,15 @@ export type ErrorCodeType = (typeof ErrorCode)[keyof typeof ErrorCode];
 
 // ユーザー向けエラーメッセージ
 const userMessages: Record<ErrorCodeType, string> = {
-  [ErrorCode.VALIDATION_ERROR]: '入力内容に問題があります。',
-  [ErrorCode.UNAUTHORIZED]: '認証が必要です。',
-  [ErrorCode.FORBIDDEN]: 'この操作は許可されていません。',
-  [ErrorCode.DB_INSERT_ERROR]: 'データの保存に失敗しました。時間をおいて再度お試しください。',
-  [ErrorCode.DB_SELECT_ERROR]: 'データの取得に失敗しました。時間をおいて再度お試しください。',
-  [ErrorCode.DB_UPDATE_ERROR]: 'データの更新に失敗しました。時間をおいて再度お試しください。',
-  [ErrorCode.DB_DELETE_ERROR]: 'データの削除に失敗しました。時間をおいて再度お試しください。',
-  [ErrorCode.NETWORK_ERROR]: '通信に失敗しました。ネットワーク状況をご確認ください。',
-  [ErrorCode.UNKNOWN_ERROR]: 'エラーが発生しました。時間をおいて再度お試しください。',
+  [ErrorCode.VALIDATION_ERROR]: text.errors.validation,
+  [ErrorCode.UNAUTHORIZED]: text.errors.unauthorized,
+  [ErrorCode.FORBIDDEN]: text.errors.forbidden,
+  [ErrorCode.DB_INSERT_ERROR]: text.errors.dbInsert,
+  [ErrorCode.DB_SELECT_ERROR]: text.errors.dbSelect,
+  [ErrorCode.DB_UPDATE_ERROR]: text.errors.dbUpdate,
+  [ErrorCode.DB_DELETE_ERROR]: text.errors.dbDelete,
+  [ErrorCode.NETWORK_ERROR]: text.errors.network,
+  [ErrorCode.UNKNOWN_ERROR]: text.errors.unknown,
 };
 
 /**

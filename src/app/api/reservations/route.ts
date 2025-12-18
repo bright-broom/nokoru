@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { appendReservation, listReservations } from '@/lib/reservations';
 import { reservationInquiryTypes } from '@/types';
 import type { ReservationRequestInput } from '@/types';
+import { text } from '@/config/text';
 
 export const runtime = 'nodejs';
 
@@ -53,15 +54,15 @@ function normalizeInput(body: Record<string, unknown>): ReservationRequestInput 
 function validateInput(input: ReservationRequestInput) {
   const errors: Record<string, string> = {};
 
-  if (!input.name) errors.name = 'お名前を入力してください';
-  if (!input.email) errors.email = 'メールアドレスを入力してください';
+  if (!input.name) errors.name = text.form.validationErrors.nameRequired;
+  if (!input.email) errors.email = text.form.validationErrors.emailRequired;
   if (input.email && !isValidEmail(input.email)) {
-    errors.email = '正しいメールアドレスを入力してください';
+    errors.email = text.form.validationErrors.emailInvalid;
   }
-  if (!input.message) errors.message = 'お問い合わせ内容を入力してください';
+  if (!input.message) errors.message = text.form.validationErrors.messageRequired;
 
   if (input.preferredDate && !isValidPreferredDate(input.preferredDate)) {
-    errors.preferredDate = '撮影希望日を正しく入力してください';
+    errors.preferredDate = text.form.validationErrors.preferredDateInvalid;
   }
 
   return { ok: Object.keys(errors).length === 0, errors };
@@ -85,14 +86,14 @@ export async function POST(req: Request) {
     body = await req.json();
   } catch {
     return NextResponse.json(
-      { ok: false, message: 'JSON形式で送信してください' },
+      { ok: false, message: text.api.reservations.invalidJson },
       { status: 400 }
     );
   }
 
   if (!body || typeof body !== 'object') {
     return NextResponse.json(
-      { ok: false, message: '入力内容が不正です' },
+      { ok: false, message: text.api.reservations.invalidBody },
       { status: 400 }
     );
   }
@@ -101,7 +102,7 @@ export async function POST(req: Request) {
   const { ok, errors } = validateInput(input);
   if (!ok) {
     return NextResponse.json(
-      { ok: false, message: '入力内容をご確認ください', errors },
+      { ok: false, message: text.api.reservations.invalidInput, errors },
       { status: 422 }
     );
   }
@@ -116,7 +117,10 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   if (!isAuthorized(req)) {
-    return NextResponse.json({ ok: false, message: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json(
+      { ok: false, message: text.api.reservations.unauthorized },
+      { status: 401 }
+    );
   }
 
   const reservations = await listReservations();

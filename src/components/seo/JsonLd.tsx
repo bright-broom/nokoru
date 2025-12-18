@@ -1,8 +1,8 @@
 import { siteConfig } from '@/config/site';
+import { text } from '@/config/text';
 
-const BASE_URL = 'https://silverlacewedding.netlify.app';
+const BASE_URL = text.seo.baseUrl;
 
-// LocalBusiness + VideoProductionCompany 構造化データ
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'VideoProductionCompany'],
@@ -16,81 +16,59 @@ const localBusinessSchema = {
   email: '',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: '大阪市',
-    addressRegion: '大阪府',
-    addressCountry: 'JP',
+    addressLocality: text.seo.jsonLd.addressLocality,
+    addressRegion: text.seo.jsonLd.addressRegion,
+    addressCountry: text.seo.jsonLd.addressCountry,
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 34.6937,
-    longitude: 135.5023,
+    latitude: text.seo.jsonLd.geo.latitude,
+    longitude: text.seo.jsonLd.geo.longitude,
   },
-  areaServed: [
-    { '@type': 'State', name: '大阪府' },
-    { '@type': 'State', name: '兵庫県' },
-    { '@type': 'State', name: '京都府' },
-    { '@type': 'State', name: '奈良県' },
-    { '@type': 'State', name: '滋賀県' },
-  ],
-  priceRange: '¥100,000〜',
+  areaServed: text.seo.jsonLd.areaServedStates.map((name) => ({
+    '@type': 'State',
+    name,
+  })),
+  priceRange: text.seo.jsonLd.priceRange,
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    opens: '09:00',
-    closes: '21:00',
+    dayOfWeek: text.seo.jsonLd.openingHours.dayOfWeek,
+    opens: text.seo.jsonLd.openingHours.opens,
+    closes: text.seo.jsonLd.openingHours.closes,
   },
-  sameAs: [
-    'https://www.instagram.com/silver_lace_weddings/',
-    'https://www.instagram.com/aki.h_eastprojects',
-    'https://lit.link/Akimitsu',
-  ],
+  sameAs: text.seo.jsonLd.sameAs,
 };
 
-// Service 構造化データ
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': `${BASE_URL}/#service`,
-  name: 'ロケーション前撮り映像制作',
-  description:
-    '大阪・関西を中心としたロケーション前撮り撮影とウェディングムービー制作サービス。結婚式のオープニングムービーやプロフィールムービーを制作します。',
+  name: text.seo.jsonLd.service.name,
+  description: text.seo.jsonLd.service.description,
   provider: {
     '@id': `${BASE_URL}/#business`,
   },
-  serviceType: 'ウェディング映像制作',
+  serviceType: text.seo.jsonLd.service.serviceType,
   areaServed: {
     '@type': 'Country',
-    name: '日本',
+    name: text.seo.jsonLd.service.areaServedCountry,
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: '料金プラン',
-    itemListElement: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Standard プラン',
-          description: 'ロケーション1ヶ所、撮影時間2時間、ショートムービーまたは写真100枚',
-        },
-        price: '100000',
-        priceCurrency: 'JPY',
+    name: text.seo.jsonLd.service.offerCatalogName,
+    itemListElement: text.seo.jsonLd.service.offers.map((offer) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: offer.name,
+        description: offer.description,
       },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Premium プラン',
-          description: 'ロケーション1ヶ所、撮影時間3時間、ムービー1本、写真100枚',
-        },
-        price: '158000',
-        priceCurrency: 'JPY',
-      },
-    ],
+      price: offer.price,
+      priceCurrency: offer.priceCurrency,
+    })),
   },
 };
 
-// WebSite 構造化データ
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -104,7 +82,6 @@ const websiteSchema = {
   inLanguage: 'ja-JP',
 };
 
-// BreadcrumbList 構造化データ
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -112,50 +89,23 @@ const breadcrumbSchema = {
     {
       '@type': 'ListItem',
       position: 1,
-      name: 'ホーム',
+      name: text.seo.jsonLd.breadcrumbHome,
       item: BASE_URL,
     },
   ],
 };
 
-// FAQPage 構造化データ（よくある質問として活用）
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'ロケーション前撮りの撮影エリアはどこですか？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '大阪・兵庫・京都・奈良・滋賀を中心に、全国出張対応しております。',
-      },
+  mainEntity: text.seo.jsonLd.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
     },
-    {
-      '@type': 'Question',
-      name: '料金プランについて教えてください',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Standardプラン（¥100,000〜）とPremiumプラン（¥158,000〜）をご用意しております。Standardはロケーション1ヶ所・撮影2時間、Premiumはロケーション1ヶ所・撮影3時間でムービーと写真100枚がセットになっています。',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'オープニングムービーとは何ですか？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '結婚式で上映できる1分のショートムービーです。前撮りの映像をシネマティックに編集し、お二人の大切な日を美しく演出します。',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '予約はどのように行えますか？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Webサイトの予約フォームから無料相談を予約いただけます。日程調整の上、オンラインまたは対面でご相談いただけます。',
-      },
-    },
-  ],
+  })),
 };
 
 export function JsonLd() {

@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { siteConfig, navItems } from '@/config/site';
+import { text } from '@/config/text';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,28 +22,26 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-beige/40 shadow-sm"
       role="banner"
     >
-      {/* Skip link for accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-site-accent focus:px-4 focus:py-2 focus:text-white"
       >
-        メインコンテンツへスキップ
+        {text.nav.skipToMain}
       </a>
 
       <nav
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
         role="navigation"
-        aria-label="メインナビゲーション"
+        aria-label={text.nav.ariaMainNav}
       >
         <Link
           href="/"
           className="font-display text-xl tracking-wider transition-colors hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
-          aria-label={`${siteConfig.name} - ホームへ戻る`}
+          aria-label={`${siteConfig.name} - ${text.nav.homeAriaSuffix}`}
         >
           {siteConfig.name}
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden gap-8 text-sm md:flex" role="menubar">
           {navItems.map((item) => (
             <Link
@@ -57,17 +56,16 @@ export function Header() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           type="button"
           className="flex h-10 w-10 items-center justify-center rounded-md md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
           onClick={toggleMobileMenu}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
-          aria-label={isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+          aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
         >
           <span className="sr-only">
-            {isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            {isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
           </span>
           <svg
             className="h-6 w-6"
@@ -95,7 +93,6 @@ export function Header() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         id="mobile-menu"
         className={cn(

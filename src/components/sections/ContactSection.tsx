@@ -4,6 +4,7 @@ import { InstagramIcon, LinkIcon } from '@/components/icons';
 import { contactLinks } from '@/config/site';
 import { getExternalLinkProps } from '@/lib/utils';
 import type { ContactLink } from '@/types';
+import { text } from '@/config/text';
 
 // フォームを遅延読み込み（フォールドより下のため初期ロードを軽量化）
 const ContactForm = dynamic(
@@ -38,7 +39,7 @@ function ContactLinkCard({ link }: { link: ContactLink }) {
     <a
       href={link.href}
       className="flex items-center justify-center gap-3 rounded-lg bg-white px-6 py-4 transition hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
-      aria-label={`${link.label}${link.isExternal ? '（外部サイト、新しいタブで開きます）' : ''}`}
+      aria-label={`${link.label}${link.isExternal ? text.sections.contact.info.externalSuffix : ''}`}
       {...externalProps}
     >
       <Icon className="h-5 w-5" aria-hidden={true} />
@@ -53,30 +54,28 @@ export function ContactSection() {
       <Container>
         <SectionHeader
           id="contact-heading"
-          title="Contact"
-          subtitle="撮影のご相談・お見積りはお気軽にどうぞ"
+          title={text.sections.contact.title}
+          subtitle={text.sections.contact.subtitle}
           className="text-center"
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Form */}
           <div>
-            <h3 className="mb-6 font-display text-xl">予約相談・お問い合わせフォーム</h3>
+            <h3 className="mb-6 font-display text-xl">{text.sections.contact.formHeading}</h3>
             <ContactForm />
           </div>
 
           {/* Contact Links & Info */}
           <div>
-            <h3 className="mb-6 font-display text-xl">その他のお問い合わせ方法</h3>
+            <h3 className="mb-6 font-display text-xl">{text.sections.contact.otherHeading}</h3>
             <div className="rounded-lg bg-white p-6 md:p-8">
-              <p className="mb-6 text-text-light">
-                フォーム以外でのお問い合わせは、
-                <br />
-                以下のリンクからお気軽にどうぞ。
+              <p className="mb-6 whitespace-pre-line text-text-light">
+                {text.sections.contact.otherDescription}
               </p>
               <nav
                 className="flex flex-col gap-4"
-                aria-label="連絡先リンク"
+                aria-label={text.sections.contact.linksAria}
               >
                 {contactLinks.map((link) => (
                   <ContactLinkCard key={link.id} link={link} />
@@ -85,11 +84,14 @@ export function ContactSection() {
 
               <div className="mt-8 border-t border-beige pt-6">
                 <p className="text-sm text-text-light">
-                  <strong className="text-text">営業時間:</strong> 10:00〜19:00
+                  <strong className="text-text">{text.sections.contact.info.businessHoursLabel}</strong>{' '}
+                  {text.sections.contact.info.businessHoursValue}
                   <br />
-                  <strong className="text-text">定休日:</strong> 不定休
+                  <strong className="text-text">{text.sections.contact.info.holidaysLabel}</strong>{' '}
+                  {text.sections.contact.info.holidaysValue}
                   <br />
-                  <strong className="text-text">対応エリア:</strong> 大阪・関西エリア
+                  <strong className="text-text">{text.sections.contact.info.areaLabel}</strong>{' '}
+                  {text.sections.contact.info.areaValue}
                 </p>
               </div>
             </div>

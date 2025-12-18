@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { text } from '@/config/text';
 
 interface SpinnerProps {
   className?: string;
@@ -23,9 +24,9 @@ export function Spinner({ className, size = 'sm' }: SpinnerProps) {
         className
       )}
       role="status"
-      aria-label="読み込み中"
+      aria-label={text.ui.loadingAria}
     >
-      <span className="sr-only">読み込み中...</span>
+      <span className="sr-only">{text.ui.loadingSrOnly}</span>
     </div>
   );
 }

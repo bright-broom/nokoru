@@ -8,31 +8,31 @@ import type {
   WorkImage,
   ContactLink,
 } from '@/types';
+import { text } from '@/config/text';
 
 /**
  * サイト基本設定
  */
 export const siteConfig: SiteConfig = {
-  name: 'Silver Lace Weddings',
-  description:
-    '大阪・関西発、ロケーション前撮りに特化したウェディングムービー。美しい映像に。2026年撮影受付中。',
-  tagline: 'ロケーション前撮りを、\n美しい映像に。',
-  subTagline: 'Location Wedding Film',
-  areas: '大阪・兵庫・京都・奈良・滋賀を中心に、全国出張対応。',
-  year: '2026年撮影受付中。',
-  copyright: `© ${new Date().getFullYear()} Silver Lace Weddings. All rights reserved.`,
+  name: text.site.name,
+  description: text.site.descriptionShort,
+  tagline: text.site.tagline,
+  subTagline: text.site.subTagline,
+  areas: text.site.areas,
+  year: text.site.year,
+  copyright: `© ${new Date().getFullYear()} ${text.site.name}. ${text.site.copyrightSuffix}`,
 } as const;
 
 /**
  * ナビゲーション項目
  */
 export const navItems: readonly NavItem[] = [
-  { label: 'Works', href: '#works', ariaLabel: '作品ギャラリーへ移動' },
-  { label: 'Services', href: '#services', ariaLabel: 'サービス紹介へ移動' },
-  { label: 'Plans', href: '#plans', ariaLabel: '料金プランへ移動' },
-  { label: 'About', href: '#about', ariaLabel: 'スタッフ紹介へ移動' },
-  { label: 'Booking', href: '#booking', ariaLabel: '無料相談予約へ移動' },
-  { label: 'Contact', href: '#contact', ariaLabel: 'お問い合わせへ移動' },
+  { label: text.nav.labels.works, href: '#works', ariaLabel: text.nav.aria.works },
+  { label: text.nav.labels.services, href: '#services', ariaLabel: text.nav.aria.services },
+  { label: text.nav.labels.plans, href: '#plans', ariaLabel: text.nav.aria.plans },
+  { label: text.nav.labels.about, href: '#about', ariaLabel: text.nav.aria.about },
+  { label: text.nav.labels.booking, href: '#booking', ariaLabel: text.nav.aria.booking },
+  { label: text.nav.labels.contact, href: '#contact', ariaLabel: text.nav.aria.contact },
 ] as const;
 
 /**
@@ -41,15 +41,14 @@ export const navItems: readonly NavItem[] = [
 export const services: readonly Service[] = [
   {
     id: 'location-shooting',
-    title: 'ロケーション撮影',
-    description: '2〜6時間のロケーション撮影。\nお二人らしい自然な表情を引き出します。',
+    title: text.content.services.locationShooting.title,
+    description: text.content.services.locationShooting.description,
     icon: 'video',
   },
   {
     id: 'opening-movie',
-    title: 'オープニングムービー',
-    description:
-      '結婚式で上映できる1分のショートムービー。\nシネマティックな映像美でお届けします。',
+    title: text.content.services.openingMovie.title,
+    description: text.content.services.openingMovie.description,
     icon: 'play',
   },
 ] as const;
@@ -60,36 +59,30 @@ export const services: readonly Service[] = [
 export const plans: readonly Plan[] = [
   {
     id: 'standard',
-    name: 'Standard',
-    price: '¥100,000',
-    priceNote: '〜',
+    name: text.content.plans.standard.name,
+    price: text.content.plans.standard.price,
+    priceNote: text.content.plans.standard.priceNote,
     features: [
-      { text: 'ロケーション1ヶ所' },
-      { text: '撮影時間 2時間' },
-      { text: 'ショートムービー or 写真100枚' },
+      ...text.content.plans.standard.features.map((t) => ({ text: t })),
     ],
   },
   {
     id: 'premium',
-    name: 'Premium',
-    price: '¥158,000',
-    priceNote: '〜',
+    name: text.content.plans.premium.name,
+    price: text.content.plans.premium.price,
+    priceNote: text.content.plans.premium.priceNote,
     isRecommended: true,
     features: [
-      { text: 'ロケーション1ヶ所' },
-      { text: '撮影時間 3時間' },
-      { text: 'ムービー × 1本' },
-      { text: '写真100枚' },
+      ...text.content.plans.premium.features.map((t) => ({ text: t })),
     ],
   },
   {
     id: 'coming-soon',
-    name: 'Coming Soon',
-    price: '要相談',
+    name: text.content.plans.comingSoon.name,
+    price: text.content.plans.comingSoon.price,
     isComingSoon: true,
     features: [],
-    description:
-      'マルチロケーションプランを準備中です。\n複数ヶ所での撮影をご希望の方はお問い合わせください。',
+    description: text.content.plans.comingSoon.description,
   },
 ] as const;
 
@@ -97,9 +90,9 @@ export const plans: readonly Plan[] = [
  * オプション一覧
  */
 export const options: readonly Option[] = [
-  { id: 'dress', name: 'ドレスレンタル', price: '¥44,000' },
-  { id: 'tuxedo', name: 'タキシードレンタル', price: '¥33,000' },
-  { id: 'hair-makeup', name: 'ヘアメイク（1パターン）', price: '¥22,000' },
+  { id: 'dress', name: text.content.options.dressRental, price: text.content.options.dressRentalPrice },
+  { id: 'tuxedo', name: text.content.options.tuxedoRental, price: text.content.options.tuxedoRentalPrice },
+  { id: 'hair-makeup', name: text.content.options.hairMakeup, price: text.content.options.hairMakeupPrice },
 ] as const;
 
 /**
@@ -109,13 +102,13 @@ export const staffMembers: readonly Staff[] = [
   {
     id: 'aki',
     name: 'Aki',
-    role: 'ビデオグラファー / カラリスト',
+    role: text.content.staff.akiRole,
     imageUrl: '/images/staff/aki.jpg',
   },
   {
     id: 'hiyori',
     name: 'Hiyori',
-    role: 'フォト / サポート',
+    role: text.content.staff.hiyoriRole,
     imageUrl: '/images/staff/hiyori.jpg',
   },
 ] as const;
@@ -128,32 +121,32 @@ export const workImages: readonly WorkImage[] = [
   {
     id: 'works-bride-portrait',
     src: '/images/works/bride-portrait.jpg',
-    alt: '自然光の中で撮影した花嫁の横顔',
-    locationTag: 'Location',
+    alt: text.content.works.alts.bridePortrait,
+    locationTag: text.content.works.tags.location,
   },
   {
     id: 'works-couple-playground',
     src: '/images/works/couple-playground.jpg',
-    alt: '自然体のふたりを切り取ったカップルフォト',
-    locationTag: 'Couple',
+    alt: text.content.works.alts.couplePlayground,
+    locationTag: text.content.works.tags.couple,
   },
   {
     id: 'works-couple-sea',
     src: '/images/works/couple-sea.jpg',
-    alt: '海辺の風景の中で佇む新郎新婦のシルエット',
-    locationTag: 'Seaside',
+    alt: text.content.works.alts.coupleSea,
+    locationTag: text.content.works.tags.seaside,
   },
   {
     id: 'works-couple-sunflower',
     src: '/images/works/couple-sunflower.jpg',
-    alt: 'ひまわり畑で撮影した抱き合うふたりの後ろ姿',
-    locationTag: 'Sunflower',
+    alt: text.content.works.alts.coupleSunflower,
+    locationTag: text.content.works.tags.sunflower,
   },
   {
     id: 'works-bouquet',
     src: '/images/works/bouquet.jpg',
-    alt: 'ドライフラワーのブーケのクローズアップ',
-    locationTag: 'Detail',
+    alt: text.content.works.alts.bouquet,
+    locationTag: text.content.works.tags.detail,
   },
 ] as const;
 
@@ -163,14 +156,14 @@ export const workImages: readonly WorkImage[] = [
 export const contactLinks: readonly ContactLink[] = [
   {
     id: 'instagram',
-    label: '@aki.h_eastprojects',
+    label: text.content.links.instagramAkiLabel,
     href: 'https://www.instagram.com/aki.h_eastprojects',
     icon: 'instagram',
     isExternal: true,
   },
   {
     id: 'litlink',
-    label: 'lit.link/Akimitsu',
+    label: text.content.links.litlinkLabel,
     href: 'https://lit.link/Akimitsu',
     icon: 'link',
     isExternal: true,

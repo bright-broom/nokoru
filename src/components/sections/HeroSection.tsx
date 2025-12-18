@@ -1,6 +1,7 @@
 import { Button, YouTubeEmbed, FadeIn } from '@/components/ui';
 import { siteConfig } from '@/config/site';
 import { renderMultilineText } from '@/lib/helpers';
+import { text } from '@/config/text';
 
 export function HeroSection() {
   return (
@@ -8,9 +9,8 @@ export function HeroSection() {
       className="flex min-h-screen flex-col items-center justify-center px-6 pt-20 text-center"
       aria-labelledby="hero-heading"
     >
-      {/* SEO用の隠しテキスト - 検索エンジン向けの詳細説明 */}
       <h1 className="sr-only">
-        Silver Lace Weddings - 大阪・関西のロケーション前撮り・ウェディングムービー制作
+        {text.sections.hero.seoHiddenHeading}
       </h1>
 
       <FadeIn direction="none" duration={800}>
@@ -36,11 +36,10 @@ export function HeroSection() {
         </p>
       </FadeIn>
 
-      {/* YouTube Video - 遅延読み込み最適化 */}
       <FadeIn direction="up" delay={600} duration={800} className="mt-10 w-full max-w-3xl">
         <YouTubeEmbed
           videoId="g7AeR7aV698"
-          title="Silver Lace Weddings - ロケーション前撮り映像"
+          title={text.sections.hero.videoTitle}
           className="shadow-lg"
         />
       </FadeIn>
@@ -50,9 +49,9 @@ export function HeroSection() {
           href="#contact"
           size="large"
           className="mt-10"
-          aria-label="予約相談・お問い合わせセクションへ移動"
+          aria-label={text.sections.hero.ctaAria}
         >
-          予約相談する
+          {text.sections.hero.cta}
         </Button>
       </FadeIn>
     </section>

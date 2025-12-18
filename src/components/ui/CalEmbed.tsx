@@ -7,7 +7,7 @@ import { siteColors } from '@/lib/colors';
 export interface CalEmbedProps {
   /**
    * Cal.comのユーザー名/イベントタイプ
-   * 例: "username" または "username/event-type"
+   * Example: username or username/event-type
    */
   calLink: string;
   /**

@@ -1,6 +1,7 @@
 import { Section, Container, SectionHeader } from '@/components/ui';
 import { options } from '@/config/site';
 import type { Option } from '@/types';
+import { text } from '@/config/text';
 
 function OptionCard({ option }: { option: Option }) {
   return (
@@ -17,13 +18,13 @@ export function OptionsSection() {
       <Container>
         <SectionHeader
           id="options-heading"
-          title="Options"
-          subtitle="オプション"
+          title={text.sections.options.title}
+          subtitle={text.sections.options.subtitle}
         />
         <div
           className="mt-16 grid gap-6 md:grid-cols-3"
           role="list"
-          aria-label="オプション一覧"
+          aria-label={text.sections.options.listAria}
         >
           {options.map((option) => (
             <div key={option.id} role="listitem">

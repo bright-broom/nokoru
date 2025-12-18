@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { listReservations } from '@/lib/reservations';
+import { text } from '@/config/text';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -28,37 +29,55 @@ export default async function ReservationsAdminPage({ searchParams }: PageProps)
     <main className="min-h-screen bg-cream px-6 py-10">
       <div className="mx-auto w-full max-w-6xl">
         <div className="flex items-baseline justify-between gap-4">
-          <h1 className="font-display text-2xl tracking-wide">予約リクエスト一覧</h1>
+          <h1 className="font-display text-2xl tracking-wide">
+            {text.admin.reservations.title}
+          </h1>
           <Link
             href="/"
             className="text-sm text-text-light underline underline-offset-4 hover:text-text"
           >
-            サイトへ戻る
+            {text.admin.reservations.backToSite}
           </Link>
         </div>
 
         <p className="mt-2 text-sm text-text-light">
-          合計: <span className="text-text">{reservations.length}</span> 件
+          {text.admin.reservations.totalLabel}{' '}
+          <span className="text-text">{reservations.length}</span>{' '}
+          {text.admin.reservations.totalUnit}
         </p>
 
         <div className="mt-6 overflow-x-auto rounded-lg bg-white">
           <table className="min-w-full border-collapse text-sm">
             <thead className="bg-beige/40 text-left">
               <tr>
-                <th className="px-4 py-3 font-medium text-text">受信日時</th>
-                <th className="px-4 py-3 font-medium text-text">お名前</th>
-                <th className="px-4 py-3 font-medium text-text">メール</th>
-                <th className="px-4 py-3 font-medium text-text">電話</th>
-                <th className="px-4 py-3 font-medium text-text">種別</th>
-                <th className="px-4 py-3 font-medium text-text">希望日</th>
-                <th className="px-4 py-3 font-medium text-text">メッセージ</th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.receivedAt}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.name}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.email}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.phone}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.inquiryType}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.preferredDate}
+                </th>
+                <th className="px-4 py-3 font-medium text-text">
+                  {text.admin.reservations.columns.message}
+                </th>
               </tr>
             </thead>
             <tbody>
               {reservations.length === 0 ? (
                 <tr>
                   <td className="px-4 py-6 text-text-light" colSpan={7}>
-                    まだ予約リクエストはありません。
+                    {text.admin.reservations.empty}
                   </td>
                 </tr>
               ) : (
