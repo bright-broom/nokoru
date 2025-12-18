@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useCallback, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -89,80 +88,11 @@ function NavButton({ work, direction, label }: NavButtonProps) {
 }
 
 export function WorksNavigation({ works, currentIndex, text }: WorksNavigationProps) {
-  const router = useRouter();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isNavigating, setIsNavigating] = useState(false);
-
   const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
   const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
 
-  // Keyboard navigation
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (isNavigating) return;
-
-      if (e.key === 'ArrowLeft' && prevWork) {
-        setIsNavigating(true);
-        router.push(`/works/${prevWork.id}`);
-      } else if (e.key === 'ArrowRight' && nextWork) {
-        setIsNavigating(true);
-        router.push(`/works/${nextWork.id}`);
-      }
-    },
-    [prevWork, nextWork, router, isNavigating]
-  );
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
-
-  // Reset navigation state when currentIndex changes
-  useEffect(() => {
-    setIsNavigating(false);
-  }, [currentIndex]);
-
-  // Swipe detection thresholds
-  const minSwipeDistance = 50;
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd || isNavigating) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe && nextWork) {
-      setIsNavigating(true);
-      router.push(`/works/${nextWork.id}`);
-    } else if (isRightSwipe && prevWork) {
-      setIsNavigating(true);
-      router.push(`/works/${prevWork.id}`);
-    }
-
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
   return (
-    <div
-      ref={containerRef}
-      className="mt-12"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className="mt-12">
       {/* Progress Indicator */}
       <div className="mb-6 flex items-center justify-center gap-2">
         {works.map((_, index) => (

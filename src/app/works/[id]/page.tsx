@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { workImages, text } from '@/config';
 import { Header, Footer } from '@/components/layout';
-import { WorksNavigation } from '@/components/works';
+import { WorksNavigation, WorksImageViewer } from '@/components/works';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -59,16 +58,13 @@ export default async function WorkDetailPage({ params }: PageProps) {
           </nav>
 
           <article>
-            <figure className="overflow-hidden rounded-lg shadow-lg">
-              <Image
-                src={work.src}
-                alt={work.alt}
-                width={1200}
-                height={800}
-                className="h-auto w-full object-cover"
-                priority
-              />
-            </figure>
+            <WorksImageViewer
+              work={work}
+              works={workImages}
+              currentIndex={currentIndex}
+              prevLabel={text.pages.works.navigation.prevLabel}
+              nextLabel={text.pages.works.navigation.nextLabel}
+            />
 
             <div className="mt-8 text-center">
               {work.locationTag && (
