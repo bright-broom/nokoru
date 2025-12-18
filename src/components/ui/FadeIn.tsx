@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { useInView } from '@/hooks/useInView';
+import { useInView } from '@/hooks';
 
 type AnimationDirection = 'up' | 'down' | 'left' | 'right' | 'none';
 
