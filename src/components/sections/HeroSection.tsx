@@ -64,21 +64,35 @@ export function HeroSection() {
         </FadeIn>
 
         {/* 動画 */}
-        <FadeIn direction="up" delay={600} duration={800} className="mt-12 w-full max-w-4xl">
-          <div className="relative">
-            {/* 装飾フレーム */}
+        <FadeIn direction="up" delay={600} duration={800} className="mt-14 w-full max-w-5xl">
+          <div className="group relative">
+            {/* 背景グロー */}
             <div
-              className="absolute -inset-3 rounded-2xl border border-beige/60 md:-inset-4"
+              className="absolute -inset-4 rounded-3xl bg-linear-to-br from-site-accent/20 via-transparent to-beige/30 blur-2xl transition-opacity duration-500 group-hover:opacity-80 md:-inset-8"
+              aria-hidden="true"
+            />
+
+            {/* コーナー装飾 */}
+            <div className="absolute -top-3 -left-3 h-12 w-12 border-l-2 border-t-2 border-site-accent/30 md:-top-5 md:-left-5 md:h-16 md:w-16" aria-hidden="true" />
+            <div className="absolute -bottom-3 -right-3 h-12 w-12 border-r-2 border-b-2 border-site-accent/30 md:-bottom-5 md:-right-5 md:h-16 md:w-16" aria-hidden="true" />
+
+            {/* メインフレーム */}
+            <div className="relative overflow-hidden rounded-2xl bg-white p-2 shadow-2xl md:p-3">
+              <YouTubeEmbed
+                videoId={siteConfig.heroVideoId}
+                title={text.sections.hero.videoTitle}
+                className="rounded-xl"
+              />
+            </div>
+
+            {/* フローティングアクセント */}
+            <div
+              className="absolute -right-2 top-1/4 h-20 w-1 rounded-full bg-linear-to-b from-site-accent/40 to-transparent md:-right-4 md:h-28"
               aria-hidden="true"
             />
             <div
-              className="absolute -inset-1.5 rounded-xl bg-white/50 md:-inset-2"
+              className="absolute -left-2 bottom-1/4 h-16 w-1 rounded-full bg-linear-to-t from-beige to-transparent md:-left-4 md:h-24"
               aria-hidden="true"
-            />
-            <YouTubeEmbed
-              videoId={siteConfig.heroVideoId}
-              title={text.sections.hero.videoTitle}
-              className="relative rounded-lg shadow-xl"
             />
           </div>
         </FadeIn>
