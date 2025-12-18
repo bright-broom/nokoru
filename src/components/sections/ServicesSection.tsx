@@ -15,7 +15,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
 
   return (
     <FadeIn direction="up" delay={delay}>
-      <article className="text-center">
+      <div className="text-center">
         <div
           className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cream"
           aria-hidden="true"
@@ -26,7 +26,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
         <p className="mt-3 text-text-light">
           {renderMultilineText(service.description)}
         </p>
-      </article>
+      </div>
     </FadeIn>
   );
 }
@@ -40,17 +40,16 @@ export function ServicesSection() {
           title={text.sections.services.title}
           subtitle={text.sections.services.subtitle}
         />
-        <div
-          className="mt-16 grid gap-12 md:grid-cols-2"
-          role="list"
+        <ul
+          className="mt-16 grid list-none gap-12 md:grid-cols-2"
           aria-label={text.sections.services.listAria}
         >
           {services.map((service, index) => (
-            <div key={service.id} role="listitem">
+            <li key={service.id}>
               <ServiceCard service={service} delay={index * 150} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </Container>
     </Section>
   );

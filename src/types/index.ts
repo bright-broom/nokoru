@@ -55,6 +55,8 @@ export interface WorkImage {
   readonly src: string;
   readonly alt: string;
   readonly locationTag?: string;
+  readonly isFeatured?: boolean;
+  readonly gridSpan?: 5 | 7;
 }
 
 // 連絡先リンク
@@ -75,6 +77,7 @@ export interface SiteConfig {
   readonly areas: string;
   readonly year: string;
   readonly copyright: string;
+  readonly heroVideoId: string;
 }
 
 // セクション共通Props

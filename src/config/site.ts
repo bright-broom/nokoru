@@ -21,6 +21,7 @@ export const siteConfig: SiteConfig = {
   areas: text.site.areas,
   year: text.site.year,
   copyright: `© ${new Date().getFullYear()} ${text.site.name}. ${text.site.copyrightSuffix}`,
+  heroVideoId: 'g7AeR7aV698',
 } as const;
 
 /**
@@ -119,34 +120,39 @@ export const staffMembers: readonly Staff[] = [
  */
 export const workImages: readonly WorkImage[] = [
   {
+    id: 'works-couple-sea',
+    src: '/images/works/couple-sea.jpg',
+    alt: text.content.works.alts.coupleSea,
+    locationTag: text.content.works.tags.seaside,
+    isFeatured: true,
+  },
+  {
     id: 'works-bride-portrait',
     src: '/images/works/bride-portrait.jpg',
     alt: text.content.works.alts.bridePortrait,
     locationTag: text.content.works.tags.location,
+    gridSpan: 7,
   },
   {
     id: 'works-couple-playground',
     src: '/images/works/couple-playground.jpg',
     alt: text.content.works.alts.couplePlayground,
     locationTag: text.content.works.tags.couple,
-  },
-  {
-    id: 'works-couple-sea',
-    src: '/images/works/couple-sea.jpg',
-    alt: text.content.works.alts.coupleSea,
-    locationTag: text.content.works.tags.seaside,
+    gridSpan: 5,
   },
   {
     id: 'works-couple-sunflower',
     src: '/images/works/couple-sunflower.jpg',
     alt: text.content.works.alts.coupleSunflower,
     locationTag: text.content.works.tags.sunflower,
+    gridSpan: 5,
   },
   {
     id: 'works-bouquet',
     src: '/images/works/bouquet.jpg',
     alt: text.content.works.alts.bouquet,
     locationTag: text.content.works.tags.detail,
+    gridSpan: 7,
   },
 ] as const;
 

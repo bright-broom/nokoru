@@ -38,7 +38,7 @@ export function HeroSection() {
 
       <FadeIn direction="up" delay={600} duration={800} className="mt-10 w-full max-w-3xl">
         <YouTubeEmbed
-          videoId="g7AeR7aV698"
+          videoId={siteConfig.heroVideoId}
           title={text.sections.hero.videoTitle}
           className="shadow-lg"
         />
