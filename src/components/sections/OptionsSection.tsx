@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
 import { options, text } from '@/config';
 import type { Option } from '@/types';
 
@@ -36,6 +36,12 @@ export function OptionsSection() {
             </li>
           ))}
         </ul>
+
+        <FadeIn direction="up" delay={400} className="mt-12 flex justify-center">
+          <Button href="/contact" aria-label={text.sections.options.ctaAria}>
+            {text.sections.options.cta}
+          </Button>
+        </FadeIn>
       </Container>
     </Section>
   );

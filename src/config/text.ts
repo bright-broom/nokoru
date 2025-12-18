@@ -208,6 +208,8 @@ export const text = {
       title: 'Options',
       subtitle: 'オプション',
       listAria: 'オプション一覧',
+      cta: 'オプションについて相談する',
+      ctaAria: 'お問い合わせページへ移動',
     },
     about: {
       title: 'About',
