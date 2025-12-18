@@ -14,5 +14,8 @@ export { PackageIcon } from './PackageIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { ClockIcon } from './ClockIcon';
 export { InfoIcon } from './InfoIcon';
+export { MapPinIcon } from './MapPinIcon';
+export { MailIcon } from './MailIcon';
+export { SendIcon } from './SendIcon';
 
-export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'calendar' | 'clock' | 'info';
+export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'calendar' | 'clock' | 'info' | 'map-pin' | 'mail' | 'send';
