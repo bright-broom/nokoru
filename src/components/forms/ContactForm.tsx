@@ -2,15 +2,14 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { Input, Label, Textarea, Button, Spinner } from '@/components/ui';
+import { CheckIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
-import { text } from '@/config/text';
+import { text } from '@/config';
 import {
   validateContactForm,
   toErrorMap,
   type ContactFormData,
 } from '@/lib/validation';
-
-type FormData = ContactFormData;
 
 interface FormErrors {
   name?: string;
@@ -25,7 +24,13 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 const inquiryTypes = text.form.inquiryTypes;
 
-const initialFormData: FormData = {
+const passwordManagerIgnoreProps = {
+  'data-np-ignore': 'true',
+  'data-lpignore': 'true',
+  suppressHydrationWarning: true,
+} as const;
+
+const initialFormData: ContactFormData = {
   name: '',
   email: '',
   phone: '',
@@ -35,7 +40,7 @@ const initialFormData: FormData = {
 };
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<FormStatus>('idle');
   const preferredDateInputRef = useRef<HTMLInputElement | null>(null);
@@ -116,15 +121,7 @@ export function ContactForm() {
         aria-live="polite"
       >
         <div className="animate-in zoom-in mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-success delay-200 duration-300">
-          <svg
-            className="h-6 w-6 text-success-dark"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
+          <CheckIcon className="h-6 w-6 text-success-dark" />
         </div>
         <h3 className="animate-in fade-in text-lg font-medium text-text delay-300 duration-500">
           {text.form.success.title}
@@ -159,7 +156,7 @@ export function ContactForm() {
       <p className="hidden">
         <label>
           {text.form.honeypot.label}{' '}
-          <input name="bot-field" suppressHydrationWarning />
+          <input name="bot-field" {...passwordManagerIgnoreProps} />
         </label>
       </p>
       <div className="space-y-6" suppressHydrationWarning>
@@ -176,12 +173,11 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder={text.form.fields.name.placeholder}
             autoComplete="name"
-            data-np-ignore="true"
-            data-lpignore="true"
             aria-required="true"
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'name-error' : undefined}
             className={cn(errors.name && 'border-error focus-visible:ring-error')}
+            {...passwordManagerIgnoreProps}
           />
           {errors.name && (
             <p id="name-error" className="text-sm text-error" role="alert">
@@ -203,12 +199,11 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder={text.form.fields.email.placeholder}
             autoComplete="email"
-            data-np-ignore="true"
-            data-lpignore="true"
             aria-required="true"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'email-error' : undefined}
             className={cn(errors.email && 'border-error focus-visible:ring-error')}
+            {...passwordManagerIgnoreProps}
           />
           {errors.email && (
             <p id="email-error" className="text-sm text-error" role="alert">
@@ -229,8 +224,7 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder={text.form.fields.phone.placeholder}
             autoComplete="tel"
-            data-np-ignore="true"
-            data-lpignore="true"
+            {...passwordManagerIgnoreProps}
           />
         </div>
 
@@ -267,13 +261,12 @@ export function ContactForm() {
             value={formData.preferredDate}
             onChange={handleChange}
             autoComplete="off"
-            data-np-ignore="true"
-            data-lpignore="true"
             aria-invalid={!!errors.preferredDate}
             aria-describedby={errors.preferredDate ? 'preferredDate-error' : undefined}
             className={cn(
               errors.preferredDate && 'border-error focus-visible:ring-error'
             )}
+            {...passwordManagerIgnoreProps}
           />
           {errors.preferredDate && (
             <p id="preferredDate-error" className="text-sm text-error" role="alert">
@@ -295,12 +288,11 @@ export function ContactForm() {
             placeholder={text.form.fields.message.placeholder}
             rows={5}
             autoComplete="off"
-            data-np-ignore="true"
-            data-lpignore="true"
             aria-required="true"
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? 'message-error' : undefined}
             className={cn(errors.message && 'border-error focus-visible:ring-error')}
+            {...passwordManagerIgnoreProps}
           />
           {errors.message && (
             <p id="message-error" className="text-sm text-error" role="alert">
