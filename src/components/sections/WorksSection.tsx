@@ -82,7 +82,7 @@ export function WorksSection() {
         </div>
 
         <FadeIn direction="up" className="mt-14 flex justify-center">
-          <Button href="#contact" aria-label={text.sections.works.ctaAria}>
+          <Button href="/contact" aria-label={text.sections.works.ctaAria}>
             {text.sections.works.cta}
           </Button>
         </FadeIn>

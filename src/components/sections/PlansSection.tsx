@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
 import { CheckIcon, StarIcon } from '@/components/icons';
 import { plans, text } from '@/config';
 import { cn } from '@/lib/utils';
@@ -90,6 +90,12 @@ export function PlansSection() {
             </li>
           ))}
         </ul>
+
+        <FadeIn direction="up" delay={500} className="mt-12 flex justify-center">
+          <Button href="/contact" aria-label={text.sections.plans.ctaAria}>
+            {text.sections.plans.cta}
+          </Button>
+        </FadeIn>
       </Container>
     </Section>
   );

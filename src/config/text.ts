@@ -163,12 +163,16 @@ export const text = {
       title: 'Services',
       subtitle: 'ロケーション前撮り映像制作',
       listAria: 'サービス一覧',
+      cta: 'サービスについて相談する',
+      ctaAria: 'お問い合わせページへ移動',
     },
     plans: {
       title: 'Plans',
       subtitle: '料金プラン',
       listAria: '料金プラン一覧',
       recommendedBadge: 'おすすめ',
+      cta: 'プランについて相談する',
+      ctaAria: 'お問い合わせページへ移動',
     },
     options: {
       title: 'Options',
@@ -181,6 +185,8 @@ export const text = {
       listAria: 'スタッフ一覧',
       profileAltSuffix: 'のプロフィール画像',
       profileAltMissingSuffix: 'のプロフィール画像（未設定）',
+      cta: 'お気軽にご相談ください',
+      ctaAria: 'お問い合わせページへ移動',
     },
     booking: {
       title: 'Book a Consultation',
@@ -223,7 +229,7 @@ export const text = {
     contact: {
       title: 'Contact',
       subtitle: '撮影のご相談・お見積りはお気軽にどうぞ',
-      responseTime: '通常2〜3営業日以内に返信',
+      responseTime: '通常3営業日以内に返信',
       formHeading: 'お問い合わせフォーム',
       formDescription: '撮影のご相談・お見積りなど、お気軽にお問い合わせください。',
       otherHeading: 'SNS・その他',
@@ -235,7 +241,7 @@ export const text = {
         holidaysLabel: '定休日',
         holidaysValue: '不定休',
         areaLabel: '対応エリア',
-        areaValue: '大阪・関西エリア（全国出張可）',
+        areaValue: '関西エリア（全国出張可）',
         externalSuffix: '（外部サイト、新しいタブで開きます）',
       },
     },
@@ -278,6 +284,11 @@ export const text = {
         counterSeparator: '/',
         keyboardHint: '← → キーでも操作できます',
       },
+    },
+    contact: {
+      backToTop: 'トップへ戻る',
+      metaTitle: 'お問い合わせ',
+      metaDescription: '撮影のご相談・お見積りはお気軽にどうぞ。通常3営業日以内にご返信いたします。',
     },
   },
 

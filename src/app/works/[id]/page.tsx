@@ -93,7 +93,7 @@ export default async function WorkDetailPage({ params }: PageProps) {
 
             <div className="mt-12 text-center">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-site-accent px-8 py-4 font-medium text-white transition hover:bg-site-accent/90"
               >
                 {text.pages.works.ctaButton}

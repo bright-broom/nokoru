@@ -7,7 +7,6 @@ import {
   OptionsSection,
   AboutSection,
   BookingSection,
-  ContactSection,
 } from '@/components/sections';
 import { JsonLd } from '@/components/seo';
 import { siteConfig } from '@/config';
@@ -26,7 +25,6 @@ export default function HomePage() {
         <OptionsSection />
         <AboutSection />
         <BookingSection calLink={siteConfig.calLink} />
-        <ContactSection />
       </main>
 
       <Footer />

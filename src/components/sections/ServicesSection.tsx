@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
 import { VideoIcon, PlayIcon } from '@/components/icons';
 import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
@@ -53,6 +53,12 @@ export function ServicesSection() {
             </li>
           ))}
         </ul>
+
+        <FadeIn direction="up" delay={400} className="mt-12 flex justify-center">
+          <Button href="/contact" aria-label={text.sections.services.ctaAria}>
+            {text.sections.services.cta}
+          </Button>
+        </FadeIn>
       </Container>
     </Section>
   );

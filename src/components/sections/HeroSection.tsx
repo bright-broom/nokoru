@@ -45,7 +45,7 @@ export function HeroSection() {
 
       <FadeIn direction="up" delay={800} duration={800}>
         <Button
-          href="#contact"
+          href="/contact"
           size="large"
           className="mt-10"
           aria-label={text.sections.hero.ctaAria}
