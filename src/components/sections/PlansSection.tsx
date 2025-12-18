@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { CheckIcon, StarIcon } from '@/components/icons';
 import { plans, text } from '@/config';
@@ -11,9 +12,10 @@ function PlanCard({ plan, delay }: { plan: Plan; delay: number }) {
 
   return (
     <FadeIn direction="up" delay={delay}>
-      <div
+      <Link
+        href={`/plans/${plan.id}`}
         className={cn(
-          'relative h-full rounded-xl p-8 shadow-md transition-all duration-300 hover:shadow-xl',
+          'group relative block h-full rounded-xl p-8 shadow-md transition-all duration-300 hover:shadow-xl',
           isComingSoon && 'border-2 border-dashed border-beige bg-linear-to-br from-beige/30 to-transparent opacity-80',
           isRecommended && 'border-2 border-site-accent bg-white ring-4 ring-site-accent/10 scale-[1.02]',
           !isComingSoon && !isRecommended && 'border border-beige/60 bg-white hover:-translate-y-1'
@@ -64,7 +66,7 @@ function PlanCard({ plan, delay }: { plan: Plan; delay: number }) {
             </p>
           )
         )}
-      </div>
+      </Link>
     </FadeIn>
   );
 }

@@ -205,6 +205,15 @@ export const text = {
       notFound: 'スタッフが見つかりませんでした',
       metaTitleSuffix: 'スタッフ紹介',
     },
+    plans: {
+      backToTop: 'トップへ戻る',
+      backToPlans: 'プラン一覧へ',
+      notFound: 'プランが見つかりませんでした',
+      metaTitleSuffix: '料金プラン',
+      featuresHeading: 'プラン内容',
+      ctaButton: 'このプランで相談する',
+      comingSoonNote: 'このプランは準備中です。詳細はお問い合わせください。',
+    },
   },
 
   footer: {
