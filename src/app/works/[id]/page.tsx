@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { workImages, text } from '@/config';
 import { Header, Footer } from '@/components/layout';
+import { WorksNavigation } from '@/components/works';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -33,11 +34,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function WorkDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const work = workImages.find((w) => w.id === id);
+  const currentIndex = workImages.findIndex((w) => w.id === id);
 
-  if (!work) {
+  if (currentIndex === -1) {
     notFound();
   }
+
+  const work = workImages[currentIndex];
 
   return (
     <div className="min-h-screen bg-cream">
@@ -84,6 +87,13 @@ export default async function WorkDetailPage({ params }: PageProps) {
                 </p>
               )}
             </div>
+
+            {/* Works Navigation */}
+            <WorksNavigation
+              works={workImages}
+              currentIndex={currentIndex}
+              text={text.pages.works.navigation}
+            />
 
             <div className="mt-12 text-center">
               <Link

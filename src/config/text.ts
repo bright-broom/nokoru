@@ -259,6 +259,12 @@ export const text = {
       metaTitleSuffix: '作品ギャラリー',
       locationLabel: 'Location',
       ctaButton: '撮影について相談する',
+      navigation: {
+        prevLabel: '前の作品',
+        nextLabel: '次の作品',
+        counterSeparator: '/',
+        keyboardHint: '← → キーでも操作できます',
+      },
     },
   },
 
