@@ -5,7 +5,7 @@ import { InstagramIcon } from '@/components/icons';
 export function Footer() {
   return (
     <footer
-      className="bg-gradient-to-b from-text to-text/95 py-16 text-cream"
+      className="bg-linear-to-b from-text to-text/95 py-16 text-cream"
       role="contentinfo"
     >
       <div className="mx-auto max-w-6xl px-6">

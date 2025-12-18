@@ -29,7 +29,7 @@ function WorkCard({
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition duration-500 group-hover:scale-[1.02]"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0 opacity-80" />
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0 opacity-80" />
         </div>
 
         {(locationTag || alt) && (
@@ -67,7 +67,7 @@ export function WorksSection() {
               alt={featured.alt}
               locationTag={featured.locationTag}
               priority
-              className="aspect-[16/9] md:aspect-[21/9]"
+              className="aspect-video md:aspect-21/9"
             />
           )}
 
@@ -81,10 +81,10 @@ export function WorksSection() {
                 delay={(idx + 1) * 100}
                 className={[
                   // ほどよく"編集された感"が出るモザイク配置
-                  idx === 0 ? 'md:col-span-7 aspect-[4/3]' : '',
-                  idx === 1 ? 'md:col-span-5 aspect-[4/3]' : '',
-                  idx === 2 ? 'md:col-span-5 aspect-[4/3]' : '',
-                  idx === 3 ? 'md:col-span-7 aspect-[4/3]' : '',
+                  idx === 0 ? 'md:col-span-7 aspect-4/3' : '',
+                  idx === 1 ? 'md:col-span-5 aspect-4/3' : '',
+                  idx === 2 ? 'md:col-span-5 aspect-4/3' : '',
+                  idx === 3 ? 'md:col-span-7 aspect-4/3' : '',
                 ].join(' ')}
               />
             ))}
