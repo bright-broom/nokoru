@@ -88,6 +88,7 @@ export const text = {
   nav: {
     skipToMain: 'メインコンテンツへスキップ',
     ariaMainNav: 'メインナビゲーション',
+    ariaMobileNav: 'モバイルナビゲーション',
     homeAriaSuffix: 'ホームへ戻る',
     mobileMenuOpen: 'メニューを開く',
     mobileMenuClose: 'メニューを閉じる',

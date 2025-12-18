@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
+import { MenuIcon, CloseIcon } from '@/components/icons';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,19 +42,18 @@ export function Header() {
           {siteConfig.name}
         </Link>
 
-        <div className="hidden gap-8 text-sm md:flex" role="menubar">
+        <ul className="hidden gap-8 text-sm md:flex">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
-              role="menuitem"
-              aria-label={item.ariaLabel}
-            >
-              {item.label}
-            </Link>
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
+              >
+                {item.label}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <button
           type="button"
@@ -63,36 +63,15 @@ export function Header() {
           aria-controls="mobile-menu"
           aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
         >
-          <span className="sr-only">
-            {isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
-          </span>
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          {isMobileMenuOpen ? (
+            <CloseIcon className="h-6 w-6" />
+          ) : (
+            <MenuIcon className="h-6 w-6" />
+          )}
         </button>
       </nav>
 
-      <div
+      <nav
         id="mobile-menu"
         className={cn(
           'absolute left-0 right-0 top-full bg-cream/95 backdrop-blur-sm transition-all duration-200 md:hidden',
@@ -100,25 +79,24 @@ export function Header() {
             ? 'visible opacity-100'
             : 'invisible opacity-0'
         )}
-        role="menu"
+        aria-label={text.nav.ariaMobileNav}
         aria-hidden={!isMobileMenuOpen}
       >
-        <div className="flex flex-col gap-4 px-6 py-4">
+        <ul className="flex flex-col gap-4 px-6 py-4">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="py-2 text-lg transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
-              role="menuitem"
-              aria-label={item.ariaLabel}
-              onClick={closeMobileMenu}
-              tabIndex={isMobileMenuOpen ? 0 : -1}
-            >
-              {item.label}
-            </Link>
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="block py-2 text-lg transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
+                onClick={closeMobileMenu}
+                tabIndex={isMobileMenuOpen ? 0 : -1}
+              >
+                {item.label}
+              </Link>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </nav>
     </header>
   );
 }

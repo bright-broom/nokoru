@@ -4,5 +4,7 @@ export { InstagramIcon } from './InstagramIcon';
 export { LinkIcon } from './LinkIcon';
 export { CheckIcon } from './CheckIcon';
 export { StarIcon } from './StarIcon';
+export { MenuIcon } from './MenuIcon';
+export { CloseIcon } from './CloseIcon';
 
-export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star';
+export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close';
