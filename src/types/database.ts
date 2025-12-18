@@ -13,6 +13,8 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+export type ReservationStatus = 'pending' | 'contacted' | 'confirmed' | 'cancelled';
+
 export type Database = {
   public: {
     Tables: {
@@ -26,7 +28,7 @@ export type Database = {
           inquiry_type: string | null;
           preferred_date: string | null;
           message: string;
-          status: 'pending' | 'contacted' | 'confirmed' | 'cancelled';
+          status: ReservationStatus;
         };
         Insert: {
           id?: string;
@@ -37,7 +39,7 @@ export type Database = {
           inquiry_type?: string | null;
           preferred_date?: string | null;
           message: string;
-          status?: 'pending' | 'contacted' | 'confirmed' | 'cancelled';
+          status?: ReservationStatus;
         };
         Update: {
           id?: string;
@@ -48,7 +50,7 @@ export type Database = {
           inquiry_type?: string | null;
           preferred_date?: string | null;
           message?: string;
-          status?: 'pending' | 'contacted' | 'confirmed' | 'cancelled';
+          status?: ReservationStatus;
         };
         Relationships: [];
       };
@@ -60,7 +62,7 @@ export type Database = {
       [_ in never]: never;
     };
     Enums: {
-      reservation_status: 'pending' | 'contacted' | 'confirmed' | 'cancelled';
+      reservation_status: ReservationStatus;
     };
     CompositeTypes: {
       [_ in never]: never;
