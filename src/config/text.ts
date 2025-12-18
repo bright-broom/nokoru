@@ -198,6 +198,15 @@ export const text = {
     },
   },
 
+  pages: {
+    staff: {
+      backToTop: 'トップへ戻る',
+      backToAbout: 'スタッフ一覧へ',
+      notFound: 'スタッフが見つかりませんでした',
+      metaTitleSuffix: 'スタッフ紹介',
+    },
+  },
+
   footer: {
     decorativeMark: '✦',
     instagramFollowAria: 'Instagramをフォロー',
