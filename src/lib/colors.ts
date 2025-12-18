@@ -18,37 +18,4 @@ export const siteColors = {
   black: '#000000',
 } as const;
 
-export const cssVarNames = {
-  cream: '--color-cream',
-  beige: '--color-beige',
-  accent: '--color-site-accent',
-  text: '--color-text',
-  textLight: '--color-text-light',
-  error: '--color-error',
-  errorLight: '--color-error-light',
-  errorDark: '--color-error-dark',
-  success: '--color-success',
-  successDark: '--color-success-dark',
-} as const;
-
-export const tailwindClasses = {
-  bgCream: 'bg-cream',
-  bgBeige: 'bg-beige',
-  bgAccent: 'bg-site-accent',
-  bgError: 'bg-error',
-  bgErrorLight: 'bg-error-light',
-  bgSuccess: 'bg-success',
-  textCream: 'text-cream',
-  textAccent: 'text-site-accent',
-  textText: 'text-text',
-  textTextLight: 'text-text-light',
-  textError: 'text-error',
-  textErrorDark: 'text-error-dark',
-  textSuccess: 'text-success-dark',
-  borderBeige: 'border-beige',
-  borderAccent: 'border-site-accent',
-  ringAccent: 'focus-visible:ring-site-accent',
-} as const;
-
 export type SiteColor = keyof typeof siteColors;
-export type CssVarName = keyof typeof cssVarNames;

@@ -6,17 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * 価格を日本円フォーマットで表示
- */
-export function formatPrice(price: number): string {
-  return new Intl.NumberFormat('ja-JP', {
-    style: 'currency',
-    currency: 'JPY',
-    maximumFractionDigits: 0,
-  }).format(price);
-}
-
-/**
  * 外部リンクの属性を生成
  */
 export function getExternalLinkProps(isExternal: boolean = false) {
