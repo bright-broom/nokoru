@@ -96,9 +96,27 @@ export const plans: readonly Plan[] = [
  * オプション一覧
  */
 export const options: readonly Option[] = [
-  { id: 'dress', name: text.content.options.dressRental, price: text.content.options.dressRentalPrice },
-  { id: 'tuxedo', name: text.content.options.tuxedoRental, price: text.content.options.tuxedoRentalPrice },
-  { id: 'hair-makeup', name: text.content.options.hairMakeup, price: text.content.options.hairMakeupPrice },
+  {
+    id: 'dress',
+    name: text.content.options.dressRental.name,
+    price: text.content.options.dressRental.price,
+    description: text.content.options.dressRental.description,
+    features: text.content.options.dressRental.features,
+  },
+  {
+    id: 'tuxedo',
+    name: text.content.options.tuxedoRental.name,
+    price: text.content.options.tuxedoRental.price,
+    description: text.content.options.tuxedoRental.description,
+    features: text.content.options.tuxedoRental.features,
+  },
+  {
+    id: 'hair-makeup',
+    name: text.content.options.hairMakeup.name,
+    price: text.content.options.hairMakeup.price,
+    description: text.content.options.hairMakeup.description,
+    features: text.content.options.hairMakeup.features,
+  },
 ] as const;
 
 /**

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { options, text } from '@/config';
 import type { Option } from '@/types';
@@ -5,10 +6,13 @@ import type { Option } from '@/types';
 function OptionCard({ option, delay }: { option: Option; delay: number }) {
   return (
     <FadeIn direction="up" delay={delay}>
-      <div className="rounded-lg bg-white p-6 text-center shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+      <Link
+        href={`/options/${option.id}`}
+        className="block rounded-lg bg-white p-6 text-center shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+      >
         <p className="text-text-light">{option.name}</p>
         <p className="mt-2 font-display text-2xl">{option.price}</p>
-      </div>
+      </Link>
     </FadeIn>
   );
 }

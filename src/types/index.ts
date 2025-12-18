@@ -41,6 +41,8 @@ export interface Option {
   readonly id: string;
   readonly name: string;
   readonly price: string;
+  readonly description: string;
+  readonly features?: readonly string[];
 }
 
 // スタッフ

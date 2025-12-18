@@ -69,12 +69,42 @@ export const text = {
       },
     },
     options: {
-      dressRental: 'ドレスレンタル',
-      tuxedoRental: 'タキシードレンタル',
-      hairMakeup: 'ヘアメイク（1パターン）',
-      dressRentalPrice: '¥44,000',
-      tuxedoRentalPrice: '¥33,000',
-      hairMakeupPrice: '¥22,000',
+      dressRental: {
+        name: 'ドレスレンタル',
+        price: '¥44,000',
+        description:
+          'ウェディングドレスのレンタルサービスです。提携ショップの豊富なラインナップから、ロケーション撮影に映えるドレスをお選びいただけます。',
+        features: [
+          '提携ショップでの試着・選定',
+          '撮影当日のお届け・回収',
+          'サイズ調整対応',
+          '小物（ベール・グローブ等）セット',
+        ],
+      },
+      tuxedoRental: {
+        name: 'タキシードレンタル',
+        price: '¥33,000',
+        description:
+          '新郎様向けタキシードのレンタルサービスです。カジュアルからフォーマルまで、撮影シーンに合わせたスタイルをご提案します。',
+        features: [
+          '提携ショップでの試着・選定',
+          '撮影当日のお届け・回収',
+          'サイズ調整対応',
+          '小物（シャツ・タイ・チーフ等）セット',
+        ],
+      },
+      hairMakeup: {
+        name: 'ヘアメイク（1パターン）',
+        price: '¥22,000',
+        description:
+          'プロのヘアメイクアーティストが撮影現場でスタイリングを行います。ロケーション撮影に最適なヘアメイクで、最高の状態で撮影に臨めます。',
+        features: [
+          '撮影現場での施術',
+          'ヘアセット＋メイク',
+          '撮影中のお直し対応',
+          '事前カウンセリング',
+        ],
+      },
     },
     staff: {
       akiRole: 'Videographer / Colorist',
@@ -289,6 +319,15 @@ export const text = {
       backToTop: 'トップへ戻る',
       metaTitle: 'お問い合わせ',
       metaDescription: '撮影のご相談・お見積りはお気軽にどうぞ。通常3営業日以内にご返信いたします。',
+    },
+    options: {
+      backToTop: 'トップへ戻る',
+      backToOptions: 'オプション一覧へ',
+      notFound: 'オプションが見つかりませんでした',
+      metaTitleSuffix: 'オプション',
+      featuresHeading: 'サービス内容',
+      ctaButton: 'このオプションについて相談する',
+      note: '※ 撮影プランとセットでご利用いただけます',
     },
   },
 
