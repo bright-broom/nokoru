@@ -41,7 +41,7 @@ function ContactLinkCard({ link }: { link: ContactLink }) {
       aria-label={`${link.label}${link.isExternal ? text.sections.contact.info.externalSuffix : ''}`}
       {...externalProps}
     >
-      <Icon className="h-5 w-5" aria-hidden={true} />
+      <Icon className="h-5 w-5" aria-hidden="true" />
       <span>{link.label}</span>
     </a>
   );

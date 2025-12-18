@@ -15,7 +15,7 @@ function OptionCard({ option, delay }: { option: Option; delay: number }) {
 
 export function OptionsSection() {
   return (
-    <Section variant="alternate" aria-labelledby="options-heading">
+    <Section id="options" variant="alternate" aria-labelledby="options-heading">
       <Container>
         <SectionHeader
           id="options-heading"
