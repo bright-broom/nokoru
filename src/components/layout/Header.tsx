@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
@@ -8,6 +8,30 @@ import { MenuIcon, CloseIcon } from '@/components/icons';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // スクロール検知
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // モバイルメニュー開閉時のスクロール制御
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -18,85 +42,157 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-beige/40 shadow-sm"
-      role="banner"
-    >
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-site-accent focus:px-4 focus:py-2 focus:text-white"
+    <>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-sm'
+            : 'bg-white/80 backdrop-blur-sm'
+        )}
+        role="banner"
       >
-        {text.nav.skipToMain}
-      </a>
-
-      <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
-        role="navigation"
-        aria-label={text.nav.ariaMainNav}
-      >
-        <Link
-          href="/"
-          className="font-display text-xl tracking-wider transition-colors hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
-          aria-label={`${siteConfig.name} - ${text.nav.homeAriaSuffix}`}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-site-accent focus:px-4 focus:py-2 focus:text-white"
         >
-          {siteConfig.name}
-        </Link>
+          {text.nav.skipToMain}
+        </a>
 
-        <ul className="hidden gap-8 text-sm md:flex">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <button
-          type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-md md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
-          onClick={toggleMobileMenu}
-          aria-expanded={isMobileMenuOpen}
-          aria-controls="mobile-menu"
-          aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
-        >
-          {isMobileMenuOpen ? (
-            <CloseIcon className="h-6 w-6" />
-          ) : (
-            <MenuIcon className="h-6 w-6" />
+        <nav
+          className={cn(
+            'mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-300',
+            isScrolled ? 'py-3' : 'py-4'
           )}
-        </button>
-      </nav>
+          role="navigation"
+          aria-label={text.nav.ariaMainNav}
+        >
+          {/* ロゴ */}
+          <Link
+            href="/"
+            className="group font-display text-xl tracking-wider transition-colors duration-300 hover:text-site-accent"
+            aria-label={`${siteConfig.name} - ${text.nav.homeAriaSuffix}`}
+          >
+            {siteConfig.name}
+          </Link>
 
-      <nav
+          {/* デスクトップナビゲーション */}
+          <ul className="hidden items-center gap-1 md:flex">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="group relative px-4 py-2 text-sm transition-colors duration-300 hover:text-site-accent"
+                >
+                  {item.label}
+                  <span
+                    className="absolute bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-site-accent transition-all duration-300 group-hover:w-2/3"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* モバイルメニューボタン */}
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-beige md:hidden"
+            onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
+          >
+            <MenuIcon className="h-6 w-6" />
+          </button>
+        </nav>
+      </header>
+
+      {/* フルスクリーンモバイルメニュー */}
+      <div
         id="mobile-menu"
         className={cn(
-          'absolute left-0 right-0 top-full bg-cream/95 backdrop-blur-sm transition-all duration-200 md:hidden',
-          isMobileMenuOpen
-            ? 'visible opacity-100'
-            : 'invisible opacity-0'
+          'fixed inset-0 z-60 md:hidden',
+          isMobileMenuOpen ? 'visible' : 'invisible pointer-events-none'
         )}
-        aria-label={text.nav.ariaMobileNav}
         aria-hidden={!isMobileMenuOpen}
       >
-        <ul className="flex flex-col gap-4 px-6 py-4">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="block py-2 text-lg transition hover:text-site-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent"
-                onClick={closeMobileMenu}
-                tabIndex={isMobileMenuOpen ? 0 : -1}
+        {/* 背景オーバーレイ */}
+        <div
+          className={cn(
+            'absolute inset-0 bg-cream transition-opacity duration-300',
+            isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+          )}
+        />
+
+        {/* ヘッダー部分 */}
+        <div className="relative flex items-center justify-between px-6 py-4">
+          <span className="font-display text-xl tracking-wider">
+            {siteConfig.name}
+          </span>
+          <button
+            type="button"
+            className={cn(
+              'flex h-10 w-10 items-center justify-center rounded-md transition-all duration-300 hover:bg-beige',
+              isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+            )}
+            onClick={closeMobileMenu}
+            aria-label={text.nav.mobileMenuClose}
+          >
+            <CloseIcon className="h-6 w-6" />
+          </button>
+        </div>
+
+        {/* ナビゲーション */}
+        <nav
+          className="relative flex flex-col px-6 pt-8"
+          aria-label={text.nav.ariaMobileNav}
+        >
+          <ul className="flex flex-col gap-1">
+            {navItems.map((item, index) => (
+              <li
+                key={item.href}
+                className={cn(
+                  'transition-all duration-400',
+                  isMobileMenuOpen
+                    ? 'translate-x-0 opacity-100'
+                    : '-translate-x-4 opacity-0'
+                )}
+                style={{
+                  transitionDelay: isMobileMenuOpen ? `${100 + index * 50}ms` : '0ms',
+                }}
               >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+                <Link
+                  href={item.href}
+                  className="group flex items-center justify-between border-b border-beige py-4 text-lg transition-colors hover:text-site-accent"
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileMenuOpen ? 0 : -1}
+                >
+                  <span>{item.label}</span>
+                  <span
+                    className="text-text-light transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* 装飾 */}
+          <div
+            className={cn(
+              'mt-12 text-center transition-all duration-500',
+              isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+            )}
+            style={{ transitionDelay: isMobileMenuOpen ? '400ms' : '0ms' }}
+            aria-hidden="true"
+          >
+            <span className="text-xl text-beige">{text.footer.decorativeMark}</span>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }
