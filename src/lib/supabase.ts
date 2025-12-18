@@ -2,26 +2,37 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/database';
 import { getPublicEnv, getServerEnv } from './env';
 
-let supabaseInstance: SupabaseClient<Database> | null = null;
+let browserClient: SupabaseClient<Database> | null = null;
 
 /**
- * クライアント用Supabaseインスタンスを取得
+ * ブラウザ用Supabaseクライアント（シングルトン）
+ * @throws ブラウザ以外で呼び出された場合
  */
-export function getSupabase(): SupabaseClient<Database> {
-  if (supabaseInstance) return supabaseInstance;
+export function createBrowserClient(): SupabaseClient<Database> {
+  if (typeof window === 'undefined') {
+    throw new Error('createBrowserClient must be called from browser');
+  }
+
+  if (browserClient) return browserClient;
 
   const env = getPublicEnv();
-  supabaseInstance = createClient<Database>(
+  browserClient = createClient<Database>(
     env.NEXT_PUBLIC_SUPABASE_URL,
     env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
-  return supabaseInstance;
+
+  return browserClient;
 }
 
 /**
- * サーバー用Supabaseクライアント（service_role key使用）
+ * サーバー用Supabaseクライアント（毎回新規作成）
+ * service_role keyを使用するためRLSをバイパス
  */
-export function createServerSupabaseClient(): SupabaseClient<Database> {
+export function createServerClient(): SupabaseClient<Database> {
+  if (typeof window !== 'undefined') {
+    throw new Error('createServerClient must be called from server');
+  }
+
   const publicEnv = getPublicEnv();
   const serverEnv = getServerEnv();
 

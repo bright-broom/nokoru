@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from './supabase';
+import { createServerClient } from './supabase';
 import { handleSupabaseError, logError } from './errors';
 import { sanitizeInput } from './validation';
 import type { ReservationRequest, ReservationRequestInput } from '@/types';
@@ -37,7 +37,7 @@ function toReservationRequest(row: {
 export async function appendReservation(
   input: ReservationRequestInput
 ): Promise<ReservationRequest> {
-  const supabase = createServerSupabaseClient();
+  const supabase = createServerClient();
 
   // 入力値のサニタイズ
   const insertData: ReservationInsert = {
@@ -68,7 +68,7 @@ export async function appendReservation(
  * 予約一覧を取得
  */
 export async function listReservations(): Promise<ReservationRequest[]> {
-  const supabase = createServerSupabaseClient();
+  const supabase = createServerClient();
 
   const { data, error } = await supabase
     .from('reservations')
@@ -90,7 +90,7 @@ export async function updateReservationStatus(
   id: string,
   status: 'pending' | 'contacted' | 'confirmed' | 'cancelled'
 ): Promise<void> {
-  const supabase = createServerSupabaseClient();
+  const supabase = createServerClient();
 
   const { error } = await supabase
     .from('reservations')
