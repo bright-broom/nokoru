@@ -1,6 +1,6 @@
 # Silver Lace Weddings
 
-大阪・関西発のロケーション前撮り専門ウェディングムービー制作サービスのWebサイト。
+大阪・関西発のロケーション前撮り専門ウェディングムービー制作サービスの Web サイト。
 
 ## 📋 目次
 
@@ -17,17 +17,17 @@
 
 ## 🛠 技術スタック
 
-| カテゴリ | 技術 | バージョン |
-|---------|------|-----------|
-| フレームワーク | Next.js | 16.0.10 (App Router) |
-| 言語 | TypeScript | 5.7.2 |
-| スタイリング | Tailwind CSS | 4.0.0 |
-| UIライブラリ | Radix UI | 1.x |
-| フォント | Cormorant Garamond / Shippori Mincho | next/font |
-| データベース | Supabase (PostgreSQL) | 2.88.0 |
-| フォーム | Netlify Forms | - |
-| 予約システム | Cal.com | 1.5.3 |
-| ホスティング | Netlify / Vercel | - |
+| カテゴリ       | 技術                                 | バージョン           |
+| -------------- | ------------------------------------ | -------------------- |
+| フレームワーク | Next.js                              | 16.0.10 (App Router) |
+| 言語           | TypeScript                           | 5.7.2                |
+| スタイリング   | Tailwind CSS                         | 4.0.0                |
+| UI ライブラリ  | Radix UI                             | 1.x                  |
+| フォント       | Cormorant Garamond / Shippori Mincho | next/font            |
+| データベース   | Supabase (PostgreSQL)                | 2.88.0               |
+| フォーム       | Netlify Forms                        | -                    |
+| 予約システム   | Cal.com                              | 1.5.3                |
+| ホスティング   | Netlify / Vercel                     | -                    |
 
 ## 🚀 クイックスタート
 
@@ -156,13 +156,13 @@ src/
 
 ### 1. ランディングページ
 
-- **Hero**: YouTube動画埋め込み、CTAボタン
+- **Hero**: YouTube 動画埋め込み、CTA ボタン
 - **Works**: 作品ギャラリー（画像ビューアー付き）
 - **Services**: サービス紹介（詳細ページあり）
 - **Plans**: 料金プラン（詳細ページあり）
 - **Options**: オプション（詳細ページあり）
 - **About**: スタッフ紹介（詳細ページあり）
-- **Booking**: Cal.com予約カレンダー
+- **Booking**: Cal.com 予約カレンダー
 - **Contact**: お問い合わせフォーム
 
 ### 2. 詳細ページ
@@ -177,18 +177,18 @@ src/
 
 ### 3. 予約・お問い合わせシステム
 
-- **Cal.com連携**: オンライン相談予約
+- **Cal.com 連携**: オンライン相談予約
 - **Netlify Forms**: お問い合わせフォーム
 - **Supabase**: 予約データ管理
 - **管理画面**: `/admin/reservations?token=ADMIN_TOKEN`
 
-### 4. SEO対策
+### 4. SEO 対策
 
 - **sitemap.xml**: 自動生成（`/sitemap.xml`）
 - **robots.txt**: 自動生成（`/robots.txt`）
-- **OG画像**: 動的生成（`/opengraph-image`）
-- **Twitter画像**: 動的生成（`/twitter-image`）
-- **JSON-LD構造化データ**:
+- **OG 画像**: 動的生成（`/opengraph-image`）
+- **Twitter 画像**: 動的生成（`/twitter-image`）
+- **JSON-LD 構造化データ**:
   - LocalBusiness
   - Service
   - WebSite
@@ -200,16 +200,16 @@ src/
 - next/font によるフォント最適化
 - YouTube 遅延読み込み
 - 画像最適化（next/image）
-- CSS最適化（optimizeCss）
+- CSS 最適化（optimizeCss）
 - 静的アセットの長期キャッシュ
 
 ### 6. アクセシビリティ
 
 - スキップリンク
-- ARIA属性
+- ARIA 属性
 - キーボードナビゲーション
 - prefers-reduced-motion 対応
-- セマンティックHTML
+- セマンティック HTML
 
 ## ⚙️ 設定ファイル
 
@@ -226,7 +226,7 @@ export const siteConfig = {
 
 export const services = [
   {
-    id: 'location-shooting',
+    id: "location-shooting",
     title: text.content.services.locationShooting.title,
     // ...
   },
@@ -235,7 +235,7 @@ export const services = [
 
 ### テキスト中央管理 (`src/config/text.ts`)
 
-**すべての表示文言を1箇所で管理**します。UI文言、aria-label、エラーメッセージ、SEO文言など。
+**すべての表示文言を 1 箇所で管理**します。UI 文言、aria-label、エラーメッセージ、SEO 文言など。
 
 ```typescript
 export const text = {
@@ -260,6 +260,7 @@ export const text = {
 ```
 
 **ルール**:
+
 - 画面やメール/レスポンスで人が読む文言は基本ここへ
 - id / key / ルーティング等の「機械向け文字列」は対象外
 
@@ -267,13 +268,13 @@ export const text = {
 
 ```typescript
 export const siteColors = {
-  cream: '#fbf9f6',      // 背景色
-  beige: '#f5f2ec',      // セクション背景
-  accent: '#7a8ec5',     // アクセントカラー
-  text: '#3d3d3d',       // 本文
-  textLight: '#6b6b6b',  // 薄い本文
-  error: '#ef4444',      // エラー
-  success: '#dcfce7',    // 成功
+  cream: "#fbf9f6", // 背景色
+  beige: "#f5f2ec", // セクション背景
+  accent: "#7a8ec5", // アクセントカラー
+  text: "#3d3d3d", // 本文
+  textLight: "#6b6b6b", // 薄い本文
+  error: "#ef4444", // エラー
+  success: "#dcfce7", // 成功
 };
 ```
 
@@ -298,12 +299,12 @@ ADMIN_TOKEN=your_random_token
 
 ### 環境変数の取得先
 
-| 変数 | 取得場所 |
-|------|----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase → Project Settings → API → Project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API → anon public |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → service_role |
-| `ADMIN_TOKEN` | 任意のランダム文字列（長め推奨） |
+| 変数                            | 取得場所                                         |
+| ------------------------------- | ------------------------------------------------ |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Supabase → Project Settings → API → Project URL  |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase → Project Settings → API → anon public  |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Supabase → Project Settings → API → service_role |
+| `ADMIN_TOKEN`                   | 任意のランダム文字列（長め推奨）                 |
 
 ## 🖼️ 画像の配置
 
@@ -336,8 +337,8 @@ public/images/staff/
 
 ### 画像の最適化
 
-- Next.jsの `next/image` を使用
-- AVIF/WebP形式を優先
+- Next.js の `next/image` を使用
+- AVIF/WebP 形式を優先
 - レスポンシブサイズを自動生成
 
 ## 📝 開発ガイド
@@ -365,7 +366,7 @@ import { options } from '@/config/site';
 export default function OptionDetailPage({ params }: { params: { id: string } }) {
   const option = options.find((o) => o.id === params.id);
   if (!option) notFound();
-  
+
   return (
     // 詳細ページのコンテンツ
   );
@@ -380,7 +381,7 @@ export default function OptionDetailPage({ params }: { params: { id: string } })
 // src/config/text.ts
 export const text = {
   site: {
-    name: 'Silver Lace Weddings',  // ← ここを変更
+    name: "Silver Lace Weddings", // ← ここを変更
   },
   // ...
 };
@@ -389,9 +390,9 @@ export const text = {
 各コンポーネントでは `text` をインポートして使用:
 
 ```typescript
-import { text } from '@/config/text';
+import { text } from "@/config/text";
 
-<h1>{text.site.name}</h1>
+<h1>{text.site.name}</h1>;
 ```
 
 ### スタイルの変更
@@ -408,11 +409,7 @@ import { text } from '@/config/text';
 ```typescript
 // src/components/icons/NewIcon.tsx
 export function NewIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} /* ... */>
-      {/* SVG path */}
-    </svg>
-  );
+  return <svg className={className} /* ... */>{/* SVG path */}</svg>;
 }
 ```
 
@@ -426,7 +423,7 @@ export function NewIcon({ className }: { className?: string }) {
 
 ### Netlify
 
-1. GitHubリポジトリを連携
+1. GitHub リポジトリを連携
 2. Build command: `npm run build`
 3. Publish directory: `.next`
 4. 環境変数を設定（`.env.local` の内容）
@@ -434,7 +431,7 @@ export function NewIcon({ className }: { className?: string }) {
 
 ### Vercel
 
-1. GitHubリポジトリをインポート
+1. GitHub リポジトリをインポート
 2. Framework: Next.js（自動検出）
 3. 環境変数を設定
 4. Deploy
@@ -453,16 +450,18 @@ export function NewIcon({ className }: { className?: string }) {
 
 **症状**: `Hydration failed because the server rendered HTML didn't match the client`
 
-**原因**: サーバーとクライアントでHTMLが一致しない
+**原因**: サーバーとクライアントで HTML が一致しない
 
 **解決策**:
-- `Date.now()` や `Math.random()` をSSRで使わない
+
+- `Date.now()` や `Math.random()` を SSR で使わない
 - ブラウザ拡張機能（パスワードマネージャー等）の影響を考慮
 - `suppressHydrationWarning` を適切に使用
 
 ### 画像が表示されない
 
 **確認事項**:
+
 1. `public/images/` 配下にファイルが存在するか
 2. ファイル名が `src/config/site.ts` のパスと一致しているか
 3. ファイル名にスペースや特殊文字が含まれていないか
@@ -470,6 +469,7 @@ export function NewIcon({ className }: { className?: string }) {
 ### 環境変数が読み込まれない
 
 **確認事項**:
+
 1. `.env.local` がプロジェクトルートにあるか
 2. 変数名が正しいか（`NEXT_PUBLIC_` プレフィックスが必要な場合）
 3. サーバーを再起動したか
@@ -495,4 +495,4 @@ All rights reserved. Silver Lace Weddings.
 
 ---
 
-**質問や問題がある場合は、Issueを作成してください。**
+**質問や問題がある場合は、Issue を作成してください。**
