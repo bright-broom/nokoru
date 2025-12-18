@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { siteConfig, text } from '@/config';
+import { siteColors } from '@/lib/colors';
 import { getSupabaseUrl } from '@/lib/env';
 import { fontVariables } from '@/lib/fonts';
 import './globals.css';
@@ -9,7 +10,7 @@ const BASE_URL = text.seo.baseUrl;
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#fbf9f6',
+  themeColor: siteColors.cream,
 };
 
 export const metadata: Metadata = {

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { appendReservation, listReservations } from '@/lib/reservations';
+import { isValidEmail } from '@/lib/validation';
 import { reservationInquiryTypes } from '@/types';
 import type { ReservationRequestInput } from '@/types';
 import { text } from '@/config';
@@ -8,10 +9,6 @@ export const runtime = 'nodejs';
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
-}
-
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function isValidPreferredDate(value: string) {
