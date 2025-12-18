@@ -3,7 +3,20 @@
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks';
 
-type AnimationDirection = 'up' | 'down' | 'left' | 'right' | 'none';
+type AnimationDirection =
+  | 'up'
+  | 'down'
+  | 'left'
+  | 'right'
+  | 'none'
+  | 'scale'
+  | 'scale-up'
+  | 'blur'
+  | 'blur-up'
+  | 'diagonal-left'
+  | 'diagonal-right';
+
+type AnimationEasing = 'ease-out' | 'ease-in-out' | 'bounce' | 'smooth';
 
 interface FadeInProps {
   children: React.ReactNode;
@@ -17,15 +30,46 @@ interface FadeInProps {
   /** 一度だけアニメーションするか */
   once?: boolean;
   /** HTML要素タイプ */
-  as?: 'div' | 'section' | 'li' | 'span' | 'p';
+  as?: 'div' | 'section' | 'li' | 'span' | 'p' | 'article';
+  /** イージング */
+  easing?: AnimationEasing;
 }
 
-const directionStyles: Record<AnimationDirection, string> = {
-  up: 'translate-y-8',
-  down: '-translate-y-8',
-  left: 'translate-x-8',
-  right: '-translate-x-8',
-  none: '',
+// 非表示状態のスタイル
+const hiddenStyles: Record<AnimationDirection, string> = {
+  up: 'translate-y-8 opacity-0',
+  down: '-translate-y-8 opacity-0',
+  left: 'translate-x-8 opacity-0',
+  right: '-translate-x-8 opacity-0',
+  none: 'opacity-0',
+  scale: 'scale-90 opacity-0',
+  'scale-up': 'scale-90 translate-y-4 opacity-0',
+  blur: 'opacity-0 blur-sm',
+  'blur-up': 'translate-y-6 opacity-0 blur-sm',
+  'diagonal-left': 'translate-x-6 translate-y-6 opacity-0',
+  'diagonal-right': '-translate-x-6 translate-y-6 opacity-0',
+};
+
+// 表示状態のスタイル
+const visibleStyles: Record<AnimationDirection, string> = {
+  up: 'translate-y-0 opacity-100',
+  down: 'translate-y-0 opacity-100',
+  left: 'translate-x-0 opacity-100',
+  right: 'translate-x-0 opacity-100',
+  none: 'opacity-100',
+  scale: 'scale-100 opacity-100',
+  'scale-up': 'scale-100 translate-y-0 opacity-100',
+  blur: 'opacity-100 blur-0',
+  'blur-up': 'translate-y-0 opacity-100 blur-0',
+  'diagonal-left': 'translate-x-0 translate-y-0 opacity-100',
+  'diagonal-right': 'translate-x-0 translate-y-0 opacity-100',
+};
+
+const easingClasses: Record<AnimationEasing, string> = {
+  'ease-out': 'ease-out',
+  'ease-in-out': 'ease-in-out',
+  bounce: '[transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)]',
+  smooth: '[transition-timing-function:cubic-bezier(0.4,0,0.2,1)]',
 };
 
 /**
@@ -34,6 +78,16 @@ const directionStyles: Record<AnimationDirection, string> = {
  * @example
  * <FadeIn direction="up" delay={200}>
  *   <h2>タイトル</h2>
+ * </FadeIn>
+ *
+ * @example blur効果
+ * <FadeIn direction="blur-up" duration={800} easing="smooth">
+ *   <p>ブラーからフェードイン</p>
+ * </FadeIn>
+ *
+ * @example スケール効果
+ * <FadeIn direction="scale" easing="bounce">
+ *   <Card>バウンス付きスケールイン</Card>
  * </FadeIn>
  */
 export function FadeIn({
@@ -44,6 +98,7 @@ export function FadeIn({
   duration = 600,
   once = true,
   as: Component = 'div',
+  easing = 'ease-out',
 }: FadeInProps) {
   const { ref, isInView } = useInView({ triggerOnce: once });
 
@@ -52,9 +107,10 @@ export function FadeIn({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       className={cn(
-        'transition-all ease-out',
-        !isInView && `opacity-0 ${directionStyles[direction]}`,
-        isInView && 'opacity-100 translate-x-0 translate-y-0',
+        'transition-all',
+        easingClasses[easing],
+        !isInView && hiddenStyles[direction],
+        isInView && visibleStyles[direction],
         className
       )}
       style={{
@@ -82,6 +138,7 @@ export function FadeInStagger({
   staggerDelay = 100,
   direction = 'up',
   duration = 600,
+  easing = 'ease-out',
 }: {
   children: React.ReactNode;
   className?: string;
@@ -89,6 +146,7 @@ export function FadeInStagger({
   staggerDelay?: number;
   direction?: AnimationDirection;
   duration?: number;
+  easing?: AnimationEasing;
 }) {
   const { ref, isInView } = useInView({ triggerOnce: true });
 
@@ -99,9 +157,10 @@ export function FadeInStagger({
             <div
               key={index}
               className={cn(
-                'transition-all ease-out',
-                !isInView && `opacity-0 ${directionStyles[direction]}`,
-                isInView && 'opacity-100 translate-x-0 translate-y-0'
+                'transition-all',
+                easingClasses[easing],
+                !isInView && hiddenStyles[direction],
+                isInView && visibleStyles[direction]
               )}
               style={{
                 transitionDuration: `${duration}ms`,
