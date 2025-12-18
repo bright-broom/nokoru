@@ -64,11 +64,3 @@ export function getServerEnv(): ServerEnv {
 export function getSupabaseUrl(): string {
   return getPublicEnv().NEXT_PUBLIC_SUPABASE_URL;
 }
-
-export function isDevelopment(): boolean {
-  return process.env.NODE_ENV === 'development';
-}
-
-export function isProduction(): boolean {
-  return process.env.NODE_ENV === 'production';
-}

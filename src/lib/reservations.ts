@@ -2,7 +2,7 @@ import { createServerClient } from './supabase';
 import { handleSupabaseError, logError } from './errors';
 import { sanitizeInput } from './validation';
 import type { ReservationRequest, ReservationRequestInput } from '@/types';
-import type { ReservationInsert } from '@/types/database';
+import type { ReservationInsert, ReservationStatus } from '@/types/database';
 
 /**
  * DBの行データをアプリケーション型に変換
@@ -16,7 +16,7 @@ function toReservationRequest(row: {
   inquiry_type: string | null;
   preferred_date: string | null;
   message: string;
-  status: string | null;
+  status: ReservationStatus | null;
 }): ReservationRequest {
   return {
     id: row.id,
@@ -88,7 +88,7 @@ export async function listReservations(): Promise<ReservationRequest[]> {
  */
 export async function updateReservationStatus(
   id: string,
-  status: 'pending' | 'contacted' | 'confirmed' | 'cancelled'
+  status: ReservationStatus
 ): Promise<void> {
   const supabase = createServerClient();
 
