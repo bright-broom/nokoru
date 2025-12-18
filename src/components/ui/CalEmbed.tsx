@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-import Cal, { getCalApi } from '@calcom/embed-react';
+import Cal from '@calcom/embed-react';
 import { siteColors } from '@/lib/colors';
+import { useCalInit } from '@/hooks';
 
 export interface CalEmbedProps {
   /**
@@ -36,20 +36,7 @@ export function CalEmbed({
   brandColor = siteColors.accent,
   className,
 }: CalEmbedProps) {
-  useEffect(() => {
-    (async function initCal() {
-      const cal = await getCalApi();
-      cal('ui', {
-        theme: 'light',
-        styles: {
-          branding: {
-            brandColor,
-          },
-        },
-        hideEventTypeDetails: false,
-      });
-    })();
-  }, [brandColor]);
+  useCalInit(brandColor);
 
   return (
     <div className={className}>

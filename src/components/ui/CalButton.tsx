@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-import { getCalApi } from '@calcom/embed-react';
 import { Button } from './Button';
 import { siteColors } from '@/lib/colors';
+import { useCalInit } from '@/hooks';
 
 export interface CalButtonProps {
   /**
@@ -40,19 +39,7 @@ export function CalButton({
   size = 'default',
   className,
 }: CalButtonProps) {
-  useEffect(() => {
-    (async function initCal() {
-      const cal = await getCalApi();
-      cal('ui', {
-        theme: 'light',
-        styles: {
-          branding: {
-            brandColor,
-          },
-        },
-      });
-    })();
-  }, [brandColor]);
+  useCalInit(brandColor);
 
   return (
     <Button

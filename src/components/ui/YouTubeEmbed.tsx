@@ -18,6 +18,7 @@ interface YouTubeEmbedProps {
  */
 export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [useFallbackThumbnail, setUseFallbackThumbnail] = useState(false);
 
   const handleClick = useCallback(() => {
     setIsLoaded(true);
@@ -33,8 +34,9 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
     []
   );
 
-  const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-  const thumbnailFallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const thumbnailUrl = useFallbackThumbnail
+    ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+    : `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
 
   if (isLoaded) {
     return (
@@ -67,9 +69,7 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
         fill
         sizes="(max-width: 768px) 100vw, 768px"
         className="object-cover transition-transform duration-300 group-hover:scale-105"
-        onError={(e) => {
-          e.currentTarget.src = thumbnailFallback;
-        }}
+        onError={() => setUseFallbackThumbnail(true)}
       />
 
       <div className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />

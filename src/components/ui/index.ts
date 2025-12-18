@@ -9,7 +9,7 @@ export { YouTubeEmbed } from './YouTubeEmbed';
 export { CalEmbed } from './CalEmbed';
 export { CalButton } from './CalButton';
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card';
+export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent } from './card';
 export { Dialog, DialogPortal, DialogOverlay, DialogTrigger, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription } from './dialog';
 export { Input } from './input';
 export { Label } from './label';

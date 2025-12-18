@@ -45,7 +45,7 @@ export function Button({
 
   if (href) {
     const externalProps = isExternal
-      ? { target: '_blank' as const, rel: 'noopener noreferrer' as const }
+      ? { target: '_blank', rel: 'noopener noreferrer' }
       : {};
 
     return (

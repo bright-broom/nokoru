@@ -17,7 +17,7 @@ interface FadeInProps {
   /** 一度だけアニメーションするか */
   once?: boolean;
   /** HTML要素タイプ */
-  as?: 'div' | 'section' | 'article' | 'span' | 'p';
+  as?: 'div' | 'section' | 'li' | 'span' | 'p';
 }
 
 const directionStyles: Record<AnimationDirection, string> = {
@@ -49,7 +49,8 @@ export function FadeIn({
 
   return (
     <Component
-      ref={ref as React.RefObject<HTMLDivElement>}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       className={cn(
         'transition-all ease-out',
         !isInView && `opacity-0 ${directionStyles[direction]}`,
