@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Section, Container, SectionHeader, Button, FadeIn } from '@/components/ui';
+import { WorksCarousel } from '@/components/works/WorksCarousel';
 import { workImages, text } from '@/config';
 import type { WorkImage } from '@/types';
 
@@ -18,29 +19,37 @@ function WorkCard({
   return (
     <FadeIn direction="up" delay={delay} className={className}>
       <Link href={`/works/${image.id}`} className="block h-full">
-        <figure className="group relative h-full overflow-hidden rounded-2xl border border-beige bg-white shadow-sm">
-          <div className="relative h-full min-h-[220px] w-full">
+        <figure className="group relative h-full overflow-hidden rounded-2xl bg-white shadow-md transition-shadow duration-300 hover:shadow-xl">
+          <div className="relative h-full min-h-[220px] w-full overflow-hidden">
             <Image
               src={image.src}
               alt={image.alt}
               fill
               priority={priority}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition duration-500 group-hover:scale-[1.02]"
+              className="object-cover transition duration-700 group-hover:scale-105"
             />
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0 opacity-80" />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-black/0 opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
           </div>
 
           {(image.locationTag || image.alt) && (
-            <figcaption className="absolute bottom-0 left-0 right-0 p-4">
+            <figcaption className="absolute bottom-0 left-0 right-0 p-5">
               {image.locationTag && (
-                <span className="mb-2 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs tracking-wide text-text">
+                <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-medium tracking-wide text-text shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-site-accent" aria-hidden="true" />
                   {image.locationTag}
                 </span>
               )}
-              <p className="text-sm text-white/95 drop-shadow">{image.alt}</p>
+              <p className="text-sm font-medium text-white drop-shadow-md md:text-base">{image.alt}</p>
             </figcaption>
           )}
+
+          {/* Hover overlay indicator */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-text shadow-lg">
+              詳細を見る
+            </span>
+          </div>
         </figure>
       </Link>
     </FadeIn>
@@ -60,7 +69,13 @@ export function WorksSection() {
           subtitle={text.sections.works.subtitle}
         />
 
-        <div className="mt-16 grid gap-6">
+        {/* Mobile: Carousel */}
+        <div className="mt-12">
+          <WorksCarousel works={workImages} />
+        </div>
+
+        {/* Desktop: Grid Layout */}
+        <div className="mt-16 hidden gap-6 md:grid">
           {featured && (
             <WorkCard
               image={featured}
