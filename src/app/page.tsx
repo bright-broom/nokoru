@@ -18,7 +18,7 @@ export default function HomePage() {
       <JsonLd />
       <Header />
 
-      <main id="main-content" role="main">
+      <main id="main-content">
         <HeroSection />
         <WorksSection />
         <ServicesSection />
