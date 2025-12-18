@@ -8,5 +8,11 @@ export { MenuIcon } from './MenuIcon';
 export { CloseIcon } from './CloseIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronRightIcon } from './ChevronRightIcon';
+export { CameraIcon } from './CameraIcon';
+export { FilmIcon } from './FilmIcon';
+export { PackageIcon } from './PackageIcon';
+export { CalendarIcon } from './CalendarIcon';
+export { ClockIcon } from './ClockIcon';
+export { InfoIcon } from './InfoIcon';
 
-export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right';
+export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'calendar' | 'clock' | 'info';

@@ -185,28 +185,39 @@ export const text = {
     booking: {
       title: 'Book a Consultation',
       subtitle: '無料オンライン相談のご予約',
+      freeBadge: '無料',
       loadingCalendar: 'カレンダーを読み込み中...',
-      description: 'ご希望の日時を選択して、オンライン相談をご予約ください。\n予約完了後、Google Meetの参加URLをメールでお送りします。',
+      description: 'ご希望の日時を選択して、オンライン相談をご予約ください。',
+      subDescription: '予約完了後、Google Meetの参加URLをメールでお送りします。',
       consultationCards: [
         {
           title: 'ロケーション前撮り',
           duration: '60分',
           description: '撮影場所・衣装・スケジュールのご相談',
+          icon: 'camera',
         },
         {
           title: 'ムービー制作',
           duration: '45分',
           description: 'オープニングムービーの構成・演出相談',
+          icon: 'film',
         },
         {
           title: '総合プラン',
           duration: '90分',
           description: '前撮り＋ムービーのトータルプラン相談',
+          icon: 'package',
         },
       ],
+      processSteps: [
+        { step: '1', title: '相談内容を選択', description: '上記から選択' },
+        { step: '2', title: '日時を選択', description: 'カレンダーから' },
+        { step: '3', title: '予約確定', description: 'メールで通知' },
+      ],
+      calendarHeading: 'ご希望の日時を選択',
       notes: [
-        '※ 予約確定後、確認メールをお送りします。届かない場合は迷惑メールフォルダをご確認ください。',
-        '※ キャンセル・日程変更は、メール内のリンクから24時間前まで可能です。',
+        '予約確定後、確認メールをお送りします',
+        'キャンセル・変更は24時間前まで可能',
       ],
     },
     contact: {
