@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Section, Container, SectionHeader, Button, FadeIn } from '@/components/ui';
 import { workImages, text } from '@/config';
 import type { WorkImage } from '@/types';
@@ -16,30 +17,32 @@ function WorkCard({
 }) {
   return (
     <FadeIn direction="up" delay={delay} className={className}>
-      <figure className="group relative h-full overflow-hidden rounded-2xl border border-beige bg-white shadow-sm">
-        <div className="relative h-full min-h-[220px] w-full">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            priority={priority}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.02]"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0 opacity-80" />
-        </div>
+      <Link href={`/works/${image.id}`} className="block h-full">
+        <figure className="group relative h-full overflow-hidden rounded-2xl border border-beige bg-white shadow-sm">
+          <div className="relative h-full min-h-[220px] w-full">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority={priority}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0 opacity-80" />
+          </div>
 
-        {(image.locationTag || image.alt) && (
-          <figcaption className="absolute bottom-0 left-0 right-0 p-4">
-            {image.locationTag && (
-              <span className="mb-2 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs tracking-wide text-text">
-                {image.locationTag}
-              </span>
-            )}
-            <p className="text-sm text-white/95 drop-shadow">{image.alt}</p>
-          </figcaption>
-        )}
-      </figure>
+          {(image.locationTag || image.alt) && (
+            <figcaption className="absolute bottom-0 left-0 right-0 p-4">
+              {image.locationTag && (
+                <span className="mb-2 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs tracking-wide text-text">
+                  {image.locationTag}
+                </span>
+              )}
+              <p className="text-sm text-white/95 drop-shadow">{image.alt}</p>
+            </figcaption>
+          )}
+        </figure>
+      </Link>
     </FadeIn>
   );
 }

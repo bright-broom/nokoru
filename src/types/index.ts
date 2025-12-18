@@ -15,6 +15,8 @@ export interface Service {
   readonly id: string;
   readonly title: string;
   readonly description: string;
+  readonly detailedDescription: string;
+  readonly features: readonly string[];
   readonly icon: 'video' | 'play';
 }
 
@@ -55,6 +57,7 @@ export interface WorkImage {
   readonly id: string;
   readonly src: string;
   readonly alt: string;
+  readonly description?: string;
   readonly locationTag?: string;
   readonly isFeatured?: boolean;
   readonly gridSpan?: 5 | 7;

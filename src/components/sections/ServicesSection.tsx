@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { VideoIcon, PlayIcon } from '@/components/icons';
 import { services, text } from '@/config';
@@ -14,9 +15,12 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
 
   return (
     <FadeIn direction="up" delay={delay}>
-      <div className="text-center">
+      <Link
+        href={`/services/${service.id}`}
+        className="group block text-center transition-transform hover:-translate-y-1"
+      >
         <div
-          className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cream"
+          className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-cream transition-colors group-hover:bg-site-accent/10"
           aria-hidden="true"
         >
           <Icon className="h-8 w-8 text-site-accent" />
@@ -25,7 +29,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
         <p className="mt-3 text-text-light">
           {renderMultilineText(service.description)}
         </p>
-      </div>
+      </Link>
     </FadeIn>
   );
 }
