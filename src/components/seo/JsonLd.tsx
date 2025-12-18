@@ -3,7 +3,6 @@ import { siteConfig, text } from '@/config';
 const BASE_URL = text.seo.baseUrl;
 
 const localBusinessSchema = {
-  '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'VideoProductionCompany'],
   '@id': `${BASE_URL}/#business`,
   name: siteConfig.name,
@@ -11,8 +10,6 @@ const localBusinessSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/opengraph-image`,
   image: `${BASE_URL}/opengraph-image`,
-  telephone: '',
-  email: '',
   address: {
     '@type': 'PostalAddress',
     addressLocality: text.seo.jsonLd.addressLocality,
@@ -39,7 +36,6 @@ const localBusinessSchema = {
 };
 
 const serviceSchema = {
-  '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': `${BASE_URL}/#service`,
   name: text.seo.jsonLd.service.name,
@@ -69,7 +65,6 @@ const serviceSchema = {
 };
 
 const websiteSchema = {
-  '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': `${BASE_URL}/#website`,
   name: siteConfig.name,
@@ -82,7 +77,6 @@ const websiteSchema = {
 };
 
 const breadcrumbSchema = {
-  '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
     {
@@ -95,7 +89,6 @@ const breadcrumbSchema = {
 };
 
 const faqSchema = {
-  '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: text.seo.jsonLd.faq.map((item) => ({
     '@type': 'Question',
@@ -107,39 +100,24 @@ const faqSchema = {
   })),
 };
 
+const combinedSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    localBusinessSchema,
+    serviceSchema,
+    websiteSchema,
+    breadcrumbSchema,
+    faqSchema,
+  ],
+};
+
 export function JsonLd() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(combinedSchema),
+      }}
+    />
   );
 }
