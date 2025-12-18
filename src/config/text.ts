@@ -59,8 +59,12 @@ export const text = {
       hairMakeupPrice: '¥22,000',
     },
     staff: {
-      akiRole: 'ビデオグラファー / カラリスト',
-      hiyoriRole: 'フォト / サポート',
+      akiRole: 'Videographer / Colorist',
+      akiBio:
+        '大阪出身。企業PRやイベント映像を経て、ロケーションウェディングにフォーカス。\n静かなトーンの色と光で、その日の空気ごと残すことを意識しています。',
+      hiyoriRole: 'Photo / Support',
+      hiyoriBio:
+        'フィルムライクなフォトと、撮影当日のサポートを担当。\n自然な笑顔が出る空気づくりが得意です。',
     },
     works: {
       tags: {

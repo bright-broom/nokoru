@@ -105,12 +105,14 @@ export const staffMembers: readonly Staff[] = [
     id: 'aki',
     name: 'Aki',
     role: text.content.staff.akiRole,
+    bio: text.content.staff.akiBio,
     imageUrl: '/images/staff/aki.jpg',
   },
   {
     id: 'hiyori',
     name: 'Hiyori',
     role: text.content.staff.hiyoriRole,
+    bio: text.content.staff.hiyoriBio,
     imageUrl: '/images/staff/hiyori.jpg',
   },
 ] as const;

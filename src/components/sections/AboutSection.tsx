@@ -28,7 +28,10 @@ function StaffCard({ staff, isPriority }: { staff: Staff; isPriority: boolean })
         )}
       </figure>
       <h3 className="font-display text-xl">{staff.name}</h3>
-      <p className="mt-2 text-sm text-text-light">{staff.role}</p>
+      <p className="mt-1 text-sm text-site-accent">{staff.role}</p>
+      <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-text-light">
+        {staff.bio}
+      </p>
     </li>
   );
 }
