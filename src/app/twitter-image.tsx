@@ -25,7 +25,6 @@ export default async function Image() {
           position: 'relative',
         }}
       >
-        {/* 装飾パターン - 上部 */}
         <div
           style={{
             position: 'absolute',
@@ -37,7 +36,6 @@ export default async function Image() {
           }}
         />
 
-        {/* メインコンテンツ */}
         <div
           style={{
             display: 'flex',
@@ -47,7 +45,6 @@ export default async function Image() {
             padding: '60px',
           }}
         >
-          {/* 装飾ライン */}
           <div
             style={{
               display: 'flex',
@@ -73,7 +70,6 @@ export default async function Image() {
             />
           </div>
 
-          {/* ロゴ/サイト名 */}
           <h1
             style={{
               fontSize: '72px',
@@ -87,7 +83,6 @@ export default async function Image() {
             Silver Lace Weddings
           </h1>
 
-          {/* サブタイトル */}
           <p
             style={{
               fontSize: '28px',
@@ -100,7 +95,6 @@ export default async function Image() {
             Location Wedding Film
           </p>
 
-          {/* 説明文 */}
           <p
             style={{
               fontSize: '22px',
@@ -115,7 +109,6 @@ export default async function Image() {
             ロケーション前撮りを、美しい映像に。
           </p>
 
-          {/* エリア情報 */}
           <p
             style={{
               fontSize: '18px',
@@ -128,7 +121,6 @@ export default async function Image() {
           </p>
         </div>
 
-        {/* 装飾パターン - 下部 */}
         <div
           style={{
             position: 'absolute',
@@ -140,7 +132,6 @@ export default async function Image() {
           }}
         />
 
-        {/* コーナー装飾 */}
         <div
           style={{
             position: 'absolute',

@@ -33,7 +33,6 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
     []
   );
 
-  // YouTube サムネイル URL (maxresdefault が最高画質)
   const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   const thumbnailFallback = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
@@ -62,7 +61,6 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
       )}
       aria-label={`${title}を再生`}
     >
-      {/* サムネイル画像 */}
       <Image
         src={thumbnailUrl}
         alt={title}
@@ -70,15 +68,12 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
         sizes="(max-width: 768px) 100vw, 768px"
         className="object-cover transition-transform duration-300 group-hover:scale-105"
         onError={(e) => {
-          // maxresdefault が無い場合のフォールバック
           e.currentTarget.src = thumbnailFallback;
         }}
       />
 
-      {/* オーバーレイ */}
       <div className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/30" />
 
-      {/* 再生ボタン */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600 shadow-lg transition-transform group-hover:scale-110 md:h-20 md:w-20">
           <svg
@@ -92,7 +87,6 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
         </div>
       </div>
 
-      {/* YouTube ロゴ風テキスト */}
       <div className="absolute bottom-3 right-3 rounded bg-black/70 px-2 py-1 text-xs text-white">
         YouTube
       </div>

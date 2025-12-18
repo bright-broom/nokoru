@@ -60,13 +60,11 @@ export function ContactSection() {
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Contact Form */}
           <div>
             <h3 className="mb-6 font-display text-xl">{text.sections.contact.formHeading}</h3>
             <ContactForm />
           </div>
 
-          {/* Contact Links & Info */}
           <div>
             <h3 className="mb-6 font-display text-xl">{text.sections.contact.otherHeading}</h3>
             <div className="rounded-lg bg-white p-6 md:p-8">

@@ -165,8 +165,8 @@ export function ContactForm() {
       <div className="space-y-6" suppressHydrationWarning>
         <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="name" className="text-text">
-            {text.form.fields.name.label}{' '}
-            <span className="text-error">{text.form.fields.name.requiredMark}</span>
+            <span>{text.form.fields.name.label}</span>
+            <span className="ml-1 text-error">{text.form.fields.name.requiredMark}</span>
           </Label>
           <Input
             id="name"
@@ -192,8 +192,8 @@ export function ContactForm() {
 
         <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="email" className="text-text">
-            {text.form.fields.email.label}{' '}
-            <span className="text-error">{text.form.fields.email.requiredMark}</span>
+            <span>{text.form.fields.email.label}</span>
+            <span className="ml-1 text-error">{text.form.fields.email.requiredMark}</span>
           </Label>
           <Input
             id="email"
@@ -284,8 +284,8 @@ export function ContactForm() {
 
         <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="message" className="text-text">
-            {text.form.fields.message.label}{' '}
-            <span className="text-error">{text.form.fields.message.requiredMark}</span>
+            <span>{text.form.fields.message.label}</span>
+            <span className="ml-1 text-error">{text.form.fields.message.requiredMark}</span>
           </Label>
           <Textarea
             id="message"

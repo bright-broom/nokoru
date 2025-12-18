@@ -20,7 +20,6 @@ export function SectionHeader({
 
   return (
     <div ref={ref} className={cn('text-center', className)}>
-      {/* 装飾ライン */}
       <div
         className={cn(
           'mb-6 flex items-center justify-center gap-3 transition-all duration-700 ease-out',
