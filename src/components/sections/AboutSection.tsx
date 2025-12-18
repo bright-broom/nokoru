@@ -6,10 +6,10 @@ import type { Staff } from '@/types';
 
 function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
   return (
-    <FadeIn direction="up" delay={delay}>
+    <FadeIn direction="up" delay={delay} className="h-full">
       <Link
         href={`/staff/${staff.id}`}
-        className="group relative block overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 md:p-8"
+        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 md:p-8"
       >
         {/* 背景装飾 */}
         <div
@@ -87,7 +87,7 @@ export function AboutSection() {
         />
 
         <ul
-          className="mt-16 grid list-none gap-8 md:grid-cols-2"
+          className="mt-16 grid list-none items-stretch gap-8 md:grid-cols-2"
           aria-label={text.sections.about.listAria}
         >
           {staffMembers.map((staff, index) => (
