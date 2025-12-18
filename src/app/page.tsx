@@ -10,6 +10,7 @@ import {
   ContactSection,
 } from '@/components/sections';
 import { JsonLd } from '@/components/seo';
+import { siteConfig } from '@/config';
 
 export default function HomePage() {
   return (
@@ -24,7 +25,7 @@ export default function HomePage() {
         <PlansSection />
         <OptionsSection />
         <AboutSection />
-        <BookingSection calLink="toshiki-sakuta-ohgi5i" />
+        <BookingSection calLink={siteConfig.calLink} />
         <ContactSection />
       </main>
 

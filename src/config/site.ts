@@ -22,6 +22,7 @@ export const siteConfig: SiteConfig = {
   year: text.site.year,
   copyright: `© ${new Date().getFullYear()} ${text.site.name}. ${text.site.copyrightSuffix}`,
   heroVideoId: 'g7AeR7aV698',
+  calLink: 'toshiki-sakuta-ohgi5i',
 } as const;
 
 /**

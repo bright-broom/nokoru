@@ -78,6 +78,7 @@ export interface SiteConfig {
   readonly year: string;
   readonly copyright: string;
   readonly heroVideoId: string;
+  readonly calLink: string;
 }
 
 // セクション共通Props

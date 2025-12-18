@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { text } from '@/config';
 
-const BASE_URL = 'https://silverlacewedding.netlify.app';
+const BASE_URL = text.seo.baseUrl;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

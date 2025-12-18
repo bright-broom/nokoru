@@ -108,4 +108,3 @@ export default async function ReservationsAdminPage({ searchParams }: PageProps)
     </main>
   );
 }
-
