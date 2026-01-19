@@ -82,13 +82,6 @@ export function sanitizeInput(input: string): string {
     .trim();
 }
 
-/**
- * HTMLタグを完全に除去（表示用）
- */
-export function stripHtml(input: string): string {
-  return input.replace(/<[^>]*>/g, '').trim();
-}
-
 // お問い合わせフォームのバリデーションルール
 export interface ContactFormData {
   name: string;

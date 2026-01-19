@@ -82,23 +82,3 @@ export async function listReservations(): Promise<ReservationRequest[]> {
 
   return data.map(toReservationRequest);
 }
-
-/**
- * 予約のステータスを更新
- */
-export async function updateReservationStatus(
-  id: string,
-  status: ReservationStatus
-): Promise<void> {
-  const supabase = createServerClient();
-
-  const { error } = await supabase
-    .from('reservations')
-    .update({ status })
-    .eq('id', id);
-
-  if (error) {
-    logError(error, 'updateReservationStatus');
-    throw handleSupabaseError(error, 'update');
-  }
-}
