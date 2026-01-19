@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -14,7 +14,6 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
-  const [velocity, setVelocity] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const startXRef = useRef(0);
@@ -22,6 +21,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const animationRef = useRef<number | null>(null);
+  const velocityRef = useRef(0);
 
   const cardWidth = 85; // vw
   const gap = 4; // vw
@@ -58,18 +58,9 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
 
       setCurrentIndex(targetIndex);
       setDragOffset(0);
-      setVelocity(0);
     },
     [works.length, cardWidth, gap]
   );
-
-  // Handle momentum animation
-  useEffect(() => {
-    if (!isDragging && velocity !== 0) {
-      const currentOffset = getTargetOffset(currentIndex) + dragOffset;
-      snapToNearest(currentOffset, velocity);
-    }
-  }, [isDragging, velocity, currentIndex, dragOffset, getTargetOffset, snapToNearest]);
 
   // Touch handlers
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -82,9 +73,9 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
     lastXRef.current = touch.clientX;
     startTimeRef.current = Date.now();
     lastTimeRef.current = Date.now();
+    velocityRef.current = 0;
 
     setIsDragging(true);
-    setVelocity(0);
   }, []);
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
@@ -103,7 +94,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
     const timeDelta = currentTime - lastTimeRef.current;
     if (timeDelta > 0) {
       const velocityX = ((currentX - lastXRef.current) / containerWidth) * 100;
-      setVelocity(velocityX / timeDelta * 16); // Normalize to ~60fps
+      velocityRef.current = velocityX / timeDelta * 16; // Normalize to ~60fps
     }
 
     lastXRef.current = currentX;
@@ -129,8 +120,11 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
   }, [isDragging, currentIndex, getTargetOffset, works.length]);
 
   const handleTouchEnd = useCallback(() => {
+    const currentOffset = getTargetOffset(currentIndex) + dragOffset;
+    snapToNearest(currentOffset, velocityRef.current);
+    velocityRef.current = 0;
     setIsDragging(false);
-  }, []);
+  }, [currentIndex, dragOffset, getTargetOffset, snapToNearest]);
 
   // Navigate to specific index
   const goToIndex = useCallback((index: number) => {

@@ -37,6 +37,15 @@ export function WorksImageViewer({
   const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
   const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
 
+  // Reset states when work changes
+  // This is intentional - resetting navigation state when the displayed work changes
+  /* eslint-disable react-hooks/set-state-in-effect -- Intentional reset on prop change */
+  useEffect(() => {
+    setIsNavigating(false);
+    setDragOffset(0);
+  }, [currentIndex]);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
   // Keyboard navigation
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -57,12 +66,6 @@ export function WorksImageViewer({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
-
-  // Reset states when work changes
-  useEffect(() => {
-    setIsNavigating(false);
-    setDragOffset(0);
-  }, [currentIndex]);
 
   // Touch handlers with physics
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
