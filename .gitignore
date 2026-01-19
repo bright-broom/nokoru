@@ -1,32 +1,64 @@
 # dependencies
 node_modules
+.pnp
+.pnp.js
 
-# next.js
+# build & output
 .next
 out
+build
+dist
+*.tsbuildinfo
+
+# testing
+coverage
+.nyc_output
 
 # vercel
 .vercel
+
+# netlify
+.netlify
+
+# turbopack
+.turbo
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
 # env files
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
 
-# OS / editor
+# OS files
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# editors & IDEs
 .idea
 .vscode
+*.sublime-project
+*.sublime-workspace
 
 # local AI tooling
 .claude/settings.local.json
+.cursor
 
 # local data
 data/reservations.jsonl
 
+# supabase
+supabase/.temp
+
+# misc
+*.pem
+*.local
