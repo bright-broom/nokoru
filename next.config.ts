@@ -107,8 +107,8 @@ const nextConfig: NextConfig = {
 
   // 実験的機能
   experimental: {
-    // CSS最適化
-    optimizeCss: true,
+    // CSS最適化 (critters が必要)
+    optimizeCss: false,
   },
 
   // Powered by ヘッダー削除 (情報漏洩防止)

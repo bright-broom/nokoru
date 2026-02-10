@@ -13,14 +13,14 @@
   --color-cream: #fbf9f6;
   --color-beige: #f5f2ec;
 
-  /* アクセントカラー */
-  --color-site-accent: #7a8ec5;
-  --color-site-accent-light: #9ba8d4;
-  --color-site-accent-dark: #5d7ab8;
+  /* アクセントカラー: Silver Slate & Premium Gold */
+  --color-site-accent: #64748b;
+  --color-site-accent-light: #94a3b8;
+  --color-site-accent-dark: #475569;
 
-  /* テキストカラー */
-  --color-text: #3d3d3d;
-  --color-text-light: #6b6b6b;
+  /* テキストカラー: More contrast & elegance */
+  --color-text: #2d2d2d;
+  --color-text-light: #525252;
 
   /* ステータスカラー */
   --color-error: #ef4444;
@@ -29,41 +29,39 @@
   --color-success: #dcfce7;
   --color-success-dark: #22c55e;
 
-  /* ゴールドアクセント（ウェディング向け） */
-  --color-gold: #d4af37;
-  --color-gold-light: #e8d5a3;
-
-  /* フォント設定は src/lib/fonts.ts で集中管理 */
+  /* シャンパンゴールド（ウェディング向けラグジュアリー） */
+  --color-gold: #c5a059;
+  --color-gold-light: #dfc48c;
+  --color-gold-dark: #a6843e;
 
   /**
-   * リッチデザイン用変数
+   * プレミアム・デザイン用変数
    */
 
-  /* アニメーション時間 */
+  /* アニメーション時間 - より優雅に */
   --duration-fast: 150ms;
-  --duration-normal: 300ms;
-  --duration-slow: 600ms;
-  --duration-slower: 800ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --duration-slower: 1200ms;
 
-  /* カスタムイージング */
+  /* カスタムイージング - 高級感のある非線形な動き */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* 影 (エレベーション) */
-  --shadow-glow: 0 0 30px rgba(122, 142, 197, 0.2);
-  --shadow-glow-strong: 0 0 50px rgba(122, 142, 197, 0.3);
-  --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.08);
-  --shadow-float: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  /* 影 (エレベーション) - より柔らかく有機的に */
+  --shadow-glow: 0 0 30px rgba(100, 116, 139, 0.15);
+  --shadow-glow-gold: 0 0 30px rgba(197, 160, 89, 0.2);
+  --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
 
   /* アニメーション */
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 8s ease-in-out infinite;
-  --animate-shimmer: shimmer 2s linear infinite;
-  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
-  --animate-scale-in: scale-in 0.5s var(--ease-bounce) forwards;
-  --animate-slide-up: slide-up 0.6s var(--ease-out-expo) forwards;
-  --animate-fade-in-blur: fade-in-blur 0.8s var(--ease-smooth) forwards;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-reveal: reveal-up 1.2s var(--ease-premium) forwards;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 }
 
 html {
@@ -78,6 +76,7 @@ body {
 
 /* アクセシビリティ: モーション削減設定を尊重 */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -170,180 +169,141 @@ body {
   }
 }
 
+/* プレミアム・タイポグラフィの基本設定 */
+@layer base {
+  body {
+    @apply text-[15px] leading-[1.8] tracking-[0.01em];
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
 /**
  * リッチデザイン用キーフレームアニメーション
  */
 
-/* フローティング効果 */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* シマー効果（光沢が流れる） */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* パルスグロー効果 */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(122, 142, 197, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(122, 142, 197, 0.4);
-  }
-}
-
-/* スケールイン */
-@keyframes scale-in {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* スライドアップ */
-@keyframes slide-up {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* フェードインブラー */
-@keyframes fade-in-blur {
+/* 優雅な出現（Reveal） */
+@keyframes reveal-up {
   0% {
     opacity: 0;
+    transform: translateY(30px) scale(0.98);
     filter: blur(10px);
   }
+
   100% {
     opacity: 1;
+    transform: translateY(0) scale(1);
     filter: blur(0);
   }
 }
 
-/* 回転グロー（ボーダー用） */
-@keyframes rotate-glow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* フローティング効果 */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* テキストシマー */
-@keyframes text-shimmer {
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
+/* シマー効果（光沢が流れる） */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
-/* ゆっくりドリフト */
-@keyframes drift {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(5px, 5px); }
-  50% { transform: translate(0, 10px); }
-  75% { transform: translate(-5px, 5px); }
+/* パルスグロー効果 */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: var(--shadow-glow);
+  }
+
+  50% {
+    box-shadow: 0 0 50px rgba(100, 116, 139, 0.3);
+  }
 }
+
+/* ... existing keyframes ... */
 
 /**
  * ユーティリティクラス
  */
 
-/* グラデーションテキスト */
+/* グラデーションテキスト - より洗練された遷移 */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-site-accent) 0%, var(--color-site-accent-light) 50%, var(--color-site-accent) 100%);
+  background: linear-gradient(135deg,
+      var(--color-site-accent) 0%,
+      var(--color-site-accent-light) 50%,
+      var(--color-site-accent) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: text-shimmer 5s linear infinite;
 }
 
 .gradient-text-gold {
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+  background: linear-gradient(135deg,
+      var(--color-gold-dark) 0%,
+      var(--color-gold) 25%,
+      var(--color-gold-light) 50%,
+      var(--color-gold) 75%,
+      var(--color-gold-dark) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: text-shimmer 6s linear infinite;
 }
 
-/* シマーテキスト（アニメーション付き） */
-.shimmer-text {
-  background: linear-gradient(
-    90deg,
-    var(--color-text) 0%,
-    var(--color-site-accent) 50%,
-    var(--color-text) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: text-shimmer 3s linear infinite;
-}
-
-/* ガラスモーフィズム */
+/* ガラスモーフィズム - より深く多層的に */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(100, 116, 139, 0.08);
 }
 
-.glass-subtle {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.glass-premium {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(200px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-premium);
 }
 
-/* グラデーションボーダー */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(var(--color-cream), var(--color-cream)) padding-box,
-              linear-gradient(135deg, var(--color-site-accent), var(--color-site-accent-light)) border-box;
-  border: 2px solid transparent;
+/* ヘアライン（極細線）装飾 */
+.hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(100, 116, 139, 0.3), transparent);
 }
 
-/* ホバーリフト効果 */
-.hover-lift {
-  transition: transform var(--duration-normal) var(--ease-smooth),
-              box-shadow var(--duration-normal) var(--ease-smooth);
+.hairline-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.4), transparent);
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
+/* プレミアム・カード */
+.premium-card {
+  @apply relative overflow-hidden rounded-2xl bg-white transition-all duration-500;
+  border: 1px solid rgba(100, 116, 139, 0.08);
   box-shadow: var(--shadow-elevated);
 }
 
-/* ホバーグロー効果 */
-.hover-glow {
-  transition: box-shadow var(--duration-normal) var(--ease-smooth);
-}
-
-.hover-glow:hover {
-  box-shadow: var(--shadow-glow);
-}
-
-/* フローティングアニメーション */
-.animate-float {
-  animation: var(--animate-float);
-}
-
-.animate-float-slow {
-  animation: var(--animate-float-slow);
-}
-
-.animate-drift {
-  animation: drift 8s ease-in-out infinite;
-}
-
-/* パルスグロー */
-.animate-pulse-glow {
-  animation: var(--animate-pulse-glow);
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-premium);
+  border-color: rgba(197, 160, 89, 0.2);
 }
