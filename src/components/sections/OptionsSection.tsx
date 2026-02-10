@@ -6,31 +6,28 @@ import type { Option } from '@/types';
 
 function OptionCard({ option, delay }: { option: Option; delay: number }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={600} easing="smooth">
+    <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth">
       <Link
         href={`/options/${option.id}`}
-        className="group relative block overflow-hidden rounded-xl bg-white p-6 text-center shadow-md transition-all duration-500 hover:shadow-xl hover:-translate-y-2 hover:shadow-site-accent/10"
+        className="group relative block overflow-hidden rounded-[20px] bg-white p-8 text-center shadow-elevated border border-site-accent/5 transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
       >
-        {/* 背景グロー */}
-        <div
-          className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-site-accent/0 to-gold/0 opacity-0 blur-lg transition-all duration-500 group-hover:from-site-accent/10 group-hover:to-gold/5 group-hover:opacity-100"
-          aria-hidden="true"
-        />
-
-        {/* 上部装飾ライン */}
-        <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 h-1 w-0 bg-gradient-to-r from-site-accent to-gold transition-all duration-500 group-hover:w-full rounded-b-full"
-          aria-hidden="true"
-        />
+        {/* 透明感のあるアクセント背景 */}
+        <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-bl from-gold/5 via-transparent to-transparent transition-all duration-700 group-hover:from-gold/15" aria-hidden="true" />
 
         <div className="relative">
-          <p className="text-text-light font-medium transition-colors duration-300 group-hover:text-text">{option.name}</p>
-          <p className="mt-3 font-display text-2xl gradient-text">{option.price}</p>
+          <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-site-accent/40 transition-colors duration-500 group-hover:text-site-accent">
+            {option.name}
+          </p>
+          <div className="mt-4 flex flex-col items-center">
+            <span className="font-display text-3xl gradient-text tracking-tighter sm:text-4xl">
+              {option.price}
+            </span>
+          </div>
 
-          {/* ホバー時の詳細リンク表示 */}
-          <div className="mt-3 flex items-center justify-center gap-1 text-xs text-site-accent opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
-            <span>詳細を見る</span>
-            <span>→</span>
+          {/* ホバー時の洗練されたガイド */}
+          <div className="mt-6 flex items-center justify-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gold/0 transition-all duration-500 group-hover:text-gold group-hover:translate-y-0 translate-y-2">
+            <span>Details</span>
+            <div className="h-px w-6 bg-gold/30" />
           </div>
         </div>
       </Link>

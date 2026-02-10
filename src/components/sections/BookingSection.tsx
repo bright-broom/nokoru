@@ -47,73 +47,48 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
   const Icon = iconMap[icon];
 
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={600} easing="smooth">
+    <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth">
       <div
         className={cn(
-          'group relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm p-8',
-          'border border-white/50 shadow-lg transition-all duration-500',
-          'hover:bg-white hover:shadow-2xl hover:-translate-y-3 hover:shadow-site-accent/10'
+          'group relative h-full overflow-hidden rounded-[32px] bg-white p-10',
+          'border border-site-accent/5 shadow-elevated transition-all duration-700',
+          'hover:shadow-premium hover:-translate-y-3'
         )}
       >
-        {/* 背景グロー */}
-        <div
-          className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-site-accent/0 to-gold/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-site-accent/20 group-hover:to-gold/10 group-hover:opacity-100"
-          aria-hidden="true"
-        />
+        {/* 背景の柔らかなアクセント */}
+        <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-bl from-site-accent/5 via-transparent to-transparent opacity-60 transition-all duration-700 group-hover:from-site-accent/15" aria-hidden="true" />
 
-        {/* 上部装飾ライン */}
+        {/* 番号バッジ - 洗練 */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 h-1 w-0 bg-gradient-to-r from-site-accent via-gold to-site-accent transition-all duration-500 rounded-b-full group-hover:w-2/3"
-          aria-hidden="true"
-        />
-
-        {/* 番号バッジ */}
-        <div
-          className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-beige/50 text-xs text-text-light/50 transition-all duration-300 group-hover:bg-site-accent/10 group-hover:text-site-accent"
+          className="absolute top-6 right-8 font-display text-4xl text-site-accent/5 transition-all duration-700 group-hover:text-site-accent/10"
           aria-hidden="true"
         >
           0{index + 1}
         </div>
 
         <div className="relative">
-          {/* Icon */}
-          <div className="relative mx-auto mb-6 h-16 w-16">
-            {/* 外側リング */}
-            <div
-              className="absolute -inset-2 rounded-full border border-site-accent/10 transition-all duration-500 group-hover:border-site-accent/30 group-hover:scale-110"
-              aria-hidden="true"
-            />
-
-            {/* メインアイコン背景 */}
-            <div
-              className={cn(
-                'flex h-full w-full items-center justify-center rounded-full',
-                'bg-gradient-to-br from-site-accent/10 to-gold/5 transition-all duration-500',
-                'group-hover:from-site-accent group-hover:to-site-accent-light group-hover:shadow-lg group-hover:shadow-site-accent/30'
-              )}
-            >
-              <Icon
-                className={cn(
-                  'h-7 w-7 text-site-accent transition-all duration-500',
-                  'group-hover:text-white group-hover:scale-110'
-                )}
-              />
+          {/* Icon - ラグジュアリー */}
+          <div className="relative mb-10 h-20 w-20">
+            <div className="flex h-full w-full items-center justify-center rounded-[24px] bg-beige/40 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/30">
+              <Icon className="h-10 w-10 text-site-accent transition-all duration-700 group-hover:text-white group-hover:scale-110" />
             </div>
+            {/* 装飾アクセント */}
+            <div className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-gold/10 backdrop-blur-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" />
           </div>
 
           {/* Content */}
-          <div className="text-center">
-            <h3 className="font-display text-xl tracking-wide transition-colors duration-300 group-hover:text-site-accent">
+          <div className="text-left">
+            <h3 className="font-display text-2xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
               {title}
             </h3>
 
-            {/* 時間バッジ */}
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-site-accent/5 to-gold/5 px-4 py-1.5 border border-site-accent/10">
-              <ClockIcon className="h-4 w-4 text-site-accent" />
-              <span className="text-sm font-medium gradient-text">{duration}</span>
+            {/* 時間バッジ - プレミアム */}
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/20 px-4 py-1.5 bg-gold/5">
+              <ClockIcon className="h-3.5 w-3.5 text-gold" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{duration}</span>
             </div>
 
-            <p className="mt-4 text-sm leading-relaxed text-text-light">
+            <p className="mt-8 text-[14px] leading-relaxed text-text-light/90">
               {description}
             </p>
           </div>
@@ -137,31 +112,21 @@ function ProcessStep({
   delay: number;
 }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} easing="smooth" className="flex items-center gap-4">
-      {/* Step number */}
-      <div className="relative">
-        {/* 外側リング */}
-        <div
-          className="absolute -inset-1 rounded-full border border-site-accent/20"
-          aria-hidden="true"
-        />
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-site-accent to-site-accent-light text-sm font-semibold text-white shadow-md shadow-site-accent/20">
+    <FadeIn direction="scale-up" delay={delay} duration={800} easing="smooth" className="flex flex-1 items-center gap-6">
+      <div className="relative shrink-0">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-site-accent shadow-premium ring-1 ring-site-accent/10 font-display text-lg">
           {step}
         </div>
       </div>
 
-      {/* Content */}
       <div className="min-w-0">
-        <p className="text-sm font-medium text-text">{title}</p>
-        <p className="text-xs text-text-light">{description}</p>
+        <p className="text-[14px] font-bold tracking-wide text-text uppercase">{title}</p>
+        <p className="mt-0.5 text-[12px] text-text-light/70 tracking-wide leading-relaxed">{description}</p>
       </div>
 
-      {/* Connector */}
       {!isLast && (
-        <div className="hidden flex-1 md:block">
-          <div className="relative h-[2px] w-full overflow-hidden rounded-full bg-beige">
-            <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-site-accent/50 to-transparent" />
-          </div>
+        <div className="hidden flex-1 md:block ml-4">
+          <div className="h-[1px] w-full bg-gradient-to-r from-site-accent/20 via-beige to-transparent" />
         </div>
       )}
     </FadeIn>
@@ -172,56 +137,23 @@ export function BookingSection({ calLink }: BookingSectionProps) {
   const { consultationCards, processSteps } = text.sections.booking;
 
   return (
-    <Section id="booking" variant="alternate" aria-labelledby="booking-heading" className="relative overflow-hidden">
-      {/* 背景装飾 */}
+    <Section id="booking" aria-labelledby="booking-heading" className="relative overflow-hidden">
+      {/* 背景装飾 - プレミアム */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <FloatingDecoration
-          shape="blur"
-          size="xl"
-          color="accent"
-          opacity={4}
-          position={{ top: '5%', left: '-10%' }}
-          animationDelay={0}
-        />
-        <FloatingDecoration
-          shape="blur"
-          size="lg"
-          color="gold"
-          opacity={5}
-          position={{ bottom: '10%', right: '-5%' }}
-          animationDelay={2000}
-        />
-        <FloatingDecoration
-          shape="ring"
-          size="md"
-          color="accent"
-          opacity={8}
-          position={{ top: '40%', right: '5%' }}
-          animationDelay={1000}
-        />
-        <FloatingDecoration
-          shape="ring"
-          size="sm"
-          color="gold"
-          opacity={10}
-          position={{ bottom: '30%', left: '8%' }}
-          animationDelay={3000}
-        />
+        <FloatingDecoration shape="lace" size="xl" color="accent" opacity={10} position={{ top: '-10%', left: '-10%' }} />
+        <FloatingDecoration shape="lace" size="lg" color="gold" opacity={5} position={{ bottom: '10%', right: '5%' }} animationDelay={2000} />
+        <FloatingDecoration shape="blur" size="xl" color="beige" opacity={40} position={{ top: '30%', right: '10%' }} />
       </div>
 
       <Container className="relative z-10">
-        {/* Header with Free Badge */}
-        <FadeIn direction="scale" easing="bounce">
-          <div className="mb-6 flex justify-center">
-            <span className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-50 to-green-50 px-5 py-2 text-sm font-semibold text-emerald-700 shadow-sm border border-emerald-100">
-              {/* グロー効果 */}
-              <span
-                className="absolute -inset-1 rounded-full bg-emerald-400/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
-                aria-hidden="true"
-              />
-              <CheckIcon className="relative h-4 w-4" />
-              <span className="relative">{text.sections.booking.freeBadge}</span>
-            </span>
+        {/* Header with Luxury Free Badge */}
+        <FadeIn direction="scale" easing="smooth">
+          <div className="mb-10 flex justify-center">
+            <div className="group relative inline-flex items-center gap-3 rounded-full bg-white px-8 py-3 text-[11px] font-bold uppercase tracking-[0.4em] text-site-accent shadow-elevated border border-site-accent/5">
+              <CheckIcon className="h-4 w-4 text-gold" />
+              <span>{text.sections.booking.freeBadge}</span>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-12 bg-gold/40 rounded-full" />
+            </div>
           </div>
         </FadeIn>
 
@@ -229,30 +161,27 @@ export function BookingSection({ calLink }: BookingSectionProps) {
           id="booking-heading"
           title={text.sections.booking.title}
           subtitle={text.sections.booking.subtitle}
-          className="text-center"
+          className="mb-16"
         />
 
-        {/* Description */}
-        <FadeIn direction="blur-up" delay={100}>
-          <div className="mx-auto mt-8 max-w-2xl text-center">
-            <p className="text-lg text-text-light leading-relaxed">{text.sections.booking.description}</p>
-            <p className="mt-3 text-sm text-text-light/70">
-              {text.sections.booking.subDescription}
+        {/* Description - Editorial */}
+        <FadeIn direction="blur-up" delay={200} duration={1200}>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-display text-2xl leading-relaxed text-text/80 tracking-wide">
+              {text.sections.booking.description}
             </p>
+            <div className="mt-8 flex items-center justify-center gap-4">
+              <span className="h-px w-8 bg-gold/30" />
+              <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-text-light/60">
+                {text.sections.booking.subDescription}
+              </p>
+              <span className="h-px w-8 bg-gold/30" />
+            </div>
           </div>
         </FadeIn>
 
-        {/* 区切り装飾 */}
-        <FadeIn direction="scale" delay={200}>
-          <div className="my-12 flex items-center justify-center gap-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-beige" />
-            <span className="text-beige">{text.footer.decorativeMark}</span>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-beige" />
-          </div>
-        </FadeIn>
-
-        {/* Consultation Type Cards */}
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-3">
+        {/* Consultation Types - Luxury Cards */}
+        <div className="mx-auto mt-24 grid max-w-6xl gap-8 md:grid-cols-3">
           {consultationCards.map((card, index) => (
             <ConsultationCard
               key={card.title}
@@ -260,22 +189,23 @@ export function BookingSection({ calLink }: BookingSectionProps) {
               duration={card.duration}
               description={card.description}
               icon={card.icon as keyof typeof iconMap}
-              delay={300 + index * 100}
+              delay={400 + index * 150}
               index={index}
             />
           ))}
         </div>
 
-        {/* Process Steps */}
-        <FadeIn direction="blur-up" delay={600}>
-          <div className="mx-auto mt-16 max-w-3xl">
-            <div className="rounded-2xl bg-white/60 backdrop-blur-sm p-8 shadow-lg border border-white/50">
-              {/* プロセスヘッダー */}
-              <p className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em] text-text-light/50">
-                Booking Process
+        {/* Process Visualizer */}
+        <FadeIn direction="blur-up" delay={800}>
+          <div className="mx-auto mt-32 max-w-5xl">
+            <div className="relative overflow-hidden rounded-[40px] bg-beige/10 p-12 border border-beige/40">
+              <div className="absolute top-0 right-0 p-8 font-display text-8xl text-beige/20 select-none">✦</div>
+
+              <p className="mb-12 text-center text-[11px] font-bold uppercase tracking-[0.5em] text-site-accent/40">
+                The Journey of Your Story
               </p>
 
-              <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-4">
+              <div className="flex flex-col gap-10 md:flex-row md:items-center">
                 {processSteps.map((step, index) => (
                   <ProcessStep
                     key={step.step}
@@ -283,7 +213,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
                     title={step.title}
                     description={step.description}
                     isLast={index === processSteps.length - 1}
-                    delay={700 + index * 100}
+                    delay={1000 + index * 150}
                   />
                 ))}
               </div>
@@ -291,44 +221,41 @@ export function BookingSection({ calLink }: BookingSectionProps) {
           </div>
         </FadeIn>
 
-        {/* Calendar Section */}
-        <FadeIn direction="blur-up" delay={900}>
-          <div className="mt-16">
-            <h3 className="mb-8 text-center">
-              <span className="font-display text-2xl tracking-wide text-text">
+        {/* Calendar - Grand Stage */}
+        <FadeIn direction="blur-up" delay={1200}>
+          <div className="mt-32">
+            <div className="mb-16 flex flex-col items-center">
+              <h3 className="font-display text-3xl tracking-widest text-text">
                 {text.sections.booking.calendarHeading}
-              </span>
-              <span className="mt-2 block h-px w-24 mx-auto bg-gradient-to-r from-transparent via-site-accent/30 to-transparent" />
-            </h3>
+              </h3>
+              <div className="mt-4 h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent" />
+            </div>
 
-            <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl shadow-black/5 border border-beige/30">
-              {/* 上部装飾 */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-site-accent via-gold to-site-accent" aria-hidden="true" />
+            <div className="group relative mx-auto max-w-5xl">
+              <div className="absolute -inset-10 rounded-[40px] bg-gradient-to-br from-site-accent/10 via-gold/5 to-site-accent/10 blur-3xl opacity-40 transition-opacity duration-1000 group-hover:opacity-70" aria-hidden="true" />
 
-              <CalEmbed calLink={calLink} />
+              <div className="relative overflow-hidden rounded-[32px] bg-white shadow-premium p-1 md:p-2 ring-1 ring-site-accent/5">
+                <CalEmbed calLink={calLink} />
+              </div>
             </div>
           </div>
         </FadeIn>
 
-        {/* Notes */}
-        <FadeIn direction="blur-up" delay={1000}>
-          <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8">
+        {/* Fine Print - Elegant */}
+        <FadeIn direction="blur-up" delay={1500}>
+          <div className="mx-auto mt-20 flex max-w-3xl flex-col items-center gap-8 md:flex-row md:justify-center md:gap-16">
             {text.sections.booking.notes.map((note, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-3 text-sm text-text-light transition-colors duration-300 hover:text-text"
+                className="group flex items-center gap-3 text-[13px] text-text-light/60 transition-all duration-500 hover:text-site-accent"
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-50 transition-all duration-300 group-hover:bg-emerald-100 group-hover:scale-110">
-                  <CheckIcon className="h-3.5 w-3.5 text-emerald-600" />
-                </span>
-                <span>{note}</span>
+                <div className="h-2 w-2 rounded-full border border-gold/40 transition-all duration-500 group-hover:bg-gold group-hover:scale-125" />
+                <span className="tracking-wide">{note}</span>
               </div>
             ))}
           </div>
         </FadeIn>
       </Container>
-
-      {/* セクション下部の装飾 */}
       <SectionDivider variant="wave" className="mt-16" />
     </Section>
   );

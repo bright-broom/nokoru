@@ -13,34 +13,26 @@ function PlanCard({ plan, delay }: { plan: Plan; delay: number }) {
   const isRecommended = plan.isRecommended;
 
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={700} easing="smooth" className="h-full">
+    <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth" className="h-full">
       <Link
         href={`/plans/${plan.id}`}
         className={cn(
-          'group relative flex h-full flex-col rounded-2xl transition-all duration-500',
-          isComingSoon && 'border-2 border-dashed border-beige/60 bg-beige/20',
-          isRecommended && 'bg-white shadow-2xl ring-2 ring-site-accent hover:shadow-[0_25px_60px_-12px_rgba(122,142,197,0.3)]',
-          !isComingSoon && !isRecommended && 'bg-white shadow-lg hover:shadow-2xl hover:-translate-y-2 hover:shadow-site-accent/10'
+          'group relative flex h-full flex-col overflow-hidden rounded-[32px] transition-all duration-700',
+          isComingSoon && 'border-2 border-dashed border-beige/60 bg-beige/10',
+          isRecommended && 'bg-white shadow-premium ring-1 ring-gold/20 hover:ring-gold/40',
+          !isComingSoon && !isRecommended && 'bg-white shadow-elevated border border-site-accent/5 hover:shadow-premium hover:-translate-y-2'
         )}
       >
-        {/* 背景グロー（推奨カード） */}
+        {/* 背景の柔らかなグロー（推奨カード） */}
         {isRecommended && (
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-site-accent/20 to-gold/10 opacity-50 blur-xl transition-opacity duration-500 group-hover:opacity-70" aria-hidden="true" />
+          <div className="absolute -inset-10 rounded-[40px] bg-gradient-to-br from-gold/10 via-site-accent/5 to-transparent blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-1000" aria-hidden="true" />
         )}
 
-        {/* シマー効果（推奨カード） */}
+        {/* おすすめバッジ - プレミアム */}
         {isRecommended && (
-          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] transition-transform duration-1000 group-hover:translate-x-[200%]" />
-          </div>
-        )}
-
-        {/* おすすめバッジ - リッチ化 */}
-        {isRecommended && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-site-accent to-site-accent-light px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-site-accent/30 animate-pulse">
-              <StarIcon className="h-3.5 w-3.5" />
-              {text.sections.plans.recommendedBadge}
+          <div className="absolute top-6 right-6 z-10">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gold shadow-glow-gold text-white animate-float">
+              <StarIcon className="h-5 w-5 fill-current" />
             </div>
           </div>
         )}
@@ -48,97 +40,76 @@ function PlanCard({ plan, delay }: { plan: Plan; delay: number }) {
         {/* ヘッダー部分 */}
         <div
           className={cn(
-            'relative rounded-t-2xl px-6 py-8 text-center',
-            isRecommended && 'bg-gradient-to-b from-site-accent/10 to-transparent pt-10',
+            'relative px-10 pt-12 pb-8 text-center',
             isComingSoon && 'opacity-60'
           )}
         >
-          <h3
-            className={cn(
-              'font-display text-2xl tracking-wide transition-colors duration-300',
-              isComingSoon && 'text-text-light',
-              !isComingSoon && 'group-hover:text-site-accent'
-            )}
-          >
-            {plan.name}
-          </h3>
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <span className="h-px w-6 bg-site-accent/20" />
+            <h3 className="font-display text-2xl tracking-widest text-text/80">
+              {plan.name}
+            </h3>
+            <span className="h-px w-6 bg-site-accent/20" />
+          </div>
 
-          <div className="mt-4">
-            <span
-              className={cn(
-                'text-4xl font-light tracking-tight md:text-5xl transition-all duration-300',
-                isComingSoon && 'text-text-light',
-                isRecommended && 'gradient-text'
-              )}
-            >
-              {plan.price}
-            </span>
+          <div className="mt-6 flex flex-col items-center gap-1">
+            <div className="flex items-baseline gap-1">
+              <span className="text-[15px] font-bold text-site-accent/40 tracking-wider">¥</span>
+              <span
+                className={cn(
+                  'font-display text-5xl tracking-tighter sm:text-6xl',
+                  isRecommended ? 'gradient-text-gold' : 'text-text'
+                )}
+              >
+                {plan.price}
+              </span>
+            </div>
             {plan.priceNote && (
-              <span className="ml-1 text-lg text-text-light">{plan.priceNote}</span>
+              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-site-accent/40">{plan.priceNote}</span>
             )}
           </div>
         </div>
 
-        {/* 区切り線 - グラデーション */}
-        <div className={cn(
-          'mx-6 h-px',
-          isRecommended ? 'bg-gradient-to-r from-transparent via-site-accent/30 to-transparent' : 'bg-beige'
-        )} />
-
         {/* コンテンツ部分 */}
-        <div className="relative flex flex-1 flex-col px-6 py-6">
+        <div className="relative flex flex-1 flex-col px-10 pb-12">
           {plan.features.length > 0 ? (
-            <ul className="flex-1 space-y-4">
+            <ul className="flex-1 space-y-5">
               {plan.features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3 group/item">
-                  <span
-                    className={cn(
-                      'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full transition-all duration-300',
-                      isRecommended
-                        ? 'bg-gradient-to-br from-site-accent/20 to-gold/10 group-hover/item:from-site-accent/30 group-hover/item:to-gold/20'
-                        : 'bg-beige group-hover/item:bg-site-accent/10'
-                    )}
-                  >
-                    <CheckIcon
-                      className={cn(
-                        'h-3 w-3 transition-colors duration-300',
-                        isRecommended ? 'text-site-accent' : 'text-text-light group-hover/item:text-site-accent'
-                      )}
-                    />
-                  </span>
-                  <span className="text-sm text-text-light">{feature.text}</span>
+                <li key={index} className="flex items-start gap-4">
+                  <div className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center">
+                    <CheckIcon className={cn('h-3.5 w-3.5', isRecommended ? 'text-gold' : 'text-site-accent/40')} />
+                  </div>
+                  <span className="text-[14px] leading-relaxed text-text-light/90">{feature.text}</span>
                 </li>
               ))}
             </ul>
           ) : (
             plan.description && (
-              <p className="flex-1 text-sm leading-relaxed text-text-light">
+              <p className="flex-1 text-[14px] leading-relaxed text-text-light/90">
                 {renderMultilineText(plan.description)}
               </p>
             )
           )}
 
-          {/* カード内CTA - リッチ化 */}
-          {!isComingSoon && (
-            <div className="mt-6 pt-4">
-              <span
+          {/* CTA - リッチ化 */}
+          {!isComingSoon ? (
+            <div className="mt-10">
+              <div
                 className={cn(
-                  'block w-full rounded-full py-3 text-center text-sm font-medium transition-all duration-500',
+                  'w-full rounded-full py-4 text-center text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-500',
                   isRecommended
-                    ? 'bg-gradient-to-r from-site-accent to-site-accent-light text-white shadow-md group-hover:shadow-lg group-hover:shadow-site-accent/25'
-                    : 'border border-site-accent/30 text-site-accent group-hover:bg-gradient-to-r group-hover:from-site-accent group-hover:to-site-accent-light group-hover:text-white group-hover:border-transparent group-hover:shadow-md'
+                    ? 'bg-gold text-white shadow-glow-gold hover:shadow-[0_15px_30px_rgba(197,160,89,0.3)]'
+                    : 'border border-site-accent/20 text-site-accent hover:bg-site-accent hover:text-white hover:border-transparent hover:shadow-glow'
                 )}
               >
-                詳細を見る
-              </span>
+                View Collection
+              </div>
             </div>
-          )}
-
-          {isComingSoon && (
-            <div className="mt-6 pt-4">
-              <span className="block w-full rounded-full border border-dashed border-beige py-3 text-center text-sm text-text-light">
-                準備中
-              </span>
+          ) : (
+            <div className="mt-10">
+              <div className="w-full rounded-full border border-dashed border-beige py-4 text-center text-[11px] font-bold uppercase tracking-[0.3em] text-text-light/40">
+                Enchanting Soon
+              </div>
             </div>
           )}
         </div>
