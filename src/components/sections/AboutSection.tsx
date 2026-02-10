@@ -7,77 +7,62 @@ import type { Staff } from '@/types';
 
 function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={700} easing="smooth" className="h-full">
+    <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth" className="h-full">
       <Link
         href={`/staff/${staff.id}`}
-        className="group relative block h-full overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm p-6 shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:shadow-site-accent/10 hover:bg-white md:p-8"
+        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-8 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2 md:p-10"
       >
-        {/* 背景グロー */}
-        <div
-          className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-site-accent/0 to-gold/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-site-accent/15 group-hover:to-gold/10 group-hover:opacity-100"
-          aria-hidden="true"
-        />
+        {/* 背景の柔らかなアクセント */}
+        <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-60 transition-all duration-1000 group-hover:scale-125 group-hover:from-gold/10" aria-hidden="true" />
 
-        {/* 背景装飾 - グラデーション強化 */}
-        <div
-          className="absolute -left-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br from-site-accent/10 to-gold/5 transition-all duration-700 group-hover:scale-150 group-hover:from-site-accent/15"
-          aria-hidden="true"
-        />
+        <div className="relative flex flex-col items-center text-center gap-8 sm:flex-row sm:items-start sm:text-left">
+          {/* プロフィール画像 - エディトリアル・フレーム */}
+          <div className="relative shrink-0">
+            {/* 装飾リング */}
+            <div className="absolute -inset-3 rounded-full border border-site-accent/5 transition-all duration-1000 group-hover:border-site-accent/20 group-hover:rotate-45" aria-hidden="true" />
 
-        <div className="relative flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left">
-          {/* プロフィール画像 - リング装飾追加 */}
-          <div className="relative mb-6 shrink-0 sm:mb-0 sm:mr-6">
-            {/* 外側リング装飾 */}
-            <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-site-accent/20 via-transparent to-gold/20 opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:rotate-180" aria-hidden="true" />
-
-            <figure className="relative h-28 w-28 overflow-hidden rounded-full bg-beige shadow-lg ring-4 ring-white/50 transition-all duration-500 group-hover:scale-105 group-hover:shadow-xl group-hover:ring-site-accent/20 sm:h-32 sm:w-32">
-              {staff.imageUrl ? (
-                <Image
-                  src={staff.imageUrl}
-                  alt={`${staff.name}${text.sections.about.profileAltSuffix}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 640px) 112px, 128px"
-                  priority={isPriority}
-                />
-              ) : (
-                <div
-                  className="flex h-full w-full items-center justify-center bg-beige"
-                  role="img"
-                  aria-label={`${staff.name}${text.sections.about.profileAltMissingSuffix}`}
-                >
-                  <span className="text-4xl text-text-light/40">👤</span>
-                </div>
-              )}
+            <figure className="relative h-32 w-32 overflow-hidden rounded-full bg-beige/30 p-1 md:h-40 md:w-40">
+              <div className="h-full w-full overflow-hidden rounded-full ring-1 ring-gold/10">
+                {staff.imageUrl ? (
+                  <Image
+                    src={staff.imageUrl}
+                    alt={`${staff.name}${text.sections.about.profileAltSuffix}`}
+                    fill
+                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-110"
+                    sizes="(max-width: 640px) 128px, 160px"
+                    priority={isPriority}
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-beige/20 text-4xl opacity-40">👤</div>
+                )}
+              </div>
             </figure>
-            {/* 装飾ドット - グロー追加 */}
-            <div
-              className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-gradient-to-br from-site-accent/30 to-gold/20 shadow-sm transition-all duration-500 group-hover:scale-125 group-hover:shadow-md group-hover:shadow-site-accent/30"
-              aria-hidden="true"
-            />
+
+            {/* ステータスドット */}
+            <div className="absolute bottom-2 right-2 h-6 w-6 rounded-full border-4 border-white bg-gold shadow-glow-gold transition-transform duration-700 group-hover:scale-125" aria-hidden="true" />
           </div>
 
           {/* テキストコンテンツ */}
-          <div className="flex-1">
-            <h3 className="font-display text-2xl tracking-wide transition-all duration-500 group-hover:text-site-accent">
+          <div className="flex-1 lg:pt-4">
+            <h3 className="font-display text-3xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
               {staff.name}
             </h3>
 
-            <p className="mt-1 inline-flex items-center gap-2 text-sm font-medium text-site-accent">
-              <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-site-accent to-gold animate-pulse" aria-hidden="true" />
-              {staff.role}
-            </p>
+            <div className="mt-2 flex items-center justify-center gap-3 sm:justify-start">
+              <span className="h-px w-6 bg-gold/40" />
+              <p className="text-[12px] font-bold uppercase tracking-[0.3em] text-gold italic">
+                {staff.role}
+              </p>
+            </div>
 
-            <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-text-light">
+            <p className="mt-6 text-[15px] leading-relaxed text-text-light/90">
               {staff.bio}
             </p>
 
-            {/* 詳細リンク - リッチ化 */}
-            <div className="mt-4 flex items-center gap-2 text-sm font-medium text-site-accent transition-all duration-300 group-hover:gap-3 sm:mt-6">
-              <span>プロフィールを見る</span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-site-accent/10 transition-all duration-300 group-hover:bg-site-accent group-hover:text-white" aria-hidden="true">
-                →
-              </span>
+            {/* 詳細への誘い */}
+            <div className="mt-8 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-site-accent/40 transition-all duration-500 group-hover:text-site-accent group-hover:gap-5 sm:justify-start">
+              <span>Biography</span>
+              <div className="h-px w-8 bg-site-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-site-accent" />
             </div>
           </div>
         </div>

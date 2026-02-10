@@ -15,55 +15,45 @@ export function HeroSection() {
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20"
       aria-labelledby="hero-heading"
     >
-      {/* 背景装飾 - リッチ化 */}
+      {/* 背景装飾 - さらにプレミアムに */}
       <div
         className="pointer-events-none absolute inset-0 overflow-hidden"
         aria-hidden="true"
       >
-        {/* 右上のグローブラー */}
+        {/* 銀色のレース装飾 */}
         <FloatingDecoration
-          shape="blur"
+          shape="lace"
           size="xl"
           color="accent"
-          opacity={8}
-          position={{ top: '-5%', right: '-10%' }}
+          opacity={12}
+          position={{ top: '-10%', right: '-5%' }}
           animationDelay={0}
         />
-        {/* 左下の大きなグロー */}
+        <FloatingDecoration
+          shape="lace"
+          size="lg"
+          color="gold"
+          opacity={8}
+          position={{ bottom: '15%', left: '5%' }}
+          animationDelay={2000}
+        />
+
+        {/* 柔らかな光の玉 */}
         <FloatingDecoration
           shape="blur"
           size="xl"
           color="beige"
-          opacity={40}
-          position={{ bottom: '-10%', left: '-15%' }}
-          animationDelay={2000}
-        />
-        {/* 左上のリング装飾 */}
-        <FloatingDecoration
-          shape="ring"
-          size="sm"
-          color="accent"
-          opacity={15}
-          position={{ top: '15%', left: '8%' }}
+          opacity={50}
+          position={{ top: '20%', left: '-10%' }}
           animationDelay={1000}
         />
-        {/* 右下のリング装飾 */}
         <FloatingDecoration
-          shape="ring"
-          size="md"
-          color="gold"
-          opacity={10}
-          position={{ bottom: '25%', right: '10%' }}
-          animationDelay={3000}
-        />
-        {/* 中央上のドット */}
-        <FloatingDecoration
-          shape="circle"
-          size="sm"
+          shape="blur"
+          size="xl"
           color="accent"
           opacity={5}
-          position={{ top: '30%', left: '50%' }}
-          animationDelay={1500}
+          position={{ bottom: '-10%', right: '-5%' }}
+          animationDelay={3000}
         />
       </div>
 
@@ -74,21 +64,21 @@ export function HeroSection() {
       {/* メインコンテンツ */}
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* サブタグライン */}
-        <FadeIn direction="blur" duration={800} easing="smooth">
-          <div className="mb-6 flex items-center gap-4">
-            <span className="h-px w-12 bg-gradient-to-r from-transparent to-site-accent/50" aria-hidden="true" />
-            <p className="text-xs uppercase tracking-[0.3em] text-site-accent font-medium">
+        <FadeIn direction="blur" duration={1200} easing="smooth">
+          <div className="mb-8 flex items-center gap-6">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent via-site-accent/30 to-transparent" aria-hidden="true" />
+            <p className="text-[11px] uppercase tracking-[0.5em] text-site-accent/80 font-bold">
               {siteConfig.subTagline}
             </p>
-            <span className="h-px w-12 bg-gradient-to-l from-transparent to-site-accent/50" aria-hidden="true" />
+            <div className="h-px w-16 bg-gradient-to-l from-transparent via-site-accent/30 to-transparent" aria-hidden="true" />
           </div>
         </FadeIn>
 
-        {/* メインタグライン - グラデーションテキスト */}
-        <FadeIn direction="blur-up" delay={200} duration={900} easing="smooth">
+        {/* メインタグライン - 優雅な出現 */}
+        <FadeIn direction="none" delay={300} duration={1500} className="animate-reveal">
           <p
             id="hero-heading"
-            className="font-display text-4xl leading-tight md:text-6xl lg:text-7xl gradient-text"
+            className="font-display text-5xl leading-[1.15] md:text-7xl lg:text-8xl gradient-text tracking-tight"
             role="heading"
             aria-level={2}
           >
@@ -97,61 +87,52 @@ export function HeroSection() {
         </FadeIn>
 
         {/* エリア・年度 */}
-        <FadeIn direction="blur-up" delay={400} duration={800} easing="smooth">
-          <p className="mt-8 max-w-xl text-text-light tracking-wide">
-            {siteConfig.areas}
-            <br />
-            <span className="text-site-accent/80">{siteConfig.year}</span>
-          </p>
-        </FadeIn>
-
-        {/* 動画 */}
-        <FadeIn direction="scale-up" delay={600} duration={900} easing="smooth" className="mt-14 w-full max-w-5xl">
-          <div className="group relative">
-            {/* 背景グロー - 強化 */}
-            <div
-              className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-site-accent/20 via-site-accent/5 to-gold/10 blur-3xl transition-all duration-700 group-hover:opacity-90 group-hover:scale-105 md:-inset-10"
-              aria-hidden="true"
-            />
-
-            {/* コーナー装飾 - グラデーション化 */}
-            <div className="absolute -top-3 -left-3 h-12 w-12 md:-top-5 md:-left-5 md:h-16 md:w-16" aria-hidden="true">
-              <div className="absolute top-0 left-0 h-full w-0.5 bg-gradient-to-b from-site-accent/60 to-transparent" />
-              <div className="absolute top-0 left-0 h-0.5 w-full bg-gradient-to-r from-site-accent/60 to-transparent" />
-            </div>
-            <div className="absolute -bottom-3 -right-3 h-12 w-12 md:-bottom-5 md:-right-5 md:h-16 md:w-16" aria-hidden="true">
-              <div className="absolute bottom-0 right-0 h-full w-0.5 bg-gradient-to-t from-site-accent/60 to-transparent" />
-              <div className="absolute bottom-0 right-0 h-0.5 w-full bg-gradient-to-l from-site-accent/60 to-transparent" />
-            </div>
-
-            {/* メインフレーム - ガラス効果 */}
-            <div className="relative overflow-hidden rounded-2xl bg-white/90 backdrop-blur-sm p-2 shadow-2xl transition-shadow duration-500 group-hover:shadow-[0_25px_60px_-12px_rgba(0,0,0,0.2)] md:p-3">
-              <YouTubeEmbed
-                videoId={siteConfig.heroVideoId}
-                title={text.sections.hero.videoTitle}
-                className="rounded-xl"
-              />
-            </div>
-
-            {/* フローティングアクセント - グラデーション強化 */}
-            <div
-              className="absolute -right-2 top-1/4 h-24 w-1 rounded-full bg-gradient-to-b from-site-accent/50 via-site-accent/20 to-transparent md:-right-4 md:h-32"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -left-2 bottom-1/4 h-20 w-1 rounded-full bg-gradient-to-t from-gold/40 via-gold/15 to-transparent md:-left-4 md:h-28"
-              aria-hidden="true"
-            />
+        <FadeIn direction="blur-up" delay={800} duration={1200} easing="smooth">
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <p className="text-[17px] text-text-light/90 tracking-[0.15em] font-medium">
+              {siteConfig.areas}
+            </p>
+            <div className="h-8 w-px bg-gradient-to-b from-site-accent/40 to-transparent" />
+            <p className="text-sm tracking-[0.3em] font-display text-gold italic">{siteConfig.year}</p>
           </div>
         </FadeIn>
 
-        {/* CTA - グローバリアント */}
-        <FadeIn direction="scale" delay={800} duration={800} easing="bounce">
+        {/* 動画セクション */}
+        <FadeIn direction="scale-up" delay={1200} duration={1500} easing="smooth" className="mt-20 w-full max-w-5xl">
+          <div className="group relative">
+            {/* プレミアムな外枠グロー */}
+            <div
+              className="absolute -inset-10 rounded-[40px] bg-gradient-to-br from-site-accent/15 via-gold/5 to-site-accent/10 blur-3xl opacity-60 transition-all duration-1000 group-hover:opacity-100 group-hover:scale-110"
+              aria-hidden="true"
+            />
+
+            {/* フレーム装飾 */}
+            <div className="absolute -inset-1 border border-site-accent/5 rounded-3xl" aria-hidden="true" />
+
+            {/* メインフレーム - プレミアムガラス */}
+            <div className="relative overflow-hidden rounded-[24px] bg-white p-2 shadow-premium md:p-3">
+              <div className="overflow-hidden rounded-[16px]">
+                <YouTubeEmbed
+                  videoId={siteConfig.heroVideoId}
+                  title={text.sections.hero.videoTitle}
+                  className="transition-transform duration-1000 group-hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+
+            {/* 装飾アクセント */}
+            <div className="absolute -top-6 -right-6 font-display text-6xl text-gold/20 select-none animate-float opacity-0 transition-opacity duration-700 group-hover:opacity-100" aria-hidden="true">✦</div>
+            <div className="absolute -bottom-6 -left-6 font-display text-5xl text-site-accent/20 select-none animate-float-slow opacity-0 transition-opacity duration-700 group-hover:opacity-100" aria-hidden="true">✧</div>
+          </div>
+        </FadeIn>
+
+        {/* CTA */}
+        <FadeIn direction="scale" delay={1800} duration={1000} easing="bounce">
           <Button
             href="/contact"
             variant="glow"
             size="large"
-            className="mt-12"
+            className="mt-16 px-16"
             aria-label={text.sections.hero.ctaAria}
           >
             {text.sections.hero.cta}
