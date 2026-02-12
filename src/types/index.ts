@@ -34,6 +34,7 @@ export interface Plan {
   readonly isRecommended?: boolean;
   readonly isComingSoon?: boolean;
   readonly description?: string;
+  readonly bestFor?: string;
 }
 
 // オプション

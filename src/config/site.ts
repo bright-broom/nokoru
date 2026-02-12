@@ -64,31 +64,35 @@ export const services: readonly Service[] = [
  */
 export const plans: readonly Plan[] = [
   {
-    id: 'standard',
+    id: 'light',
+    name: text.content.plans.light.name,
+    price: text.content.plans.light.price,
+    priceNote: text.content.plans.light.priceNote,
+    features: [
+      ...text.content.plans.light.features.map((t) => ({ text: t })),
+    ],
+    bestFor: text.content.plans.light.bestFor,
+  },
+  {
+    id: 'signature',
     name: text.content.plans.standard.name,
     price: text.content.plans.standard.price,
     priceNote: text.content.plans.standard.priceNote,
+    isRecommended: true,
     features: [
       ...text.content.plans.standard.features.map((t) => ({ text: t })),
     ],
+    bestFor: text.content.plans.standard.bestFor,
   },
   {
     id: 'premium',
     name: text.content.plans.premium.name,
     price: text.content.plans.premium.price,
     priceNote: text.content.plans.premium.priceNote,
-    isRecommended: true,
     features: [
       ...text.content.plans.premium.features.map((t) => ({ text: t })),
     ],
-  },
-  {
-    id: 'coming-soon',
-    name: text.content.plans.comingSoon.name,
-    price: text.content.plans.comingSoon.price,
-    isComingSoon: true,
-    features: [],
-    description: text.content.plans.comingSoon.description,
+    bestFor: text.content.plans.premium.bestFor,
   },
 ] as const;
 

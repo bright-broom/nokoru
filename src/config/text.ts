@@ -49,23 +49,32 @@ export const text = {
       },
     },
     plans: {
-      standard: {
-        name: 'Standard',
+      light: {
+        name: 'Light',
         price: '¥100,000',
         priceNote: '〜',
-        features: ['ロケーション1ヶ所', '撮影時間 2時間', 'ショートムービー or 写真100枚'],
+        features: ['ロケーション1ヶ所', '撮影時間 2時間', 'ショートムービー OR 写真100枚'],
+        bestFor: 'コンパクトに思い出を残したい方へ',
+      },
+      standard: {
+        name: 'Signature',
+        price: '¥158,000',
+        priceNote: '~',
+        features: ['ロケーション1ヶ所', '撮影時間 3時間 (+1h)', 'ムービー ＋ 写真100枚'],
+        bestFor: '一番人気！両方残せる最良の選択',
       },
       premium: {
         name: 'Premium',
-        price: '¥158,000',
-        priceNote: '〜',
-        features: ['ロケーション1ヶ所', '撮影時間 3時間', 'ムービー × 1本', '写真100枚'],
+        price: '¥248,000',
+        priceNote: '~',
+        features: ['ロケーション2ヶ所', '撮影時間 5時間', 'ムービー ＋ 写真 ＋ ドローン'],
+        bestFor: '妥協なしのシネマティック体験',
       },
       comingSoon: {
         name: 'Coming Soon',
         price: '要相談',
         description:
-          'マルチロケーションプランを準備中です。\n複数ヶ所での撮影をご希望の方はお問い合わせください。',
+          '現在、特別なキャンペーンプランを準備中です。',
       },
     },
     options: {
