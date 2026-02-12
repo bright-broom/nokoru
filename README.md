@@ -12,7 +12,7 @@
 | フォント       | Cormorant Garamond / Shippori Mincho | next/font            |
 | データベース   | Supabase (PostgreSQL)                | 2.88.0               |
 | 予約システム   | Cal.com                              | 1.5.3                |
-| ホスティング   | Netlify / Vercel                     | -                    |
+| ホスティング   | Vercel                               | -                    |
 
 ## クイックスタート
 
@@ -202,13 +202,6 @@ import { text } from "@/config/text";
 2. `src/components/icons/index.ts` でエクスポート
 
 ## デプロイ
-
-### Netlify
-
-1. GitHub 連携
-2. Build: `npm run build`
-3. Publish: `.next`
-4. 環境変数設定
 
 ### Vercel
 
