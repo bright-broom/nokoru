@@ -51,68 +51,45 @@ export const text = {
     plans: {
       light: {
         name: 'Light',
-        price: '¥100,000',
-        priceNote: '〜',
-        features: ['ロケーション1ヶ所', '撮影時間 2時間', 'ショートムービー OR 写真100枚'],
-        bestFor: 'コンパクトに思い出を残したい方へ',
+        price: '128,000',
+        priceNote: '税込',
+        features: [
+          'ロケーション1箇所',
+          '撮影時間 2時間',
+          'ショートムービー または 写真100枚',
+        ],
+        bestFor: '衣装をお持ちの方・シンプルに残したい方',
+        includes: ['撮影', 'データ納品'],
+        notIncludes: ['衣装', 'ヘアメイク'],
       },
-      standard: {
+      signature: {
         name: 'Signature',
-        price: '¥158,000',
-        priceNote: '~',
-        features: ['ロケーション1ヶ所', '撮影時間 3時間 (+1h)', 'ムービー ＋ 写真100枚'],
-        bestFor: '一番人気！両方残せる最良の選択',
-      },
-      premium: {
-        name: 'Premium',
-        price: '¥248,000',
-        priceNote: '~',
-        features: ['ロケーション2ヶ所', '撮影時間 5時間', 'ムービー ＋ 写真 ＋ ドローン'],
-        bestFor: '妥協なしのシネマティック体験',
-      },
-      comingSoon: {
-        name: 'Coming Soon',
-        price: '要相談',
-        description:
-          '現在、特別なキャンペーンプランを準備中です。',
-      },
-    },
-    options: {
-      dressRental: {
-        name: 'ドレスレンタル',
-        price: '¥44,000',
-        description:
-          'ウェディングドレスのレンタルサービスです。提携ショップの豊富なラインナップから、ロケーション撮影に映えるドレスをお選びいただけます。',
+        price: '198,000',
+        priceNote: '税込',
         features: [
-          '提携ショップでの試着・選定',
-          '撮影当日のお届け・回収',
-          'サイズ調整対応',
-          '小物（ベール・グローブ等）セット',
+          'ロケーション1箇所',
+          '撮影時間 3時間',
+          'ムービー ＋ 写真100枚',
+          'ヘアメイク込み',
         ],
+        bestFor: '迷ったらこれ。映像も写真も両方残せる',
+        includes: ['撮影', 'データ納品', 'ヘアメイク'],
+        notIncludes: ['衣装'],
       },
-      tuxedoRental: {
-        name: 'タキシードレンタル',
-        price: '¥33,000',
-        description:
-          '新郎様向けタキシードのレンタルサービスです。カジュアルからフォーマルまで、撮影シーンに合わせたスタイルをご提案します。',
+      complete: {
+        name: 'Complete',
+        price: '298,000',
+        priceNote: '税込',
         features: [
-          '提携ショップでの試着・選定',
-          '撮影当日のお届け・回収',
-          'サイズ調整対応',
-          '小物（シャツ・タイ・チーフ等）セット',
+          'ロケーション2箇所',
+          '撮影時間 5時間',
+          'ムービー ＋ 写真 ＋ ドローン',
+          '衣装ペアレンタル込み',
+          'ヘアメイク込み',
         ],
-      },
-      hairMakeup: {
-        name: 'ヘアメイク（1パターン）',
-        price: '¥22,000',
-        description:
-          'プロのヘアメイクアーティストが撮影現場でスタイリングを行います。ロケーション撮影に最適なヘアメイクで、最高の状態で撮影に臨めます。',
-        features: [
-          '撮影現場での施術',
-          'ヘアセット＋メイク',
-          '撮影中のお直し対応',
-          '事前カウンセリング',
-        ],
+        bestFor: '準備から当日まで全てお任せしたい方',
+        includes: ['撮影', 'データ納品', 'ヘアメイク', '衣装（2着）'],
+        notIncludes: [],
       },
     },
     staff: {
@@ -169,7 +146,6 @@ export const text = {
       works: 'Works',
       services: 'Services',
       plans: 'Plans',
-      options: 'Options',
       about: 'About',
       booking: 'Booking',
       contact: 'Contact',
@@ -209,16 +185,10 @@ export const text = {
       title: 'Plans',
       subtitle: '料金プラン',
       listAria: '料金プラン一覧',
-      recommendedBadge: 'おすすめ',
+      recommendedBadge: '一番人気',
       cta: 'プランについて相談する',
       ctaAria: 'お問い合わせページへ移動',
-    },
-    options: {
-      title: 'Options',
-      subtitle: 'オプション',
-      listAria: 'オプション一覧',
-      cta: 'オプションについて相談する',
-      ctaAria: 'お問い合わせページへ移動',
+      allInclusiveNote: '全プラン、撮影許可申請・データ納品・カラーグレーディング込み',
     },
     about: {
       title: 'About',
@@ -302,7 +272,6 @@ export const text = {
       metaTitleSuffix: '料金プラン',
       featuresHeading: 'プラン内容',
       ctaButton: 'このプランで相談する',
-      comingSoonNote: 'このプランは準備中です。詳細はお問い合わせください。',
     },
     services: {
       backToTop: 'トップへ戻る',
@@ -330,15 +299,6 @@ export const text = {
       backToTop: 'トップへ戻る',
       metaTitle: 'お問い合わせ',
       metaDescription: '撮影のご相談・お見積りはお気軽にどうぞ。通常3営業日以内にご返信いたします。',
-    },
-    options: {
-      backToTop: 'トップへ戻る',
-      backToOptions: 'オプション一覧へ',
-      notFound: 'オプションが見つかりませんでした',
-      metaTitleSuffix: 'オプション',
-      featuresHeading: 'サービス内容',
-      ctaButton: 'このオプションについて相談する',
-      note: '※ 撮影プランとセットでご利用いただけます',
     },
   },
 
