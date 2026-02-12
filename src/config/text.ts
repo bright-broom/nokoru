@@ -420,7 +420,7 @@ export const text = {
   },
 
   seo: {
-    baseUrl: 'https://silverlacewedding.netlify.app',
+    baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     category: 'wedding',
     titleDefaultSuffix: '大阪・関西のロケーション前撮り・ウェディングムービー制作',
     socialImageAlt:
