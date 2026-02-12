@@ -4,7 +4,6 @@ import {
   WorksSection,
   ServicesSection,
   PlansSection,
-  OptionsSection,
   AboutSection,
   BookingSection,
 } from '@/components/sections';
@@ -22,7 +21,6 @@ export default function HomePage() {
         <WorksSection />
         <ServicesSection />
         <PlansSection />
-        <OptionsSection />
         <AboutSection />
         <BookingSection calLink={siteConfig.calLink} />
       </main>
