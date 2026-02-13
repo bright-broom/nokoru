@@ -63,9 +63,14 @@
   --animate-reveal: reveal-up 1.2s var(--ease-premium) forwards;
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
 
-  /* フォント定義 - 次のJS fontVariablesから渡されます */
-  --font-display: var(--font-display), serif;
-  --font-sans: var(--font-sans), system-ui, sans-serif;
+  /**
+   * フォント定義
+   * Next.js が html 要素に --font-cormorant, --font-shippori を設定
+   * font-display: 見出し用（Cormorant Garamond）
+   * font-sans: 本文用（Shippori Mincho）
+   */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-shippori), "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
 
 .glass-gold {
@@ -100,7 +105,7 @@ html {
 body {
   color: var(--color-text);
   background-color: var(--color-cream);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* アクセシビリティ: モーション削減設定を尊重 */
@@ -201,9 +206,17 @@ body {
 /* プレミアム・タイポグラフィの基本設定 */
 @layer base {
   body {
-    @apply text-[15px] leading-[1.8] tracking-[0.01em];
+    @apply text-[15px] leading-[1.9] tracking-[0.02em];
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "palt" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 見出しのタイポグラフィ */
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: "palt" 1;
+    text-rendering: optimizeLegibility;
   }
 }
 
