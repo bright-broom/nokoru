@@ -16,7 +16,7 @@ export default function HomePage() {
       <JsonLd />
       <Header />
 
-      <main id="main-content">
+      <main id="main-content" className="pt-24 md:pt-28">
         <HeroSection />
         <WorksSection />
         <ServicesSection />

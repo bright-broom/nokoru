@@ -109,7 +109,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                       <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">Includes</h3>
                       <ul className="space-y-2">
                         {plan.includes.map((item, i) => (
-                          <li key={i} className="flex items-center gap-2 text-[13px] text-text-light">
+                          <li key={i} className="flex items-center gap-2 text-sm text-text-light">
                             <span className="text-gold">✓</span> {item}
                           </li>
                         ))}
@@ -121,7 +121,7 @@ export default async function PlanDetailPage({ params }: PageProps) {
                       <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-site-accent/40">Not Includes</h3>
                       <ul className="space-y-2 text-text-light/60">
                         {plan.notIncludes.map((item, i) => (
-                          <li key={i} className="flex items-center gap-2 text-[13px]">
+                          <li key={i} className="flex items-center gap-2 text-sm">
                             <span className="text-site-accent/20">×</span> {item}
                           </li>
                         ))}

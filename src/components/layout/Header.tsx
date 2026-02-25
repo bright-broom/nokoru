@@ -104,7 +104,7 @@ export function Header() {
               aria-hidden="true"
             />
 
-            <span className="relative font-display text-xl tracking-[0.15em] transition-all duration-500 group-hover:tracking-[0.2em]">
+            <span className="track-meta relative font-display text-xl transition-all duration-500">
               <span className="bg-gradient-to-r from-text via-text to-text bg-clip-text transition-all duration-500 group-hover:from-site-accent group-hover:via-text group-hover:to-gold group-hover:text-transparent">
                 {siteConfig.name}
               </span>
@@ -208,7 +208,7 @@ export function Header() {
 
         {/* ヘッダー部分 */}
         <div className="relative flex items-center justify-between px-6 py-5">
-          <span className="font-display text-xl tracking-[0.15em]">
+          <span className="track-meta font-display text-xl">
             {siteConfig.name}
           </span>
           <button

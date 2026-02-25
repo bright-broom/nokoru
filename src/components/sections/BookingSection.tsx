@@ -85,10 +85,10 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
             {/* 時間バッジ - プレミアム */}
             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/20 px-4 py-1.5 bg-gold/5">
               <ClockIcon className="h-3.5 w-3.5 text-gold" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{duration}</span>
+              <span className="track-label text-xs font-bold uppercase text-gold">{duration}</span>
             </div>
 
-            <p className="mt-8 text-[14px] leading-relaxed text-text-light/90">
+            <p className="mt-8 text-sm leading-relaxed text-text-light/90">
               {description}
             </p>
           </div>
@@ -120,8 +120,8 @@ function ProcessStep({
       </div>
 
       <div className="min-w-0">
-        <p className="text-[14px] font-bold tracking-wide text-text uppercase">{title}</p>
-        <p className="mt-0.5 text-[12px] text-text-light/70 tracking-wide leading-relaxed">{description}</p>
+        <p className="text-sm font-bold tracking-wide text-text uppercase">{title}</p>
+        <p className="mt-0.5 text-xs text-text-light/70 tracking-wide leading-relaxed">{description}</p>
       </div>
 
       {!isLast && (
@@ -149,7 +149,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         {/* Header with Luxury Free Badge */}
         <FadeIn direction="scale" easing="smooth">
           <div className="mb-10 flex justify-center">
-            <div className="group relative inline-flex items-center gap-3 rounded-full bg-white px-8 py-3 text-[11px] font-bold uppercase tracking-[0.4em] text-site-accent shadow-elevated border border-site-accent/5">
+            <div className="track-super group relative inline-flex items-center gap-3 rounded-full border border-site-accent/5 bg-white px-8 py-3 text-xs font-bold uppercase text-site-accent shadow-elevated">
               <CheckIcon className="h-4 w-4 text-gold" />
               <span>{text.sections.booking.freeBadge}</span>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-12 bg-gold/40 rounded-full" />
@@ -172,7 +172,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <span className="h-px w-8 bg-gold/30" />
-              <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-text-light/60">
+              <p className="track-label text-sm font-bold uppercase text-text-light/60">
                 {text.sections.booking.subDescription}
               </p>
               <span className="h-px w-8 bg-gold/30" />
@@ -201,7 +201,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
             <div className="relative overflow-hidden rounded-[40px] bg-beige/10 p-12 border border-beige/40">
               <div className="absolute top-0 right-0 p-8 font-display text-8xl text-beige/20 select-none">✦</div>
 
-              <p className="mb-12 text-center text-[11px] font-bold uppercase tracking-[0.5em] text-site-accent/40">
+              <p className="track-ultra mb-12 text-center text-xs font-bold uppercase text-site-accent/40">
                 The Journey of Your Story
               </p>
 
@@ -247,7 +247,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
             {text.sections.booking.notes.map((note, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-3 text-[13px] text-text-light/60 transition-all duration-500 hover:text-site-accent"
+                className="group flex items-center gap-3 text-sm text-text-light/60 transition-all duration-500 hover:text-site-accent"
               >
                 <div className="h-2 w-2 rounded-full border border-gold/40 transition-all duration-500 group-hover:bg-gold group-hover:scale-125" />
                 <span className="tracking-wide">{note}</span>
