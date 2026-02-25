@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { staffMembers, text } from '@/config';
+import { cardStyles } from '@/lib/utils';
 import type { Staff } from '@/types';
 
 function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
@@ -10,7 +11,7 @@ function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boo
     <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth" className="h-full">
       <Link
         href={`/staff/${staff.id}`}
-        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-8 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2 md:p-10"
+        className={`${cardStyles.base} ${cardStyles.hover} block h-full p-8 md:p-10`}
       >
         {/* 背景の柔らかなアクセント */}
         <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-60 transition-all duration-1000 group-hover:scale-125 group-hover:from-gold/10" aria-hidden="true" />

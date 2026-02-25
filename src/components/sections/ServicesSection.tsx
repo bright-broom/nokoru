@@ -4,6 +4,7 @@ import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { VideoIcon, PlayIcon } from '@/components/icons';
 import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
+import { cardStyles } from '@/lib/utils';
 import type { Service } from '@/types';
 
 const iconMap = {
@@ -18,7 +19,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
     <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth">
       <Link
         href={`/services/${service.id}`}
-        className="group relative block h-full overflow-hidden rounded-[24px] bg-white px-6 py-8 md:px-8 md:py-10 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
+        className={`${cardStyles.base} ${cardStyles.hover} block h-full rounded-[24px] px-6 py-8 md:px-8 md:py-10`}
       >
         {/* 透明感のあるアクセント背景 */}
         <div className="absolute top-0 right-0 h-40 w-40 bg-gradient-to-bl from-site-accent/5 via-transparent to-transparent transition-all duration-700 group-hover:from-site-accent/15" aria-hidden="true" />

@@ -4,7 +4,7 @@ import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { CameraIcon, FilmIcon, PackageIcon, ClockIcon, CheckIcon } from '@/components/icons';
 import { text } from '@/config';
-import { cn } from '@/lib/utils';
+import { cn, cardStyles } from '@/lib/utils';
 
 // Cal.comを遅延読み込み
 const CalEmbed = dynamic(

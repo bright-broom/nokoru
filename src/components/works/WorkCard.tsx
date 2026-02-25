@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn, cardStyles, revealOnHoverClasses } from '@/lib/utils';
 import { FadeIn } from '@/components/ui/FadeIn';
 import type { WorkImage } from '@/types';
 
@@ -26,7 +26,7 @@ export function WorkCard({
       <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth" className={className}>
          <Link
             href={`/works/${image.id}`}
-            className="group relative block h-full overflow-hidden rounded-2xl bg-white shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
+            className={`${cardStyles.base} ${cardStyles.hover} block h-full`}
          >
             {/* 背景の柔らかなグロー */}
             <div className="absolute -inset-2 bg-gradient-to-br from-site-accent/10 via-transparent to-gold/10 opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
@@ -45,7 +45,7 @@ export function WorkCard({
                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 transition-opacity duration-700 group-hover:opacity-70" />
 
                {/* エディトリアル・コンテンツ */}
-               <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100">
+               <div className={cn("absolute inset-x-0 bottom-0 p-8", revealOnHoverClasses)}>
                   {image.locationTag && (
                      <div className="mb-3 flex items-center gap-2">
                         <span className="h-px w-6 bg-gold/60" />
