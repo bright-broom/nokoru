@@ -87,7 +87,7 @@ export function Header() {
         <nav
           className={cn(
             'mx-auto grid max-w-6xl grid-cols-3 items-center px-6 transition-all duration-500',
-            isScrolled ? 'py-3' : 'py-5'
+            isScrolled ? 'py-2' : 'py-3'
           )}
           role="navigation"
           aria-label={text.nav.ariaMainNav}
