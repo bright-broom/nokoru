@@ -56,12 +56,7 @@ export const cardStyles = {
   base: 'group relative overflow-hidden rounded-2xl bg-white shadow-elevated transition-all duration-700',
   /** ホバー時のエフェクト（上昇 + シャドウ強化） */
   hover: 'hover:shadow-premium hover:-translate-y-2',
-  /** ホバー時のエフェクト（控えめ） */
-  hoverSubtle: 'hover:shadow-xl hover:-translate-y-1',
 } as const;
-
-/** カード基本スタイル + ホバーエフェクト */
-export const cardBaseClasses = cn(cardStyles.base, cardStyles.hover);
 
 /**
  * アイコンボックス共通スタイル
@@ -71,21 +66,6 @@ export const iconBoxStyles = {
   base: 'flex items-center justify-center rounded-xl bg-site-accent/10 transition-all duration-500',
   /** グループホバー時のエフェクト */
   groupHover: 'group-hover:bg-site-accent group-hover:scale-110 group-hover:text-white',
-} as const;
-
-/** アイコンボックス基本 + ホバーエフェクト */
-export const iconBoxBaseClasses = cn(iconBoxStyles.base, iconBoxStyles.groupHover);
-
-/**
- * グラデーション装飾線スタイル
- */
-export const dividerStyles = {
-  /** 水平グラデーション線 */
-  horizontal: 'h-px bg-gradient-to-r from-transparent via-site-accent/20 to-transparent',
-  /** 短い装飾線 */
-  short: 'h-px w-12 bg-gradient-to-r from-transparent via-site-accent/30 to-transparent',
-  /** 幅広い装飾線 */
-  wide: 'h-px w-24 bg-gradient-to-r from-transparent via-site-accent/30 to-transparent',
 } as const;
 
 /**
