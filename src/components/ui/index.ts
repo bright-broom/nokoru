@@ -13,3 +13,4 @@ export { CalEmbed } from './CalEmbed';
 export { Input } from './input';
 export { Label } from './label';
 export { Textarea } from './textarea';
+export { ProgressDots } from './ProgressDots';

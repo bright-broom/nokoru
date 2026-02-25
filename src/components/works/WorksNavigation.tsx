@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { ChevronLeftIcon, ChevronRightIcon } from '@/components/icons';
+import { ProgressDots } from '@/components/ui';
 import type { WorkImage } from '@/types';
 
 interface WorksNavigationProps {
@@ -94,22 +95,13 @@ export function WorksNavigation({ works, currentIndex, text }: WorksNavigationPr
   return (
     <div className="mt-12">
       {/* Progress Indicator */}
-      <div className="mb-6 flex items-center justify-center gap-2">
-        {works.map((_, index) => (
-          <Link
-            key={index}
-            href={`/works/${works[index].id}`}
-            className={cn(
-              'h-1.5 rounded-full transition-all duration-300',
-              index === currentIndex
-                ? 'w-8 bg-site-accent'
-                : 'w-1.5 bg-beige hover:bg-site-accent/50'
-            )}
-            aria-label={`${index + 1} ${text.counterSeparator} ${works.length}`}
-            aria-current={index === currentIndex ? 'true' : undefined}
-          />
-        ))}
-      </div>
+      <ProgressDots
+        count={works.length}
+        currentIndex={currentIndex}
+        className="mb-6 justify-center"
+        getHref={(index) => `/works/${works[index].id}`}
+        getAriaLabel={(index) => `${index + 1} ${text.counterSeparator} ${works.length}`}
+      />
 
       {/* Counter */}
       <p className="mb-8 text-center text-sm text-text-light">
