@@ -3,7 +3,14 @@ import type { NextRequest } from 'next/server';
 
 /**
  * シンプルなインメモリレートリミッター
- * 本番環境ではRedisなどの外部ストアを推奨
+ *
+ * ⚠️ 警告: このインメモリ実装は以下の制限があります:
+ * - 分散環境（複数インスタンス）では各サーバーが独立したMapを持つため効果が薄い
+ * - サーバーレス環境ではリクエストごとにMapがリセットされる可能性
+ * - サーバー再起動でリセットされる
+ *
+ * 本番環境での推奨: Upstash Redis, Vercel KV, または他の外部ストアを使用
+ * 参考: https://upstash.com/docs/redis/sdks/ratelimit-ts/overview
  */
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 

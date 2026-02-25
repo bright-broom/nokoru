@@ -59,11 +59,22 @@ export function isWithinLength(
 }
 
 /**
- * 将来の日付かどうかをチェック
+ * 希望日のバリデーション
+ * - YYYY-MM-DD形式かチェック
+ * - 有効な日付かチェック
+ * - 将来の日付かチェック
  */
-export function isFutureDate(dateString: string): boolean {
+export function isValidPreferredDate(dateString: string): boolean {
   if (!dateString) return true; // 任意項目
-  const date = new Date(dateString);
+
+  // YYYY-MM-DD形式チェック
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString)) return false;
+
+  // 有効な日付かチェック
+  const date = new Date(`${dateString}T00:00:00.000Z`);
+  if (Number.isNaN(date.getTime())) return false;
+
+  // 将来日付チェック
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return date >= today;
@@ -119,10 +130,10 @@ export function validateContactForm(data: ContactFormData): ValidationResult {
   }
 
   // 希望日（任意、ただし入力時は将来日付）
-  if (data.preferredDate && !isFutureDate(data.preferredDate)) {
+  if (data.preferredDate && !isValidPreferredDate(data.preferredDate)) {
     errors.push({
       field: 'preferredDate',
-      message: text.form.validationErrors.preferredDateNotFuture,
+      message: text.form.validationErrors.preferredDateInvalid,
     });
   }
 

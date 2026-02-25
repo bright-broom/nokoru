@@ -18,34 +18,36 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
     <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth">
       <Link
         href={`/services/${service.id}`}
-        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-10 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
+        className="group relative block h-full overflow-hidden rounded-[24px] bg-white px-6 py-8 md:px-8 md:py-10 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
       >
         {/* 透明感のあるアクセント背景 */}
-        <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-bl from-site-accent/5 via-transparent to-transparent transition-all duration-700 group-hover:from-site-accent/15" aria-hidden="true" />
+        <div className="absolute top-0 right-0 h-40 w-40 bg-gradient-to-bl from-site-accent/5 via-transparent to-transparent transition-all duration-700 group-hover:from-site-accent/15" aria-hidden="true" />
 
         {/* コンテンツ */}
-        <div className="relative">
-          {/* アイコン - 洗練された表示 */}
-          <div className="mb-10 inline-flex">
-            <div className="relative">
-              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-beige/50 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/20">
-                <Icon className="h-10 w-10 text-site-accent transition-all duration-700 group-hover:text-white group-hover:scale-110" />
+        <div className="relative flex h-full flex-col justify-between">
+          <div>
+            {/* アイコン - 洗練された表示 */}
+            <div className="mb-8 inline-flex">
+              <div className="relative">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-beige/50 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/20 md:h-16 md:w-16">
+                  <Icon className="h-7 w-7 text-site-accent transition-all duration-700 group-hover:scale-110 group-hover:text-white md:h-8 md:w-8" />
+                </div>
+                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-gold/10 backdrop-blur-sm shadow-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" aria-hidden="true" />
               </div>
-              <div className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-gold/10 backdrop-blur-sm shadow-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" aria-hidden="true" />
             </div>
+
+            <h3 className="font-display text-xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
+              {service.title}
+            </h3>
+
+            <p className="mt-5 text-sm leading-relaxed text-text-light/90">
+              {renderMultilineText(service.description)}
+            </p>
           </div>
 
-          <h3 className="font-display text-3xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
-            {service.title}
-          </h3>
-
-          <p className="mt-6 text-[15px] leading-relaxed text-text-light/90">
-            {renderMultilineText(service.description)}
-          </p>
-
-          <div className="mt-10 flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.3em] text-site-accent/60 transition-all duration-500 group-hover:text-site-accent group-hover:gap-6">
+          <div className="track-label mt-8 flex items-center gap-4 text-xs font-bold uppercase text-site-accent/60 transition-all duration-500 group-hover:text-site-accent group-hover:gap-6">
             <span>Discover Experience</span>
-            <div className="h-px w-10 bg-site-accent/20 transition-all duration-500 group-hover:w-16 group-hover:bg-site-accent" aria-hidden="true" />
+            <div className="h-px w-8 bg-site-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-site-accent" aria-hidden="true" />
           </div>
         </div>
       </Link>

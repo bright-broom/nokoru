@@ -73,7 +73,7 @@ export default async function WorkDetailPage({ params }: PageProps) {
                 </span>
               )}
 
-              <h1 className="mt-4 font-display text-2xl tracking-wide md:text-3xl">
+              <h1 className="mt-4 font-display text-lg tracking-wide md:text-xl">
                 {work.alt}
               </h1>
 

@@ -25,7 +25,7 @@ export default function AppleIcon() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Elegant "S" letter for Silver Lace */}
+          {/* Elegant "S" letter for NOKORU */}
           <path
             d="M11 11.5C11 9.5 13 8 16 8C19 8 21 9.5 21 11.5C21 13.5 19 14.5 16 15.5C13 16.5 11 17.5 11 19.5C11 21.5 13 23 16 23C19 23 21 21.5 21 19.5"
             stroke="white"

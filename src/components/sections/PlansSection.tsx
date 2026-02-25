@@ -25,16 +25,16 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
         {/* 推奨バッジ */}
         {isSignature && (
           <div className="absolute top-0 inset-x-0 bg-gold py-2 text-center">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+            <span className="track-label text-xs font-bold uppercase text-white">
               {text.sections.plans.recommendedBadge}
             </span>
           </div>
         )}
 
-        <div className={cn('flex flex-1 flex-col p-8', isSignature && 'pt-14')}>
+        <div className={cn('flex flex-1 flex-col p-8 md:px-10 md:py-12', isSignature && 'pt-12 md:pt-14')}>
           {/* プラン名 */}
           <h3 className={cn(
-            'text-center font-display text-sm uppercase tracking-[0.25em]',
+            'track-label-wide text-center font-display text-sm uppercase',
             isSignature ? 'text-gold' : 'text-site-accent/60'
           )}>
             {plan.name}
@@ -45,19 +45,19 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             <div className="flex items-baseline justify-center gap-1">
               <span className="text-sm text-site-accent/50">¥</span>
               <span className={cn(
-                'font-display text-5xl tracking-tight',
+                'font-display text-5xl tracking-tight md:text-6xl',
                 isSignature ? 'text-gold' : 'text-text'
               )}>
                 {plan.price}
               </span>
             </div>
-            <p className="mt-1 text-[11px] text-text-light/60">{plan.priceNote}</p>
+            <p className="mt-2 text-sm text-text-light/60">{plan.priceNote}</p>
           </div>
 
           {/* ターゲット説明 */}
           {plan.bestFor && (
             <p className={cn(
-              'mt-6 text-center text-[13px] leading-relaxed',
+              'mt-6 text-center text-sm leading-relaxed',
               isSignature ? 'text-gold/80 font-medium' : 'text-text-light'
             )}>
               {plan.bestFor}
@@ -68,7 +68,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           <div className="my-6 h-px bg-gradient-to-r from-transparent via-beige to-transparent" />
 
           {/* 特徴リスト */}
-          <ul className="flex-1 space-y-3">
+          <ul className="flex-1 space-y-4">
             {plan.features.map((feature, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <div className={cn(
@@ -77,7 +77,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
                 )}>
                   <CheckIcon className="h-3 w-3" />
                 </div>
-                <span className="text-[13px] leading-relaxed text-text-light">
+                <span className="text-sm leading-relaxed text-text-light">
                   {feature.text}
                 </span>
               </li>
@@ -85,9 +85,9 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           </ul>
 
           {/* CTA */}
-          <div className="mt-8">
+          <div className="mt-auto pt-8">
             <div className={cn(
-              'w-full rounded-xl py-3.5 text-center text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300',
+              'track-label w-full h-12 flex items-center justify-center rounded-xl px-4 text-center text-sm font-bold uppercase transition-all duration-300',
               isSignature
                 ? 'bg-gold text-white group-hover:bg-gold-dark'
                 : 'bg-site-accent/5 text-site-accent group-hover:bg-site-accent group-hover:text-white'
@@ -97,14 +97,16 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           </div>
         </div>
 
-        {/* Complete プランのフルパッケージ表示 */}
-        {isComplete && (
-          <div className="border-t border-beige/50 bg-beige/20 px-8 py-4 text-center">
-            <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-site-accent/60">
-              衣装・ヘアメイク全て込み
-            </span>
-          </div>
-        )}
+        {/* フッター領域（全カード統一高さ） */}
+        <div className={cn('h-14', isComplete && 'border-t border-beige/50 bg-beige/20')}>
+          {isComplete && (
+            <div className="flex h-full items-center justify-center px-8">
+              <span className="track-meta text-xs font-medium uppercase text-site-accent/60">
+                衣装・ヘアメイク全て込み
+              </span>
+            </div>
+          )}
+        </div>
       </Link>
     </FadeIn>
   );
@@ -148,7 +150,7 @@ export function PlansSection() {
         </FadeIn>
 
         {/* プランカード */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8 md:items-start">
+        <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
           {plans.map((plan, index) => (
             <PlanCard key={plan.id} plan={plan} index={index} />
           ))}

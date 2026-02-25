@@ -37,7 +37,7 @@ export function Footer() {
             href="/"
             className="group inline-block"
           >
-            <span className="font-display text-3xl tracking-[0.2em] text-cream/90 transition-all duration-500 group-hover:text-cream">
+            <span className="track-label font-display text-2xl text-cream/90 transition-all duration-500 group-hover:text-cream">
               {siteConfig.name}
             </span>
             <span
@@ -61,7 +61,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-3 md:gap-8 pb-12 border-b border-cream/10">
           {/* ナビゲーション */}
           <div className="text-center md:text-left">
-            <h3 className="mb-5 text-[10px] font-medium uppercase tracking-[0.3em] text-cream/30">
+            <h3 className="track-kicker mb-5 text-xs font-medium uppercase text-cream/30">
               Navigation
             </h3>
             <ul className="space-y-3">
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* SNS・コンタクト */}
           <div className="text-center md:text-right">
-            <h3 className="mb-5 text-[10px] font-medium uppercase tracking-[0.3em] text-cream/30">
+            <h3 className="track-kicker mb-5 text-xs font-medium uppercase text-cream/30">
               Connect
             </h3>
             <div className="flex justify-center gap-4 md:justify-end">
@@ -156,7 +156,7 @@ export function Footer() {
 
         {/* 下部セクション：コピーライト */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] tracking-wider text-cream/25 order-2 md:order-1">
+          <p className="order-2 text-xs tracking-wider text-cream/25 md:order-1">
             {siteConfig.copyright}
           </p>
 
@@ -166,7 +166,7 @@ export function Footer() {
           </span>
 
           {/* 年度表示 */}
-          <p className="text-[10px] tracking-wider text-cream/25 order-3 md:order-2">
+          <p className="order-3 text-xs tracking-wider text-cream/25 md:order-2">
             {text.site.year}
           </p>
         </div>

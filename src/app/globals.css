@@ -86,7 +86,7 @@
 }
 
 .price-unit {
-  @apply text-[15px] font-bold text-site-accent/40 tracking-wider;
+  @apply text-sm font-bold text-site-accent/40 tracking-wider;
 }
 
 .price-amount {
@@ -95,7 +95,35 @@
 
 /* プラン比較用の装飾 */
 .plan-feature-group-label {
-  @apply text-[10px] font-bold uppercase tracking-[0.3em] text-site-accent/30 mb-2 block;
+  @apply mb-2 block text-xs font-bold uppercase text-site-accent/30;
+  letter-spacing: 0.3em;
+}
+
+/* Typography tracking tokens (single source of truth) */
+@layer utilities {
+  .track-meta {
+    letter-spacing: 0.15em;
+  }
+
+  .track-label {
+    letter-spacing: 0.2em;
+  }
+
+  .track-label-wide {
+    letter-spacing: 0.25em;
+  }
+
+  .track-kicker {
+    letter-spacing: 0.3em;
+  }
+
+  .track-super {
+    letter-spacing: 0.4em;
+  }
+
+  .track-ultra {
+    letter-spacing: 0.5em;
+  }
 }
 
 html {
@@ -195,6 +223,25 @@ body {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Golden Ratio & Ergonomic Tokens */
+  --space-1: 4px;
+  --space-2: 8px; /* 4 * 1.618 ≈ 6.5, rounding to 8 for grid */
+  --space-3: 12px; /* 8 * 1.618 ≈ 12.9 */
+  --space-4: 20px; /* 12 * 1.618 ≈ 19.4 */
+  --space-5: 32px; /* 20 * 1.618 ≈ 32.3 */
+  --space-6: 52px; /* 32 * 1.618 ≈ 51.7 */
+  --space-7: 84px; /* 52 * 1.618 ≈ 84.1 */
+  --space-8: 136px; /* 84 * 1.618 ≈ 135.9 */
+
+  /* Base Text Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
 }
 
 @layer base {
@@ -206,7 +253,11 @@ body {
 /* プレミアム・タイポグラフィの基本設定 */
 @layer base {
   body {
-    @apply text-[15px] leading-[1.9] tracking-[0.02em];
+    /* Baseline for font scale */
+    font-size: var(--text-base);
+    /* Golden Ratio line-height */
+    line-height: 1.618;
+    letter-spacing: 0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "palt" 1;
@@ -217,6 +268,14 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-feature-settings: "palt" 1;
     text-rendering: optimizeLegibility;
+    line-height: 1.2; /* Tighter line height for large headings */
+  }
+
+  /* Ergonomic Touch Targets */
+  button, a, input, select, textarea {
+    /* iOS Human Interface / Material Design recommended minimum touch area 44px-48px */
+    min-height: 48px;
+    min-width: 48px;
   }
 }
 

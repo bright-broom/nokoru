@@ -28,11 +28,11 @@ export const siteConfig: SiteConfig = {
  * ナビゲーション項目
  */
 export const navItems: readonly NavItem[] = [
-  { label: text.nav.labels.works, href: '#works', ariaLabel: text.nav.aria.works },
-  { label: text.nav.labels.services, href: '#services', ariaLabel: text.nav.aria.services },
-  { label: text.nav.labels.plans, href: '#plans', ariaLabel: text.nav.aria.plans },
-  { label: text.nav.labels.about, href: '#about', ariaLabel: text.nav.aria.about },
-  { label: text.nav.labels.booking, href: '#booking', ariaLabel: text.nav.aria.booking },
+  { label: text.nav.labels.works, href: '/#works', ariaLabel: text.nav.aria.works },
+  { label: text.nav.labels.services, href: '/#services', ariaLabel: text.nav.aria.services },
+  { label: text.nav.labels.plans, href: '/#plans', ariaLabel: text.nav.aria.plans },
+  { label: text.nav.labels.about, href: '/#about', ariaLabel: text.nav.aria.about },
+  { label: text.nav.labels.booking, href: '/#booking', ariaLabel: text.nav.aria.booking },
   { label: text.nav.labels.contact, href: '/contact', ariaLabel: text.nav.aria.contact },
 ] as const;
 
@@ -126,6 +126,37 @@ export const staffMembers: readonly Staff[] = [
  * 画像は public/ 配下に配置してください（README参照）
  */
 export const workImages: readonly WorkImage[] = [
+  {
+    id: 'works-couple-cliff',
+    src: '/images/works/couple-cliff.jpg',
+    alt: text.content.works.alts.coupleCliff,
+    description: text.content.works.descriptions.coupleCliff,
+    locationTag: text.content.works.tags.location,
+    isFeatured: true,
+  },
+  {
+    id: 'works-couple-sea-smile',
+    src: '/images/works/couple-sea-smile.jpg',
+    alt: text.content.works.alts.coupleSeaSmile,
+    description: text.content.works.descriptions.coupleSeaSmile,
+    locationTag: text.content.works.tags.seaside,
+    gridSpan: 7,
+  },
+  {
+    id: 'works-bouquet-new',
+    src: '/images/works/bouquet-new.jpg',
+    alt: text.content.works.alts.bouquetNew,
+    description: text.content.works.descriptions.bouquetNew,
+    locationTag: text.content.works.tags.detail,
+    gridSpan: 5,
+  },
+  {
+    id: 'works-couple-sea-rocks',
+    src: '/images/works/couple-sea-rocks.jpg',
+    alt: text.content.works.alts.coupleSeaRocks,
+    description: text.content.works.descriptions.coupleSeaRocks,
+    locationTag: text.content.works.tags.seaside,
+  },
   {
     id: 'works-couple-sea',
     src: '/images/works/couple-sea.jpg',

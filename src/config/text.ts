@@ -8,7 +8,7 @@
 
 export const text = {
   site: {
-    name: 'Silver Lace Weddings',
+    name: 'NOKORU',
     descriptionShort:
       '大阪・関西発、ロケーション前撮りに特化したウェディングムービー。美しい映像に。2026年撮影受付中。',
     tagline: 'ロケーション前撮りを、\n美しい映像に。',
@@ -109,6 +109,10 @@ export const text = {
         detail: 'Detail',
       },
       alts: {
+        coupleCliff: '夕景の崖に立つ新郎新婦',
+        coupleSeaSmile: '夕景の岩場で微笑み合う新郎新婦',
+        bouquetNew: '夕景の海辺で持つブーケ',
+        coupleSeaRocks: '夕景の海辺の岩場に立つ新郎新婦',
         bridePortrait: '自然光の中で撮影した花嫁の横顔',
         couplePlayground: '自然体のふたりを切り取ったカップルフォト',
         coupleSea: '海辺の風景の中で佇む新郎新婦のシルエット',
@@ -116,6 +120,14 @@ export const text = {
         bouquet: 'ドライフラワーのブーケのクローズアップ',
       },
       descriptions: {
+        coupleCliff:
+          '壮大な夕景を背景に、崖の上に立つお二人をドラマチックに捉えました。',
+        coupleSeaSmile:
+          '夕暮れの海辺の岩場で、自然な笑顔を見せるお二人のクローズアップです。',
+        bouquetNew:
+          '美しいマジックアワーの光の中で撮影した、こだわりのブーケのカットです。',
+        coupleSeaRocks:
+          '波打つ岩場で佇むお二人。美しいサンセットの光と影が印象的な一枚です。',
         coupleSea:
           '夕暮れ時の海辺で撮影。オレンジとブルーが混ざり合う空の下、波の音をBGMにお二人のシルエットを切り取りました。',
         bridePortrait:
@@ -131,7 +143,7 @@ export const text = {
     links: {
       instagramAkiLabel: '@aki.h_eastprojects',
       litlinkLabel: 'lit.link/Akimitsu',
-      instagramFooter: 'https://www.instagram.com/silver_lace_weddings/',
+      instagramFooter: 'https://www.instagram.com/nokoru/',
     },
   },
 
@@ -142,6 +154,7 @@ export const text = {
     homeAriaSuffix: 'ホームへ戻る',
     mobileMenuOpen: 'メニューを開く',
     mobileMenuClose: 'メニューを閉じる',
+    ctaButton: '無料相談',
     labels: {
       works: 'Works',
       services: 'Services',
@@ -164,9 +177,8 @@ export const text = {
     hero: {
       cta: '予約相談する',
       ctaAria: '予約相談・お問い合わせセクションへ移動',
-      seoHiddenHeading:
-        'Silver Lace Weddings - 大阪・関西のロケーション前撮り・ウェディングムービー制作',
-      videoTitle: 'Silver Lace Weddings - ロケーション前撮り映像',
+      seoHiddenHeading: 'NOKORU - 大阪・関西のロケーション前撮り・ウェディングムービー制作',
+      videoTitle: 'NOKORU - ロケーション前撮り映像',
     },
     works: {
       title: 'Works',
@@ -360,6 +372,7 @@ export const text = {
     errors: {
       submitFailed: '送信に失敗しました。時間をおいて再度お試しください。',
       networkFailed: '通信に失敗しました。ネットワーク状況をご確認ください。',
+      timeout: '送信がタイムアウトしました。時間をおいて再度お試しください。',
       generic: '送信中にエラーが発生しました。時間をおいて再度お試しください。',
     },
     validationErrors: {
@@ -423,8 +436,7 @@ export const text = {
     baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     category: 'wedding',
     titleDefaultSuffix: '大阪・関西のロケーション前撮り・ウェディングムービー制作',
-    socialImageAlt:
-      'Silver Lace Weddings - 大阪・関西のロケーション前撮り・ウェディングムービー制作',
+    socialImageAlt: 'NOKORU - 大阪・関西のロケーション前撮り・ウェディングムービー制作',
     descriptionLong:
       '大阪・関西発のロケーション前撮り専門。シネマティックなウェディングムービーと写真撮影で、おふたりの大切な瞬間を美しく残します。オープニングムービー制作、全国出張対応。2026年撮影受付中。',
     descriptionOg:
@@ -473,7 +485,7 @@ export const text = {
         closes: '21:00',
       },
       sameAs: [
-        'https://www.instagram.com/silver_lace_weddings/',
+        'https://www.instagram.com/nokoru/',
         'https://www.instagram.com/aki.h_eastprojects',
         'https://lit.link/Akimitsu',
       ],

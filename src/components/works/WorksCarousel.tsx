@@ -1,14 +1,20 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { ProgressDots } from '@/components/ui';
 import type { WorkImage } from '@/types';
 
 interface WorksCarouselProps {
   works: readonly WorkImage[];
 }
+
+// 定数をコンポーネント外に移動して不要な再計算を防止
+const CARD_WIDTH = 85; // vw
+const CARD_GAP = 4; // vw
+const CARD_UNIT = CARD_WIDTH + CARD_GAP; // 89vw
 
 export function WorksCarousel({ works }: WorksCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,16 +29,10 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
   const animationRef = useRef<number | null>(null);
   const velocityRef = useRef(0);
 
-  const cardWidth = 85; // vw
-  const gap = 4; // vw
-
   // Calculate total offset for current index
-  const getTargetOffset = useCallback(
-    (index: number) => {
-      return -index * (cardWidth + gap);
-    },
-    [cardWidth, gap]
-  );
+  const getTargetOffset = useCallback((index: number) => {
+    return -index * CARD_UNIT;
+  }, []);
 
   // Snap to nearest card with momentum
   const snapToNearest = useCallback(
@@ -50,8 +50,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
       }
 
       // Find nearest snap point
-      const cardUnit = cardWidth + gap;
-      let targetIndex = Math.round(-predictedOffset / cardUnit);
+      let targetIndex = Math.round(-predictedOffset / CARD_UNIT);
 
       // Clamp to valid range
       targetIndex = Math.max(0, Math.min(works.length - 1, targetIndex));
@@ -59,7 +58,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
       setCurrentIndex(targetIndex);
       setDragOffset(0);
     },
-    [works.length, cardWidth, gap]
+    [works.length]
   );
 
   // Touch handlers
@@ -132,6 +131,28 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
     setDragOffset(0);
   }, [works.length]);
 
+  // キーボードナビゲーション（アクセシビリティ向上）
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // カルーセル外の要素にフォーカスがある場合は無視
+      if (!containerRef.current?.contains(document.activeElement) &&
+        document.activeElement !== document.body) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && currentIndex > 0) {
+        e.preventDefault();
+        goToIndex(currentIndex - 1);
+      } else if (e.key === 'ArrowRight' && currentIndex < works.length - 1) {
+        e.preventDefault();
+        goToIndex(currentIndex + 1);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex, works.length, goToIndex]);
+
   const translateX = getTargetOffset(currentIndex) + dragOffset;
 
   return (
@@ -150,8 +171,8 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
             !isDragging && 'transition-transform duration-500 ease-out'
           )}
           style={{
-            transform: `translateX(calc(${translateX}vw + ${(100 - cardWidth) / 2}vw))`,
-            gap: `${gap}vw`,
+            transform: `translateX(calc(${translateX}vw + ${(100 - CARD_WIDTH) / 2}vw))`,
+            gap: `${CARD_GAP}vw`,
           }}
         >
           {works.map((work, index) => (
@@ -162,7 +183,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
                 'relative shrink-0 overflow-hidden rounded-2xl shadow-lg transition-all duration-300',
                 index === currentIndex ? 'scale-100' : 'scale-95 opacity-80'
               )}
-              style={{ width: `${cardWidth}vw` }}
+              style={{ width: `${CARD_WIDTH}vw` }}
               onClick={(e) => {
                 if (index !== currentIndex) {
                   e.preventDefault();
@@ -198,22 +219,13 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
       </div>
 
       {/* Indicator Dots */}
-      <div className="mt-6 flex justify-center gap-2">
-        {works.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            className={cn(
-              'h-2 rounded-full transition-all duration-300',
-              index === currentIndex
-                ? 'w-6 bg-site-accent'
-                : 'w-2 bg-beige hover:bg-site-accent/50'
-            )}
-            onClick={() => goToIndex(index)}
-            aria-label={`作品 ${index + 1} を表示`}
-          />
-        ))}
-      </div>
+      <ProgressDots
+        count={works.length}
+        currentIndex={currentIndex}
+        className="mt-6 justify-center"
+        onDotClick={(index) => goToIndex(index)}
+        getAriaLabel={(index) => `作品 ${index + 1} を表示`}
+      />
     </div>
   );
 }

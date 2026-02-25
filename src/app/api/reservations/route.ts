@@ -1,11 +1,46 @@
 import { NextResponse } from 'next/server';
 import { appendReservation, listReservations } from '@/lib/reservations';
-import { isValidEmail, sanitizeInput, isWithinLength } from '@/lib/validation';
+import { isValidEmail, isValidPhone, isValidPreferredDate, sanitizeInput, isWithinLength } from '@/lib/validation';
 import { reservationInquiryTypes } from '@/types';
 import type { ReservationRequestInput } from '@/types';
 import { text } from '@/config';
 
 export const runtime = 'nodejs';
+
+// CSRF対策: 許可されたオリジン
+const ALLOWED_ORIGINS = [
+  process.env.NEXT_PUBLIC_SITE_URL,
+  'http://localhost:3000',
+  'http://localhost:3001',
+].filter(Boolean) as string[];
+
+function isValidOrigin(request: Request): boolean {
+  const origin = request.headers.get('origin');
+  const referer = request.headers.get('referer');
+
+  // サーバーサイドからのリクエスト（originなし）は許可
+  if (!origin && !referer) return true;
+
+  // originがある場合は検証
+  if (origin) {
+    return ALLOWED_ORIGINS.some((allowed) => origin.startsWith(allowed));
+  }
+
+  // refererのみの場合
+  if (referer) {
+    return ALLOWED_ORIGINS.some((allowed) => referer.startsWith(allowed));
+  }
+
+  return false;
+}
+
+// エラーレスポンスヘルパー
+function errorResponse(message: string, status: number, errors?: Record<string, string>) {
+  return NextResponse.json(
+    { ok: false, message, ...(errors && { errors }) },
+    { status }
+  );
+}
 
 // 入力制限定数
 const MAX_NAME_LENGTH = 100;
@@ -16,17 +51,6 @@ const MAX_BODY_SIZE = 10000; // 10KB
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
-}
-
-function isValidPreferredDate(value: string) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const date = new Date(`${value}T00:00:00.000Z`);
-  if (Number.isNaN(date.getTime())) return false;
-
-  // 過去日付は拒否
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return date >= today;
 }
 
 function isReservationInquiryType(
@@ -93,8 +117,8 @@ function validateInput(input: ReservationRequestInput) {
     errors.message = text.form.validationErrors.messageTooLong;
   }
 
-  // 電話番号（任意）
-  if (input.phone && !/^[0-9\-+() ]{10,20}$/.test(input.phone)) {
+  // 電話番号（任意）- validation.tsの共通関数を使用
+  if (input.phone && !isValidPhone(input.phone)) {
     errors.phone = text.form.validationErrors.phoneInvalid;
   }
 
@@ -110,66 +134,48 @@ function isAuthorized(req: Request) {
   const token = process.env.ADMIN_TOKEN;
   if (!token) return false;
 
-  // ヘッダーからのみトークン取得（URLパラメータは避ける）
+  // ヘッダーからのみトークン取得（セキュリティ上、URLパラメータは使用しない）
   const headerToken = req.headers.get('x-admin-token');
-  if (headerToken && headerToken === token) return true;
-
-  // 後方互換性のためURLパラメータも許可（非推奨）
-  const url = new URL(req.url);
-  const queryToken = url.searchParams.get('token');
-  return Boolean(queryToken && queryToken === token);
+  return headerToken === token;
 }
 
 export async function POST(req: Request) {
+  // CSRF対策: オリジン検証
+  if (!isValidOrigin(req)) {
+    return errorResponse('Invalid origin', 403);
+  }
+
   // Content-Type チェック
   const contentType = req.headers.get('content-type');
   if (!contentType?.includes('application/json')) {
-    return NextResponse.json(
-      { ok: false, message: 'Content-Type must be application/json' },
-      { status: 415 }
-    );
+    return errorResponse('Content-Type must be application/json', 415);
   }
 
   // ボディサイズチェック
   const contentLength = req.headers.get('content-length');
   if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
-    return NextResponse.json(
-      { ok: false, message: 'Request body too large' },
-      { status: 413 }
-    );
+    return errorResponse('Request body too large', 413);
   }
 
   let body: unknown;
   try {
     const rawBody = await req.text();
     if (rawBody.length > MAX_BODY_SIZE) {
-      return NextResponse.json(
-        { ok: false, message: 'Request body too large' },
-        { status: 413 }
-      );
+      return errorResponse('Request body too large', 413);
     }
     body = JSON.parse(rawBody);
   } catch {
-    return NextResponse.json(
-      { ok: false, message: text.api.reservations.invalidJson },
-      { status: 400 }
-    );
+    return errorResponse(text.api.reservations.invalidJson, 400);
   }
 
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
-    return NextResponse.json(
-      { ok: false, message: text.api.reservations.invalidBody },
-      { status: 400 }
-    );
+    return errorResponse(text.api.reservations.invalidBody, 400);
   }
 
   const input = normalizeInput(body as Record<string, unknown>);
   const { ok, errors } = validateInput(input);
   if (!ok) {
-    return NextResponse.json(
-      { ok: false, message: text.api.reservations.invalidInput, errors },
-      { status: 422 }
-    );
+    return errorResponse(text.api.reservations.invalidInput, 422, errors);
   }
 
   try {
@@ -181,10 +187,7 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error('Reservation creation failed:', error);
-    return NextResponse.json(
-      { ok: false, message: text.errors.dbInsert },
-      { status: 500 }
-    );
+    return errorResponse(text.errors.dbInsert, 500);
   }
 }
 
@@ -192,10 +195,7 @@ export async function GET(req: Request) {
   if (!isAuthorized(req)) {
     // タイミング攻撃を防ぐため、一定の遅延を追加
     await new Promise((resolve) => setTimeout(resolve, 100));
-    return NextResponse.json(
-      { ok: false, message: text.api.reservations.unauthorized },
-      { status: 401 }
-    );
+    return errorResponse(text.api.reservations.unauthorized, 401);
   }
 
   try {
@@ -203,10 +203,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ ok: true, reservations });
   } catch (error) {
     console.error('Failed to list reservations:', error);
-    return NextResponse.json(
-      { ok: false, message: text.errors.dbSelect },
-      { status: 500 }
-    );
+    return errorResponse(text.errors.dbSelect, 500);
   }
 }
 

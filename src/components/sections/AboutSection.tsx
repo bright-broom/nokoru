@@ -50,17 +50,17 @@ function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boo
 
             <div className="mt-2 flex items-center justify-center gap-3 sm:justify-start">
               <span className="h-px w-6 bg-gold/40" />
-              <p className="text-[12px] font-bold uppercase tracking-[0.3em] text-gold italic">
+              <p className="track-kicker text-xs font-bold uppercase text-gold italic md:text-sm">
                 {staff.role}
               </p>
             </div>
 
-            <p className="mt-6 text-[15px] leading-relaxed text-text-light/90">
+            <p className="mt-6 text-base leading-relaxed text-text-light/90">
               {staff.bio}
             </p>
 
             {/* 詳細への誘い */}
-            <div className="mt-8 flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-site-accent/40 transition-all duration-500 group-hover:text-site-accent group-hover:gap-5 sm:justify-start">
+            <div className="track-label mt-8 flex items-center justify-center gap-3 text-xs font-bold uppercase text-site-accent/40 transition-all duration-500 group-hover:text-site-accent group-hover:gap-5 sm:justify-start md:text-sm">
               <span>Biography</span>
               <div className="h-px w-8 bg-site-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-site-accent" />
             </div>
