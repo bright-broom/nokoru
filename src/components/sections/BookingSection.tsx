@@ -78,7 +78,7 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
 
           {/* Content */}
           <div className="text-left">
-            <h3 className="font-display text-2xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
+            <h3 className="font-display text-lg tracking-wide transition-colors duration-500 group-hover:text-site-accent md:text-xl">
               {title}
             </h3>
 
@@ -167,7 +167,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         {/* Description - Editorial */}
         <FadeIn direction="blur-up" delay={200} duration={1200}>
           <div className="mx-auto max-w-2xl text-center">
-            <p className="font-display text-2xl leading-relaxed text-text/80 tracking-wide">
+            <p className="font-display text-lg leading-relaxed text-text/80 tracking-wide md:text-xl">
               {text.sections.booking.description}
             </p>
             <div className="mt-8 flex items-center justify-center gap-4">
@@ -225,7 +225,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         <FadeIn direction="blur-up" delay={1200}>
           <div className="mt-32">
             <div className="mb-16 flex flex-col items-center">
-              <h3 className="font-display text-3xl tracking-widest text-text">
+              <h3 className="font-display text-xl tracking-widest text-text md:text-2xl">
                 {text.sections.booking.calendarHeading}
               </h3>
               <div className="mt-4 h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent" />

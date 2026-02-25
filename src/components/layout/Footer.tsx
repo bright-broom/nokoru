@@ -37,7 +37,7 @@ export function Footer() {
             href="/"
             className="group inline-block"
           >
-            <span className="track-label font-display text-3xl text-cream/90 transition-all duration-500 group-hover:text-cream">
+            <span className="track-label font-display text-2xl text-cream/90 transition-all duration-500 group-hover:text-cream">
               {siteConfig.name}
             </span>
             <span
