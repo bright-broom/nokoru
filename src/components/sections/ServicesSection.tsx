@@ -1,16 +1,11 @@
 import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
-import { VideoIcon, PlayIcon } from '@/components/icons';
+import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
 import { cardStyles } from '@/lib/utils';
 import type { Service } from '@/types';
-
-const iconMap = {
-  video: VideoIcon,
-  play: PlayIcon,
-} as const;
 
 function ServiceCard({ service, delay }: { service: Service; delay: number }) {
   const Icon = iconMap[service.icon];

@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
-import { CameraIcon, FilmIcon, PackageIcon, ClockIcon, CheckIcon } from '@/components/icons';
+import { ClockIcon, CheckIcon, iconMap, type IconMapKey } from '@/components/icons';
 import { text } from '@/config';
 import { cn, cardStyles } from '@/lib/utils';
 
@@ -28,17 +28,11 @@ export interface BookingSectionProps {
   calLink: string;
 }
 
-const iconMap = {
-  camera: CameraIcon,
-  film: FilmIcon,
-  package: PackageIcon,
-} as const;
-
 interface ConsultationCardProps {
   title: string;
   duration: string;
   description: string;
-  icon: keyof typeof iconMap;
+  icon: IconMapKey;
   delay: number;
   index: number;
 }
@@ -188,7 +182,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
               title={card.title}
               duration={card.duration}
               description={card.description}
-              icon={card.icon as keyof typeof iconMap}
+              icon={card.icon as IconMapKey}
               delay={400 + index * 150}
               index={index}
             />

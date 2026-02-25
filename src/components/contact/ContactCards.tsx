@@ -1,13 +1,8 @@
 import { FadeIn } from '@/components/ui';
-import { InstagramIcon, LinkIcon, SendIcon } from '@/components/icons';
+import { SendIcon, iconMap } from '@/components/icons';
 import { text } from '@/config';
 import { cn, getExternalLinkProps, iconBoxStyles } from '@/lib/utils';
 import type { ContactLink } from '@/types';
-
-const iconMap = {
-  instagram: InstagramIcon,
-  link: LinkIcon,
-} as const;
 
 interface ContactLinkCardProps {
   link: ContactLink;
