@@ -1,18 +1,18 @@
 import type { IconProps } from '@/types';
 
-export function CalendarIcon({ className, size = 24 }: Omit<IconProps, 'aria-hidden'>) {
+export function CalendarIcon({ className, size = 24, 'aria-hidden': ariaHidden = true }: IconProps) {
   return (
     <svg
-      className={className}
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      aria-hidden="true"
+      className={className}
+      aria-hidden={ariaHidden}
     >
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
       <line x1="16" y1="2" x2="16" y2="6" />

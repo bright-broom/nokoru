@@ -19,47 +19,51 @@ function WorkCard({
   delay?: number;
 }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={700} easing="smooth" className={className}>
-      <Link href={`/works/${image.id}`} className="block h-full perspective-1000">
-        <figure className="group relative h-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:shadow-site-accent/10">
-          {/* 背景グロー */}
-          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-site-accent/0 to-gold/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-site-accent/20 group-hover:to-gold/10 group-hover:opacity-100" />
+    <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth" className={className}>
+      <Link href={`/works/${image.id}`} className="group relative block h-full overflow-hidden rounded-2xl bg-white shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2">
+        {/* 背景の柔らかなグロー */}
+        <div className="absolute -inset-2 bg-gradient-to-br from-site-accent/10 via-transparent to-gold/10 opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
 
-          <div className="relative h-full min-h-[220px] w-full overflow-hidden rounded-2xl">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              priority={priority}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition-all duration-700 group-hover:scale-110"
-            />
-            {/* グラデーションオーバーレイ - リッチ化 */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+        <div className="relative h-full min-h-[250px] w-full overflow-hidden rounded-2xl">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-[1200ms] ease-premium group-hover:scale-110"
+          />
 
-            {/* シマー効果 */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-1000 group-hover:translate-x-[200%]" />
-          </div>
+          {/* プレミアム・オーバーレイ */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-40 transition-opacity duration-700 group-hover:opacity-70" />
 
-          {(image.locationTag || image.alt) && (
-            <figcaption className="absolute bottom-0 left-0 right-0 p-5 transform transition-transform duration-300 group-hover:translate-y-0">
-              {image.locationTag && (
-                <span className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-sm px-3 py-1.5 text-xs font-medium tracking-wide text-text shadow-md transition-all duration-300 group-hover:bg-white group-hover:shadow-lg">
-                  <span className="h-1.5 w-1.5 rounded-full bg-site-accent animate-pulse" aria-hidden="true" />
+          {/* エディトリアル・コンテンツ */}
+          <div className="absolute inset-x-0 bottom-0 p-8 transform translate-y-4 opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100">
+            {image.locationTag && (
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-px w-6 bg-gold/60" />
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-gold-light">
                   {image.locationTag}
                 </span>
-              )}
-              <p className="text-sm font-medium text-white drop-shadow-lg md:text-base">{image.alt}</p>
-            </figcaption>
-          )}
+              </div>
+            )}
+            <h3 className="font-display text-xl leading-tight text-white tracking-wide md:text-2xl">
+              {image.alt}
+            </h3>
 
-          {/* Hover overlay indicator - リッチ化 */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-500 group-hover:opacity-100">
-            <span className="rounded-full bg-white/95 backdrop-blur-sm px-5 py-2.5 text-sm font-medium text-text shadow-xl transform scale-90 transition-transform duration-300 group-hover:scale-100">
-              詳細を見る
-            </span>
+            {/* Discover More link */}
+            <div className="mt-4 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-white/60">
+              <span>View Story</span>
+              <div className="h-px w-0 bg-white/40 transition-all duration-500 group-hover:w-8" />
+            </div>
           </div>
-        </figure>
+
+          {/* 装飾コーナー */}
+          <div className="absolute top-4 right-4 h-8 w-8 opacity-0 transition-opacity duration-700 group-hover:opacity-40">
+            <div className="absolute top-0 right-0 h-px w-full bg-white" />
+            <div className="absolute top-0 right-0 h-full w-px bg-white" />
+          </div>
+        </div>
       </Link>
     </FadeIn>
   );

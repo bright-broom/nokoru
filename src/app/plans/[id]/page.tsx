@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { plans, text } from '@/config';
 import { Header, Footer } from '@/components/layout';
 import { CheckIcon, StarIcon } from '@/components/icons';
-import { cn } from '@/lib/utils';
-import { renderMultilineText } from '@/lib/helpers';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -27,13 +25,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const description = plan.features.length > 0
-    ? plan.features.map((f) => f.text).join('、')
-    : plan.description ?? '';
+  const description = plan.features.map((f) => f.text).join('、');
 
   return {
     title: `${plan.name} | ${text.pages.plans.metaTitleSuffix}`,
-    description: `${plan.name}プラン（${plan.price}${plan.priceNote ?? ''}）- ${description}`,
+    description: `${plan.name}プラン（¥${plan.price} ${plan.priceNote ?? ''}）- ${description}`,
   };
 }
 
@@ -45,7 +41,6 @@ export default async function PlanDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const isComingSoon = plan.isComingSoon;
   const isRecommended = plan.isRecommended;
 
   return (
@@ -67,75 +62,84 @@ export default async function PlanDetailPage({ params }: PageProps) {
           <article>
             <header className="text-center">
               {isRecommended && (
-                <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-site-accent px-4 py-1.5 text-xs font-semibold text-white">
+                <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-1.5 text-xs font-semibold text-white">
                   <StarIcon className="h-3.5 w-3.5" />
                   {text.sections.plans.recommendedBadge}
                 </div>
               )}
 
-              <h1
-                className={cn(
-                  'font-display text-3xl tracking-wide md:text-4xl',
-                  isComingSoon && 'text-text-light'
-                )}
-              >
+              <h1 className="font-display text-3xl tracking-wide md:text-4xl">
                 {plan.name}
               </h1>
 
-              <p
-                className={cn(
-                  'mt-4 text-4xl font-light tracking-tight md:text-5xl',
-                  isComingSoon && 'text-text-light'
-                )}
-              >
-                {plan.price}
-                {plan.priceNote && (
-                  <span className="ml-1 text-xl font-normal text-text-light">
-                    {plan.priceNote}
-                  </span>
-                )}
-              </p>
+              <div className="mt-6 flex items-baseline justify-center gap-1">
+                <span className="text-xl text-site-accent/50">¥</span>
+                <span className="text-5xl font-light tracking-tight md:text-6xl">
+                  {plan.price}
+                </span>
+              </div>
+              {plan.priceNote && (
+                <p className="mt-2 text-sm text-text-light/60">{plan.priceNote}</p>
+              )}
+
+              {plan.bestFor && (
+                <p className="mt-6 text-text-light">{plan.bestFor}</p>
+              )}
             </header>
 
-            {isComingSoon ? (
-              <div className="mt-12 rounded-lg border-2 border-dashed border-beige bg-beige/20 p-8 text-center">
-                <p className="text-text-light">
-                  {plan.description && renderMultilineText(plan.description)}
-                </p>
-                <p className="mt-4 text-sm text-text-light">
-                  {text.pages.plans.comingSoonNote}
-                </p>
-              </div>
-            ) : (
-              <>
-                {plan.features.length > 0 && (
-                  <div className="mt-12">
-                    <h2 className="mb-6 text-center font-display text-xl">
-                      {text.pages.plans.featuresHeading}
-                    </h2>
-                    <ul className="space-y-4 rounded-lg bg-white p-8 shadow-sm">
-                      {plan.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-4">
-                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-site-accent/10">
-                            <CheckIcon className="h-4 w-4 text-site-accent" />
-                          </span>
-                          <span className="text-text-light">{feature.text}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+            <div className="mt-12">
+              <h2 className="mb-6 text-center font-display text-xl">
+                {text.pages.plans.featuresHeading}
+              </h2>
+              <ul className="space-y-4 rounded-2xl bg-white p-8 shadow-lg">
+                {plan.features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-4">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold/10">
+                      <CheckIcon className="h-4 w-4 text-gold" />
+                    </span>
+                    <span className="text-text-light">{feature.text}</span>
+                  </li>
+                ))}
+              </ul>
 
-                <div className="mt-12 text-center">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-site-accent px-8 py-4 font-medium text-white transition hover:bg-site-accent/90"
-                  >
-                    {text.pages.plans.ctaButton}
-                  </Link>
+              {(plan.includes || plan.notIncludes) && (
+                <div className="mt-8 grid gap-6 md:grid-cols-2">
+                  {plan.includes && plan.includes.length > 0 && (
+                    <div className="rounded-2xl bg-white p-6 shadow-sm border border-beige/50">
+                      <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">Includes</h3>
+                      <ul className="space-y-2">
+                        {plan.includes.map((item, i) => (
+                          <li key={i} className="flex items-center gap-2 text-[13px] text-text-light">
+                            <span className="text-gold">✓</span> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {plan.notIncludes && plan.notIncludes.length > 0 && (
+                    <div className="rounded-2xl bg-white p-6 shadow-sm border border-beige/50">
+                      <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-site-accent/40">Not Includes</h3>
+                      <ul className="space-y-2 text-text-light/60">
+                        {plan.notIncludes.map((item, i) => (
+                          <li key={i} className="flex items-center gap-2 text-[13px]">
+                            <span className="text-site-accent/20">×</span> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              </>
-            )}
+              )}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 font-medium text-white transition hover:bg-gold-dark"
+              >
+                {text.pages.plans.ctaButton}
+              </Link>
+            </div>
           </article>
 
           <div className="mt-16 text-center">

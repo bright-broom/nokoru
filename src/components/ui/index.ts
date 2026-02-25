@@ -3,13 +3,12 @@ export { Container } from './Container';
 export { Section } from './Section';
 export { SectionHeader } from './SectionHeader';
 export { SectionDivider } from './SectionDivider';
-export { FadeIn, FadeInStagger } from './FadeIn';
+export { FadeIn } from './FadeIn';
 export { Spinner } from './Spinner';
 export { FloatingDecoration } from './FloatingDecoration';
 
 export { YouTubeEmbed } from './YouTubeEmbed';
 export { CalEmbed } from './CalEmbed';
-export { CalButton } from './CalButton';
 
 export { Input } from './input';
 export { Label } from './label';

@@ -11,10 +11,10 @@ export { ChevronRightIcon } from './ChevronRightIcon';
 export { CameraIcon } from './CameraIcon';
 export { FilmIcon } from './FilmIcon';
 export { PackageIcon } from './PackageIcon';
-export { CalendarIcon } from './CalendarIcon';
 export { ClockIcon } from './ClockIcon';
+export { CalendarIcon } from './CalendarIcon';
 export { MapPinIcon } from './MapPinIcon';
 export { MailIcon } from './MailIcon';
 export { SendIcon } from './SendIcon';
 
-export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'calendar' | 'clock' | 'map-pin' | 'mail' | 'send';
+export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'clock' | 'calendar' | 'map-pin' | 'mail' | 'send';

@@ -4,7 +4,6 @@ export {
   navItems,
   services,
   plans,
-  options,
   staffMembers,
   workImages,
   contactLinks,

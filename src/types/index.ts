@@ -32,17 +32,9 @@ export interface Plan {
   readonly priceNote?: string;
   readonly features: readonly PlanFeature[];
   readonly isRecommended?: boolean;
-  readonly isComingSoon?: boolean;
-  readonly description?: string;
-}
-
-// オプション
-export interface Option {
-  readonly id: string;
-  readonly name: string;
-  readonly price: string;
-  readonly description: string;
-  readonly features?: readonly string[];
+  readonly bestFor?: string;
+  readonly includes?: readonly string[];
+  readonly notIncludes?: readonly string[];
 }
 
 // スタッフ

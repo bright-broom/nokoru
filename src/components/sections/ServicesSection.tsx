@@ -15,68 +15,37 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
   const Icon = iconMap[service.icon];
 
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={700} easing="smooth">
+    <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth">
       <Link
         href={`/services/${service.id}`}
-        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:shadow-site-accent/10"
+        className="group relative block h-full overflow-hidden rounded-2xl bg-white p-10 shadow-elevated transition-all duration-700 hover:shadow-premium hover:-translate-y-2"
       >
-        {/* グラデーションボーダー効果 */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-site-accent/0 via-transparent to-gold/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ padding: '1px' }}>
-          <div className="h-full w-full rounded-2xl bg-white" />
-        </div>
-
-        {/* 背景グロー */}
-        <div
-          className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-site-accent/0 to-gold/0 opacity-0 blur-xl transition-all duration-500 group-hover:from-site-accent/15 group-hover:to-gold/10 group-hover:opacity-100"
-          aria-hidden="true"
-        />
-
-        {/* 背景装飾 - リッチ化 */}
-        <div
-          className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-gradient-to-br from-site-accent/10 to-gold/5 transition-all duration-700 group-hover:scale-150 group-hover:from-site-accent/15 group-hover:to-gold/10"
-          aria-hidden="true"
-        />
+        {/* 透明感のあるアクセント背景 */}
+        <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-bl from-site-accent/5 via-transparent to-transparent transition-all duration-700 group-hover:from-site-accent/15" aria-hidden="true" />
 
         {/* コンテンツ */}
         <div className="relative">
-          {/* アイコン - グラデーション強化 */}
-          <div className="mb-6 inline-flex">
+          {/* アイコン - 洗練された表示 */}
+          <div className="mb-10 inline-flex">
             <div className="relative">
-              <div
-                className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-site-accent/10 to-site-accent/5 transition-all duration-500 group-hover:from-site-accent group-hover:to-site-accent-light group-hover:shadow-lg group-hover:shadow-site-accent/25"
-                aria-hidden="true"
-              >
-                <Icon className="h-8 w-8 text-site-accent transition-all duration-500 group-hover:text-white group-hover:scale-110" />
+              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-beige/50 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/20">
+                <Icon className="h-10 w-10 text-site-accent transition-all duration-700 group-hover:text-white group-hover:scale-110" />
               </div>
-              {/* アイコン装飾 - パルス効果 */}
-              <div
-                className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-gold/30 transition-all duration-500 group-hover:bg-gold/60 group-hover:scale-125"
-                aria-hidden="true"
-              />
-              {/* リング装飾 */}
-              <div
-                className="absolute -inset-2 rounded-2xl border border-site-accent/0 transition-all duration-500 group-hover:border-site-accent/20"
-                aria-hidden="true"
-              />
+              <div className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-gold/10 backdrop-blur-sm shadow-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" aria-hidden="true" />
             </div>
           </div>
 
-          {/* タイトル - グラデーション対応 */}
-          <h3 className="font-display text-2xl tracking-wide transition-all duration-500 group-hover:text-site-accent">
+          <h3 className="font-display text-3xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
             {service.title}
           </h3>
 
-          {/* 説明 */}
-          <p className="mt-4 leading-relaxed text-text-light">
+          <p className="mt-6 text-[15px] leading-relaxed text-text-light/90">
             {renderMultilineText(service.description)}
           </p>
 
-          {/* 詳細リンク - リッチ化 */}
-          <div className="mt-6 flex items-center gap-2 text-sm font-medium text-site-accent transition-all duration-300 group-hover:gap-3">
-            <span>詳細を見る</span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-site-accent/10 transition-all duration-300 group-hover:bg-site-accent group-hover:text-white" aria-hidden="true">
-              →
-            </span>
+          <div className="mt-10 flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.3em] text-site-accent/60 transition-all duration-500 group-hover:text-site-accent group-hover:gap-6">
+            <span>Discover Experience</span>
+            <div className="h-px w-10 bg-site-accent/20 transition-all duration-500 group-hover:w-16 group-hover:bg-site-accent" aria-hidden="true" />
           </div>
         </div>
       </Link>

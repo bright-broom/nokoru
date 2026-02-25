@@ -49,61 +49,47 @@ export const text = {
       },
     },
     plans: {
-      standard: {
-        name: 'Standard',
-        price: '¥100,000',
-        priceNote: '〜',
-        features: ['ロケーション1ヶ所', '撮影時間 2時間', 'ショートムービー or 写真100枚'],
-      },
-      premium: {
-        name: 'Premium',
-        price: '¥158,000',
-        priceNote: '〜',
-        features: ['ロケーション1ヶ所', '撮影時間 3時間', 'ムービー × 1本', '写真100枚'],
-      },
-      comingSoon: {
-        name: 'Coming Soon',
-        price: '要相談',
-        description:
-          'マルチロケーションプランを準備中です。\n複数ヶ所での撮影をご希望の方はお問い合わせください。',
-      },
-    },
-    options: {
-      dressRental: {
-        name: 'ドレスレンタル',
-        price: '¥44,000',
-        description:
-          'ウェディングドレスのレンタルサービスです。提携ショップの豊富なラインナップから、ロケーション撮影に映えるドレスをお選びいただけます。',
+      light: {
+        name: 'Light',
+        price: '128,000',
+        priceNote: '税込',
         features: [
-          '提携ショップでの試着・選定',
-          '撮影当日のお届け・回収',
-          'サイズ調整対応',
-          '小物（ベール・グローブ等）セット',
+          'ロケーション1箇所',
+          '撮影時間 2時間',
+          'ショートムービー または 写真100枚',
         ],
+        bestFor: '衣装をお持ちの方・シンプルに残したい方',
+        includes: ['撮影', 'データ納品'],
+        notIncludes: ['衣装', 'ヘアメイク'],
       },
-      tuxedoRental: {
-        name: 'タキシードレンタル',
-        price: '¥33,000',
-        description:
-          '新郎様向けタキシードのレンタルサービスです。カジュアルからフォーマルまで、撮影シーンに合わせたスタイルをご提案します。',
+      signature: {
+        name: 'Signature',
+        price: '198,000',
+        priceNote: '税込',
         features: [
-          '提携ショップでの試着・選定',
-          '撮影当日のお届け・回収',
-          'サイズ調整対応',
-          '小物（シャツ・タイ・チーフ等）セット',
+          'ロケーション1箇所',
+          '撮影時間 3時間',
+          'ムービー ＋ 写真100枚',
+          'ヘアメイク込み',
         ],
+        bestFor: '迷ったらこれ。映像も写真も両方残せる',
+        includes: ['撮影', 'データ納品', 'ヘアメイク'],
+        notIncludes: ['衣装'],
       },
-      hairMakeup: {
-        name: 'ヘアメイク（1パターン）',
-        price: '¥22,000',
-        description:
-          'プロのヘアメイクアーティストが撮影現場でスタイリングを行います。ロケーション撮影に最適なヘアメイクで、最高の状態で撮影に臨めます。',
+      complete: {
+        name: 'Complete',
+        price: '298,000',
+        priceNote: '税込',
         features: [
-          '撮影現場での施術',
-          'ヘアセット＋メイク',
-          '撮影中のお直し対応',
-          '事前カウンセリング',
+          'ロケーション2箇所',
+          '撮影時間 5時間',
+          'ムービー ＋ 写真 ＋ ドローン',
+          '衣装ペアレンタル込み',
+          'ヘアメイク込み',
         ],
+        bestFor: '準備から当日まで全てお任せしたい方',
+        includes: ['撮影', 'データ納品', 'ヘアメイク', '衣装（2着）'],
+        notIncludes: [],
       },
     },
     staff: {
@@ -160,7 +146,6 @@ export const text = {
       works: 'Works',
       services: 'Services',
       plans: 'Plans',
-      options: 'Options',
       about: 'About',
       booking: 'Booking',
       contact: 'Contact',
@@ -200,16 +185,10 @@ export const text = {
       title: 'Plans',
       subtitle: '料金プラン',
       listAria: '料金プラン一覧',
-      recommendedBadge: 'おすすめ',
+      recommendedBadge: '一番人気',
       cta: 'プランについて相談する',
       ctaAria: 'お問い合わせページへ移動',
-    },
-    options: {
-      title: 'Options',
-      subtitle: 'オプション',
-      listAria: 'オプション一覧',
-      cta: 'オプションについて相談する',
-      ctaAria: 'お問い合わせページへ移動',
+      allInclusiveNote: '全プラン、撮影許可申請・データ納品・カラーグレーディング込み',
     },
     about: {
       title: 'About',
@@ -293,7 +272,6 @@ export const text = {
       metaTitleSuffix: '料金プラン',
       featuresHeading: 'プラン内容',
       ctaButton: 'このプランで相談する',
-      comingSoonNote: 'このプランは準備中です。詳細はお問い合わせください。',
     },
     services: {
       backToTop: 'トップへ戻る',
@@ -321,15 +299,6 @@ export const text = {
       backToTop: 'トップへ戻る',
       metaTitle: 'お問い合わせ',
       metaDescription: '撮影のご相談・お見積りはお気軽にどうぞ。通常3営業日以内にご返信いたします。',
-    },
-    options: {
-      backToTop: 'トップへ戻る',
-      backToOptions: 'オプション一覧へ',
-      notFound: 'オプションが見つかりませんでした',
-      metaTitleSuffix: 'オプション',
-      featuresHeading: 'サービス内容',
-      ctaButton: 'このオプションについて相談する',
-      note: '※ 撮影プランとセットでご利用いただけます',
     },
   },
 
@@ -451,7 +420,7 @@ export const text = {
   },
 
   seo: {
-    baseUrl: 'https://silverlacewedding.netlify.app',
+    baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     category: 'wedding',
     titleDefaultSuffix: '大阪・関西のロケーション前撮り・ウェディングムービー制作',
     socialImageAlt:

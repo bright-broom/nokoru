@@ -6,9 +6,10 @@
 export const siteColors = {
   cream: '#fbf9f6',
   beige: '#f5f2ec',
-  accent: '#7a8ec5',
-  text: '#3d3d3d',
-  textLight: '#6b6b6b',
+  accent: '#64748b', // Silver Slate
+  gold: '#c5a059',   // Champagne Gold
+  text: '#2d2d2d',
+  textLight: '#525252',
   error: '#ef4444',
   errorLight: '#fef2f2',
   errorDark: '#dc2626',

@@ -3,7 +3,6 @@ import type {
   NavItem,
   Service,
   Plan,
-  Option,
   Staff,
   WorkImage,
   ContactLink,
@@ -60,62 +59,45 @@ export const services: readonly Service[] = [
 ] as const;
 
 /**
- * 料金プラン
+ * 料金プラン（オールインクルーシブ）
  */
 export const plans: readonly Plan[] = [
   {
-    id: 'standard',
-    name: text.content.plans.standard.name,
-    price: text.content.plans.standard.price,
-    priceNote: text.content.plans.standard.priceNote,
+    id: 'light',
+    name: text.content.plans.light.name,
+    price: text.content.plans.light.price,
+    priceNote: text.content.plans.light.priceNote,
     features: [
-      ...text.content.plans.standard.features.map((t) => ({ text: t })),
+      ...text.content.plans.light.features.map((t) => ({ text: t })),
     ],
+    bestFor: text.content.plans.light.bestFor,
+    includes: text.content.plans.light.includes,
+    notIncludes: text.content.plans.light.notIncludes,
   },
   {
-    id: 'premium',
-    name: text.content.plans.premium.name,
-    price: text.content.plans.premium.price,
-    priceNote: text.content.plans.premium.priceNote,
+    id: 'signature',
+    name: text.content.plans.signature.name,
+    price: text.content.plans.signature.price,
+    priceNote: text.content.plans.signature.priceNote,
     isRecommended: true,
     features: [
-      ...text.content.plans.premium.features.map((t) => ({ text: t })),
+      ...text.content.plans.signature.features.map((t) => ({ text: t })),
     ],
+    bestFor: text.content.plans.signature.bestFor,
+    includes: text.content.plans.signature.includes,
+    notIncludes: text.content.plans.signature.notIncludes,
   },
   {
-    id: 'coming-soon',
-    name: text.content.plans.comingSoon.name,
-    price: text.content.plans.comingSoon.price,
-    isComingSoon: true,
-    features: [],
-    description: text.content.plans.comingSoon.description,
-  },
-] as const;
-
-/**
- * オプション一覧
- */
-export const options: readonly Option[] = [
-  {
-    id: 'dress',
-    name: text.content.options.dressRental.name,
-    price: text.content.options.dressRental.price,
-    description: text.content.options.dressRental.description,
-    features: text.content.options.dressRental.features,
-  },
-  {
-    id: 'tuxedo',
-    name: text.content.options.tuxedoRental.name,
-    price: text.content.options.tuxedoRental.price,
-    description: text.content.options.tuxedoRental.description,
-    features: text.content.options.tuxedoRental.features,
-  },
-  {
-    id: 'hair-makeup',
-    name: text.content.options.hairMakeup.name,
-    price: text.content.options.hairMakeup.price,
-    description: text.content.options.hairMakeup.description,
-    features: text.content.options.hairMakeup.features,
+    id: 'complete',
+    name: text.content.plans.complete.name,
+    price: text.content.plans.complete.price,
+    priceNote: text.content.plans.complete.priceNote,
+    features: [
+      ...text.content.plans.complete.features.map((t) => ({ text: t })),
+    ],
+    bestFor: text.content.plans.complete.bestFor,
+    includes: text.content.plans.complete.includes,
+    notIncludes: text.content.plans.complete.notIncludes,
   },
 ] as const;
 
