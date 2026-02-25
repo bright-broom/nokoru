@@ -97,14 +97,16 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           </div>
         </div>
 
-        {/* Complete プランのフルパッケージ表示 */}
-        {isComplete && (
-          <div className="border-t border-beige/50 bg-beige/20 px-8 py-4 text-center">
-            <span className="track-meta text-xs font-medium uppercase text-site-accent/60">
-              衣装・ヘアメイク全て込み
-            </span>
-          </div>
-        )}
+        {/* フッター領域（全カード統一高さ） */}
+        <div className={cn('h-14', isComplete && 'border-t border-beige/50 bg-beige/20')}>
+          {isComplete && (
+            <div className="flex h-full items-center justify-center px-8">
+              <span className="track-meta text-xs font-medium uppercase text-site-accent/60">
+                衣装・ヘアメイク全て込み
+              </span>
+            </div>
+          )}
+        </div>
       </Link>
     </FadeIn>
   );
