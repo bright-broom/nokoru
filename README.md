@@ -1,4 +1,4 @@
-# Silver Lace Weddings
+# NOKORU
 
 大阪・関西発のロケーション前撮り専門ウェディングムービー制作サービスの Web サイト。
 
@@ -234,4 +234,4 @@ rm -rf .next && npm run build
 
 ## ライセンス
 
-All rights reserved. Silver Lace Weddings.
+All rights reserved. NOKORU.

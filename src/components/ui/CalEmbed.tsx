@@ -27,7 +27,7 @@ export interface CalEmbedProps {
 /**
  * Cal.com埋め込みコンポーネント
  *
- * SILVER LACE WEDDINGSのブランドに合わせたスタイリングで
+ * NOKORUのブランドに合わせたスタイリングで
  * Cal.comの予約カレンダーを表示
  */
 export function CalEmbed({
