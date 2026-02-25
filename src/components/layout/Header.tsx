@@ -86,90 +86,73 @@ export function Header() {
 
         <nav
           className={cn(
-            'mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-500',
+            'mx-auto grid max-w-6xl grid-cols-3 items-center px-6 transition-all duration-500',
             isScrolled ? 'py-3' : 'py-5'
           )}
           role="navigation"
           aria-label={text.nav.ariaMainNav}
         >
-          {/* ロゴ */}
-          <Link
-            href="/"
-            className="group relative"
-            aria-label={`${siteConfig.name} - ${text.nav.homeAriaSuffix}`}
-          >
-            {/* ロゴ背景グロー */}
-            <span
-              className="absolute -inset-3 rounded-xl bg-gradient-to-r from-site-accent/0 via-site-accent/5 to-gold/0 opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-100"
-              aria-hidden="true"
-            />
-
-            <span className="track-meta relative font-display text-xl transition-all duration-500">
-              <span className="bg-gradient-to-r from-text via-text to-text bg-clip-text transition-all duration-500 group-hover:from-site-accent group-hover:via-text group-hover:to-gold group-hover:text-transparent">
-                {siteConfig.name}
+          {/* 左: ロゴ */}
+          <div className="flex justify-start">
+            <Link
+              href="/"
+              className="group relative"
+              aria-label={`${siteConfig.name} - ${text.nav.homeAriaSuffix}`}
+            >
+              <span className="track-meta relative font-display text-xl transition-all duration-500">
+                <span className="bg-gradient-to-r from-text via-text to-text bg-clip-text transition-all duration-500 group-hover:from-site-accent group-hover:via-text group-hover:to-gold group-hover:text-transparent">
+                  {siteConfig.name}
+                </span>
               </span>
-            </span>
+              <span
+                className="absolute -bottom-1 left-0 h-px w-0 bg-gradient-to-r from-site-accent via-gold to-site-accent transition-all duration-500 group-hover:w-full"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
 
-            {/* アンダーライン */}
-            <span
-              className="absolute -bottom-1 left-0 h-px w-0 bg-gradient-to-r from-site-accent via-gold to-site-accent transition-all duration-500 group-hover:w-full"
-              aria-hidden="true"
-            />
-          </Link>
-
-          {/* デスクトップナビゲーション */}
-          <ul className="hidden items-center gap-0.5 md:flex">
-            {navItems.map((item, index) => (
+          {/* 中央: デスクトップナビゲーション */}
+          <ul className="hidden items-center justify-center gap-1 md:flex">
+            {navItems.slice(0, -1).map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="group relative px-4 py-2"
+                  className="group relative px-3 py-2"
                 >
-                  {/* ホバー背景 */}
-                  <span
-                    className="absolute inset-0 rounded-lg bg-gradient-to-br from-site-accent/0 to-gold/0 transition-all duration-300 group-hover:from-site-accent/5 group-hover:to-gold/5"
-                    aria-hidden="true"
-                  />
-
-                  {/* テキスト */}
-                  <span className="relative text-sm tracking-wide text-text/80 transition-all duration-300 group-hover:text-site-accent">
+                  <span className="relative text-sm tracking-wide text-text/70 transition-all duration-300 group-hover:text-site-accent">
                     {item.label}
                   </span>
-
-                  {/* アンダーライン */}
                   <span
-                    className="absolute bottom-1 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-site-accent to-gold transition-all duration-300 group-hover:w-1/2"
+                    className="absolute bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-site-accent transition-all duration-300 group-hover:w-2/3"
                     aria-hidden="true"
                   />
-
-                  {/* ドット装飾（最後のアイテム以外） */}
-                  {index < navItems.length - 1 && (
-                    <span
-                      className="absolute right-0 top-1/2 h-0.5 w-0.5 -translate-y-1/2 rounded-full bg-beige"
-                      aria-hidden="true"
-                    />
-                  )}
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* モバイルメニューボタン */}
-          <button
-            type="button"
-            className="group relative flex h-11 w-11 items-center justify-center md:hidden"
-            onClick={toggleMobileMenu}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
-          >
-            {/* 背景 */}
-            <span
-              className="absolute inset-0 rounded-xl border border-transparent bg-transparent transition-all duration-300 group-hover:border-site-accent/20 group-hover:bg-site-accent/5"
-              aria-hidden="true"
-            />
-            <MenuIcon className="relative h-5 w-5 transition-all duration-300 group-hover:text-site-accent" />
-          </button>
+          {/* 右: CTAボタン / モバイルメニュー */}
+          <div className="flex justify-end">
+            {/* デスクトップCTA */}
+            <Link
+              href="/contact"
+              className="hidden rounded-full bg-site-accent px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-site-accent/90 hover:shadow-lg md:block"
+            >
+              {text.nav.ctaButton}
+            </Link>
+
+            {/* モバイルメニューボタン */}
+            <button
+              type="button"
+              className="group relative flex h-10 w-10 items-center justify-center md:hidden"
+              onClick={toggleMobileMenu}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMobileMenuOpen ? text.nav.mobileMenuClose : text.nav.mobileMenuOpen}
+            >
+              <MenuIcon className="h-5 w-5 text-text/70 transition-colors group-hover:text-site-accent" />
+            </button>
+          </div>
         </nav>
       </header>
 

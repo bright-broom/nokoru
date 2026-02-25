@@ -154,6 +154,7 @@ export const text = {
     homeAriaSuffix: 'ホームへ戻る',
     mobileMenuOpen: 'メニューを開く',
     mobileMenuClose: 'メニューを閉じる',
+    ctaButton: '無料相談',
     labels: {
       works: 'Works',
       services: 'Services',
