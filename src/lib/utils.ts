@@ -47,3 +47,42 @@ export function scrollToElement(id: string, behavior: ScrollBehavior = 'smooth')
     element.scrollIntoView({ behavior });
   }
 }
+
+/**
+ * カードコンポーネント共通スタイル
+ */
+export const cardStyles = {
+  /** カード基本スタイル */
+  base: 'group relative overflow-hidden rounded-2xl bg-white shadow-elevated transition-all duration-700',
+  /** ホバー時のエフェクト（上昇 + シャドウ強化） */
+  hover: 'hover:shadow-premium hover:-translate-y-2',
+} as const;
+
+/**
+ * アイコンボックス共通スタイル
+ */
+export const iconBoxStyles = {
+  /** アイコンボックス基本スタイル */
+  base: 'flex items-center justify-center rounded-xl bg-site-accent/10 transition-all duration-500',
+  /** グループホバー時のエフェクト */
+  groupHover: 'group-hover:bg-site-accent group-hover:scale-110 group-hover:text-white',
+} as const;
+
+/**
+ * ホバー時の出現アニメーション用スタイル
+ */
+export const revealOnHoverStyles = {
+  /** 初期状態（非表示） */
+  hidden: 'translate-y-4 opacity-0',
+  /** ホバー時（表示） */
+  visible: 'group-hover:translate-y-0 group-hover:opacity-100',
+  /** トランジション */
+  transition: 'transition-all duration-700',
+} as const;
+
+/** ホバー時出現アニメーション全体 */
+export const revealOnHoverClasses = cn(
+  revealOnHoverStyles.hidden,
+  revealOnHoverStyles.visible,
+  revealOnHoverStyles.transition
+);

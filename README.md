@@ -25,8 +25,8 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/KoenigWolf/aki.git
-cd aki
+git clone https://github.com/KoenigWolf/nokoru.git
+cd nokoru
 
 # 依存関係をインストール
 npm install
@@ -66,7 +66,6 @@ src/
 │   ├── works/[id]/page.tsx       # 作品詳細ページ
 │   ├── services/[id]/page.tsx    # サービス詳細ページ
 │   ├── staff/[id]/page.tsx       # スタッフ詳細ページ
-│   ├── options/[id]/page.tsx     # オプション詳細ページ
 │   ├── plans/[id]/page.tsx       # プラン詳細ページ
 │   ├── api/reservations/route.ts # 予約 API
 │   └── admin/reservations/       # 管理画面
@@ -74,7 +73,7 @@ src/
 │   ├── forms/                    # フォームコンポーネント
 │   ├── icons/                    # SVG アイコン (18種類)
 │   ├── layout/                   # Header, Footer
-│   ├── sections/                 # ページセクション (8種類)
+│   ├── sections/                 # ページセクション (7種類)
 │   ├── seo/                      # SEO 関連
 │   ├── ui/                       # 汎用 UI コンポーネント
 │   └── works/                    # 作品関連コンポーネント
@@ -107,7 +106,6 @@ src/
 | Works      | 作品ギャラリー（カルーセル/画像ビューアー） |
 | Services   | サービス紹介 |
 | Plans      | 料金プラン |
-| Options    | オプション |
 | About      | スタッフ紹介 |
 | Booking    | Cal.com 予約カレンダー |
 | Contact    | お問い合わせフォーム |
@@ -117,7 +115,6 @@ src/
 - `/works/[id]` - 作品詳細（スワイプ対応画像ビューアー）
 - `/services/[id]` - サービス詳細
 - `/staff/[id]` - スタッフ詳細
-- `/options/[id]` - オプション詳細
 - `/plans/[id]` - プラン詳細
 
 ### 予約・お問い合わせ

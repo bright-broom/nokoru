@@ -1,13 +1,8 @@
 import { FadeIn } from '@/components/ui';
-import { InstagramIcon, LinkIcon, SendIcon } from '@/components/icons';
+import { SendIcon, iconMap } from '@/components/icons';
 import { text } from '@/config';
-import { cn, getExternalLinkProps } from '@/lib/utils';
+import { cn, getExternalLinkProps, iconBoxStyles } from '@/lib/utils';
 import type { ContactLink } from '@/types';
-
-const iconMap = {
-  instagram: InstagramIcon,
-  link: LinkIcon,
-} as const;
 
 interface ContactLinkCardProps {
   link: ContactLink;
@@ -32,9 +27,9 @@ export function ContactLinkCard({ link, delay }: ContactLinkCardProps) {
       >
         <div
           className={cn(
-            'flex h-12 w-12 shrink-0 items-center justify-center rounded-full',
-            'bg-site-accent/10 transition-all duration-300',
-            'group-hover:bg-site-accent group-hover:scale-110'
+            'h-12 w-12 shrink-0 rounded-full',
+            iconBoxStyles.base,
+            iconBoxStyles.groupHover
           )}
         >
           <Icon

@@ -18,3 +18,27 @@ export { MailIcon } from './MailIcon';
 export { SendIcon } from './SendIcon';
 
 export type IconName = 'video' | 'play' | 'instagram' | 'link' | 'check' | 'star' | 'menu' | 'close' | 'chevron-left' | 'chevron-right' | 'camera' | 'film' | 'package' | 'clock' | 'calendar' | 'map-pin' | 'mail' | 'send';
+
+import { VideoIcon } from './VideoIcon';
+import { PlayIcon } from './PlayIcon';
+import { InstagramIcon } from './InstagramIcon';
+import { LinkIcon } from './LinkIcon';
+import { CameraIcon } from './CameraIcon';
+import { FilmIcon } from './FilmIcon';
+import { PackageIcon } from './PackageIcon';
+
+/**
+ * アイコン名からコンポーネントへのマッピング
+ * 各セクションで共通利用
+ */
+export const iconMap = {
+  video: VideoIcon,
+  play: PlayIcon,
+  instagram: InstagramIcon,
+  link: LinkIcon,
+  camera: CameraIcon,
+  film: FilmIcon,
+  package: PackageIcon,
+} as const;
+
+export type IconMapKey = keyof typeof iconMap;
