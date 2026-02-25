@@ -148,7 +148,7 @@ export function PlansSection() {
         </FadeIn>
 
         {/* プランカード */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8 md:items-start">
+        <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
           {plans.map((plan, index) => (
             <PlanCard key={plan.id} plan={plan} index={index} />
           ))}
