@@ -371,6 +371,7 @@ export const text = {
     errors: {
       submitFailed: '送信に失敗しました。時間をおいて再度お試しください。',
       networkFailed: '通信に失敗しました。ネットワーク状況をご確認ください。',
+      timeout: '送信がタイムアウトしました。時間をおいて再度お試しください。',
       generic: '送信中にエラーが発生しました。時間をおいて再度お試しください。',
     },
     validationErrors: {

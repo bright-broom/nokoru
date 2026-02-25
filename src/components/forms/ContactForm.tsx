@@ -5,6 +5,7 @@ import { Input, Label, Textarea, Button, Spinner } from '@/components/ui';
 import { CheckIcon } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { text } from '@/config';
+import { PASSWORD_MANAGER_IGNORE_PROPS } from '@/lib/constants';
 import {
   validateContactForm,
   toErrorMap,
@@ -23,12 +24,6 @@ interface FormErrors {
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 const inquiryTypes = text.form.inquiryTypes;
-
-const passwordManagerIgnoreProps = {
-  'data-np-ignore': 'true',
-  'data-lpignore': 'true',
-  suppressHydrationWarning: true,
-} as const;
 
 const initialFormData: ContactFormData = {
   name: '',
@@ -61,14 +56,15 @@ export function ContactForm() {
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
-      if (errors[name as keyof FormErrors]) {
-        setErrors((prev) => ({ ...prev, [name]: undefined }));
-      }
-      if (errors.form) {
-        setErrors((prev) => ({ ...prev, form: undefined }));
-      }
+      // setErrorsのコールバック形式で依存配列からerrorsを除去
+      setErrors((prev) => {
+        if (prev[name as keyof FormErrors] || prev.form) {
+          return { ...prev, [name]: undefined, form: undefined };
+        }
+        return prev;
+      });
     },
-    [errors]
+    []
   );
 
   const handleSubmit = useCallback(
@@ -78,6 +74,10 @@ export function ContactForm() {
       if (!validateForm()) return;
 
       setStatus('submitting');
+
+      // タイムアウト処理（10秒）
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       try {
         const formBody = new URLSearchParams({
@@ -89,6 +89,7 @@ export function ContactForm() {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: formBody,
+          signal: controller.signal,
         });
 
         if (!res.ok) {
@@ -102,12 +103,16 @@ export function ContactForm() {
 
         setStatus('success');
         setFormData(initialFormData);
-      } catch {
+      } catch (error) {
+        // タイムアウトかネットワークエラーかを判定
+        const isTimeout = error instanceof DOMException && error.name === 'AbortError';
         setErrors((prev) => ({
           ...prev,
-          form: text.form.errors.networkFailed,
+          form: isTimeout ? text.form.errors.timeout : text.form.errors.networkFailed,
         }));
         setStatus('error');
+      } finally {
+        clearTimeout(timeoutId);
       }
     },
     [formData, validateForm]
@@ -156,10 +161,10 @@ export function ContactForm() {
       <p className="hidden">
         <label>
           {text.form.honeypot.label}{' '}
-          <input name="bot-field" {...passwordManagerIgnoreProps} />
+          <input name="bot-field" {...PASSWORD_MANAGER_IGNORE_PROPS} />
         </label>
       </p>
-      <div className="space-y-6" suppressHydrationWarning>
+      <div className="space-y-8" suppressHydrationWarning>
         <div className="space-y-2" suppressHydrationWarning>
           <Label htmlFor="name" className="text-text">
             <span>{text.form.fields.name.label}</span>
@@ -177,7 +182,7 @@ export function ContactForm() {
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'name-error' : undefined}
             className={cn(errors.name && 'border-error focus-visible:ring-error')}
-            {...passwordManagerIgnoreProps}
+            {...PASSWORD_MANAGER_IGNORE_PROPS}
           />
           {errors.name && (
             <p id="name-error" className="text-sm text-error" role="alert">
@@ -203,7 +208,7 @@ export function ContactForm() {
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'email-error' : undefined}
             className={cn(errors.email && 'border-error focus-visible:ring-error')}
-            {...passwordManagerIgnoreProps}
+            {...PASSWORD_MANAGER_IGNORE_PROPS}
           />
           {errors.email && (
             <p id="email-error" className="text-sm text-error" role="alert">
@@ -224,7 +229,7 @@ export function ContactForm() {
             onChange={handleChange}
             placeholder={text.form.fields.phone.placeholder}
             autoComplete="tel"
-            {...passwordManagerIgnoreProps}
+            {...PASSWORD_MANAGER_IGNORE_PROPS}
           />
         </div>
 
@@ -238,7 +243,7 @@ export function ContactForm() {
             aria-label={text.form.fields.inquiryType.ariaLabel}
             value={formData.inquiryType}
             onChange={handleChange}
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="flex min-h-[48px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             suppressHydrationWarning
           >
             {inquiryTypes.map((type) => (
@@ -266,7 +271,7 @@ export function ContactForm() {
             className={cn(
               errors.preferredDate && 'border-error focus-visible:ring-error'
             )}
-            {...passwordManagerIgnoreProps}
+            {...PASSWORD_MANAGER_IGNORE_PROPS}
           />
           {errors.preferredDate && (
             <p id="preferredDate-error" className="text-sm text-error" role="alert">
@@ -292,7 +297,7 @@ export function ContactForm() {
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? 'message-error' : undefined}
             className={cn(errors.message && 'border-error focus-visible:ring-error')}
-            {...passwordManagerIgnoreProps}
+            {...PASSWORD_MANAGER_IGNORE_PROPS}
           />
           {errors.message && (
             <p id="message-error" className="text-sm text-error" role="alert">
