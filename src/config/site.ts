@@ -127,6 +127,37 @@ export const staffMembers: readonly Staff[] = [
  */
 export const workImages: readonly WorkImage[] = [
   {
+    id: 'works-couple-cliff',
+    src: '/images/works/couple-cliff.jpg',
+    alt: text.content.works.alts.coupleCliff,
+    description: text.content.works.descriptions.coupleCliff,
+    locationTag: text.content.works.tags.location,
+    isFeatured: true,
+  },
+  {
+    id: 'works-couple-sea-smile',
+    src: '/images/works/couple-sea-smile.jpg',
+    alt: text.content.works.alts.coupleSeaSmile,
+    description: text.content.works.descriptions.coupleSeaSmile,
+    locationTag: text.content.works.tags.seaside,
+    gridSpan: 7,
+  },
+  {
+    id: 'works-bouquet-new',
+    src: '/images/works/bouquet-new.jpg',
+    alt: text.content.works.alts.bouquetNew,
+    description: text.content.works.descriptions.bouquetNew,
+    locationTag: text.content.works.tags.detail,
+    gridSpan: 5,
+  },
+  {
+    id: 'works-couple-sea-rocks',
+    src: '/images/works/couple-sea-rocks.jpg',
+    alt: text.content.works.alts.coupleSeaRocks,
+    description: text.content.works.descriptions.coupleSeaRocks,
+    locationTag: text.content.works.tags.seaside,
+  },
+  {
     id: 'works-couple-sea',
     src: '/images/works/couple-sea.jpg',
     alt: text.content.works.alts.coupleSea,

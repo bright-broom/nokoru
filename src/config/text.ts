@@ -109,6 +109,10 @@ export const text = {
         detail: 'Detail',
       },
       alts: {
+        coupleCliff: '夕景の崖に立つ新郎新婦',
+        coupleSeaSmile: '夕景の岩場で微笑み合う新郎新婦',
+        bouquetNew: '夕景の海辺で持つブーケ',
+        coupleSeaRocks: '夕景の海辺の岩場に立つ新郎新婦',
         bridePortrait: '自然光の中で撮影した花嫁の横顔',
         couplePlayground: '自然体のふたりを切り取ったカップルフォト',
         coupleSea: '海辺の風景の中で佇む新郎新婦のシルエット',
@@ -116,6 +120,14 @@ export const text = {
         bouquet: 'ドライフラワーのブーケのクローズアップ',
       },
       descriptions: {
+        coupleCliff:
+          '壮大な夕景を背景に、崖の上に立つお二人をドラマチックに捉えました。',
+        coupleSeaSmile:
+          '夕暮れの海辺の岩場で、自然な笑顔を見せるお二人のクローズアップです。',
+        bouquetNew:
+          '美しいマジックアワーの光の中で撮影した、こだわりのブーケのカットです。',
+        coupleSeaRocks:
+          '波打つ岩場で佇むお二人。美しいサンセットの光と影が印象的な一枚です。',
         coupleSea:
           '夕暮れ時の海辺で撮影。オレンジとブルーが混ざり合う空の下、波の音をBGMにお二人のシルエットを切り取りました。',
         bridePortrait:
