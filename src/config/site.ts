@@ -28,11 +28,11 @@ export const siteConfig: SiteConfig = {
  * ナビゲーション項目
  */
 export const navItems: readonly NavItem[] = [
-  { label: text.nav.labels.works, href: '#works', ariaLabel: text.nav.aria.works },
-  { label: text.nav.labels.services, href: '#services', ariaLabel: text.nav.aria.services },
-  { label: text.nav.labels.plans, href: '#plans', ariaLabel: text.nav.aria.plans },
-  { label: text.nav.labels.about, href: '#about', ariaLabel: text.nav.aria.about },
-  { label: text.nav.labels.booking, href: '#booking', ariaLabel: text.nav.aria.booking },
+  { label: text.nav.labels.works, href: '/#works', ariaLabel: text.nav.aria.works },
+  { label: text.nav.labels.services, href: '/#services', ariaLabel: text.nav.aria.services },
+  { label: text.nav.labels.plans, href: '/#plans', ariaLabel: text.nav.aria.plans },
+  { label: text.nav.labels.about, href: '/#about', ariaLabel: text.nav.aria.about },
+  { label: text.nav.labels.booking, href: '/#booking', ariaLabel: text.nav.aria.booking },
   { label: text.nav.labels.contact, href: '/contact', ariaLabel: text.nav.aria.contact },
 ] as const;
 
