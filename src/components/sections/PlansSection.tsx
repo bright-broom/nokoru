@@ -85,7 +85,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           </ul>
 
           {/* CTA */}
-          <div className="mt-8">
+          <div className="mt-auto pt-8">
             <div className={cn(
               'track-label w-full min-h-[48px] flex items-center justify-center rounded-xl px-4 py-3 text-center text-xs md:text-sm font-bold uppercase transition-all duration-300',
               isSignature
