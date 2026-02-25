@@ -100,12 +100,11 @@ export function FadeIn({
   as: Component = 'div',
   easing = 'ease-out',
 }: FadeInProps) {
-  const { ref, isInView } = useInView({ triggerOnce: once });
+  const { ref, isInView } = useInView<HTMLElement>({ triggerOnce: once });
 
   return (
     <Component
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref as React.RefObject<never>}
       className={cn(
         'transition-all',
         easingClasses[easing],

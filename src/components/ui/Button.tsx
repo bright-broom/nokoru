@@ -1,25 +1,43 @@
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn, getExternalLinkProps } from '@/lib/utils';
 import type { PropsWithClassName } from '@/types';
 
 type ButtonVariant = 'primary' | 'outline' | 'gradient' | 'ghost' | 'glow';
 type ButtonSize = 'default' | 'large' | 'small';
 
-interface ButtonProps extends PropsWithClassName {
+/** 共通のボタンプロパティ */
+interface ButtonBaseProps extends PropsWithClassName {
   children: React.ReactNode;
-  href?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  isExternal?: boolean;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
-  disabled?: boolean;
   'aria-label'?: string;
   /** アイコンを左に配置 */
   iconLeft?: React.ReactNode;
   /** アイコンを右に配置 */
   iconRight?: React.ReactNode;
 }
+
+/** リンクとして使用する場合 */
+interface LinkButtonProps extends ButtonBaseProps {
+  href: string;
+  isExternal?: boolean;
+  onClick?: never;
+  type?: never;
+  disabled?: never;
+  'aria-busy'?: never;
+}
+
+/** ボタンとして使用する場合 */
+interface NativeButtonProps extends ButtonBaseProps {
+  href?: never;
+  isExternal?: never;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
+  disabled?: boolean;
+  'aria-busy'?: boolean;
+}
+
+type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const baseClasses =
   'inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide rounded-md transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
@@ -38,25 +56,22 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  small: 'px-5 py-2 text-[13px] tracking-wider',
-  default: 'px-8 py-3 text-[14px] tracking-widest uppercase font-semibold',
-  large: 'px-11 py-4 text-[16px] tracking-[0.2em] uppercase font-bold',
+  small: 'px-4 py-2 min-h-[40px] text-xs tracking-wider',
+  default: 'px-6 py-3 min-h-[48px] text-sm tracking-widest uppercase font-semibold',
+  large: 'track-label px-8 py-4 min-h-[56px] text-base uppercase font-bold',
 };
 
-export function Button({
-  children,
-  className,
-  href,
-  variant = 'outline',
-  size = 'default',
-  isExternal = false,
-  onClick,
-  type = 'button',
-  disabled,
-  'aria-label': ariaLabel,
-  iconLeft,
-  iconRight,
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const {
+    children,
+    className,
+    variant = 'outline',
+    size = 'default',
+    'aria-label': ariaLabel,
+    iconLeft,
+    iconRight,
+  } = props;
+
   const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
 
   const content = (
@@ -67,17 +82,22 @@ export function Button({
     </>
   );
 
-  if (href) {
-    const externalProps = isExternal
-      ? { target: '_blank', rel: 'noopener noreferrer' }
-      : {};
-
+  // リンクボタンの場合
+  if ('href' in props && props.href) {
     return (
-      <Link href={href} className={classes} aria-label={ariaLabel} {...externalProps}>
+      <Link
+        href={props.href}
+        className={classes}
+        aria-label={ariaLabel}
+        {...getExternalLinkProps(props.isExternal)}
+      >
         {content}
       </Link>
     );
   }
+
+  // ネイティブボタンの場合
+  const { onClick, type = 'button', disabled, 'aria-busy': ariaBusy } = props as NativeButtonProps;
 
   return (
     <button
@@ -86,6 +106,7 @@ export function Button({
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      aria-busy={ariaBusy}
     >
       {content}
     </button>
