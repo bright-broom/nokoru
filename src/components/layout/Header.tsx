@@ -113,7 +113,7 @@ export function Header() {
 
           {/* 中央: デスクトップナビゲーション */}
           <ul className="hidden items-center justify-center gap-1 md:flex">
-            {navItems.slice(0, -1).map((item) => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -131,16 +131,8 @@ export function Header() {
             ))}
           </ul>
 
-          {/* 右: CTAボタン / モバイルメニュー */}
+          {/* 右: モバイルメニュー */}
           <div className="flex justify-end">
-            {/* デスクトップCTA */}
-            <Link
-              href="/contact"
-              className="hidden rounded-full bg-site-accent px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-site-accent/90 hover:shadow-lg md:block"
-            >
-              {text.nav.ctaButton}
-            </Link>
-
             {/* モバイルメニューボタン */}
             <button
               type="button"
