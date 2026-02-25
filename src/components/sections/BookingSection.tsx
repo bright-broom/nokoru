@@ -225,7 +225,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         <FadeIn direction="blur-up" delay={1200}>
           <div className="mt-32">
             <div className="mb-16 flex flex-col items-center">
-              <h3 className="font-display text-xl tracking-widest text-text md:text-2xl">
+              <h3 className="font-display text-base tracking-widest text-text md:text-lg">
                 {text.sections.booking.calendarHeading}
               </h3>
               <div className="mt-4 h-px w-32 bg-gradient-to-r from-transparent via-gold to-transparent" />
