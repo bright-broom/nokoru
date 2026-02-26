@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { Section, Container, SectionHeader, FadeIn, SectionCTA, cardPreset } from '@/components/ui';
 import { StarIcon } from '@/components/icons';
 import { testimonials, text } from '@/config';
@@ -7,10 +8,13 @@ import { ANIMATION_DELAYS } from '@/lib/constants';
 import { cardStyles } from '@/lib/styles';
 import type { Testimonial } from '@/types';
 
-function StarRating({ rating }: { rating: number }) {
+// 星の配列を事前に作成（レンダリング毎の再生成を防ぐ）
+const STAR_INDICES = [0, 1, 2, 3, 4] as const;
+
+const StarRating = memo(function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5" aria-label={`評価: ${rating}点`}>
-      {[...Array(5)].map((_, i) => (
+      {STAR_INDICES.map((i) => (
         <StarIcon
           key={i}
           className={`h-4 w-4 ${i < rating ? 'text-gold' : 'text-beige'}`}
@@ -18,9 +22,9 @@ function StarRating({ rating }: { rating: number }) {
       ))}
     </div>
   );
-}
+});
 
-function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
+const TestimonialCard = memo(function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
   return (
     <FadeIn {...cardPreset} delay={delay} className="h-full">
       <article className={`${cardStyles.base} ${cardStyles.hover} flex h-full flex-col p-6 md:p-8`}>
@@ -44,7 +48,7 @@ function TestimonialCard({ testimonial, delay }: { testimonial: Testimonial; del
       </article>
     </FadeIn>
   );
-}
+});
 
 export function TestimonialsSection() {
   return (
