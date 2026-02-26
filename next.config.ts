@@ -86,8 +86,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   // 画像最適化設定
   images: {
-    // 外部画像ドメイン許可 (YouTube サムネイル)
+    // 外部画像ドメイン許可
     remotePatterns: [
+      // YouTube サムネイル
       {
         protocol: 'https',
         hostname: 'i.ytimg.com',
@@ -95,6 +96,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'img.youtube.com',
+      },
+      // Supabase Storage
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
       },
     ],
     // モダンフォーマット優先

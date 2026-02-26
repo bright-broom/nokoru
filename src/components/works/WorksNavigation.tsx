@@ -69,7 +69,6 @@ function NavButton({ work, direction, label }: NavButtonProps) {
           fill
           sizes="80px"
           className="object-cover"
-          unoptimized
         />
       </div>
 

@@ -8,6 +8,7 @@ import type {
   ContactLink,
 } from '@/types';
 import { text } from './text';
+import { getWorkImageUrl, getStaffImageUrl } from '@/lib/storage';
 
 /**
  * サイト基本設定
@@ -110,25 +111,25 @@ export const staffMembers: readonly Staff[] = [
     name: 'Aki',
     role: text.content.staff.akiRole,
     bio: text.content.staff.akiBio,
-    imageUrl: '/images/staff/aki.jpg',
+    imageUrl: getStaffImageUrl('aki.jpg'),
   },
   {
     id: 'hiyori',
     name: 'Hiyori',
     role: text.content.staff.hiyoriRole,
     bio: text.content.staff.hiyoriBio,
-    imageUrl: '/images/staff/hiyori.jpg',
+    imageUrl: getStaffImageUrl('hiyori.jpg'),
   },
 ] as const;
 
 /**
- * 作品ギャラリー（差し替え前提）
- * 画像は public/ 配下に配置してください（README参照）
+ * 作品ギャラリー
+ * 画像は Supabase Storage に保存されています
  */
 export const workImages: readonly WorkImage[] = [
   {
     id: 'works-couple-cliff',
-    src: '/images/works/couple-cliff.jpg',
+    src: getWorkImageUrl('couple-cliff.jpg'),
     alt: text.content.works.alts.coupleCliff,
     description: text.content.works.descriptions.coupleCliff,
     locationTag: text.content.works.tags.location,
@@ -136,7 +137,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-couple-sea-smile',
-    src: '/images/works/couple-sea-smile.jpg',
+    src: getWorkImageUrl('couple-sea-smile.jpg'),
     alt: text.content.works.alts.coupleSeaSmile,
     description: text.content.works.descriptions.coupleSeaSmile,
     locationTag: text.content.works.tags.seaside,
@@ -144,7 +145,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-bouquet-new',
-    src: '/images/works/bouquet-new.jpg',
+    src: getWorkImageUrl('bouquet-new.jpg'),
     alt: text.content.works.alts.bouquetNew,
     description: text.content.works.descriptions.bouquetNew,
     locationTag: text.content.works.tags.detail,
@@ -152,14 +153,14 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-couple-sea-rocks',
-    src: '/images/works/couple-sea-rocks.jpg',
+    src: getWorkImageUrl('couple-sea-rocks.jpg'),
     alt: text.content.works.alts.coupleSeaRocks,
     description: text.content.works.descriptions.coupleSeaRocks,
     locationTag: text.content.works.tags.seaside,
   },
   {
     id: 'works-couple-sea',
-    src: '/images/works/couple-sea.jpg',
+    src: getWorkImageUrl('couple-sea.jpg'),
     alt: text.content.works.alts.coupleSea,
     description: text.content.works.descriptions.coupleSea,
     locationTag: text.content.works.tags.seaside,
@@ -167,7 +168,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-bride-portrait',
-    src: '/images/works/bride-portrait.jpg',
+    src: getWorkImageUrl('bride-portrait.jpg'),
     alt: text.content.works.alts.bridePortrait,
     description: text.content.works.descriptions.bridePortrait,
     locationTag: text.content.works.tags.location,
@@ -175,7 +176,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-couple-playground',
-    src: '/images/works/couple-playground.jpg',
+    src: getWorkImageUrl('couple-playground.jpg'),
     alt: text.content.works.alts.couplePlayground,
     description: text.content.works.descriptions.couplePlayground,
     locationTag: text.content.works.tags.couple,
@@ -183,7 +184,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-couple-sunflower',
-    src: '/images/works/couple-sunflower.jpg',
+    src: getWorkImageUrl('couple-sunflower.jpg'),
     alt: text.content.works.alts.coupleSunflower,
     description: text.content.works.descriptions.coupleSunflower,
     locationTag: text.content.works.tags.sunflower,
@@ -191,7 +192,7 @@ export const workImages: readonly WorkImage[] = [
   },
   {
     id: 'works-bouquet',
-    src: '/images/works/bouquet.jpg',
+    src: getWorkImageUrl('bouquet.jpg'),
     alt: text.content.works.alts.bouquet,
     description: text.content.works.descriptions.bouquet,
     locationTag: text.content.works.tags.detail,
