@@ -162,6 +162,9 @@ export const text = {
       about: 'About',
       booking: 'Booking',
       contact: 'Contact',
+      videos: 'Videos',
+      blog: 'Blog',
+      faq: 'FAQ',
     },
     aria: {
       works: '作品ギャラリーへ移動',
@@ -170,6 +173,9 @@ export const text = {
       about: 'スタッフ紹介へ移動',
       booking: '無料相談予約へ移動',
       contact: 'お問い合わせへ移動',
+      videos: '動画ギャラリーへ移動',
+      blog: 'ブログへ移動',
+      faq: 'よくある質問へ移動',
     },
   },
 
@@ -249,6 +255,13 @@ export const text = {
         'キャンセル・変更は24時間前まで可能',
       ],
     },
+    testimonials: {
+      title: 'Voice',
+      subtitle: 'お客様の声',
+      listAria: 'お客様の声一覧',
+      cta: 'あなたも撮影を相談する',
+      ctaAria: 'お問い合わせページへ移動',
+    },
     contact: {
       title: 'Contact',
       subtitle: '撮影のご相談・お見積りはお気軽にどうぞ',
@@ -271,6 +284,122 @@ export const text = {
   },
 
   pages: {
+    faq: {
+      backToTop: 'トップへ戻る',
+      metaTitle: 'よくある質問',
+      metaDescription: 'ロケーション前撮り・ウェディングムービー制作に関するよくある質問と回答。撮影エリア、料金、予約方法などをご確認いただけます。',
+      title: 'FAQ',
+      subtitle: 'よくある質問',
+      categories: {
+        shooting: '撮影について',
+        pricing: '料金・プランについて',
+        movie: 'ムービー制作について',
+        booking: 'ご予約・お支払いについて',
+      },
+      items: [
+        {
+          category: 'shooting',
+          question: 'ロケーション前撮りの撮影エリアはどこですか？',
+          answer: '大阪・兵庫・京都・奈良・滋賀を中心に、全国出張対応しております。海外ロケーションも応相談です。',
+        },
+        {
+          category: 'shooting',
+          question: '雨天の場合はどうなりますか？',
+          answer: '撮影日前日までに天候を確認し、雨天予報の場合は日程変更または室内ロケーションへの変更をご提案いたします。日程変更の追加料金はかかりません。',
+        },
+        {
+          category: 'shooting',
+          question: '衣装・ヘアメイクはお願いできますか？',
+          answer: '提携の衣装店・ヘアメイクアーティストをご紹介可能です。お持ち込みの衣装での撮影も歓迎です。',
+        },
+        {
+          category: 'shooting',
+          question: '撮影時間はどのくらいですか？',
+          answer: 'プランにより2〜6時間となります。Lightプランは2時間、Signatureプランは4時間、Completeプランは6時間です。',
+        },
+        {
+          category: 'pricing',
+          question: '料金プランの違いを教えてください',
+          answer: 'Light（¥100,000）は撮影のみ、Signature（¥158,000）は撮影＋1分ムービー、Complete（¥248,000）は撮影＋フルムービー＋写真100枚のセットです。',
+        },
+        {
+          category: 'pricing',
+          question: '追加オプションはありますか？',
+          answer: '追加ロケーション（+¥20,000）、撮影時間延長（+¥15,000/h）、ドローン撮影（+¥30,000）などをご用意しております。',
+        },
+        {
+          category: 'movie',
+          question: 'オープニングムービーとは何ですか？',
+          answer: '結婚式で上映できる約1分のショートムービーです。前撮りの映像をシネマティックに編集し、BGMとタイトルを加えてお二人だけの特別な映像に仕上げます。',
+        },
+        {
+          category: 'movie',
+          question: '納品形式を教えてください',
+          answer: '動画はMP4形式（フルHD/4K）、写真はJPEG形式で納品いたします。結婚式場での上映に対応した形式にも変換可能です。',
+        },
+        {
+          category: 'movie',
+          question: '納品までの期間はどのくらいですか？',
+          answer: '撮影後、約3〜4週間で納品いたします。お急ぎの場合は特急仕上げ（+¥20,000）で2週間納品も可能です。',
+        },
+        {
+          category: 'booking',
+          question: '予約はどのように行えますか？',
+          answer: 'Webサイトの無料相談予約から、またはお問い合わせフォームからご連絡ください。オンライン（Zoom）または対面でご相談いただけます。',
+        },
+        {
+          category: 'booking',
+          question: 'キャンセル料はかかりますか？',
+          answer: '撮影日の30日前までは無料、14日前まで50%、7日前以降は100%のキャンセル料がかかります。日程変更は撮影日の14日前まで無料です。',
+        },
+        {
+          category: 'booking',
+          question: 'お支払い方法を教えてください',
+          answer: '銀行振込またはクレジットカード決済が可能です。撮影の2週間前までに着手金50%、納品後に残金をお支払いいただきます。',
+        },
+      ],
+      cta: 'お気軽にご相談ください',
+      ctaDescription: 'その他ご不明な点がございましたら、お問い合わせフォームまたは無料相談をご利用ください。',
+    },
+    testimonials: {
+      backToTop: 'トップへ戻る',
+      metaTitle: 'お客様の声',
+      metaDescription: 'NOKORUでロケーション前撮り・ウェディングムービー制作をご利用いただいたお客様の声をご紹介します。',
+      title: 'Testimonials',
+      subtitle: 'お客様の声',
+    },
+    videos: {
+      backToTop: 'トップへ戻る',
+      metaTitle: 'ビデオギャラリー',
+      metaDescription: 'NOKORUが制作したウェディングムービー・前撮り動画のギャラリー。シネマティックな映像をご覧ください。',
+      title: 'Video Gallery',
+      subtitle: 'ムービー作品集',
+      playButton: '再生する',
+      categories: {
+        all: 'すべて',
+        openingMovie: 'オープニングムービー',
+        locationShooting: 'ロケーション撮影',
+        digest: 'ダイジェスト',
+      },
+    },
+    blog: {
+      backToTop: 'トップへ戻る',
+      backToBlog: '記事一覧へ',
+      metaTitle: 'ブログ・お知らせ',
+      metaDescription: 'ロケーション前撮り・ウェディングムービー制作のお知らせ、撮影レポート、制作の裏側をお届けします。',
+      title: 'Blog',
+      subtitle: 'お知らせ・撮影レポート',
+      readMore: '続きを読む',
+      notFound: '記事が見つかりませんでした',
+      categories: {
+        news: 'お知らせ',
+        report: '撮影レポート',
+        tips: '撮影のコツ',
+      },
+      publishedAt: '公開日',
+      updatedAt: '更新日',
+      relatedPosts: '関連記事',
+    },
     staff: {
       backToTop: 'トップへ戻る',
       backToAbout: 'スタッフ一覧へ',

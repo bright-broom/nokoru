@@ -153,3 +153,56 @@ export interface ReservationRequest extends ReservationRequestInput {
   readonly createdAt: string;
   readonly status: 'pending';
 }
+
+// =============================================================================
+// お客様の声
+// =============================================================================
+
+export interface Testimonial {
+  readonly id: string;
+  readonly name: string;
+  readonly location: string;
+  readonly date: string;
+  readonly plan: string;
+  readonly rating: 1 | 2 | 3 | 4 | 5;
+  readonly comment: string;
+  readonly imageUrl?: string;
+}
+
+// =============================================================================
+// ビデオギャラリー
+// =============================================================================
+
+export type VideoCategory = 'openingMovie' | 'locationShooting' | 'digest';
+
+export interface Video {
+  readonly id: string;
+  readonly title: string;
+  readonly description: string;
+  readonly youtubeId: string;
+  readonly category: VideoCategory;
+  readonly location?: string;
+  readonly date: string;
+  readonly duration: string;
+  readonly isFeatured?: boolean;
+}
+
+// =============================================================================
+// ブログ
+// =============================================================================
+
+export type BlogCategory = 'news' | 'report' | 'tips';
+
+export interface BlogPost {
+  readonly id: string;
+  readonly slug: string;
+  readonly title: string;
+  readonly excerpt: string;
+  readonly content: string;
+  readonly category: BlogCategory;
+  readonly publishedAt: string;
+  readonly updatedAt?: string;
+  readonly coverImageUrl?: string;
+  readonly tags?: readonly string[];
+  readonly author?: string;
+}
