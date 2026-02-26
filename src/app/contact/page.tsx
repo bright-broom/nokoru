@@ -4,8 +4,7 @@ import { text, contactLinks } from '@/config';
 import { Header, Footer } from '@/components/layout';
 import { FadeIn, IconBox, simplePreset } from '@/components/ui';
 import { ClockIcon, CalendarIcon, MapPinIcon, MailIcon } from '@/components/icons';
-import { ContactLinkCard, InfoItem } from '@/components/contact/ContactCards';
-import { LazyContactForm } from '@/components/contact/LazyContactForm';
+import { ContactLinkCard, InfoItem, LazyContactForm } from '@/components/forms';
 
 export const metadata: Metadata = {
   title: `${text.pages.contact.metaTitle} | ${text.site.name}`,
