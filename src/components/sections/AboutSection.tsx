@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine, FloatingDecoration, cardPreset } from '@/components/ui';
@@ -6,7 +7,7 @@ import { cardStyles } from '@/lib/styles';
 import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Staff } from '@/types';
 
-function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
+const StaffCard = memo(function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
   return (
     <FadeIn {...cardPreset} delay={delay} className="h-full">
       <Link
@@ -70,7 +71,7 @@ function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boo
       </Link>
     </FadeIn>
   );
-}
+});
 
 export function AboutSection() {
   return (

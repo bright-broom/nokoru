@@ -18,10 +18,12 @@ export const cormorant = Cormorant_Garamond({
 });
 
 export const shipporiMincho = Shippori_Mincho({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-shippori',
   display: 'swap',
+  // 日本語グリフはGoogle Fontsのunicode-rangeにより自動的に読み込まれる
+  preload: true,
 });
 
 export const fontVariables = `${cormorant.variable} ${shipporiMincho.variable}`;

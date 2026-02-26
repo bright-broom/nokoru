@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { AnimatedLine } from './AnimatedLine';
@@ -25,7 +26,7 @@ const variantStyles: Record<NavLinkVariant, string> = {
  * ナビゲーションリンクコンポーネント
  * Header/Footer で共通利用
  */
-export function NavLink({
+export const NavLink = memo(function NavLink({
   href,
   label,
   variant = 'header',
@@ -57,4 +58,4 @@ export function NavLink({
       {label}
     </Link>
   );
-}
+});

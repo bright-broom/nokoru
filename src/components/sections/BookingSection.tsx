@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import dynamic from 'next/dynamic';
 import { Section, Container, SectionHeader, SectionDivider, FadeIn, IconBox, FloatingDecoration, cardPreset, contentPreset, ctaPreset } from '@/components/ui';
 import { ClockIcon, CheckIcon, iconMap, type IconMapKey } from '@/components/icons';
@@ -36,7 +37,7 @@ interface ConsultationCardProps {
   index: number;
 }
 
-function ConsultationCard({ title, duration, description, icon, delay, index }: ConsultationCardProps) {
+const ConsultationCard = memo(function ConsultationCard({ title, duration, description, icon, delay, index }: ConsultationCardProps) {
   const Icon = iconMap[icon];
 
   return (
@@ -83,9 +84,9 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
       </div>
     </FadeIn>
   );
-}
+});
 
-function ProcessStep({
+const ProcessStep = memo(function ProcessStep({
   step,
   title,
   description,
@@ -118,7 +119,7 @@ function ProcessStep({
       )}
     </FadeIn>
   );
-}
+});
 
 export function BookingSection({ calLink }: BookingSectionProps) {
   const { consultationCards, processSteps } = text.sections.booking;
