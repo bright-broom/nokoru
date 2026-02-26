@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FadeIn, cardPreset } from '@/components/ui';
 import { PlayIcon } from '@/components/icons';
 import { cardStyles } from '@/lib';
@@ -20,10 +21,12 @@ export function VideoCard({ video, delay, onPlay }: VideoCardProps) {
           className="group relative aspect-video w-full overflow-hidden"
           aria-label={`${video.title}を再生`}
         >
-          <img
+          <Image
             src={`https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`}
             alt={video.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 flex items-center justify-center bg-black/30 transition-all group-hover:bg-black/40">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-site-accent shadow-lg transition-transform group-hover:scale-110">

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { text } from '@/config';
 import { FadeIn, CategoryBadge, cardPreset } from '@/components/ui';
@@ -14,11 +15,13 @@ export function BlogCard({ post, delay }: BlogCardProps) {
     <FadeIn {...cardPreset} delay={delay}>
       <article className={`${cardStyles.base} ${cardStyles.hover} flex h-full flex-col overflow-hidden`}>
         {post.coverImageUrl && (
-          <div className="aspect-video overflow-hidden">
-            <img
+          <div className="relative aspect-video overflow-hidden">
+            <Image
               src={post.coverImageUrl}
               alt=""
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
         )}
