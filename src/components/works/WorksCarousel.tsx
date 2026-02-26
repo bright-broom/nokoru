@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -16,7 +16,7 @@ const CARD_WIDTH = 85; // vw
 const CARD_GAP = 4; // vw
 const CARD_UNIT = CARD_WIDTH + CARD_GAP; // 89vw
 
-export function WorksCarousel({ works }: WorksCarouselProps) {
+export const WorksCarousel = memo(function WorksCarousel({ works }: WorksCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
@@ -228,4 +228,4 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
       />
     </div>
   );
-}
+});

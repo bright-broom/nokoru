@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback, useEffect, useMemo, memo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
@@ -9,7 +9,26 @@ import { NavLink } from '@/components/ui/NavLink';
 import { useScrollBackground } from '@/hooks';
 import { SCROLL_THRESHOLDS } from '@/lib/constants';
 
-export function Header() {
+// ナビゲーションリストをメモ化（再レンダリング防止）
+const NavItemList = memo(function NavItemList({
+  items,
+  className,
+}: {
+  items: typeof navItems;
+  className?: string;
+}) {
+  return (
+    <ul className={className}>
+      {items.map((item) => (
+        <li key={item.href}>
+          <NavLink href={item.href} label={item.label} variant="header" />
+        </li>
+      ))}
+    </ul>
+  );
+});
+
+export const Header = memo(function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isScrolled = useScrollBackground(SCROLL_THRESHOLDS.HEADER_SCROLL);
 
@@ -75,13 +94,10 @@ export function Header() {
           aria-label={text.nav.ariaMainNav}
         >
           {/* 左ナビゲーション */}
-          <ul className="hidden flex-1 items-center gap-10 lg:flex">
-            {leftNavItems.map((item) => (
-              <li key={item.href}>
-                <NavLink href={item.href} label={item.label} variant="header" />
-              </li>
-            ))}
-          </ul>
+          <NavItemList
+            items={leftNavItems}
+            className="hidden flex-1 items-center gap-10 lg:flex"
+          />
 
           {/* 中央ロゴ */}
           <Link
@@ -93,13 +109,10 @@ export function Header() {
           </Link>
 
           {/* 右ナビゲーション */}
-          <ul className="hidden flex-1 items-center justify-end gap-10 lg:flex">
-            {rightNavItems.map((item) => (
-              <li key={item.href}>
-                <NavLink href={item.href} label={item.label} variant="header" />
-              </li>
-            ))}
-          </ul>
+          <NavItemList
+            items={rightNavItems}
+            className="hidden flex-1 items-center justify-end gap-10 lg:flex"
+          />
 
           {/* モバイルメニューボタン */}
           <button
@@ -166,4 +179,4 @@ export function Header() {
       </div>
     </>
   );
-}
+});

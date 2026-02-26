@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
@@ -15,8 +15,9 @@ interface YouTubeEmbedProps {
  * - サムネイル表示で初期ロードを軽量化
  * - クリック時のみiframeを読み込み
  * - LCP/TBT改善に貢献
+ * - React.memoで不要な再レンダリングを防止
  */
-export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
+export const YouTubeEmbed = memo(function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [useFallbackThumbnail, setUseFallbackThumbnail] = useState(false);
 
@@ -92,4 +93,4 @@ export function YouTubeEmbed({ videoId, title, className }: YouTubeEmbedProps) {
       </div>
     </button>
   );
-}
+});
