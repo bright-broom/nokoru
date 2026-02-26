@@ -57,82 +57,41 @@ export function Footer() {
           </p>
         </div>
 
-        {/* 中央セクション：3カラム */}
-        <div className="grid gap-12 md:grid-cols-3 md:gap-8 pb-12 border-b border-cream/10">
-          {/* ナビゲーション */}
-          <div className="text-center md:text-left">
-            <h3 className="track-kicker mb-5 text-xs font-medium uppercase text-cream/30">
-              Navigation
-            </h3>
-            <ul className="space-y-3">
-              {navItems.slice(0, 5).map((item) => (
-                <li key={item.href}>
-                  <NavLink href={item.href} label={item.label} variant="footer" />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 中央：装飾 */}
-          <div className="hidden md:flex flex-col items-center justify-center">
-            <div className="relative">
-              {/* 外側リング */}
-              <div className="absolute -inset-4 rounded-full border border-cream/5" aria-hidden="true" />
-              <div className="absolute -inset-8 rounded-full border border-cream/[0.02]" aria-hidden="true" />
-
-              {/* 中央マーク */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-cream/10 bg-cream/[0.02]">
-                <span className="text-2xl text-cream/20">{text.footer.decorativeMark}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* SNS・コンタクト */}
-          <div className="text-center md:text-right">
-            <h3 className="track-kicker mb-5 text-xs font-medium uppercase text-cream/30">
-              Connect
-            </h3>
-            <div className="flex justify-center gap-4 md:justify-end">
-              <SocialButton
-                href={text.content.links.instagramFooter}
-                icon={InstagramIcon}
-                label={text.footer.instagramFollowAria}
-                glowColor="accent"
-              />
-              <SocialButton
-                href={`https://${text.content.links.litlinkLabel}`}
-                icon={LinkIcon}
-                label="Lit.link"
-                glowColor="gold"
-              />
-            </div>
-
-            {/* お問い合わせリンク */}
-            <Link
-              href="/contact"
-              className="group mt-6 inline-flex items-center gap-2 text-xs text-cream/40 transition-all duration-300 hover:text-cream/70"
-            >
-              <span>お問い合わせ</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
+        {/* SNS */}
+        <div className="flex justify-center gap-4 pb-10 border-b border-cream/10">
+          <SocialButton
+            href={text.content.links.instagramFooter}
+            icon={InstagramIcon}
+            label={text.footer.instagramFollowAria}
+            glowColor="accent"
+          />
+          <SocialButton
+            href={`https://${text.content.links.litlinkLabel}`}
+            icon={LinkIcon}
+            label="Lit.link"
+            glowColor="gold"
+          />
         </div>
 
-        {/* 下部セクション：コピーライト */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="order-2 text-xs tracking-wider text-cream/25 md:order-1">
-            {siteConfig.copyright}
-          </p>
+        {/* 下部セクション */}
+        <div className="pt-8 flex flex-col items-center gap-6">
+          {/* ナビゲーションリンク */}
+          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {navItems.slice(0, 5).map((item) => (
+              <NavLink key={item.href} href={item.href} label={item.label} variant="footer" />
+            ))}
+            <span className="text-cream/10">|</span>
+            <NavLink href="/videos" label={text.nav.labels.videos} variant="footer" />
+            <NavLink href="/blog" label={text.nav.labels.blog} variant="footer" />
+            <NavLink href="/faq" label={text.nav.labels.faq} variant="footer" />
+          </nav>
 
-          {/* 装飾マーク - モバイルのみ */}
-          <span className="text-cream/10 order-1 md:hidden" aria-hidden="true">
-            {text.footer.decorativeMark}
-          </span>
-
-          {/* 年度表示 */}
-          <p className="order-3 text-xs tracking-wider text-cream/25 md:order-2">
-            {text.site.year}
-          </p>
+          {/* コピーライト */}
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs tracking-wider text-cream/25">
+            <p>{siteConfig.copyright}</p>
+            <span className="hidden md:inline text-cream/10">·</span>
+            <p>{text.site.year}</p>
+          </div>
         </div>
       </div>
 

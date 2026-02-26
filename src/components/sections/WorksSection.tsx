@@ -1,6 +1,4 @@
-import { Section, Container, SectionHeader, SectionCTA } from '@/components/ui';
-import { SectionDivider } from '@/components/ui/SectionDivider';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
+import { Section, Container, SectionHeader, SectionCTA, SectionDivider, FloatingDecoration } from '@/components/ui';
 import { WorksCarousel, WorkCard } from '@/components/works';
 import { workImages, text } from '@/config';
 

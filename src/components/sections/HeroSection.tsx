@@ -1,11 +1,9 @@
 'use client';
 
 import { useCallback } from 'react';
-import { Button, YouTubeEmbed, FadeIn, heroPreset, ctaPreset, contentPreset } from '@/components/ui';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
+import { Button, YouTubeEmbed, FadeIn, FloatingDecoration, heroPreset, ctaPreset, contentPreset } from '@/components/ui';
 import { siteConfig, text } from '@/config';
-import { renderMultilineText } from '@/lib/utils';
-import { scrollToElement } from '@/lib/utils';
+import { renderMultilineText, scrollToElement } from '@/lib/utils';
 
 export function HeroSection() {
   const scrollToWorks = useCallback(() => {

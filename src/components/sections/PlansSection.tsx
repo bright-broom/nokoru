@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA, cardPreset, contentPreset } from '@/components/ui';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
-import { SectionDivider } from '@/components/ui/SectionDivider';
+import { Section, Container, SectionHeader, SectionDivider, FadeIn, SectionCTA, FloatingDecoration, cardPreset, contentPreset } from '@/components/ui';
 import { CheckIcon } from '@/components/icons';
 import { plans, text } from '@/config';
 import { cn } from '@/lib/utils';
