@@ -65,6 +65,7 @@ export default async function StaffDetailPage({ params }: PageProps) {
                   height={256}
                   className="h-full w-full object-cover"
                   priority
+                  unoptimized
                 />
               ) : (
                 <div

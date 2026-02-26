@@ -33,6 +33,7 @@ function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boo
                     className="object-cover transition-transform duration-[1500ms] group-hover:scale-110"
                     sizes="(max-width: 640px) 128px, 160px"
                     priority={isPriority}
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-beige/20 text-4xl opacity-40">👤</div>

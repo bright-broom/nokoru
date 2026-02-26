@@ -160,6 +160,7 @@ export function WorksImageViewer({
           height={800}
           className="h-auto w-full object-cover"
           priority
+          unoptimized
         />
       </div>
 

@@ -40,6 +40,7 @@ export function WorkCard({
                   priority={priority}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-[1200ms] ease-premium group-hover:scale-110"
+                  unoptimized
                />
 
                {/* プレミアム・オーバーレイ */}

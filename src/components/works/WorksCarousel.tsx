@@ -199,6 +199,7 @@ export function WorksCarousel({ works }: WorksCarouselProps) {
                   sizes="85vw"
                   className="object-cover"
                   priority={index === 0}
+                  unoptimized
                 />
                 <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-black/0 to-black/0" />
 
