@@ -69,20 +69,10 @@ export const iconBoxStyles = {
 } as const;
 
 /**
- * ホバー時の出現アニメーション用スタイル
+ * ホバー時の出現アニメーション用クラス
  */
-export const revealOnHoverStyles = {
-  /** 初期状態（非表示） */
-  hidden: 'translate-y-4 opacity-0',
-  /** ホバー時（表示） */
-  visible: 'group-hover:translate-y-0 group-hover:opacity-100',
-  /** トランジション */
-  transition: 'transition-all duration-700',
-} as const;
-
-/** ホバー時出現アニメーション全体 */
 export const revealOnHoverClasses = cn(
-  revealOnHoverStyles.hidden,
-  revealOnHoverStyles.visible,
-  revealOnHoverStyles.transition
+  'translate-y-4 opacity-0',
+  'group-hover:translate-y-0 group-hover:opacity-100',
+  'transition-all duration-700'
 );
