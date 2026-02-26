@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { staffMembers, text } from '@/config';
 import { cardStyles } from '@/lib/utils';
@@ -121,11 +121,11 @@ export function AboutSection() {
           ))}
         </ul>
 
-        <FadeIn direction="scale" delay={400} easing="bounce" className="mt-14 flex justify-center">
-          <Button href="/contact" variant="gradient" aria-label={text.sections.about.ctaAria}>
-            {text.sections.about.cta}
-          </Button>
-        </FadeIn>
+        <SectionCTA
+          href="/contact"
+          label={text.sections.about.cta}
+          ariaLabel={text.sections.about.ctaAria}
+        />
       </Container>
     </Section>
   );

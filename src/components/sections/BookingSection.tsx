@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
-import { Section, Container, SectionHeader, FadeIn } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, IconBox } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { ClockIcon, CheckIcon, iconMap, type IconMapKey } from '@/components/icons';
 import { text } from '@/config';
-import { cn, cardStyles } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 // Cal.comを遅延読み込み
 const CalEmbed = dynamic(
@@ -61,14 +61,8 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
         </div>
 
         <div className="relative">
-          {/* Icon - ラグジュアリー */}
-          <div className="relative mb-10 h-20 w-20">
-            <div className="flex h-full w-full items-center justify-center rounded-[24px] bg-beige/40 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/30">
-              <Icon className="h-10 w-10 text-site-accent transition-all duration-700 group-hover:text-white group-hover:scale-110" />
-            </div>
-            {/* 装飾アクセント */}
-            <div className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-gold/10 backdrop-blur-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" />
-          </div>
+          {/* Icon */}
+          <IconBox icon={Icon} size="lg" withAccentDot className="mb-10" />
 
           {/* Content */}
           <div className="text-left">

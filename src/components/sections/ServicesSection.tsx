@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
@@ -22,15 +22,8 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
         {/* コンテンツ */}
         <div className="relative flex h-full flex-col justify-between">
           <div>
-            {/* アイコン - 洗練された表示 */}
-            <div className="mb-8 inline-flex">
-              <div className="relative">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-beige/50 transition-all duration-700 group-hover:bg-site-accent group-hover:shadow-glow group-hover:shadow-site-accent/20 md:h-16 md:w-16">
-                  <Icon className="h-7 w-7 text-site-accent transition-all duration-700 group-hover:scale-110 group-hover:text-white md:h-8 md:w-8" />
-                </div>
-                <div className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-gold/10 backdrop-blur-sm shadow-sm transition-all duration-700 group-hover:bg-gold group-hover:scale-125" aria-hidden="true" />
-              </div>
-            </div>
+            {/* アイコン */}
+            <IconBox icon={Icon} size="md" withAccentDot className="mb-8" />
 
             <h3 className="font-display text-xl tracking-wide transition-colors duration-500 group-hover:text-site-accent">
               {service.title}
@@ -100,11 +93,11 @@ export function ServicesSection() {
           ))}
         </ul>
 
-        <FadeIn direction="scale" delay={400} easing="bounce" className="mt-14 flex justify-center">
-          <Button href="/contact" variant="gradient" aria-label={text.sections.services.ctaAria}>
-            {text.sections.services.cta}
-          </Button>
-        </FadeIn>
+        <SectionCTA
+          href="/contact"
+          label={text.sections.services.cta}
+          ariaLabel={text.sections.services.ctaAria}
+        />
       </Container>
     </Section>
   );

@@ -1,4 +1,4 @@
-import { Section, Container, SectionHeader, Button, FadeIn } from '@/components/ui';
+import { Section, Container, SectionHeader, SectionCTA } from '@/components/ui';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { WorksCarousel, WorkCard } from '@/components/works';
@@ -65,11 +65,12 @@ export function WorksSection() {
           </div>
         </div>
 
-        <FadeIn direction="scale" delay={300} easing="bounce" className="mt-14 flex justify-center">
-          <Button href="/contact" variant="gradient" aria-label={text.sections.works.ctaAria}>
-            {text.sections.works.cta}
-          </Button>
-        </FadeIn>
+        <SectionCTA
+          href="/contact"
+          label={text.sections.works.cta}
+          ariaLabel={text.sections.works.ctaAria}
+          delay={300}
+        />
       </Container>
 
       {/* セクション下部の装飾ライン */}

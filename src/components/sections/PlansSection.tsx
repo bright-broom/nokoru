@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, Button } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { CheckIcon } from '@/components/icons';
@@ -157,11 +157,13 @@ export function PlansSection() {
         </div>
 
         {/* CTA */}
-        <FadeIn direction="scale" delay={500} easing="bounce" className="mt-14 flex justify-center">
-          <Button href="/contact" variant="glow" className="px-10" aria-label={text.sections.plans.ctaAria}>
-            {text.sections.plans.cta}
-          </Button>
-        </FadeIn>
+        <SectionCTA
+          href="/contact"
+          label={text.sections.plans.cta}
+          ariaLabel={text.sections.plans.ctaAria}
+          variant="glow"
+          delay={500}
+        />
       </Container>
 
       <SectionDivider variant="diamond" className="mt-16" />
