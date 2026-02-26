@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback } from 'react';
-import { Button, YouTubeEmbed, FadeIn } from '@/components/ui';
+import { Button, YouTubeEmbed, FadeIn, heroPreset, ctaPreset, contentPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { siteConfig, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
@@ -67,7 +67,7 @@ export function HeroSection() {
         {/* 62% for content, with whitespace balanced around it */}
         <div className="relative z-10 flex w-full max-w-7xl flex-col items-center text-center">
           {/* サブタグライン */}
-          <FadeIn direction="blur" duration={1200} easing="smooth">
+          <FadeIn {...heroPreset}>
             <div className="mb-8 flex items-center gap-6">
               <div className="h-px w-16 bg-gradient-to-r from-transparent via-site-accent/30 to-transparent" aria-hidden="true" />
               <p className="track-ultra text-xs font-bold uppercase text-site-accent/80 md:text-sm">
@@ -90,7 +90,7 @@ export function HeroSection() {
           </FadeIn>
 
           {/* エリア・年度 */}
-          <FadeIn direction="blur-up" delay={800} duration={1200} easing="smooth">
+          <FadeIn {...contentPreset} delay={800}>
             <div className="mt-10 flex flex-col items-center gap-4">
               <p className="track-meta text-base font-medium text-text-light/90">
                 {siteConfig.areas}
@@ -130,7 +130,7 @@ export function HeroSection() {
           </FadeIn>
 
           {/* CTA */}
-          <FadeIn direction="scale" delay={1800} duration={1000} easing="bounce">
+          <FadeIn {...ctaPreset} delay={1800}>
             <Button
               href="/contact"
               variant="glow"

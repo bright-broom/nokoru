@@ -1,5 +1,6 @@
 import { FadeIn } from './FadeIn';
 import { Button } from './Button';
+import { ctaPreset } from './FadeIn.presets';
 
 interface SectionCTAProps {
   href: string;
@@ -26,7 +27,7 @@ export function SectionCTA({
   className = 'mt-14',
 }: SectionCTAProps) {
   return (
-    <FadeIn direction="scale" delay={delay} easing="bounce" className={`flex justify-center ${className}`}>
+    <FadeIn {...ctaPreset} delay={delay} className={`flex justify-center ${className}`}>
       <Button href={href} variant={variant} aria-label={ariaLabel}>
         {label}
       </Button>
