@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * スクロール位置に基づいて背景変更を制御するフック
+ * - requestAnimationFrameで初期ペイントを最適化
+ * - passive eventでスクロールパフォーマンスを向上
  *
  * @param threshold - スクロール検知の閾値（px）
  * @returns isScrolled - 閾値を超えたかどうか
@@ -16,17 +18,20 @@ import { useState, useEffect } from 'react';
 export function useScrollBackground(threshold: number = 50): boolean {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > threshold);
-    };
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > threshold);
+  }, [threshold]);
 
-    // 初期状態を設定
-    handleScroll();
+  useEffect(() => {
+    // requestAnimationFrameで初期レンダリング後に状態を設定（レイアウトシフト回避）
+    const raf = requestAnimationFrame(handleScroll);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [threshold]);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   return isScrolled;
 }

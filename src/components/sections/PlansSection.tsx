@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import { Section, Container, SectionHeader, SectionDivider, FadeIn, SectionCTA, FloatingDecoration, cardPreset, contentPreset } from '@/components/ui';
 import { CheckIcon } from '@/components/icons';
@@ -6,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Plan } from '@/types';
 
-function PlanCard({ plan, index }: { plan: Plan; index: number }) {
+const PlanCard = memo(function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   const isSignature = plan.id === 'signature';
   const isComplete = plan.id === 'complete';
 
@@ -98,7 +99,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       </Link>
     </FadeIn>
   );
-}
+});
 
 export function PlansSection() {
   return (

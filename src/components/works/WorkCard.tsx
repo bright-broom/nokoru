@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -17,7 +18,7 @@ interface WorkCardProps {
    aspectRatio?: string;
 }
 
-export function WorkCard({
+export const WorkCard = memo(function WorkCard({
    image,
    priority,
    className,
@@ -76,4 +77,4 @@ export function WorkCard({
          </Link>
       </FadeIn>
    );
-}
+});

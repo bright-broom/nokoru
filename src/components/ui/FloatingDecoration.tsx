@@ -1,5 +1,6 @@
 'use client';
 
+import { memo, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 
 type DecorationShape = 'circle' | 'ring' | 'dot' | 'blur' | 'lace';
@@ -61,7 +62,7 @@ const laceCirclePositions = [
   { cx: 80.31, cy: 32.5 },
 ] as const;
 
-export function FloatingDecoration({
+export const FloatingDecoration = memo(function FloatingDecoration({
   shape = 'circle',
   size = 'md',
   position = {},
@@ -71,24 +72,32 @@ export function FloatingDecoration({
   animationDelay = 0,
   className,
 }: FloatingDecorationProps) {
-  const positionStyle = {
-    top: position.top,
-    right: position.right,
-    bottom: position.bottom,
-    left: position.left,
-  };
+  // スタイルオブジェクトをメモ化
+  const positionStyle = useMemo(
+    () => ({
+      top: position.top,
+      right: position.right,
+      bottom: position.bottom,
+      left: position.left,
+    }),
+    [position.top, position.right, position.bottom, position.left]
+  );
 
   const baseClasses = cn(
     'absolute pointer-events-none transition-opacity duration-1000',
     sizeClasses[size],
-    animate && 'animate-float-slow',
+    // GPUアクセラレーションを有効化（blur/transformの合成レイヤー最適化）
+    animate && 'animate-float-slow will-change-transform',
     className
   );
 
-  const animationStyle = {
-    animationDelay: `${animationDelay}ms`,
-    opacity: opacity / 100,
-  };
+  const animationStyle = useMemo(
+    () => ({
+      animationDelay: `${animationDelay}ms`,
+      opacity: opacity / 100,
+    }),
+    [animationDelay, opacity]
+  );
 
   if (shape === 'circle') {
     return (
@@ -157,7 +166,7 @@ export function FloatingDecoration({
   }
 
   return null;
-}
+});
 
 // 複数の装飾を配置するためのプリセット
 interface FloatingDecorationsProps {
@@ -165,7 +174,7 @@ interface FloatingDecorationsProps {
   className?: string;
 }
 
-export function FloatingDecorations({ preset = 'section', className }: FloatingDecorationsProps) {
+export const FloatingDecorations = memo(function FloatingDecorations({ preset = 'section', className }: FloatingDecorationsProps) {
   if (preset === 'hero') {
     return (
       <div className={cn('absolute inset-0 overflow-hidden', className)}>
@@ -244,4 +253,4 @@ export function FloatingDecorations({ preset = 'section', className }: FloatingD
   }
 
   return null;
-}
+});

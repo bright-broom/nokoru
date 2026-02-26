@@ -1,5 +1,6 @@
 'use client';
 
+import { memo, useMemo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -17,7 +18,7 @@ interface ProgressDotsProps {
    getAriaLabel?: (index: number) => string;
 }
 
-export function ProgressDots({
+export const ProgressDots = memo(function ProgressDots({
    count,
    currentIndex,
    className,
@@ -27,7 +28,8 @@ export function ProgressDots({
    getHref,
    getAriaLabel,
 }: ProgressDotsProps) {
-   const dots = Array.from({ length: count });
+   // 配列生成をメモ化（レンダリング毎の再生成を防止）
+   const dots = useMemo(() => Array.from({ length: count }), [count]);
 
    return (
       <div className={cn('flex items-center gap-2', className)}>
@@ -65,4 +67,4 @@ export function ProgressDots({
          })}
       </div>
    );
-}
+});

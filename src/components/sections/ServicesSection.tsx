@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine, FloatingDecoration, cardPreset } from '@/components/ui';
 import { iconMap } from '@/components/icons';
@@ -7,7 +8,7 @@ import { cardStyles } from '@/lib/styles';
 import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Service } from '@/types';
 
-function ServiceCard({ service, delay }: { service: Service; delay: number }) {
+const ServiceCard = memo(function ServiceCard({ service, delay }: { service: Service; delay: number }) {
   const Icon = iconMap[service.icon];
 
   return (
@@ -42,7 +43,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
       </Link>
     </FadeIn>
   );
-}
+});
 
 export function ServicesSection() {
   return (

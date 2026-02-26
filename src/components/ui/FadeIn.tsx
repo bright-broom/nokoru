@@ -1,5 +1,6 @@
 'use client';
 
+import { memo, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks';
 import type { AnimationDirection, AnimationEasing } from '@/types';
@@ -76,7 +77,7 @@ const easingClasses: Record<AnimationEasing, string> = {
  *   <Card>バウンス付きスケールイン</Card>
  * </FadeIn>
  */
-export function FadeIn({
+export const FadeIn = memo(function FadeIn({
   children,
   className,
   direction = 'up',
@@ -88,6 +89,15 @@ export function FadeIn({
 }: FadeInProps) {
   const { ref, isInView } = useInView<HTMLElement>({ triggerOnce: once });
 
+  // スタイルオブジェクトをメモ化してレンダリング毎の再生成を防ぐ
+  const animationStyle = useMemo(
+    () => ({
+      transitionDuration: `${duration}ms`,
+      transitionDelay: `${delay}ms`,
+    }),
+    [duration, delay]
+  );
+
   return (
     <Component
       ref={ref as React.RefObject<never>}
@@ -98,15 +108,12 @@ export function FadeIn({
         isInView && visibleStyles[direction],
         className
       )}
-      style={{
-        transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`,
-      }}
+      style={animationStyle}
     >
       {children}
     </Component>
   );
-}
+});
 
 /**
  * 子要素を順番にフェードインさせるコンテナ
@@ -117,7 +124,7 @@ export function FadeIn({
  *   <FadeInItem>Item 2</FadeInItem>
  * </FadeInStagger>
  */
-export function FadeInStagger({
+export const FadeInStagger = memo(function FadeInStagger({
   children,
   className,
   staggerDelay = 100,
@@ -135,6 +142,9 @@ export function FadeInStagger({
 }) {
   const { ref, isInView } = useInView({ triggerOnce: true });
 
+  // 基本のdurationスタイルをメモ化
+  const baseDuration = useMemo(() => `${duration}ms`, [duration]);
+
   return (
     <div ref={ref} className={className}>
       {Array.isArray(children)
@@ -148,7 +158,7 @@ export function FadeInStagger({
                 isInView && visibleStyles[direction]
               )}
               style={{
-                transitionDuration: `${duration}ms`,
+                transitionDuration: baseDuration,
                 transitionDelay: isInView ? `${index * staggerDelay}ms` : '0ms',
               }}
             >
@@ -158,4 +168,4 @@ export function FadeInStagger({
         : children}
     </div>
   );
-}
+});
