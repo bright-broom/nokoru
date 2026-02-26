@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine, cardPreset } from '@/components/ui';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
+import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine, FloatingDecoration, cardPreset } from '@/components/ui';
 import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/utils';

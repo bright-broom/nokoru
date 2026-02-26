@@ -1,5 +1,7 @@
+import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { locales, defaultLocale } from '@/i18n/config';
 
 /**
  * シンプルなインメモリレートリミッター
@@ -85,6 +87,13 @@ const SUSPICIOUS_USER_AGENTS = [
   'burp',
 ];
 
+// next-intl middleware
+const intlMiddleware = createMiddleware({
+  locales,
+  defaultLocale,
+  localePrefix: 'as-needed', // デフォルトロケール(ja)はURLに表示しない
+});
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const clientIP = getClientIP(request);
@@ -126,8 +135,13 @@ export function middleware(request: NextRequest) {
     });
   }
 
-  // 5. リクエストを通過させる
-  const response = NextResponse.next();
+  // 5. APIルートはそのまま通過、それ以外は i18n middleware を実行
+  let response: NextResponse;
+  if (pathname.startsWith('/api/')) {
+    response = NextResponse.next();
+  } else {
+    response = intlMiddleware(request);
+  }
 
   // セキュリティヘッダー追加（next.config.tsと併用）
   response.headers.set('X-Request-Id', crypto.randomUUID());

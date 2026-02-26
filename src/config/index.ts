@@ -7,4 +7,7 @@ export {
   staffMembers,
   workImages,
   contactLinks,
+  testimonials,
+  videos,
+  blogPosts,
 } from './site';

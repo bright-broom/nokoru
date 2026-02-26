@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale } from 'next-intl/server';
 import { text, contactLinks } from '@/config';
-import { Header, Footer } from '@/components/layout';
-import { FadeIn, IconBox, simplePreset } from '@/components/ui';
+import { PageLayout } from '@/components/layout';
+import { FadeIn, IconBox, BackLink, simplePreset } from '@/components/ui';
 import { ClockIcon, CalendarIcon, MapPinIcon, MailIcon } from '@/components/icons';
 import { ContactLinkCard, InfoItem, LazyContactForm } from '@/components/forms';
 
@@ -11,22 +11,17 @@ export const metadata: Metadata = {
   description: text.pages.contact.metaDescription,
 };
 
-export default function ContactPage() {
-  return (
-    <div className="min-h-screen bg-cream">
-      <Header />
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-      <main id="main-content" className="py-16 md:py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <nav className="mb-12">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm text-text-light transition hover:text-text"
-            >
-              <span aria-hidden="true">←</span>
-              {text.pages.contact.backToTop}
-            </Link>
-          </nav>
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  return (
+    <PageLayout>
+      <div className="mx-auto max-w-5xl px-6">
+        <BackLink href="/" label={text.pages.contact.backToTop} />
 
           {/* Header */}
           <FadeIn {...simplePreset}>
@@ -110,9 +105,6 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

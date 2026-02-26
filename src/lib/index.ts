@@ -3,7 +3,7 @@
  */
 
 // ユーティリティ
-export { cn, getExternalLinkProps, scrollToElement, renderMultilineText } from './utils';
+export { cn, getExternalLinkProps, scrollToElement, renderMultilineText, formatDate } from './utils';
 
 // スタイル
 export {

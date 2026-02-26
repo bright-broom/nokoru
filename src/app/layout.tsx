@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { siteConfig, text } from '@/config';
 import { siteColors } from '@/lib/colors';
-import { getSupabaseUrl } from '@/lib/env';
 import { fontVariables } from '@/lib/fonts';
 import './globals.css';
 
@@ -62,12 +61,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={fontVariables} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://i.ytimg.com" />
-        <link rel="preconnect" href="https://www.youtube.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href={getSupabaseUrl()} />
-      </head>
       <body className="antialiased" suppressHydrationWarning>
         {children}
       </body>

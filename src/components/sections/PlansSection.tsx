@@ -1,7 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA, cardPreset, contentPreset } from '@/components/ui';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
-import { SectionDivider } from '@/components/ui/SectionDivider';
+import { Section, Container, SectionHeader, SectionDivider, FadeIn, SectionCTA, FloatingDecoration, cardPreset, contentPreset } from '@/components/ui';
 import { CheckIcon } from '@/components/icons';
 import { plans, text } from '@/config';
 import { cn } from '@/lib/utils';
@@ -85,17 +83,6 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
             ))}
           </ul>
 
-          {/* CTA */}
-          <div className="mt-auto pt-8">
-            <div className={cn(
-              'track-label w-full h-12 flex items-center justify-center rounded-xl px-4 text-center text-sm font-bold uppercase transition-all duration-300',
-              isSignature
-                ? 'bg-gold text-white group-hover:bg-gold-dark'
-                : 'bg-site-accent/5 text-site-accent group-hover:bg-site-accent group-hover:text-white'
-            )}>
-              詳細を見る
-            </div>
-          </div>
         </div>
 
         {/* フッター領域（全カード統一高さ） */}

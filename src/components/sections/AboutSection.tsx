@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine, cardPreset } from '@/components/ui';
-import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine, FloatingDecoration, cardPreset } from '@/components/ui';
 import { staffMembers, text } from '@/config';
 import { cardStyles } from '@/lib/styles';
 import { ANIMATION_DELAYS } from '@/lib/constants';

@@ -2,14 +2,16 @@ import Link from 'next/link';
 import { cn, getExternalLinkProps } from '@/lib/utils';
 import type { PropsWithClassName } from '@/types';
 
-type ButtonVariant = 'primary' | 'outline' | 'gradient' | 'ghost' | 'glow';
+type ButtonVariant = 'primary' | 'outline' | 'gradient' | 'ghost' | 'glow' | 'gold';
 type ButtonSize = 'default' | 'large' | 'small';
+type ButtonRounded = 'md' | 'full';
 
 /** 共通のボタンプロパティ */
 interface ButtonBaseProps extends PropsWithClassName {
   children: React.ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  rounded?: ButtonRounded;
   'aria-label'?: string;
   /** アイコンを左に配置 */
   iconLeft?: React.ReactNode;
@@ -40,7 +42,12 @@ interface NativeButtonProps extends ButtonBaseProps {
 type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const baseClasses =
-  'inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide rounded-md transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-site-accent focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+
+const roundedClasses: Record<ButtonRounded, string> = {
+  md: 'rounded-md',
+  full: 'rounded-full',
+};
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -52,7 +59,9 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost:
     'bg-transparent text-text/70 hover:bg-beige/40 hover:text-site-accent active:scale-[0.96]',
   glow:
-    'relative bg-white text-site-accent border border-site-accent/10 shadow-glow hover:shadow-glow-gold hover:border-gold/30 hover:-translate-y-1 active:scale-[0.98] after:absolute after:inset-0 after:rounded-md after:shadow-[inset_0_0_15px_rgba(255,255,255,0.5)] after:pointer-events-none',
+    'relative bg-white text-site-accent border border-site-accent/10 shadow-glow hover:shadow-glow-gold hover:border-gold/30 hover:-translate-y-1 active:scale-[0.98] after:absolute after:inset-0 after:rounded-[inherit] after:shadow-[inset_0_0_15px_rgba(255,255,255,0.5)] after:pointer-events-none',
+  gold:
+    'bg-gold text-white shadow-sm hover:bg-gold-dark hover:shadow-premium hover:-translate-y-1 active:scale-[0.98]',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -67,12 +76,13 @@ export function Button(props: ButtonProps) {
     className,
     variant = 'outline',
     size = 'default',
+    rounded = 'md',
     'aria-label': ariaLabel,
     iconLeft,
     iconRight,
   } = props;
 
-  const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
+  const classes = cn(baseClasses, roundedClasses[rounded], variantClasses[variant], sizeClasses[size], className);
 
   const content = (
     <>

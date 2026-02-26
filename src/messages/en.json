@@ -1,0 +1,267 @@
+{
+  "site": {
+    "name": "NOKORU",
+    "descriptionShort": "Location pre-wedding films from Osaka/Kansai. Beautiful cinematic footage. Now accepting 2026 bookings.",
+    "tagline": "Transform your\nlocation pre-wedding\ninto beautiful film.",
+    "subTagline": "Location Wedding Film",
+    "areas": "Osaka, Hyogo, Kyoto, Nara, Shiga — Nationwide travel available.",
+    "year": "Now accepting 2026 bookings.",
+    "copyrightSuffix": "All rights reserved."
+  },
+  "nav": {
+    "skipToMain": "Skip to main content",
+    "ariaMainNav": "Main navigation",
+    "ariaMobileNav": "Mobile navigation",
+    "homeAriaSuffix": "Return to home",
+    "mobileMenuOpen": "Open menu",
+    "mobileMenuClose": "Close menu",
+    "ctaButton": "Free Consultation",
+    "labels": {
+      "works": "Works",
+      "services": "Services",
+      "plans": "Plans",
+      "about": "About",
+      "booking": "Booking",
+      "contact": "Contact",
+      "videos": "Videos",
+      "blog": "Blog",
+      "faq": "FAQ"
+    },
+    "aria": {
+      "works": "Go to gallery",
+      "services": "Go to services",
+      "plans": "Go to pricing plans",
+      "about": "Go to about section",
+      "booking": "Go to booking",
+      "contact": "Go to contact",
+      "videos": "Go to video gallery",
+      "blog": "Go to blog",
+      "faq": "Go to FAQ"
+    }
+  },
+  "sections": {
+    "hero": {
+      "cta": "Book a Consultation",
+      "ctaAria": "Go to consultation booking section",
+      "seoHiddenHeading": "NOKORU - Location Pre-wedding & Wedding Film Production in Osaka/Kansai",
+      "videoTitle": "NOKORU - Location Pre-wedding Film"
+    },
+    "works": {
+      "title": "Works",
+      "subtitle": "Our Gallery",
+      "cta": "Inquire About Shooting",
+      "ctaAria": "Go to contact page"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "Location Pre-wedding Film Production",
+      "listAria": "Service list",
+      "cta": "Inquire About Services",
+      "ctaAria": "Go to contact page"
+    },
+    "plans": {
+      "title": "Plans",
+      "subtitle": "Pricing Plans",
+      "listAria": "Pricing plan list",
+      "recommendedBadge": "Most Popular",
+      "cta": "Inquire About Plans",
+      "ctaAria": "Go to contact page",
+      "allInclusiveNote": "All plans include permit applications, data delivery, and color grading"
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "Our Team",
+      "listAria": "Team members",
+      "profileAltSuffix": "'s profile photo",
+      "profileAltMissingSuffix": "'s profile photo (not set)",
+      "cta": "Feel free to contact us",
+      "ctaAria": "Go to contact page"
+    },
+    "booking": {
+      "title": "Book a Consultation",
+      "subtitle": "Free Online Consultation",
+      "freeBadge": "Free",
+      "loadingCalendar": "Loading calendar...",
+      "description": "Select your preferred date and time to book an online consultation.",
+      "subDescription": "After booking, we'll send you a Google Meet link via email.",
+      "calendarHeading": "Select Your Preferred Time"
+    },
+    "testimonials": {
+      "title": "Voice",
+      "subtitle": "Client Testimonials",
+      "listAria": "Client testimonials",
+      "cta": "Book Your Session",
+      "ctaAria": "Go to contact page"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Feel free to inquire about shooting or quotes",
+      "responseTime": "Usually reply within 3 business days",
+      "formHeading": "Contact Form",
+      "formDescription": "Feel free to contact us about shooting, quotes, etc.",
+      "otherHeading": "SNS & Other",
+      "otherDescription": "DM inquiries are also welcome.",
+      "linksAria": "Contact links",
+      "info": {
+        "businessHoursLabel": "Business Hours",
+        "businessHoursValue": "10:00-19:00",
+        "holidaysLabel": "Holidays",
+        "holidaysValue": "Irregular",
+        "areaLabel": "Service Area",
+        "areaValue": "Kansai area (nationwide available)",
+        "externalSuffix": "(external site, opens in new tab)"
+      }
+    }
+  },
+  "pages": {
+    "faq": {
+      "backToTop": "Back to Top",
+      "metaTitle": "FAQ",
+      "metaDescription": "Frequently asked questions about location pre-wedding and wedding film production.",
+      "title": "FAQ",
+      "subtitle": "Frequently Asked Questions",
+      "cta": "Feel free to contact us",
+      "ctaDescription": "If you have any other questions, please use our contact form or free consultation.",
+      "categories": {
+        "shooting": "About Shooting",
+        "pricing": "About Pricing & Plans",
+        "movie": "About Film Production",
+        "booking": "About Booking & Payment"
+      }
+    },
+    "videos": {
+      "backToTop": "Back to Top",
+      "metaTitle": "Video Gallery",
+      "metaDescription": "Gallery of wedding movies and pre-wedding videos produced by NOKORU.",
+      "title": "Video Gallery",
+      "subtitle": "Our Film Collection",
+      "playButton": "Play",
+      "categories": {
+        "all": "All",
+        "openingMovie": "Opening Movie",
+        "locationShooting": "Location Shooting",
+        "digest": "Digest"
+      }
+    },
+    "blog": {
+      "backToTop": "Back to Top",
+      "backToBlog": "Back to Articles",
+      "metaTitle": "Blog & News",
+      "metaDescription": "News, shooting reports, and tips about location pre-wedding and wedding film production.",
+      "title": "Blog",
+      "subtitle": "News & Shooting Reports",
+      "readMore": "Read More",
+      "notFound": "Article not found",
+      "categories": {
+        "news": "News",
+        "report": "Shooting Report",
+        "tips": "Shooting Tips"
+      },
+      "relatedPosts": "Related Articles"
+    },
+    "staff": {
+      "backToTop": "Back to Top",
+      "backToAbout": "Back to Team",
+      "notFound": "Staff not found",
+      "metaTitleSuffix": "Team Member"
+    },
+    "plans": {
+      "backToTop": "Back to Top",
+      "backToPlans": "Back to Plans",
+      "notFound": "Plan not found",
+      "metaTitleSuffix": "Pricing Plan",
+      "featuresHeading": "Plan Details",
+      "ctaButton": "Inquire About This Plan"
+    },
+    "services": {
+      "backToTop": "Back to Top",
+      "backToServices": "Back to Services",
+      "notFound": "Service not found",
+      "metaTitleSuffix": "Service",
+      "featuresHeading": "Service Details",
+      "ctaButton": "Inquire About This Service"
+    },
+    "works": {
+      "backToTop": "Back to Top",
+      "backToWorks": "Back to Gallery",
+      "notFound": "Work not found",
+      "metaTitleSuffix": "Gallery",
+      "locationLabel": "Location",
+      "ctaButton": "Inquire About Shooting",
+      "navigation": {
+        "prevLabel": "Previous",
+        "nextLabel": "Next",
+        "counterSeparator": "/",
+        "keyboardHint": "Use ← → keys to navigate"
+      }
+    },
+    "contact": {
+      "backToTop": "Back to Top",
+      "metaTitle": "Contact",
+      "metaDescription": "Feel free to inquire about shooting or quotes. Usually reply within 3 business days."
+    }
+  },
+  "footer": {
+    "decorativeMark": "✦",
+    "instagramFollowAria": "Follow on Instagram"
+  },
+  "ui": {
+    "loadingAria": "Loading",
+    "loadingSrOnly": "Loading..."
+  },
+  "form": {
+    "success": {
+      "title": "Sent Successfully",
+      "message": "Thank you for your inquiry.\nWe will contact you within 2-3 business days.",
+      "newInquiry": "New Inquiry"
+    },
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "John Doe",
+        "requiredMark": "*"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "example@email.com",
+        "requiredMark": "*"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+81 90-1234-5678"
+      },
+      "inquiryType": {
+        "label": "Inquiry Type",
+        "ariaLabel": "Inquiry Type"
+      },
+      "preferredDate": {
+        "label": "Preferred Shooting Date"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Please tell us about your preferred location, shooting image, etc.",
+        "requiredMark": "*"
+      }
+    },
+    "buttons": {
+      "submit": "Send",
+      "submitting": "Sending..."
+    },
+    "errors": {
+      "submitFailed": "Failed to send. Please try again later.",
+      "networkFailed": "Network error. Please check your connection.",
+      "generic": "An error occurred. Please try again later."
+    },
+    "validationErrors": {
+      "nameRequired": "Please enter your name",
+      "emailRequired": "Please enter your email",
+      "emailInvalid": "Please enter a valid email address",
+      "messageRequired": "Please enter your message"
+    }
+  },
+  "common": {
+    "backToTop": "Back to Top",
+    "readMore": "Read More",
+    "viewDetails": "View Details"
+  }
+}

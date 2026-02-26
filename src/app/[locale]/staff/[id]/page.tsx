@@ -1,18 +1,23 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { setRequestLocale } from 'next-intl/server';
 import { staffMembers, text } from '@/config';
-import { Header, Footer } from '@/components/layout';
+import { PageLayout } from '@/components/layout';
+import { BackLink, Button } from '@/components/ui';
+import { locales } from '@/i18n/config';
 
 type PageProps = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: string; id: string }>;
 };
 
-export async function generateStaticParams() {
-  return staffMembers.map((staff) => ({
-    id: staff.id,
-  }));
+export function generateStaticParams() {
+  return locales.flatMap((locale) =>
+    staffMembers.map((staff) => ({
+      locale,
+      id: staff.id,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -32,7 +37,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function StaffDetailPage({ params }: PageProps) {
-  const { id } = await params;
+  const { locale, id } = await params;
+  setRequestLocale(locale);
   const staff = staffMembers.find((s) => s.id === id);
 
   if (!staff) {
@@ -40,20 +46,9 @@ export default async function StaffDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-cream">
-      <Header />
-
-      <main id="main-content" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6">
-          <nav className="mb-12">
-            <Link
-              href="/#about"
-              className="inline-flex items-center gap-2 text-sm text-text-light transition hover:text-text"
-            >
-              <span aria-hidden="true">←</span>
-              {text.pages.staff.backToAbout}
-            </Link>
-          </nav>
+    <PageLayout>
+      <div className="mx-auto max-w-2xl px-6">
+        <BackLink href="/#about" label={text.pages.staff.backToAbout} />
 
           <article className="text-center">
             <figure className="mx-auto mb-8 h-48 w-48 overflow-hidden rounded-full bg-beige sm:h-64 sm:w-64">
@@ -90,17 +85,11 @@ export default async function StaffDetailPage({ params }: PageProps) {
           </article>
 
           <div className="mt-16 text-center">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-site-accent px-6 py-3 text-sm text-site-accent transition hover:bg-site-accent hover:text-white"
-            >
+            <Button href="/" variant="outline" rounded="full" size="small">
               {text.pages.staff.backToTop}
-            </Link>
+            </Button>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

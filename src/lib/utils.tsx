@@ -45,3 +45,11 @@ export function renderMultilineText(text: string): React.ReactNode {
     </Fragment>
   ));
 }
+
+/**
+ * 日付文字列を日本語形式にフォーマット
+ */
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+}
