@@ -17,7 +17,7 @@ export { SocialButton } from './SocialButton';
 export { YouTubeEmbed } from './YouTubeEmbed';
 export { CalEmbed } from './CalEmbed';
 
-export { Input } from './input';
-export { Label } from './label';
-export { Textarea } from './textarea';
+export { Input } from './Input';
+export { Label } from './Label';
+export { Textarea } from './Textarea';
 export { ProgressDots } from './ProgressDots';

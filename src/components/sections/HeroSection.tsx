@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { Button, YouTubeEmbed, FadeIn, heroPreset, ctaPreset, contentPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { siteConfig, text } from '@/config';
-import { renderMultilineText } from '@/lib/helpers';
+import { renderMultilineText } from '@/lib/utils';
 import { scrollToElement } from '@/lib/utils';
 
 export function HeroSection() {

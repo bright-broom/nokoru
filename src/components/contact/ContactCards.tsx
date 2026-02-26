@@ -1,7 +1,8 @@
 import { FadeIn, IconBox, simplePreset } from '@/components/ui';
 import { SendIcon, iconMap } from '@/components/icons';
 import { text } from '@/config';
-import { cn, getExternalLinkProps, iconBoxStyles } from '@/lib/utils';
+import { cn, getExternalLinkProps } from '@/lib/utils';
+import { iconBoxStyles } from '@/lib/styles';
 import type { ContactLink } from '@/types';
 
 interface ContactLinkCardProps {

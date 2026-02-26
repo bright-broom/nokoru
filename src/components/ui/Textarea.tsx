@@ -1,4 +1,5 @@
-import { cn, formInputBaseClasses } from "@/lib/utils"
+import { cn } from "@/lib/utils"
+import { formInputBaseClasses } from "@/lib/styles"
 
 function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
   return (

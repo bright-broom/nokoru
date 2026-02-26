@@ -1,9 +1,9 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+/**
+ * スタイルユーティリティ
+ * 共通スタイル定義とユーティリティ関数
+ */
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+import { cn } from './utils';
 
 /**
  * フォーム入力コンポーネント共通スタイル
@@ -27,26 +27,6 @@ export const formInputBaseClasses = [
   formInputStyles.invalid,
   formInputStyles.disabled,
 ].join(" ");
-
-/**
- * 外部リンクの属性を生成
- */
-export function getExternalLinkProps(isExternal: boolean = false) {
-  if (!isExternal) return {};
-  return {
-    target: '_blank' as const,
-    rel: 'noopener noreferrer' as const,
-  };
-}
-/**
- * 指定したIDの要素へスムーズにスクロール
- */
-export function scrollToElement(id: string, behavior: ScrollBehavior = 'smooth') {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior });
-  }
-}
 
 /**
  * カードコンポーネント共通スタイル
