@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
 import { MenuIcon, CloseIcon } from '@/components/icons';
+import { NavLink } from '@/components/ui/NavLink';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,12 +87,7 @@ export function Header() {
           <ul className="hidden flex-1 items-center gap-10 lg:flex">
             {leftNavItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-[11px] uppercase tracking-[0.2em] text-text/40 transition-colors duration-300 hover:text-text"
-                >
-                  {item.label}
-                </Link>
+                <NavLink href={item.href} label={item.label} variant="header" />
               </li>
             ))}
           </ul>
@@ -109,12 +105,7 @@ export function Header() {
           <ul className="hidden flex-1 items-center justify-end gap-10 lg:flex">
             {rightNavItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-[11px] uppercase tracking-[0.2em] text-text/40 transition-colors duration-300 hover:text-text"
-                >
-                  {item.label}
-                </Link>
+                <NavLink href={item.href} label={item.label} variant="header" />
               </li>
             ))}
           </ul>
@@ -170,14 +161,13 @@ export function Header() {
                 )}
                 style={{ transitionDelay: isMobileMenuOpen ? `${100 + index * 50}ms` : '0ms' }}
               >
-                <Link
+                <NavLink
                   href={item.href}
-                  className="block py-2 text-xl tracking-[0.15em] text-text/60 transition-colors duration-300 hover:text-text"
+                  label={item.label}
+                  variant="mobile"
                   onClick={closeMobileMenu}
                   tabIndex={isMobileMenuOpen ? 0 : -1}
-                >
-                  {item.label}
-                </Link>
+                />
               </li>
             ))}
           </ul>

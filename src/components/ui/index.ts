@@ -10,6 +10,7 @@ export { IconBox } from './IconBox';
 export { SectionCTA } from './SectionCTA';
 export { DecorativeDivider } from './DecorativeDivider';
 export { AnimatedLine } from './AnimatedLine';
+export { NavLink } from './NavLink';
 
 export { YouTubeEmbed } from './YouTubeEmbed';
 export { CalEmbed } from './CalEmbed';

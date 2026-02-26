@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { siteConfig, navItems, text } from '@/config';
 import { InstagramIcon, LinkIcon } from '@/components/icons';
 import { AnimatedLine } from '@/components/ui/AnimatedLine';
+import { NavLink } from '@/components/ui/NavLink';
 
 export function Footer() {
   return (
@@ -65,13 +66,7 @@ export function Footer() {
             <ul className="space-y-3">
               {navItems.slice(0, 5).map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="group inline-flex items-center gap-2 text-sm text-cream/50 transition-all duration-300 hover:text-cream"
-                  >
-                    <AnimatedLine variant="footer-nav" />
-                    <span>{item.label}</span>
-                  </Link>
+                  <NavLink href={item.href} label={item.label} variant="footer" />
                 </li>
               ))}
             </ul>
