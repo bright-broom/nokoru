@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { siteConfig, navItems, text } from '@/config';
 import { InstagramIcon, LinkIcon } from '@/components/icons';
+import { AnimatedLine } from '@/components/ui/AnimatedLine';
 
 export function Footer() {
   return (
@@ -40,10 +41,7 @@ export function Footer() {
             <span className="track-label font-display text-2xl text-cream/90 transition-all duration-500 group-hover:text-cream">
               {siteConfig.name}
             </span>
-            <span
-              className="block mt-2 h-px w-0 mx-auto bg-gradient-to-r from-site-accent via-gold to-site-accent transition-all duration-700 group-hover:w-full"
-              aria-hidden="true"
-            />
+            <AnimatedLine variant="footer-logo" className="mt-2 block" />
           </Link>
 
           {/* サブテキスト */}
@@ -71,10 +69,7 @@ export function Footer() {
                     href={item.href}
                     className="group inline-flex items-center gap-2 text-sm text-cream/50 transition-all duration-300 hover:text-cream"
                   >
-                    <span
-                      className="h-px w-0 bg-gradient-to-r from-site-accent to-gold transition-all duration-300 group-hover:w-4"
-                      aria-hidden="true"
-                    />
+                    <AnimatedLine variant="footer-nav" />
                     <span>{item.label}</span>
                   </Link>
                 </li>

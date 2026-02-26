@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cn, cardStyles, revealOnHoverClasses } from '@/lib/utils';
 import { FadeIn } from '@/components/ui/FadeIn';
+import { AnimatedLine } from '@/components/ui/AnimatedLine';
 import type { WorkImage } from '@/types';
 
 interface WorkCardProps {
@@ -61,7 +62,7 @@ export function WorkCard({
                   {/* Discover More link */}
                   <div className="track-label mt-4 flex items-center gap-2 text-xs font-bold uppercase text-white/60">
                      <span>View Story</span>
-                     <div className="h-px w-0 bg-white/40 transition-all duration-500 group-hover:w-8" />
+                     <AnimatedLine variant="white-expand" />
                   </div>
                </div>
 

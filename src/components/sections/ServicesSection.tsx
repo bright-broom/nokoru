@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
@@ -36,7 +36,7 @@ function ServiceCard({ service, delay }: { service: Service; delay: number }) {
 
           <div className="track-label mt-8 flex items-center gap-4 text-xs font-bold uppercase text-site-accent/60 transition-all duration-500 group-hover:text-site-accent group-hover:gap-6">
             <span>Discover Experience</span>
-            <div className="h-px w-8 bg-site-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-site-accent" aria-hidden="true" />
+            <AnimatedLine variant="accent-expand" />
           </div>
         </div>
       </Link>

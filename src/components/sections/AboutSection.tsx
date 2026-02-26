@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { staffMembers, text } from '@/config';
 import { cardStyles } from '@/lib/utils';
@@ -63,7 +63,7 @@ function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boo
             {/* 詳細への誘い */}
             <div className="track-label mt-8 flex items-center justify-center gap-3 text-xs font-bold uppercase text-site-accent/40 transition-all duration-500 group-hover:text-site-accent group-hover:gap-5 sm:justify-start md:text-sm">
               <span>Biography</span>
-              <div className="h-px w-8 bg-site-accent/20 transition-all duration-500 group-hover:w-12 group-hover:bg-site-accent" />
+              <AnimatedLine variant="accent-expand" />
             </div>
           </div>
         </div>
