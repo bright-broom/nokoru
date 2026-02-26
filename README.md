@@ -215,6 +215,26 @@ source .env.local && export NEXT_PUBLIC_SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY
 npx tsx scripts/migrate-images.ts
 ```
 
+#### オプション
+
+| オプション | 説明 |
+| ---------- | ---- |
+| `--dry-run` | 実際にはアップロードせず、対象ファイルを確認 |
+| `--skip-existing` | 既存ファイルをスキップ |
+| `--concurrency=N` | 同時アップロード数（デフォルト: 5） |
+| `--dir=NAME` | 特定のディレクトリのみ移行（works, staff, videos） |
+
+```bash
+# 例: ドライランで対象確認
+npx tsx scripts/migrate-images.ts --dry-run
+
+# 例: 既存スキップ + 3並列
+npx tsx scripts/migrate-images.ts --skip-existing --concurrency=3
+
+# 例: works のみ移行
+npx tsx scripts/migrate-images.ts --dir=works
+```
+
 ## 開発ガイド
 
 ### テキスト変更
