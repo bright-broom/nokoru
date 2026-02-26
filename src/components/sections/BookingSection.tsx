@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic';
-import { Section, Container, SectionHeader, FadeIn, IconBox } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, IconBox, cardPreset, contentPreset, ctaPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { ClockIcon, CheckIcon, iconMap, type IconMapKey } from '@/components/icons';
 import { text } from '@/config';
 import { cn } from '@/lib/utils';
+import { ANIMATION_DELAYS } from '@/lib/constants';
 
 // Cal.comを遅延読み込み
 const CalEmbed = dynamic(
@@ -41,7 +42,7 @@ function ConsultationCard({ title, duration, description, icon, delay, index }: 
   const Icon = iconMap[icon];
 
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth">
+    <FadeIn {...cardPreset} delay={delay}>
       <div
         className={cn(
           'group relative h-full overflow-hidden rounded-[32px] bg-white p-10',
@@ -100,7 +101,7 @@ function ProcessStep({
   delay: number;
 }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={800} easing="smooth" className="flex flex-1 items-center gap-6">
+    <FadeIn {...cardPreset} delay={delay} className="flex flex-1 items-center gap-6">
       <div className="relative shrink-0">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-site-accent shadow-premium ring-1 ring-site-accent/10 font-display text-lg">
           {step}
@@ -135,7 +136,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
 
       <Container className="relative z-10">
         {/* Header with Luxury Free Badge */}
-        <FadeIn direction="scale" easing="smooth">
+        <FadeIn {...ctaPreset}>
           <div className="mb-10 flex justify-center">
             <div className="track-super group relative inline-flex items-center gap-3 rounded-full border border-site-accent/5 bg-white px-8 py-3 text-xs font-bold uppercase text-site-accent shadow-elevated">
               <CheckIcon className="h-4 w-4 text-gold" />
@@ -153,7 +154,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         />
 
         {/* Description - Editorial */}
-        <FadeIn direction="blur-up" delay={200} duration={1200}>
+        <FadeIn {...contentPreset} delay={200}>
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-display text-lg leading-relaxed text-text/80 tracking-wide md:text-xl">
               {text.sections.booking.description}
@@ -177,14 +178,14 @@ export function BookingSection({ calLink }: BookingSectionProps) {
               duration={card.duration}
               description={card.description}
               icon={card.icon as IconMapKey}
-              delay={400 + index * 150}
+              delay={ANIMATION_DELAYS.CONSULTATION_START + index * ANIMATION_DELAYS.CARD_STAGGER}
               index={index}
             />
           ))}
         </div>
 
         {/* Process Visualizer */}
-        <FadeIn direction="blur-up" delay={800}>
+        <FadeIn {...contentPreset} delay={800}>
           <div className="mx-auto mt-32 max-w-5xl">
             <div className="relative overflow-hidden rounded-[40px] bg-beige/10 p-12 border border-beige/40">
               <div className="absolute top-0 right-0 p-8 font-display text-8xl text-beige/20 select-none">✦</div>
@@ -201,7 +202,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
                     title={step.title}
                     description={step.description}
                     isLast={index === processSteps.length - 1}
-                    delay={1000 + index * 150}
+                    delay={ANIMATION_DELAYS.PROCESS_START + index * ANIMATION_DELAYS.CARD_STAGGER}
                   />
                 ))}
               </div>
@@ -210,7 +211,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         </FadeIn>
 
         {/* Calendar - Grand Stage */}
-        <FadeIn direction="blur-up" delay={1200}>
+        <FadeIn {...contentPreset} delay={1200}>
           <div className="mt-32">
             <div className="mb-16 flex flex-col items-center">
               <h3 className="font-display text-base tracking-widest text-text md:text-lg">
@@ -230,7 +231,7 @@ export function BookingSection({ calLink }: BookingSectionProps) {
         </FadeIn>
 
         {/* Fine Print - Elegant */}
-        <FadeIn direction="blur-up" delay={1500}>
+        <FadeIn {...contentPreset} delay={1500}>
           <div className="mx-auto mt-20 flex max-w-3xl flex-col items-center gap-8 md:flex-row md:justify-center md:gap-16">
             {text.sections.booking.notes.map((note, index) => (
               <div

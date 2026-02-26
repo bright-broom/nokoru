@@ -1,4 +1,4 @@
-import { FadeIn } from '@/components/ui';
+import { FadeIn, IconBox, simplePreset } from '@/components/ui';
 import { SendIcon, iconMap } from '@/components/icons';
 import { text } from '@/config';
 import { cn, getExternalLinkProps, iconBoxStyles } from '@/lib/utils';
@@ -14,7 +14,7 @@ export function ContactLinkCard({ link, delay }: ContactLinkCardProps) {
   const externalProps = getExternalLinkProps(link.isExternal);
 
   return (
-    <FadeIn direction="up" delay={delay}>
+    <FadeIn {...simplePreset} delay={delay}>
       <a
         href={link.href}
         className={cn(
@@ -62,11 +62,10 @@ interface InfoItemProps {
 
 export function InfoItem({ icon: Icon, label, value, delay }: InfoItemProps) {
   return (
-    <FadeIn direction="up" delay={delay}>
+    <FadeIn {...simplePreset} delay={delay}>
       <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-site-accent/10">
-          <Icon className="h-4 w-4 text-site-accent" />
-        </div>
+        <IconBox icon={Icon} size="sm" />
+
         <div>
           <p className="text-sm text-text-light">{label}</p>
           <p className="text-sm font-medium text-text">{value}</p>

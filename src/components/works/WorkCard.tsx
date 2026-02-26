@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn, cardStyles, revealOnHoverClasses } from '@/lib/utils';
-import { FadeIn } from '@/components/ui/FadeIn';
+import { FadeIn, cardPreset } from '@/components/ui';
 import { AnimatedLine } from '@/components/ui/AnimatedLine';
 import type { WorkImage } from '@/types';
 
@@ -24,7 +24,7 @@ export function WorkCard({
    aspectRatio = 'aspect-[1.618/1]',
 }: WorkCardProps) {
    return (
-      <FadeIn direction="scale-up" delay={delay} duration={900} easing="smooth" className={className}>
+      <FadeIn {...cardPreset} delay={delay} className={className}>
          <Link
             href={`/works/${image.id}`}
             className={`${cardStyles.base} ${cardStyles.hover} block h-full`}

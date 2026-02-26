@@ -7,10 +7,11 @@ import { siteConfig, navItems, text } from '@/config';
 import { MenuIcon, CloseIcon } from '@/components/icons';
 import { NavLink } from '@/components/ui/NavLink';
 import { useScrollBackground } from '@/hooks';
+import { SCROLL_THRESHOLDS } from '@/lib/constants';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isScrolled = useScrollBackground(50);
+  const isScrolled = useScrollBackground(SCROLL_THRESHOLDS.HEADER_SCROLL);
 
   // ナビゲーションを左右に分割
   const { leftNavItems, rightNavItems } = useMemo(() => {

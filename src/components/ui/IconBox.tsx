@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils';
-import type { ComponentType, SVGProps } from 'react';
+import type { ComponentType } from 'react';
+import type { IconProps } from '@/types';
 
-type IconComponent = ComponentType<SVGProps<SVGSVGElement> & { className?: string }>;
+type IconComponent = ComponentType<IconProps>;
 
 interface IconBoxProps {
   icon: IconComponent;
