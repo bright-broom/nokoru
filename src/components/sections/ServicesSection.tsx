@@ -1,17 +1,18 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, AnimatedLine, cardPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
 import { renderMultilineText } from '@/lib/helpers';
 import { cardStyles } from '@/lib/utils';
+import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Service } from '@/types';
 
 function ServiceCard({ service, delay }: { service: Service; delay: number }) {
   const Icon = iconMap[service.icon];
 
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth">
+    <FadeIn {...cardPreset} delay={delay}>
       <Link
         href={`/services/${service.id}`}
         className={`${cardStyles.base} ${cardStyles.hover} block h-full rounded-[24px] px-6 py-8 md:px-8 md:py-10`}
@@ -88,7 +89,7 @@ export function ServicesSection() {
         >
           {services.map((service, index) => (
             <li key={service.id}>
-              <ServiceCard service={service} delay={index * 150} />
+              <ServiceCard service={service} delay={index * ANIMATION_DELAYS.CARD_STAGGER} />
             </li>
           ))}
         </ul>

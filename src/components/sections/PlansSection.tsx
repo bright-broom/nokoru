@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA, cardPreset, contentPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { SectionDivider } from '@/components/ui/SectionDivider';
 import { CheckIcon } from '@/components/icons';
 import { plans, text } from '@/config';
 import { cn } from '@/lib/utils';
+import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Plan } from '@/types';
 
 function PlanCard({ plan, index }: { plan: Plan; index: number }) {
@@ -12,7 +13,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   const isComplete = plan.id === 'complete';
 
   return (
-    <FadeIn direction="scale-up" delay={index * 150} duration={800} easing="smooth" className="h-full">
+    <FadeIn {...cardPreset} delay={index * ANIMATION_DELAYS.CARD_STAGGER} className="h-full">
       <Link
         href={`/plans/${plan.id}`}
         className={cn(
@@ -143,7 +144,7 @@ export function PlansSection() {
         />
 
         {/* 説明テキスト */}
-        <FadeIn direction="blur-up" delay={100} className="mt-6 text-center">
+        <FadeIn {...contentPreset} delay={100} className="mt-6 text-center">
           <p className="text-sm text-text-light/70">
             {text.sections.plans.allInclusiveNote}
           </p>

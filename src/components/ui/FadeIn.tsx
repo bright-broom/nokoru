@@ -2,21 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { useInView } from '@/hooks';
-
-type AnimationDirection =
-  | 'up'
-  | 'down'
-  | 'left'
-  | 'right'
-  | 'none'
-  | 'scale'
-  | 'scale-up'
-  | 'blur'
-  | 'blur-up'
-  | 'diagonal-left'
-  | 'diagonal-right';
-
-type AnimationEasing = 'ease-out' | 'ease-in-out' | 'bounce' | 'smooth';
+import type { AnimationDirection, AnimationEasing } from '@/types';
 
 interface FadeInProps {
   children: React.ReactNode;

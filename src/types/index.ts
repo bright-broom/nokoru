@@ -3,6 +3,38 @@
  * @description アプリケーション全体で使用する型定義
  */
 
+// =============================================================================
+// アニメーション
+// =============================================================================
+
+/** FadeInアニメーションの方向 */
+export type AnimationDirection =
+  | 'up'
+  | 'down'
+  | 'left'
+  | 'right'
+  | 'none'
+  | 'scale'
+  | 'scale-up'
+  | 'blur'
+  | 'blur-up'
+  | 'diagonal-left'
+  | 'diagonal-right';
+
+/** アニメーションのイージング */
+export type AnimationEasing = 'ease-out' | 'ease-in-out' | 'bounce' | 'smooth';
+
+/** FadeInプリセット設定 */
+export interface FadeInPreset {
+  readonly direction: AnimationDirection;
+  readonly duration: number;
+  readonly easing: AnimationEasing;
+}
+
+// =============================================================================
+// ナビゲーション
+// =============================================================================
+
 // ナビゲーション
 export interface NavItem {
   readonly label: string;

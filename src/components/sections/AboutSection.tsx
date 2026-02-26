@@ -1,14 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine } from '@/components/ui';
+import { Section, Container, SectionHeader, FadeIn, SectionCTA, AnimatedLine, cardPreset } from '@/components/ui';
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { staffMembers, text } from '@/config';
 import { cardStyles } from '@/lib/utils';
+import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Staff } from '@/types';
 
 function StaffCard({ staff, isPriority, delay }: { staff: Staff; isPriority: boolean; delay: number }) {
   return (
-    <FadeIn direction="scale-up" delay={delay} duration={1000} easing="smooth" className="h-full">
+    <FadeIn {...cardPreset} delay={delay} className="h-full">
       <Link
         href={`/staff/${staff.id}`}
         className={`${cardStyles.base} ${cardStyles.hover} block h-full p-8 md:p-10`}
@@ -116,7 +117,7 @@ export function AboutSection() {
         >
           {staffMembers.map((staff, index) => (
             <li key={staff.id}>
-              <StaffCard staff={staff} isPriority={index === 0} delay={index * 150} />
+              <StaffCard staff={staff} isPriority={index === 0} delay={index * ANIMATION_DELAYS.CARD_STAGGER} />
             </li>
           ))}
         </ul>

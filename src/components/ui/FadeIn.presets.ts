@@ -3,18 +3,7 @@
  * 一貫したアニメーション体験を提供
  */
 
-type AnimationDirection =
-  | 'up' | 'down' | 'left' | 'right' | 'none'
-  | 'scale' | 'scale-up' | 'blur' | 'blur-up'
-  | 'diagonal-left' | 'diagonal-right';
-
-type AnimationEasing = 'ease-out' | 'ease-in-out' | 'bounce' | 'smooth';
-
-interface FadeInPreset {
-  direction: AnimationDirection;
-  duration: number;
-  easing: AnimationEasing;
-}
+import type { FadeInPreset } from '@/types';
 
 /**
  * カード要素用プリセット
