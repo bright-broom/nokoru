@@ -15,7 +15,11 @@ export { NavLink } from './NavLink';
 export { SocialButton } from './SocialButton';
 
 export { YouTubeEmbed } from './YouTubeEmbed';
+export { VideoModal } from './VideoModal';
 export { CalEmbed } from './CalEmbed';
+export { MarkdownContent } from './MarkdownContent';
+export { BackLink } from './BackLink';
+export { CategoryBadge } from './CategoryBadge';
 
 export { Input } from './Input';
 export { Label } from './Label';
