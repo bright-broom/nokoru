@@ -257,12 +257,12 @@ body {
  * リッチデザイン用キーフレームアニメーション
  */
 
-/* 優雅な出現（Reveal） */
+/* 優雅な出現（Reveal） - GPU最適化版 */
 @keyframes reveal-up {
   0% {
     opacity: 0;
-    transform: translateY(30px) scale(0.98);
-    filter: blur(10px);
+    transform: translateY(20px) scale(0.99);
+    filter: blur(4px);
   }
 
   100% {
@@ -270,6 +270,12 @@ body {
     transform: translateY(0) scale(1);
     filter: blur(0);
   }
+}
+
+/* reveal-up アニメーション用の最適化クラス */
+.animate-reveal {
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
 }
 
 /* フローティング効果 */

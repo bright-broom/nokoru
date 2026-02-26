@@ -86,7 +86,8 @@ export const FloatingDecoration = memo(function FloatingDecoration({
   const baseClasses = cn(
     'absolute pointer-events-none transition-opacity duration-1000',
     sizeClasses[size],
-    animate && 'animate-float-slow',
+    // GPUアクセラレーションを有効化（blur/transformの合成レイヤー最適化）
+    animate && 'animate-float-slow will-change-transform',
     className
   );
 
