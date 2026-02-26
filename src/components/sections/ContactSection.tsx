@@ -1,8 +1,7 @@
 import { Section, Container, SectionHeader, FadeIn, IconBox, simplePreset } from '@/components/ui';
 import { ClockIcon, CalendarIcon, MapPinIcon, MailIcon } from '@/components/icons';
 import { contactLinks, text } from '@/config';
-import { ContactLinkCard, InfoItem } from '@/components/contact/ContactCards';
-import { LazyContactForm } from '@/components/contact/LazyContactForm';
+import { ContactLinkCard, InfoItem, LazyContactForm } from '@/components/forms';
 
 export function ContactSection() {
   return (

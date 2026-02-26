@@ -3,8 +3,8 @@ import { Section, Container, SectionHeader, FadeIn, IconBox, SectionCTA, Animate
 import { FloatingDecoration } from '@/components/ui/FloatingDecoration';
 import { iconMap } from '@/components/icons';
 import { services, text } from '@/config';
-import { renderMultilineText } from '@/lib/helpers';
-import { cardStyles } from '@/lib/utils';
+import { renderMultilineText } from '@/lib/utils';
+import { cardStyles } from '@/lib/styles';
 import { ANIMATION_DELAYS } from '@/lib/constants';
 import type { Service } from '@/types';
 

@@ -11,6 +11,7 @@
 | スタイリング   | Tailwind CSS                         | 4.0.0                |
 | フォント       | Cormorant Garamond / Shippori Mincho | next/font            |
 | データベース   | Supabase (PostgreSQL)                | 2.88.0               |
+| ストレージ     | Supabase Storage                     | -                    |
 | 予約システム   | Cal.com                              | 1.5.3                |
 | ホスティング   | Vercel                               | -                    |
 
@@ -82,11 +83,14 @@ src/
 │   └── text.ts                   # テキスト中央管理
 ├── hooks/                        # カスタムフック
 │   ├── useInView.ts
-│   └── useCalInit.ts
+│   ├── useCalInit.ts
+│   └── useScrollBackground.ts
 ├── lib/
 │   ├── colors.ts                 # カラー定義
+│   ├── constants.ts              # 定数（アニメーション等）
 │   ├── fonts.ts                  # フォント定義
 │   ├── utils.ts                  # ユーティリティ
+│   ├── storage.ts                # Supabase Storage ユーティリティ
 │   ├── validation.ts             # バリデーション
 │   ├── errors.ts                 # エラーハンドリング
 │   ├── env.ts                    # 環境変数管理
@@ -94,6 +98,9 @@ src/
 │   └── reservations.ts           # 予約ロジック
 ├── middleware.ts                 # セキュリティ・レート制限
 └── types/                        # TypeScript 型定義
+
+scripts/
+└── migrate-images.ts             # 画像移行スクリプト
 ```
 
 ## 主要機能
@@ -161,19 +168,72 @@ ADMIN_TOKEN=your_random_token
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Project Settings → API → service_role |
 | `ADMIN_TOKEN` | 任意のランダム文字列 |
 
-## 画像の配置
+## 画像管理（Supabase Storage）
+
+画像は **Supabase Storage** で管理されています。
+
+### ストレージ構成
 
 ```
-public/images/
+media/ (バケット)
 ├── works/           # 作品画像
-│   ├── couple-sea.jpg
+│   ├── couple-cliff.jpg
+│   ├── couple-sea-smile.jpg
 │   └── ...
 └── staff/           # スタッフ画像
     ├── aki.jpg
     └── hiyori.jpg
 ```
 
-ファイル名は `src/config/site.ts` のパスと一致させてください。
+### 画像の追加・変更
+
+1. **Supabase ダッシュボード** → Storage → `media` バケット
+2. 適切なフォルダ（`works/` または `staff/`）にアップロード
+3. `src/config/site.ts` でファイル名を参照
+
+### 画像 URL の取得
+
+```typescript
+import { getWorkImageUrl, getStaffImageUrl } from '@/lib/storage';
+
+// 作品画像
+const workUrl = getWorkImageUrl('couple-cliff.jpg');
+// → https://xxx.supabase.co/storage/v1/object/public/media/works/couple-cliff.jpg
+
+// スタッフ画像
+const staffUrl = getStaffImageUrl('aki.jpg');
+// → https://xxx.supabase.co/storage/v1/object/public/media/staff/aki.jpg
+```
+
+### 画像移行スクリプト
+
+ローカルの `public/images/` から Supabase Storage に移行する場合:
+
+```bash
+# 環境変数を読み込んで実行
+source .env.local && export NEXT_PUBLIC_SUPABASE_URL SUPABASE_SERVICE_ROLE_KEY
+npx tsx scripts/migrate-images.ts
+```
+
+#### オプション
+
+| オプション | 説明 |
+| ---------- | ---- |
+| `--dry-run` | 実際にはアップロードせず、対象ファイルを確認 |
+| `--skip-existing` | 既存ファイルをスキップ |
+| `--concurrency=N` | 同時アップロード数（デフォルト: 5） |
+| `--dir=NAME` | 特定のディレクトリのみ移行（works, staff, videos） |
+
+```bash
+# 例: ドライランで対象確認
+npx tsx scripts/migrate-images.ts --dry-run
+
+# 例: 既存スキップ + 3並列
+npx tsx scripts/migrate-images.ts --skip-existing --concurrency=3
+
+# 例: works のみ移行
+npx tsx scripts/migrate-images.ts --dir=works
+```
 
 ## 開発ガイド
 
@@ -192,11 +252,25 @@ import { text } from "@/config/text";
 - **グローバル**: `src/app/globals.css`
 - **カラー**: `src/lib/colors.ts`
 - **フォント**: `src/lib/fonts.ts`
+- **定数**: `src/lib/constants.ts`
 
 ### アイコン追加
 
 1. `src/components/icons/` にコンポーネント作成
 2. `src/components/icons/index.ts` でエクスポート
+
+### UI コンポーネント
+
+再利用可能な UI コンポーネントは `src/components/ui/` にあります:
+
+| コンポーネント | 説明 |
+| -------------- | ---- |
+| `FadeIn` | アニメーション付きフェードイン |
+| `IconBox` | アイコン表示ボックス |
+| `SectionCTA` | セクション CTA ボタン |
+| `AnimatedLine` | ホバー時に伸びる線 |
+| `NavLink` | ナビゲーションリンク |
+| `SocialButton` | SNS リンクボタン |
 
 ## デプロイ
 
@@ -204,11 +278,13 @@ import { text } from "@/config/text";
 
 1. GitHub インポート
 2. Framework: Next.js（自動検出）
-3. 環境変数設定
+3. 環境変数設定（上記参照）
 
 ### Supabase
 
-`supabase/migrations/001_create_reservations.sql` を SQL Editor で実行
+1. `supabase/migrations/001_create_reservations.sql` を SQL Editor で実行
+2. Storage → New bucket → `media` を作成（Public）
+3. 画像をアップロード
 
 ## トラブルシューティング
 
@@ -226,8 +302,16 @@ rm -rf .next && npm run build
 
 ### 画像が表示されない
 
-1. `public/images/` にファイルが存在するか確認
-2. `src/config/site.ts` のパスと一致しているか確認
+1. Supabase Storage の `media` バケットが Public か確認
+2. `NEXT_PUBLIC_SUPABASE_URL` が正しく設定されているか確認
+3. ファイル名が `src/config/site.ts` と一致しているか確認
+4. Vercel の環境変数に `NEXT_PUBLIC_SUPABASE_URL` が設定されているか確認
+
+### Supabase Storage への接続エラー
+
+1. Supabase ダッシュボードでプロジェクトがアクティブか確認
+2. API キーが有効か確認
+3. CORS 設定を確認
 
 ## ライセンス
 

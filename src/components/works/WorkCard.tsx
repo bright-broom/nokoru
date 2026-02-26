@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn, cardStyles, revealOnHoverClasses } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { cardStyles, revealOnHoverClasses } from '@/lib/styles';
 import { FadeIn, cardPreset } from '@/components/ui';
 import { AnimatedLine } from '@/components/ui/AnimatedLine';
 import type { WorkImage } from '@/types';
