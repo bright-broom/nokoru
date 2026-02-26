@@ -6,10 +6,11 @@ import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
 import { MenuIcon, CloseIcon } from '@/components/icons';
 import { NavLink } from '@/components/ui/NavLink';
+import { useScrollBackground } from '@/hooks';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScrollBackground(50);
 
   // ナビゲーションを左右に分割
   const { leftNavItems, rightNavItems } = useMemo(() => {
@@ -18,17 +19,6 @@ export function Header() {
       leftNavItems: navItems.slice(0, midpoint),
       rightNavItems: navItems.slice(midpoint),
     };
-  }, []);
-
-  // スクロール検知
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // モバイルメニュー開閉時のスクロール制御

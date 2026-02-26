@@ -3,6 +3,7 @@ import { siteConfig, navItems, text } from '@/config';
 import { InstagramIcon, LinkIcon } from '@/components/icons';
 import { AnimatedLine } from '@/components/ui/AnimatedLine';
 import { NavLink } from '@/components/ui/NavLink';
+import { SocialButton } from '@/components/ui/SocialButton';
 
 export function Footer() {
   return (
@@ -92,45 +93,18 @@ export function Footer() {
               Connect
             </h3>
             <div className="flex justify-center gap-4 md:justify-end">
-              <Link
+              <SocialButton
                 href={text.content.links.instagramFooter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex h-12 w-12 items-center justify-center"
-                aria-label={text.footer.instagramFollowAria}
-              >
-                {/* 背景グロー */}
-                <span
-                  className="absolute inset-0 rounded-full bg-gradient-to-br from-site-accent/20 to-site-accent/0 opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100"
-                  aria-hidden="true"
-                />
-                {/* ボーダー */}
-                <span
-                  className="absolute inset-0 rounded-full border border-cream/20 transition-all duration-500 group-hover:border-site-accent/50 group-hover:scale-110"
-                  aria-hidden="true"
-                />
-                <InstagramIcon className="relative h-5 w-5 text-cream/60 transition-all duration-300 group-hover:text-cream group-hover:scale-110" />
-              </Link>
-
-              <Link
+                icon={InstagramIcon}
+                label={text.footer.instagramFollowAria}
+                glowColor="accent"
+              />
+              <SocialButton
                 href={`https://${text.content.links.litlinkLabel}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex h-12 w-12 items-center justify-center"
-                aria-label="Lit.link"
-              >
-                {/* 背景グロー */}
-                <span
-                  className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/20 to-gold/0 opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100"
-                  aria-hidden="true"
-                />
-                {/* ボーダー */}
-                <span
-                  className="absolute inset-0 rounded-full border border-cream/20 transition-all duration-500 group-hover:border-gold/50 group-hover:scale-110"
-                  aria-hidden="true"
-                />
-                <LinkIcon className="relative h-5 w-5 text-cream/60 transition-all duration-300 group-hover:text-cream group-hover:scale-110" />
-              </Link>
+                icon={LinkIcon}
+                label="Lit.link"
+                glowColor="gold"
+              />
             </div>
 
             {/* お問い合わせリンク */}
