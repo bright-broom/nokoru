@@ -1,0 +1,267 @@
+{
+  "site": {
+    "name": "NOKORU",
+    "descriptionShort": "大阪・関西発、ロケーション前撮りに特化したウェディングムービー。美しい映像に。2026年撮影受付中。",
+    "tagline": "ロケーション前撮りを、\n美しい映像に。",
+    "subTagline": "Location Wedding Film",
+    "areas": "大阪・兵庫・京都・奈良・滋賀を中心に、全国出張対応。",
+    "year": "2026年撮影受付中。",
+    "copyrightSuffix": "All rights reserved."
+  },
+  "nav": {
+    "skipToMain": "メインコンテンツへスキップ",
+    "ariaMainNav": "メインナビゲーション",
+    "ariaMobileNav": "モバイルナビゲーション",
+    "homeAriaSuffix": "ホームへ戻る",
+    "mobileMenuOpen": "メニューを開く",
+    "mobileMenuClose": "メニューを閉じる",
+    "ctaButton": "無料相談",
+    "labels": {
+      "works": "Works",
+      "services": "Services",
+      "plans": "Plans",
+      "about": "About",
+      "booking": "Booking",
+      "contact": "Contact",
+      "videos": "Videos",
+      "blog": "Blog",
+      "faq": "FAQ"
+    },
+    "aria": {
+      "works": "作品ギャラリーへ移動",
+      "services": "サービス紹介へ移動",
+      "plans": "料金プランへ移動",
+      "about": "スタッフ紹介へ移動",
+      "booking": "無料相談予約へ移動",
+      "contact": "お問い合わせへ移動",
+      "videos": "動画ギャラリーへ移動",
+      "blog": "ブログへ移動",
+      "faq": "よくある質問へ移動"
+    }
+  },
+  "sections": {
+    "hero": {
+      "cta": "予約相談する",
+      "ctaAria": "予約相談・お問い合わせセクションへ移動",
+      "seoHiddenHeading": "NOKORU - 大阪・関西のロケーション前撮り・ウェディングムービー制作",
+      "videoTitle": "NOKORU - ロケーション前撮り映像"
+    },
+    "works": {
+      "title": "Works",
+      "subtitle": "作品ギャラリー",
+      "cta": "撮影の相談をする",
+      "ctaAria": "お問い合わせへ移動"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "ロケーション前撮り映像制作",
+      "listAria": "サービス一覧",
+      "cta": "サービスについて相談する",
+      "ctaAria": "お問い合わせページへ移動"
+    },
+    "plans": {
+      "title": "Plans",
+      "subtitle": "料金プラン",
+      "listAria": "料金プラン一覧",
+      "recommendedBadge": "一番人気",
+      "cta": "プランについて相談する",
+      "ctaAria": "お問い合わせページへ移動",
+      "allInclusiveNote": "全プラン、撮影許可申請・データ納品・カラーグレーディング込み"
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "スタッフ紹介",
+      "listAria": "スタッフ一覧",
+      "profileAltSuffix": "のプロフィール画像",
+      "profileAltMissingSuffix": "のプロフィール画像（未設定）",
+      "cta": "お気軽にご相談ください",
+      "ctaAria": "お問い合わせページへ移動"
+    },
+    "booking": {
+      "title": "Book a Consultation",
+      "subtitle": "無料オンライン相談のご予約",
+      "freeBadge": "無料",
+      "loadingCalendar": "カレンダーを読み込み中...",
+      "description": "ご希望の日時を選択して、オンライン相談をご予約ください。",
+      "subDescription": "予約完了後、Google Meetの参加URLをメールでお送りします。",
+      "calendarHeading": "ご希望の日時を選択"
+    },
+    "testimonials": {
+      "title": "Voice",
+      "subtitle": "お客様の声",
+      "listAria": "お客様の声一覧",
+      "cta": "あなたも撮影を相談する",
+      "ctaAria": "お問い合わせページへ移動"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "撮影のご相談・お見積りはお気軽にどうぞ",
+      "responseTime": "通常3営業日以内に返信",
+      "formHeading": "お問い合わせフォーム",
+      "formDescription": "撮影のご相談・お見積りなど、お気軽にお問い合わせください。",
+      "otherHeading": "SNS・その他",
+      "otherDescription": "DMでのお問い合わせも歓迎です。",
+      "linksAria": "連絡先リンク",
+      "info": {
+        "businessHoursLabel": "営業時間",
+        "businessHoursValue": "10:00〜19:00",
+        "holidaysLabel": "定休日",
+        "holidaysValue": "不定休",
+        "areaLabel": "対応エリア",
+        "areaValue": "関西エリア（全国出張可）",
+        "externalSuffix": "（外部サイト、新しいタブで開きます）"
+      }
+    }
+  },
+  "pages": {
+    "faq": {
+      "backToTop": "トップへ戻る",
+      "metaTitle": "よくある質問",
+      "metaDescription": "ロケーション前撮り・ウェディングムービー制作に関するよくある質問と回答。",
+      "title": "FAQ",
+      "subtitle": "よくある質問",
+      "cta": "お気軽にご相談ください",
+      "ctaDescription": "その他ご不明な点がございましたら、お問い合わせフォームまたは無料相談をご利用ください。",
+      "categories": {
+        "shooting": "撮影について",
+        "pricing": "料金・プランについて",
+        "movie": "ムービー制作について",
+        "booking": "ご予約・お支払いについて"
+      }
+    },
+    "videos": {
+      "backToTop": "トップへ戻る",
+      "metaTitle": "ビデオギャラリー",
+      "metaDescription": "NOKORUが制作したウェディングムービー・前撮り動画のギャラリー。",
+      "title": "Video Gallery",
+      "subtitle": "ムービー作品集",
+      "playButton": "再生する",
+      "categories": {
+        "all": "すべて",
+        "openingMovie": "オープニングムービー",
+        "locationShooting": "ロケーション撮影",
+        "digest": "ダイジェスト"
+      }
+    },
+    "blog": {
+      "backToTop": "トップへ戻る",
+      "backToBlog": "記事一覧へ",
+      "metaTitle": "ブログ・お知らせ",
+      "metaDescription": "ロケーション前撮り・ウェディングムービー制作のお知らせ、撮影レポート。",
+      "title": "Blog",
+      "subtitle": "お知らせ・撮影レポート",
+      "readMore": "続きを読む",
+      "notFound": "記事が見つかりませんでした",
+      "categories": {
+        "news": "お知らせ",
+        "report": "撮影レポート",
+        "tips": "撮影のコツ"
+      },
+      "relatedPosts": "関連記事"
+    },
+    "staff": {
+      "backToTop": "トップへ戻る",
+      "backToAbout": "スタッフ一覧へ",
+      "notFound": "スタッフが見つかりませんでした",
+      "metaTitleSuffix": "スタッフ紹介"
+    },
+    "plans": {
+      "backToTop": "トップへ戻る",
+      "backToPlans": "プラン一覧へ",
+      "notFound": "プランが見つかりませんでした",
+      "metaTitleSuffix": "料金プラン",
+      "featuresHeading": "プラン内容",
+      "ctaButton": "このプランで相談する"
+    },
+    "services": {
+      "backToTop": "トップへ戻る",
+      "backToServices": "サービス一覧へ",
+      "notFound": "サービスが見つかりませんでした",
+      "metaTitleSuffix": "サービス紹介",
+      "featuresHeading": "サービス内容",
+      "ctaButton": "このサービスについて相談する"
+    },
+    "works": {
+      "backToTop": "トップへ戻る",
+      "backToWorks": "作品一覧へ",
+      "notFound": "作品が見つかりませんでした",
+      "metaTitleSuffix": "作品ギャラリー",
+      "locationLabel": "Location",
+      "ctaButton": "撮影について相談する",
+      "navigation": {
+        "prevLabel": "前の作品",
+        "nextLabel": "次の作品",
+        "counterSeparator": "/",
+        "keyboardHint": "← → キーでも操作できます"
+      }
+    },
+    "contact": {
+      "backToTop": "トップへ戻る",
+      "metaTitle": "お問い合わせ",
+      "metaDescription": "撮影のご相談・お見積りはお気軽にどうぞ。通常3営業日以内にご返信いたします。"
+    }
+  },
+  "footer": {
+    "decorativeMark": "✦",
+    "instagramFollowAria": "Instagramをフォロー"
+  },
+  "ui": {
+    "loadingAria": "読み込み中",
+    "loadingSrOnly": "読み込み中..."
+  },
+  "form": {
+    "success": {
+      "title": "送信完了",
+      "message": "予約のご相談ありがとうございます。\n内容を確認の上、2〜3営業日以内にご連絡いたします。",
+      "newInquiry": "新しいお問い合わせ"
+    },
+    "fields": {
+      "name": {
+        "label": "お名前",
+        "placeholder": "山田 太郎",
+        "requiredMark": "*"
+      },
+      "email": {
+        "label": "メールアドレス",
+        "placeholder": "example@email.com",
+        "requiredMark": "*"
+      },
+      "phone": {
+        "label": "電話番号",
+        "placeholder": "090-1234-5678"
+      },
+      "inquiryType": {
+        "label": "お問い合わせ種別",
+        "ariaLabel": "お問い合わせ種別"
+      },
+      "preferredDate": {
+        "label": "撮影希望日"
+      },
+      "message": {
+        "label": "お問い合わせ内容",
+        "placeholder": "ご希望のロケーション、撮影イメージなどをお聞かせください",
+        "requiredMark": "*"
+      }
+    },
+    "buttons": {
+      "submit": "送信する",
+      "submitting": "送信中..."
+    },
+    "errors": {
+      "submitFailed": "送信に失敗しました。時間をおいて再度お試しください。",
+      "networkFailed": "通信に失敗しました。ネットワーク状況をご確認ください。",
+      "generic": "送信中にエラーが発生しました。時間をおいて再度お試しください。"
+    },
+    "validationErrors": {
+      "nameRequired": "お名前を入力してください",
+      "emailRequired": "メールアドレスを入力してください",
+      "emailInvalid": "正しいメールアドレスを入力してください",
+      "messageRequired": "お問い合わせ内容を入力してください"
+    }
+  },
+  "common": {
+    "backToTop": "トップへ戻る",
+    "readMore": "続きを読む",
+    "viewDetails": "詳細を見る"
+  }
+}

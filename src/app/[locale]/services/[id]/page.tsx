@@ -1,18 +1,23 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { setRequestLocale } from 'next-intl/server';
 import { services, text } from '@/config';
-import { Header, Footer } from '@/components/layout';
+import { PageLayout } from '@/components/layout';
+import { BackLink, Button } from '@/components/ui';
 import { CheckIcon, VideoIcon, PlayIcon } from '@/components/icons';
+import { locales } from '@/i18n/config';
 
 type PageProps = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: string; id: string }>;
 };
 
-export async function generateStaticParams() {
-  return services.map((service) => ({
-    id: service.id,
-  }));
+export function generateStaticParams() {
+  return locales.flatMap((locale) =>
+    services.map((service) => ({
+      locale,
+      id: service.id,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -32,7 +37,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
-  const { id } = await params;
+  const { locale, id } = await params;
+  setRequestLocale(locale);
   const service = services.find((s) => s.id === id);
 
   if (!service) {
@@ -42,20 +48,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const IconComponent = service.icon === 'video' ? VideoIcon : PlayIcon;
 
   return (
-    <div className="min-h-screen bg-cream">
-      <Header />
-
-      <main id="main-content" className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl px-6">
-          <nav className="mb-12">
-            <Link
-              href="/#services"
-              className="inline-flex items-center gap-2 text-sm text-text-light transition hover:text-text"
-            >
-              <span aria-hidden="true">←</span>
-              {text.pages.services.backToServices}
-            </Link>
-          </nav>
+    <PageLayout>
+      <div className="mx-auto max-w-2xl px-6">
+        <BackLink href="/#services" label={text.pages.services.backToServices} />
 
           <article>
             <header className="text-center">
@@ -97,27 +92,18 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             )}
 
             <div className="mt-12 text-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-site-accent px-8 py-4 font-medium text-white transition hover:bg-site-accent/90"
-              >
+              <Button href="/contact" variant="primary" rounded="full" size="large">
                 {text.pages.services.ctaButton}
-              </Link>
+              </Button>
             </div>
           </article>
 
           <div className="mt-16 text-center">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-site-accent px-6 py-3 text-sm text-site-accent transition hover:bg-site-accent hover:text-white"
-            >
+            <Button href="/" variant="outline" rounded="full" size="small">
               {text.pages.services.backToTop}
-            </Link>
+            </Button>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

@@ -1,0 +1,267 @@
+{
+  "site": {
+    "name": "NOKORU",
+    "descriptionShort": "오사카・간사이 출발, 로케이션 사전촬영 전문 웨딩 필름. 아름다운 영상으로. 2026년 촬영 예약 접수 중.",
+    "tagline": "로케이션 사전촬영을,\n아름다운 영상으로.",
+    "subTagline": "Location Wedding Film",
+    "areas": "오사카・효고・교토・나라・시가를 중심으로 전국 출장 가능.",
+    "year": "2026년 촬영 예약 접수 중.",
+    "copyrightSuffix": "All rights reserved."
+  },
+  "nav": {
+    "skipToMain": "메인 콘텐츠로 건너뛰기",
+    "ariaMainNav": "메인 네비게이션",
+    "ariaMobileNav": "모바일 네비게이션",
+    "homeAriaSuffix": "홈으로 돌아가기",
+    "mobileMenuOpen": "메뉴 열기",
+    "mobileMenuClose": "메뉴 닫기",
+    "ctaButton": "무료 상담",
+    "labels": {
+      "works": "Works",
+      "services": "Services",
+      "plans": "Plans",
+      "about": "About",
+      "booking": "Booking",
+      "contact": "Contact",
+      "videos": "Videos",
+      "blog": "Blog",
+      "faq": "FAQ"
+    },
+    "aria": {
+      "works": "갤러리로 이동",
+      "services": "서비스 소개로 이동",
+      "plans": "요금 플랜으로 이동",
+      "about": "스태프 소개로 이동",
+      "booking": "무료 상담 예약으로 이동",
+      "contact": "문의하기로 이동",
+      "videos": "비디오 갤러리로 이동",
+      "blog": "블로그로 이동",
+      "faq": "자주 묻는 질문으로 이동"
+    }
+  },
+  "sections": {
+    "hero": {
+      "cta": "상담 예약하기",
+      "ctaAria": "예약 상담・문의 섹션으로 이동",
+      "seoHiddenHeading": "NOKORU - 오사카・간사이 로케이션 사전촬영・웨딩 필름 제작",
+      "videoTitle": "NOKORU - 로케이션 사전촬영 영상"
+    },
+    "works": {
+      "title": "Works",
+      "subtitle": "작품 갤러리",
+      "cta": "촬영 상담하기",
+      "ctaAria": "문의 페이지로 이동"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "로케이션 사전촬영 영상 제작",
+      "listAria": "서비스 목록",
+      "cta": "서비스에 대해 상담하기",
+      "ctaAria": "문의 페이지로 이동"
+    },
+    "plans": {
+      "title": "Plans",
+      "subtitle": "요금 플랜",
+      "listAria": "요금 플랜 목록",
+      "recommendedBadge": "인기 1위",
+      "cta": "플랜에 대해 상담하기",
+      "ctaAria": "문의 페이지로 이동",
+      "allInclusiveNote": "모든 플랜에 촬영 허가 신청・데이터 납품・컬러 그레이딩 포함"
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "스태프 소개",
+      "listAria": "스태프 목록",
+      "profileAltSuffix": "의 프로필 사진",
+      "profileAltMissingSuffix": "의 프로필 사진(미설정)",
+      "cta": "부담 없이 상담해 주세요",
+      "ctaAria": "문의 페이지로 이동"
+    },
+    "booking": {
+      "title": "Book a Consultation",
+      "subtitle": "무료 온라인 상담 예약",
+      "freeBadge": "무료",
+      "loadingCalendar": "캘린더 로딩 중...",
+      "description": "원하시는 날짜와 시간을 선택하여 온라인 상담을 예약해 주세요.",
+      "subDescription": "예약 완료 후 Google Meet 참여 URL을 이메일로 보내드립니다.",
+      "calendarHeading": "원하시는 시간 선택"
+    },
+    "testimonials": {
+      "title": "Voice",
+      "subtitle": "고객 후기",
+      "listAria": "고객 후기 목록",
+      "cta": "당신도 촬영을 상담하세요",
+      "ctaAria": "문의 페이지로 이동"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "촬영 상담・견적 문의는 부담 없이",
+      "responseTime": "보통 3영업일 이내 답변",
+      "formHeading": "문의 양식",
+      "formDescription": "촬영 상담・견적 등 부담 없이 문의해 주세요.",
+      "otherHeading": "SNS・기타",
+      "otherDescription": "DM 문의도 환영합니다.",
+      "linksAria": "연락처 링크",
+      "info": {
+        "businessHoursLabel": "영업 시간",
+        "businessHoursValue": "10:00〜19:00",
+        "holidaysLabel": "휴무일",
+        "holidaysValue": "비정기",
+        "areaLabel": "서비스 지역",
+        "areaValue": "간사이 지역(전국 출장 가능)",
+        "externalSuffix": "(외부 사이트, 새 탭에서 열림)"
+      }
+    }
+  },
+  "pages": {
+    "faq": {
+      "backToTop": "상단으로 돌아가기",
+      "metaTitle": "자주 묻는 질문",
+      "metaDescription": "로케이션 사전촬영・웨딩 필름 제작에 관한 자주 묻는 질문과 답변.",
+      "title": "FAQ",
+      "subtitle": "자주 묻는 질문",
+      "cta": "부담 없이 상담해 주세요",
+      "ctaDescription": "기타 궁금한 점이 있으시면 문의 양식 또는 무료 상담을 이용해 주세요.",
+      "categories": {
+        "shooting": "촬영에 대해",
+        "pricing": "요금・플랜에 대해",
+        "movie": "영상 제작에 대해",
+        "booking": "예약・결제에 대해"
+      }
+    },
+    "videos": {
+      "backToTop": "상단으로 돌아가기",
+      "metaTitle": "비디오 갤러리",
+      "metaDescription": "NOKORU가 제작한 웨딩 무비・사전촬영 영상 갤러리.",
+      "title": "Video Gallery",
+      "subtitle": "영상 작품집",
+      "playButton": "재생",
+      "categories": {
+        "all": "전체",
+        "openingMovie": "오프닝 무비",
+        "locationShooting": "로케이션 촬영",
+        "digest": "다이제스트"
+      }
+    },
+    "blog": {
+      "backToTop": "상단으로 돌아가기",
+      "backToBlog": "기사 목록으로",
+      "metaTitle": "블로그・공지사항",
+      "metaDescription": "로케이션 사전촬영・웨딩 필름 제작 공지사항, 촬영 리포트.",
+      "title": "Blog",
+      "subtitle": "공지사항・촬영 리포트",
+      "readMore": "자세히 보기",
+      "notFound": "기사를 찾을 수 없습니다",
+      "categories": {
+        "news": "공지사항",
+        "report": "촬영 리포트",
+        "tips": "촬영 팁"
+      },
+      "relatedPosts": "관련 기사"
+    },
+    "staff": {
+      "backToTop": "상단으로 돌아가기",
+      "backToAbout": "스태프 목록으로",
+      "notFound": "스태프를 찾을 수 없습니다",
+      "metaTitleSuffix": "스태프 소개"
+    },
+    "plans": {
+      "backToTop": "상단으로 돌아가기",
+      "backToPlans": "플랜 목록으로",
+      "notFound": "플랜을 찾을 수 없습니다",
+      "metaTitleSuffix": "요금 플랜",
+      "featuresHeading": "플랜 내용",
+      "ctaButton": "이 플랜으로 상담하기"
+    },
+    "services": {
+      "backToTop": "상단으로 돌아가기",
+      "backToServices": "서비스 목록으로",
+      "notFound": "서비스를 찾을 수 없습니다",
+      "metaTitleSuffix": "서비스 소개",
+      "featuresHeading": "서비스 내용",
+      "ctaButton": "이 서비스에 대해 상담하기"
+    },
+    "works": {
+      "backToTop": "상단으로 돌아가기",
+      "backToWorks": "작품 목록으로",
+      "notFound": "작품을 찾을 수 없습니다",
+      "metaTitleSuffix": "작품 갤러리",
+      "locationLabel": "Location",
+      "ctaButton": "촬영에 대해 상담하기",
+      "navigation": {
+        "prevLabel": "이전 작품",
+        "nextLabel": "다음 작품",
+        "counterSeparator": "/",
+        "keyboardHint": "← → 키로도 이동 가능"
+      }
+    },
+    "contact": {
+      "backToTop": "상단으로 돌아가기",
+      "metaTitle": "문의하기",
+      "metaDescription": "촬영 상담・견적 문의는 부담 없이. 보통 3영업일 이내 답변드립니다."
+    }
+  },
+  "footer": {
+    "decorativeMark": "✦",
+    "instagramFollowAria": "Instagram 팔로우"
+  },
+  "ui": {
+    "loadingAria": "로딩 중",
+    "loadingSrOnly": "로딩 중..."
+  },
+  "form": {
+    "success": {
+      "title": "전송 완료",
+      "message": "예약 상담 감사합니다.\n내용 확인 후 2~3영업일 이내 연락드리겠습니다.",
+      "newInquiry": "새 문의"
+    },
+    "fields": {
+      "name": {
+        "label": "성함",
+        "placeholder": "홍길동",
+        "requiredMark": "*"
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "example@email.com",
+        "requiredMark": "*"
+      },
+      "phone": {
+        "label": "전화번호",
+        "placeholder": "+82 10-1234-5678"
+      },
+      "inquiryType": {
+        "label": "문의 유형",
+        "ariaLabel": "문의 유형"
+      },
+      "preferredDate": {
+        "label": "희망 촬영일"
+      },
+      "message": {
+        "label": "문의 내용",
+        "placeholder": "원하시는 로케이션, 촬영 이미지 등을 알려주세요",
+        "requiredMark": "*"
+      }
+    },
+    "buttons": {
+      "submit": "전송",
+      "submitting": "전송 중..."
+    },
+    "errors": {
+      "submitFailed": "전송에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+      "networkFailed": "통신에 실패했습니다. 네트워크 상태를 확인해 주세요.",
+      "generic": "전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."
+    },
+    "validationErrors": {
+      "nameRequired": "성함을 입력해 주세요",
+      "emailRequired": "이메일을 입력해 주세요",
+      "emailInvalid": "올바른 이메일 주소를 입력해 주세요",
+      "messageRequired": "문의 내용을 입력해 주세요"
+    }
+  },
+  "common": {
+    "backToTop": "상단으로 돌아가기",
+    "readMore": "자세히 보기",
+    "viewDetails": "상세 보기"
+  }
+}
