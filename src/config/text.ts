@@ -185,6 +185,11 @@ export const text = {
       ctaAria: '予約相談・お問い合わせセクションへ移動',
       seoHiddenHeading: 'NOKORU - 大阪・関西のロケーション前撮り・ウェディングムービー制作',
       videoTitle: 'NOKORU - ロケーション前撮り映像',
+      trustIndicators: [
+        { value: '200', suffix: '組+', label: '撮影実績' },
+        { value: '98', suffix: '%', label: '満足度' },
+        { value: '5', suffix: '年', label: '実績' },
+      ],
     },
     works: {
       title: 'Works',
@@ -207,6 +212,16 @@ export const text = {
       cta: 'プランについて相談する',
       ctaAria: 'お問い合わせページへ移動',
       allInclusiveNote: '全プラン、撮影許可申請・データ納品・カラーグレーディング込み',
+      optionsTitle: '追加オプション',
+      options: [
+        { name: 'ドローン撮影', price: '30,000', description: '空撮映像で特別な演出' },
+        { name: '追加ロケーション', price: '20,000', description: '2箇所目以降の撮影' },
+        { name: '撮影時間延長', price: '15,000/h', description: '1時間単位で延長' },
+        { name: '特急仕上げ', price: '20,000', description: '2週間以内の納品' },
+        { name: 'アルバム制作', price: '50,000', description: '高品質フォトアルバム' },
+      ],
+      earlyBirdTitle: '早期予約特典',
+      earlyBirdNote: '3ヶ月前のご予約で全プラン10%OFF',
     },
     about: {
       title: 'About',
@@ -261,6 +276,37 @@ export const text = {
       listAria: 'お客様の声一覧',
       cta: 'あなたも撮影を相談する',
       ctaAria: 'お問い合わせページへ移動',
+    },
+    flow: {
+      title: 'Flow',
+      subtitle: '撮影までの流れ',
+      steps: [
+        {
+          step: '01',
+          title: '無料相談',
+          description: 'オンラインまたは対面でご希望をヒアリング。プランやロケーションをご提案します。',
+          duration: '約60分',
+        },
+        {
+          step: '02',
+          title: 'お打ち合わせ',
+          description: '撮影日時・ロケーション・衣装などの詳細を決定。イメージを共有します。',
+          duration: '約30分',
+        },
+        {
+          step: '03',
+          title: '撮影当日',
+          description: '現地集合でリラックスした雰囲気で撮影。自然な表情を引き出します。',
+          duration: '2〜6時間',
+        },
+        {
+          step: '04',
+          title: '編集・納品',
+          description: 'シネマティックな色彩で仕上げ。約3〜4週間でデータ納品いたします。',
+          duration: '3〜4週間',
+        },
+      ],
+      note: '初回相談は完全無料。お気軽にご相談ください。',
     },
     contact: {
       title: 'Contact',

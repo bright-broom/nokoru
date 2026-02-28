@@ -145,6 +145,50 @@ export function PlansSection() {
           ))}
         </div>
 
+        {/* 追加オプション */}
+        <FadeIn {...contentPreset} delay={400} className="mt-16">
+          <div className="rounded-2xl border border-beige/50 bg-white/60 p-6 md:p-8">
+            <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
+              <div>
+                <h3 className="font-display text-lg tracking-wide text-text">
+                  {text.sections.plans.optionsTitle}
+                </h3>
+                <p className="mt-1 text-sm text-text-light/70">
+                  ご希望に合わせてカスタマイズ可能です
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+                {text.sections.plans.options.map((option, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-beige/50 px-3 py-1.5 text-xs"
+                  >
+                    <span className="font-medium text-text">{option.name}</span>
+                    <span className="text-gold">+¥{option.price}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* 早期予約特典 */}
+        <FadeIn {...contentPreset} delay={450} className="mt-6">
+          <div className="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-gold/10 via-gold/15 to-gold/10 px-6 py-4">
+            <span className="text-lg">✨</span>
+            <div className="text-center">
+              <span className="font-display text-sm tracking-wide text-gold">
+                {text.sections.plans.earlyBirdTitle}
+              </span>
+              <span className="mx-2 text-text-light/40">|</span>
+              <span className="text-sm font-medium text-text">
+                {text.sections.plans.earlyBirdNote}
+              </span>
+            </div>
+            <span className="text-lg">✨</span>
+          </div>
+        </FadeIn>
+
         {/* CTA */}
         <SectionCTA
           href="/contact"

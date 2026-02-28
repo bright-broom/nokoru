@@ -139,6 +139,21 @@ export function HeroSection() {
               {text.sections.hero.cta}
             </Button>
           </FadeIn>
+
+          {/* 信頼性指標 */}
+          <FadeIn {...contentPreset} delay={2000}>
+            <div className="mt-12 flex items-center justify-center gap-8 md:gap-12">
+              {text.sections.hero.trustIndicators.map((indicator, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="flex items-baseline justify-center">
+                    <span className="font-display text-2xl text-gold md:text-3xl">{indicator.value}</span>
+                    <span className="ml-0.5 text-sm text-gold/80">{indicator.suffix}</span>
+                  </div>
+                  <p className="mt-1 text-xs text-text-light/60">{indicator.label}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
 
         {/* スクロールインジケーター - リッチ化 */}

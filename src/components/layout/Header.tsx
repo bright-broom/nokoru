@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { siteConfig, navItems, text } from '@/config';
 import { MenuIcon, CloseIcon } from '@/components/icons';
 import { NavLink } from '@/components/ui/NavLink';
+import { CampaignBanner } from '@/components/ui/CampaignBanner';
 import { useScrollBackground } from '@/hooks';
 import { SCROLL_THRESHOLDS } from '@/lib/constants';
 
@@ -63,12 +64,20 @@ export const Header = memo(function Header() {
 
   return (
     <>
+      {/* キャンペーンバナー - スクロール後は非表示 */}
+      <div className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+      )}>
+        <CampaignBanner />
+      </div>
+
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'fixed left-0 right-0 z-50 transition-all duration-500',
           isScrolled
-            ? 'bg-cream/95 backdrop-blur-md'
-            : 'bg-cream/80 backdrop-blur-sm'
+            ? 'top-0 bg-cream/95 backdrop-blur-md'
+            : 'top-10 bg-cream/80 backdrop-blur-sm'
         )}
         role="banner"
       >

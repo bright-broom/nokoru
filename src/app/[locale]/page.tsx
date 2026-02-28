@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 import { Header, Footer } from '@/components/layout';
 import { HeroSection, WorksSection } from '@/components/sections';
+import { FloatingContact } from '@/components/ui';
 import { JsonLd } from '@/components/seo';
 import { siteConfig } from '@/config';
 
@@ -12,6 +13,10 @@ const ServicesSection = dynamic(
 );
 const PlansSection = dynamic(
   () => import('@/components/sections/PlansSection').then((mod) => mod.PlansSection),
+  { ssr: true }
+);
+const FlowSection = dynamic(
+  () => import('@/components/sections/FlowSection').then((mod) => mod.FlowSection),
   { ssr: true }
 );
 const AboutSection = dynamic(
@@ -44,12 +49,14 @@ export default async function HomePage({ params }: Props) {
         <WorksSection />
         <ServicesSection />
         <PlansSection />
+        <FlowSection />
         <AboutSection />
         <TestimonialsSection />
         <BookingSection calLink={siteConfig.calLink} />
       </main>
 
       <Footer />
+      <FloatingContact />
     </div>
   );
 }
