@@ -104,7 +104,12 @@ const nextConfig: NextConfig = {
       // Supabase Storage
       {
         protocol: 'https',
-        hostname: '*.supabase.co',
+        hostname: '**.supabase.co',
+      },
+      // 明示的に Supabase プロジェクトを指定
+      {
+        protocol: 'https',
+        hostname: 'tmbugisowgipqgktccvf.supabase.co',
       },
     ],
   },
