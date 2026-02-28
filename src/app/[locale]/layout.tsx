@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { locales, type Locale } from '@/i18n/config';
-import { getSupabaseUrl } from '@/lib/env';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
 type Props = {
   children: React.ReactNode;
@@ -41,7 +42,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Analytics & Data */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href={getSupabaseUrl()} />
+        {supabaseUrl && <link rel="preconnect" href={supabaseUrl} />}
       </head>
       {children}
     </NextIntlClientProvider>
