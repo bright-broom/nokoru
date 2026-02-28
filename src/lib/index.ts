@@ -26,7 +26,6 @@ export { PASSWORD_MANAGER_IGNORE_PROPS, ANIMATION_DELAYS, SCROLL_THRESHOLDS } fr
 
 // ストレージ
 export {
-  STORAGE_BUCKET,
   getStorageUrl,
   getMediaUrl,
   getWorkImageUrl,

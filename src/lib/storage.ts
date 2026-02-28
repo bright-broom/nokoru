@@ -1,34 +1,20 @@
 /**
- * Supabase Storage ユーティリティ
- * 画像・動画の保存と取得を管理
+ * 画像ストレージユーティリティ
+ * public/images/ のローカル画像を使用
+ *
+ * Note: Vercel では public/ フォルダが自動的に CDN で配信されるため、
+ * 外部ストレージに依存せず確実に画像を表示できます。
  */
-
-/** ストレージバケット名 */
-export const STORAGE_BUCKET = 'media' as const;
 
 /** メディアタイプ */
 export type MediaType = 'works' | 'staff' | 'videos';
 
 /**
- * Supabase URL を取得（遅延評価）
- * 環境変数が設定されていない場合は null を返す
- */
-function getSupabaseUrl(): string | null {
-  return process.env.NEXT_PUBLIC_SUPABASE_URL || null;
-}
-
-/**
- * Supabase Storage の公開URLを取得
- * 環境変数が未設定の場合はローカルの画像パスにフォールバック
+ * 画像URLを取得
  * @param path - ファイルパス (例: 'works/couple-cliff.jpg')
  * @returns 公開URL
  */
 export function getStorageUrl(path: string): string {
-  const supabaseUrl = getSupabaseUrl();
-  if (supabaseUrl) {
-    return `${supabaseUrl}/storage/v1/object/public/${STORAGE_BUCKET}/${path}`;
-  }
-  // フォールバック: ローカルの public/images を使用
   return `/images/${path}`;
 }
 
