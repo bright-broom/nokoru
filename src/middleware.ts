@@ -22,7 +22,7 @@ const RATE_LIMIT_MAX_REQUESTS = 30; // 1分あたり30リクエスト
 const RATE_LIMIT_API_MAX = 10; // APIは1分あたり10リクエスト
 
 function getClientIP(request: NextRequest): string {
-  // Netlify/Vercel等のプロキシ経由のIP取得
+  // Vercelプロキシ経由のIP取得
   const forwarded = request.headers.get('x-forwarded-for');
   if (forwarded) {
     return forwarded.split(',')[0].trim();
