@@ -87,6 +87,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   // 画像最適化設定
   images: {
+    // Vercel Hobby プランの Image Optimization 制限回避
+    // 402 エラー対策: 画像最適化を無効化
+    unoptimized: true,
     // 外部画像ドメイン許可
     remotePatterns: [
       // YouTube サムネイル
@@ -101,15 +104,14 @@ const nextConfig: NextConfig = {
       // Supabase Storage
       {
         protocol: 'https',
-        hostname: '*.supabase.co',
+        hostname: '**.supabase.co',
+      },
+      // 明示的に Supabase プロジェクトを指定
+      {
+        protocol: 'https',
+        hostname: 'tmbugisowgipqgktccvf.supabase.co',
       },
     ],
-    // モダンフォーマット優先
-    formats: ['image/avif', 'image/webp'],
-    // デバイスサイズ
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    // 画像サイズ
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
   // 実験的機能

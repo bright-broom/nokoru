@@ -11,22 +11,25 @@ export type MediaType = 'works' | 'staff' | 'videos';
 
 /**
  * Supabase URL を取得（遅延評価）
+ * 環境変数が設定されていない場合は null を返す
  */
-function getSupabaseUrl(): string {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  if (!url) {
-    throw new Error('NEXT_PUBLIC_SUPABASE_URL is not defined');
-  }
-  return url;
+function getSupabaseUrl(): string | null {
+  return process.env.NEXT_PUBLIC_SUPABASE_URL || null;
 }
 
 /**
  * Supabase Storage の公開URLを取得
+ * 環境変数が未設定の場合はローカルの画像パスにフォールバック
  * @param path - ファイルパス (例: 'works/couple-cliff.jpg')
  * @returns 公開URL
  */
 export function getStorageUrl(path: string): string {
-  return `${getSupabaseUrl()}/storage/v1/object/public/${STORAGE_BUCKET}/${path}`;
+  const supabaseUrl = getSupabaseUrl();
+  if (supabaseUrl) {
+    return `${supabaseUrl}/storage/v1/object/public/${STORAGE_BUCKET}/${path}`;
+  }
+  // フォールバック: ローカルの public/images を使用
+  return `/images/${path}`;
 }
 
 /**
